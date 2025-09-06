@@ -17,8 +17,4 @@
       <ProjectReference Include="..\Application.Core.Interfaces\Application.Core.Interfaces.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="ViewModels\" />
-    </ItemGroup>
-
 </Project>

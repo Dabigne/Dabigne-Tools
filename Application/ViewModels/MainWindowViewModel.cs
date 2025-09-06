@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Application.Core.Interfaces.Services;
+using Application.Core.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -11,6 +12,8 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly INavigationService _navigationService;
 
     public IList<INavigationItem> NavigationItems { get; } = new List<INavigationItem>();
+    
+    public OutputViewModel Output  { get; } = new();
     
     [ObservableProperty]
     private INavigationItem _selectedItem;

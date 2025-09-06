@@ -3,6 +3,8 @@
         xmlns:vm="using:Application.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:core="clr-namespace:Application.Views;assembly=Application.Core"
+        xmlns:views="clr-namespace:Application.Core.Views;assembly=Application.Core"
         mc:Ignorable="d" 
         d:DesignWidth="800" 
         d:DesignHeight="450"
@@ -53,7 +55,15 @@
                     </ListBox>
                 </Grid>
             </SplitView.Pane>
-            <ContentPresenter x:Name="ContentPresenter"/>
+            <Grid RowDefinitions="2*, 1, *">
+                <ContentPresenter Grid.Row="0"
+                                  x:Name="ContentPresenter"/>
+                <GridSplitter Grid.Row="1"
+                              ResizeDirection="Rows"
+                              Height="2"/>
+                <views:OutputView Grid.Row="2"
+                                  DataContext="{Binding Output}"/>
+            </Grid>
         </SplitView>
         
     </Panel>
