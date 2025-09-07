@@ -10,6 +10,7 @@ namespace Application.ViewModels;
 public partial class MainWindowViewModel : ObservableObject
 {
     private readonly INavigationService _navigationService;
+    private readonly IOutputService _outputService;
 
     public IList<INavigationItem> NavigationItems { get; } = new List<INavigationItem>();
     
@@ -23,7 +24,7 @@ public partial class MainWindowViewModel : ObservableObject
 
     [ObservableProperty] 
     private string _paneButtonContent = "<";
-
+    
     [RelayCommand]
     private void TogglePane()
     {
@@ -31,11 +32,14 @@ public partial class MainWindowViewModel : ObservableObject
         PaneButtonContent = IsPaneOpen ? "<" : ">";
     }
     
-    public MainWindowViewModel(INavigationService navigationService)
+    public MainWindowViewModel(INavigationService navigationService, IOutputService outputService)
     {
         _navigationService = navigationService;
+        _outputService = outputService;
         NavigationItems = _navigationService.GetNavigationItems().ToList();
         SelectedItem = NavigationItems.First();
+
+        _outputService.MessagePushed += s => Output.Append(s);
     }
 
     partial void OnSelectedItemChanged(INavigationItem navigationItem)

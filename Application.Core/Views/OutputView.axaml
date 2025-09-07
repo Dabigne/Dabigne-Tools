@@ -19,6 +19,12 @@
                 Background="{DynamicResource AccentButtonBackground}"/>
         
         <ListBox Grid.Row="1"
-                 ItemsSource="{Binding Content}"/>
+                 ItemsSource="{Binding Content}">
+            <ListBox.ItemContainerTheme>
+                <ControlTheme TargetType="ListBoxItem">
+                    <Setter Property="Height" Value="24"/>
+                </ControlTheme>
+            </ListBox.ItemContainerTheme>
+        </ListBox>
     </Grid>    
 </UserControl>
