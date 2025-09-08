@@ -3,7 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Module.MangaDownload.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:components="clr-namespace:Module.MangaDownload.Views.Components"
+             mc:Ignorable="d" 
+             d:DesignWidth="800" 
+             d:DesignHeight="450"
              x:Class="Module.MangaDownload.Views.MangaDownloadView">
     
     <Design.DataContext>
@@ -12,17 +15,10 @@
 
         <Grid Margin="20"
               VerticalAlignment="Center" 
-              ColumnDefinitions="*,*" 
               RowDefinitions="Auto,Auto,Auto">
 
-            <TextBlock Grid.Row="0"
-                       Grid.Column="0"
-                       Margin="10"
-                       Text="Manga name"/>
-            <TextBox Grid.Row="0"
-                     Grid.Column="1"
-                     Margin="10"
-                     Text="{Binding MangaName}"/>
+            <components:MangaSearchControl Grid.Row="0"
+                                           DataContext="{Binding SearchViewModel}"/>
             
             <Grid Grid.Row="1"
                   Grid.Column="0"
@@ -47,8 +43,6 @@
             </Grid>
 
             <Button Grid.Row="2"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
                     Foreground="{DynamicResource AccentButtonForeground}"
                     Background="{DynamicResource AccentButtonBackground}"
                     Margin="10,20"

@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Module.MangaDownload.Interfaces;
 using Module.MangaDownload.Services;
 using Module.MangaDownload.ViewModels;
 using Module.MangaDownload.Views;
@@ -12,7 +13,8 @@ public class MangaDownloadModule : Autofac.Module
         builder.RegisterType<MangaDownloadView>().AsSelf();
         
         builder.RegisterType<MangaDownloadViewModel>().AsSelf();
-        
-        builder.RegisterType<MangaPdfService>().AsSelf();
+
+        builder.RegisterType<CatalogService>().As<ICatalogService>().SingleInstance();
+        builder.RegisterType<MangaPdfService>().As<IMangaPdfService>().SingleInstance();
     }
 }

@@ -1,20 +1,22 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Module.MangaDownload.Services;
+using Module.MangaDownload.Interfaces;
+using Module.MangaDownload.ViewModels.Components;
 
 namespace Module.MangaDownload.ViewModels;
 
 internal class DesignTimeMangaDownloadViewModel : MangaDownloadViewModel
 {
-    public DesignTimeMangaDownloadViewModel() : base(null) { }
+    public DesignTimeMangaDownloadViewModel() : base(null, null) { }
 }
 
 public partial class MangaDownloadViewModel : ObservableObject
 {
-    private readonly MangaPdfService _mangaPdfService;
+    private readonly ICatalogService _catalogService;
+    private readonly IMangaPdfService _mangaPdfService;
     
-    [ObservableProperty] 
-    private string _mangaName = "Mashle";
+    public MangaSearchViewModel SearchViewModel { get; }
+        
     [ObservableProperty] 
     private int _firstChapter = 1;
     [ObservableProperty] 
@@ -37,9 +39,14 @@ public partial class MangaDownloadViewModel : ObservableObject
         FirstChapter = value;
     }
     
-    public MangaDownloadViewModel(MangaPdfService mangaPdfService)
+    public MangaDownloadViewModel(
+        ICatalogService catalogService, 
+        IMangaPdfService mangaPdfService)
     {
+        _catalogService = catalogService;
         _mangaPdfService = mangaPdfService;
+
+        SearchViewModel = new MangaSearchViewModel(catalogService);
     }
     
     [RelayCommand]
@@ -51,7 +58,9 @@ public partial class MangaDownloadViewModel : ObservableObject
         var currentChapter = FirstChapter;
         while (processOk && currentChapter <= LastChapter)
         {
-            processOk = await _mangaPdfService.DownloadChapter(MangaName, currentChapter);
+            processOk = await _mangaPdfService.DownloadChapter(
+                SearchViewModel.MangaName, 
+                currentChapter);
             currentChapter++;
         }
         

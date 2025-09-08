@@ -4,10 +4,16 @@ namespace Application.Core.Services;
 
 public class OutputService : IOutputService
 {
-    public event Action<string>? MessagePushed;
-        
-    public void Push(string message)
+    public event Action<string>? LinePushed;
+    public event Action<string>? LineSelected;
+    
+    public void Push(string line)
     {
-        MessagePushed?.Invoke(message);
+        LinePushed?.Invoke(line);
+    }
+
+    public void SelectLine(string line)
+    {
+        LineSelected?.Invoke(line);
     }
 }

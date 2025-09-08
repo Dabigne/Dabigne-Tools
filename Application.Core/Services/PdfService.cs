@@ -1,5 +1,3 @@
-using System.Drawing;
-using System.Drawing.Imaging;
 using Application.Core.Interfaces.Services;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
@@ -21,7 +19,7 @@ public class PdfService : IPdfService
         var orderedList = Directory.GetFiles(folderName).ToList().Order();
         var finalList = orderedList.Where(s => s.EndsWith(".jpg")).ToList();
         
-        if (!finalList.Any())
+        if (finalList.Count == 0)
             return false;
 
         try

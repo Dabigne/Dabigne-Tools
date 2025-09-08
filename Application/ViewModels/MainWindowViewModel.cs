@@ -14,7 +14,7 @@ public partial class MainWindowViewModel : ObservableObject
 
     public IList<INavigationItem> NavigationItems { get; } = new List<INavigationItem>();
     
-    public OutputViewModel Output  { get; } = new();
+    public OutputViewModel Output  { get; }
     
     [ObservableProperty]
     private INavigationItem _selectedItem;
@@ -36,10 +36,9 @@ public partial class MainWindowViewModel : ObservableObject
     {
         _navigationService = navigationService;
         _outputService = outputService;
+        Output = new OutputViewModel(outputService);
         NavigationItems = _navigationService.GetNavigationItems().ToList();
         SelectedItem = NavigationItems.First();
-
-        _outputService.MessagePushed += s => Output.Append(s);
     }
 
     partial void OnSelectedItemChanged(INavigationItem navigationItem)

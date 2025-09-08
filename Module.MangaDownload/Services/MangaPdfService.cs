@@ -1,8 +1,9 @@
 using Application.Core.Interfaces.Services;
+using Module.MangaDownload.Interfaces;
 
 namespace Module.MangaDownload.Services;
 
-public class MangaPdfService
+public class MangaPdfService : IMangaPdfService
 {
     private const string UrlRoot = "https://anime-sama.fr/s2/scans/";
     private const string MangasRoot = "Mangas";

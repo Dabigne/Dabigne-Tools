@@ -19,10 +19,12 @@
                 Background="{DynamicResource AccentButtonBackground}"/>
         
         <ListBox Grid.Row="1"
-                 ItemsSource="{Binding Content}">
+                 ItemsSource="{Binding Content}"
+                 SelectedItem="{Binding SelectedLine}">
             <ListBox.ItemContainerTheme>
-                <ControlTheme TargetType="ListBoxItem">
-                    <Setter Property="Height" Value="24"/>
+                <ControlTheme TargetType="ListBoxItem" 
+                              BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <Setter Property="Padding" Value="2"/>
                 </ControlTheme>
             </ListBox.ItemContainerTheme>
         </ListBox>

@@ -2,7 +2,7 @@ namespace Application.Core.Interfaces.Services;
 
 public interface IOutputService
 {
-    event Action<string>? MessagePushed;
+    event Action<string>? LinePushed;
 
-    void Push(string message);
+    void Push(string line);
 }
