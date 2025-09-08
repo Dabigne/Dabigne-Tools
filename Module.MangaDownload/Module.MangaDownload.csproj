@@ -5,6 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>Module.MangaDownload</RootNamespace>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,4 +20,11 @@
       <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
     </ItemGroup>
 
+    <Target Name="CopyDLLs" AfterTargets="Build">
+        <Message Text="Executing CopyDLLs task" Importance="High" />
+        <Copy SourceFiles="$(TargetDir)\$(ProjectName).dll;$(TargetDir)\$(ProjectName).pdb;$(TargetDir)\AngleSharp.dll"
+              DestinationFolder="..\Application\bin\Debug\net9.0\Modules\"/>
+        <Message Text="Copied build files" Importance="High" />
+    </Target>
+    
 </Project>

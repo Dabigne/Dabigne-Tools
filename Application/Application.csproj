@@ -29,6 +29,5 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
-      <ProjectReference Include="..\Module.MangaDownload\Module.MangaDownload.csproj" />
     </ItemGroup>
 </Project>
