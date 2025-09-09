@@ -1,4 +1,5 @@
 using Application.Core.Interfaces.Services;
+using Application.Core.Models;
 
 namespace Application.Core.Services;
 
@@ -42,15 +43,15 @@ public class ImageDownloaderService : IImageDownloaderService
       // Download the image and write to the file
       try
       {
-         _outputService.Push($"Getting image from {uri}");
+         _outputService.Push(new OutputLine($"Getting image from {uri}"));
          var imageBytes = await _httpClient.GetByteArrayAsync(uri);
          await File.WriteAllBytesAsync(path, imageBytes);
-         _outputService.Push($"File saved to {path}");
+         _outputService.Push(new OutputLine($"File saved to {path}"));
       }
       catch (HttpRequestException e)
       {
-         _outputService.Push($"Failed to download file {uri}");
-         _outputService.Push($"Error: {e.Message}");
+         _outputService.Push(new OutputLine($"Failed to download file {uri}"));
+         _outputService.Push(new OutputLine($"Error: {e.Message}"));
          return false;
       }
       

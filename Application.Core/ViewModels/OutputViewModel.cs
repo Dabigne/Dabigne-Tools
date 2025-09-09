@@ -9,14 +9,14 @@ public partial class OutputViewModel : ObservableObject
 {
     private readonly IOutputService _outputService;
 
-    public ObservableCollection<string> Content { get; } = [];
+    public ObservableCollection<IOutputLine> Content { get; } = [];
 
     [ObservableProperty] 
-    private string? _selectedLine = null;
+    private IOutputLine? _selectedLine = null;
     
-    partial void OnSelectedLineChanged(string? selectedLine)
+    partial void OnSelectedLineChanged(IOutputLine? selectedLine)
     {
-        
+        _outputService.SelectLine(SelectedLine);
     }
 
     [RelayCommand]
@@ -32,8 +32,8 @@ public partial class OutputViewModel : ObservableObject
         _outputService.LinePushed += Append;
     }
 
-    private void Append(string text)
+    private void Append(IOutputLine line)
     {
-        Content.Add(text);
+        Content.Add(line);
     }
 }

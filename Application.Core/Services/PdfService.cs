@@ -1,4 +1,6 @@
 using Application.Core.Interfaces.Services;
+using Application.Core.Models;
+using Avalonia.Media;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using SkiaSharp;
@@ -27,7 +29,7 @@ public class PdfService : IPdfService
             using var document = new PdfDocument();
             foreach (var pageName in finalList)
             {
-                _outputService.Push($"Adding page {pageName}");
+                _outputService.Push(new OutputLine($"Adding page {pageName}"));
                 var page = document.AddPage();
                 using var img = GetXImageFromPath(pageName);
                 var pageWidth = img.PixelWidth;
@@ -42,11 +44,11 @@ public class PdfService : IPdfService
             }
             var pdfPath = Path.Join(folderName, pdfName);
             document.Save($"{pdfPath}.pdf");
-            _outputService.Push($"Pdf generated {pdfPath}.pdf");
+            _outputService.Push(new OutputLine($"Pdf generated {pdfPath}.pdf", false, Colors.LimeGreen));
         }
         catch (Exception e)
         {
-            _outputService.Push($"Error creating PDF: {e.Message}");
+            _outputService.Push(new OutputLine($"Error creating PDF: {e.Message}", false, Colors.Red));
         }
         
         return true;
@@ -61,7 +63,7 @@ public class PdfService : IPdfService
         }
         catch (Exception)
         {
-            _outputService.Push($"Converting image to supported format: {path}");
+            _outputService.Push(new OutputLine($"Converting image to supported format: {path}", false, Colors.DarkOrange));
             var image = SKImage.FromEncodedData(path);
             var data = image.Encode(SKEncodedImageFormat.Png, 100);
             return XImage.FromStream(data.AsStream());

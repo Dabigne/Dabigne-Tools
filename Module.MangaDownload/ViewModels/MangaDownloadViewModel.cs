@@ -1,3 +1,4 @@
+using Application.Core.Interfaces.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Module.MangaDownload.Interfaces;
@@ -7,7 +8,7 @@ namespace Module.MangaDownload.ViewModels;
 
 internal class DesignTimeMangaDownloadViewModel : MangaDownloadViewModel
 {
-    public DesignTimeMangaDownloadViewModel() : base(null, null) { }
+    public DesignTimeMangaDownloadViewModel() : base(null, null, null) { }
 }
 
 public partial class MangaDownloadViewModel : ObservableObject
@@ -41,12 +42,13 @@ public partial class MangaDownloadViewModel : ObservableObject
     
     public MangaDownloadViewModel(
         ICatalogService catalogService, 
-        IMangaPdfService mangaPdfService)
+        IMangaPdfService mangaPdfService,
+        IOutputService outputService)
     {
         _catalogService = catalogService;
         _mangaPdfService = mangaPdfService;
 
-        SearchViewModel = new MangaSearchViewModel(catalogService);
+        SearchViewModel = new MangaSearchViewModel(catalogService, outputService);
     }
     
     [RelayCommand]

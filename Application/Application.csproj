@@ -24,7 +24,6 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-        <PackageReference Include="PDFsharp" Version="6.2.1" />
     </ItemGroup>
 
     <ItemGroup>

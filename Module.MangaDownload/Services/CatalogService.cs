@@ -2,6 +2,8 @@ using AngleSharp;
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using Application.Core.Interfaces.Services;
+using Application.Core.Models;
+using Avalonia.Media;
 using Module.MangaDownload.Interfaces;
 
 namespace Module.MangaDownload.Services;
@@ -19,6 +21,7 @@ public class CatalogService : ICatalogService
     
     public async Task<IEnumerable<string>> Search(string query)
     {
+        _outputService.Push(new OutputLine($"Searching for {query}"));
         using var httpClient = new HttpClient();
         
         var config = Configuration.Default.WithDefaultLoader();
@@ -26,10 +29,11 @@ public class CatalogService : ICatalogService
         var document = await context.OpenAsync($"{Uri}{query}");
         var result = document.QuerySelectorAll<IHtmlHeadingElement>(TitleSelector);
         var titles = result.Select(r => r.InnerHtml).ToList();
-
+        
+        _outputService.Push(new OutputLine($"Found {titles.Count} title(s)"));
         foreach (var title in titles)
         {
-            _outputService.Push(title);
+            _outputService.Push(new OutputLine(title, true, Colors.LimeGreen));
         }
         
         return titles;
