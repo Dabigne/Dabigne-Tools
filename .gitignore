@@ -13,3 +13,5 @@ MangaDownload.sln.DotSettings.user
 Application/.DS_Store
 Module.MangaDownload/.DS_Store
 .DS_Store
+/Module.PdfTools/bin
+/Module.PdfTools/obj
