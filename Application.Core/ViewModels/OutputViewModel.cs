@@ -5,6 +5,11 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Application.Core.ViewModels;
 
+public class OutputViewModelDesign : OutputViewModel
+{
+    public OutputViewModelDesign() : base(null) {}
+}
+
 public partial class OutputViewModel : ObservableObject
 {
     private readonly IOutputService _outputService;

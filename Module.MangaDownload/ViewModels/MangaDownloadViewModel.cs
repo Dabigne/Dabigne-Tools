@@ -13,7 +13,6 @@ internal class DesignTimeMangaDownloadViewModel : MangaDownloadViewModel
 
 public partial class MangaDownloadViewModel : ObservableObject
 {
-    private readonly ICatalogService _catalogService;
     private readonly IMangaPdfService _mangaPdfService;
     
     public MangaSearchViewModel SearchViewModel { get; }
@@ -45,7 +44,6 @@ public partial class MangaDownloadViewModel : ObservableObject
         IMangaPdfService mangaPdfService,
         IOutputService outputService)
     {
-        _catalogService = catalogService;
         _mangaPdfService = mangaPdfService;
 
         SearchViewModel = new MangaSearchViewModel(catalogService, outputService);

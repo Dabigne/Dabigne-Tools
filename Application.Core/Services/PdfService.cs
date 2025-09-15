@@ -3,6 +3,7 @@ using Application.Core.Models;
 using Avalonia.Media;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
 using SkiaSharp;
 
 namespace Application.Core.Services;
@@ -49,6 +50,34 @@ public class PdfService : IPdfService
         catch (Exception e)
         {
             _outputService.Push(new OutputLine($"Error creating PDF: {e.Message}", false, Colors.Red));
+        }
+        
+        return true;
+    }
+
+    public bool MergePdfsIntoOne(List<string> pdfPaths, string pdfName)
+    {
+        if (pdfPaths.Count == 0)
+            return false;
+        
+        try
+        {
+            using var document = new PdfDocument();
+            foreach (var path in pdfPaths)
+            {
+                _outputService.Push(new OutputLine($"Adding pdf {path}"));
+                var pdf = PdfReader.Open(path, PdfDocumentOpenMode.Import);
+                foreach (var pdfPage in pdf.Pages)
+                {
+                    document.AddPage(pdfPage);
+                }
+            }
+            document.Save(pdfName);
+        }
+        catch (Exception e)
+        {
+            _outputService.Push(new OutputLine($"Error merging PDF: {e.Message}", false, Colors.Red));
+            return false;
         }
         
         return true;

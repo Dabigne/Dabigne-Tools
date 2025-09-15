@@ -13,13 +13,21 @@
     </UserControl.Resources>
 
     <Design.DataContext>
-        <vm:OutputViewModel/>
+        <vm:OutputViewModelDesign/>
     </Design.DataContext>
     
     <Grid RowDefinitions="Auto, *">
+        <TextBlock Grid.Row="0"
+                   Text="Output"
+                   Margin="4"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   FontWeight="DemiBold"/>
         <Button Grid.Row="0"
                 Content="Clear"
                 Command="{Binding ClearCommand}"
+                Margin="4"
+                HorizontalAlignment="Right"
                 Foreground="{DynamicResource AccentButtonForeground}"
                 Background="{DynamicResource AccentButtonBackground}"/>
         

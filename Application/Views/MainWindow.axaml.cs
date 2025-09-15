@@ -7,10 +7,12 @@ namespace Application.Views;
 public partial class MainWindow : Window
 {
     public MainWindow(IInstanceProvider instanceProvider)
-    //MainWindowViewModel viewModel, INavigationService  navigationService)
     {
         InitializeComponent();
 
+        var fileService = instanceProvider.GetInstance<IFileService>();
+        fileService.SetWindow(this);
+        
         var navigationService = instanceProvider.GetInstance<INavigationService>();
         navigationService.Init(ContentPresenter);
 
