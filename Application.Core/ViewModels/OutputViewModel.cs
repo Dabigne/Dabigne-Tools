@@ -21,7 +21,8 @@ public partial class OutputViewModel : ObservableObject
     
     partial void OnSelectedLineChanged(IOutputLine? selectedLine)
     {
-        _outputService.SelectLine(SelectedLine);
+        if (SelectedLine != null) 
+            _outputService.SelectLine(SelectedLine);
     }
 
     [RelayCommand]

@@ -1,0 +1,57 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Module.PdfTools.ViewModels.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.PdfTools.Views.Components.FileListView">
+    <UserControl.Resources>
+        <ControlTheme x:Key="ButtonTheme"
+                      TargetType="Button" 
+                      BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </ControlTheme>
+    </UserControl.Resources>
+    
+    <Design.DataContext>
+        <viewModels:FileListViewModelDesign/>    
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*,Auto"
+          Margin="4">
+        <ListBox Grid.Row="0"
+                 Grid.Column="0"
+                 ItemsSource="{Binding Files}"
+                 SelectedItem="{Binding SelectedFile}">
+            <ListBox.ItemContainerTheme>
+                <ControlTheme TargetType="ListBoxItem" 
+                              BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <Setter Property="Padding" Value="2"/>
+                </ControlTheme>
+            </ListBox.ItemContainerTheme>
+        </ListBox>
+        
+        <Grid Grid.Column="1"
+              RowDefinitions="Auto,*,Auto,Auto,*,Auto">
+            <Button Grid.Row="0"
+                    Theme="{StaticResource ButtonTheme}"
+                    Content="Move up"
+                    Command="{Binding MoveUpCommand}"/>
+            <Button Grid.Row="2"
+                    Theme="{StaticResource ButtonTheme}"
+                    Content="Add..."
+                    Command="{Binding PickFilesCommand}"/>
+            <Button Grid.Row="3"
+                    Theme="{StaticResource ButtonTheme}"
+                    Content="Remove"
+                    Command="{Binding RemoveFileCommand}"/>
+            <Button Grid.Row="5"
+                    Theme="{StaticResource ButtonTheme}"
+                    Content="Move down"
+                    Command="{Binding MoveDownCommand}"/>
+        </Grid>
+    </Grid>
+
+</UserControl>

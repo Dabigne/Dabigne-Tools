@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:Module.PdfTools.ViewModels"
+             xmlns:components="clr-namespace:Module.PdfTools.Views.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.PdfTools.Views.PdfMergeView">
     <UserControl.Resources>
@@ -22,14 +23,11 @@
     <Grid RowDefinitions="*,Auto,Auto"
           ColumnDefinitions="*,Auto"
           Margin="4">
-        <ListBox Grid.Row="0"
-                 Grid.Column="0"
-                 ItemsSource="{Binding PdfPaths}"/>
-        <Button Grid.Row="0"
-                Grid.Column="1"
-                Theme="{StaticResource ButtonTheme}"
-                Content="Add..."
-                Command="{Binding PickFilesCommand}"/>
+
+        <components:FileListView Grid.Row="0"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 DataContext="{Binding FileList}"/>
         
         <TextBlock Grid.Row="1"
                    Grid.Column="0"

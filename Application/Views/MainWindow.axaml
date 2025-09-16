@@ -3,7 +3,6 @@
         xmlns:vm="using:Application.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:core="clr-namespace:Application.Views;assembly=Application.Core"
         xmlns:views="clr-namespace:Application.Core.Views;assembly=Application.Core"
         mc:Ignorable="d" 
         d:DesignWidth="800" 

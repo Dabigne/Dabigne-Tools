@@ -2,12 +2,13 @@ using System.Collections.ObjectModel;
 using Application.Core.Interfaces.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Module.PdfTools.ViewModels.Components;
 
 namespace Module.PdfTools.ViewModels;
 
 public class PdfMergeViewModelDesign : PdfMergeViewModel
 {
-    public PdfMergeViewModelDesign() : base(null, null){}
+    public PdfMergeViewModelDesign() : base(null, null, null){}
 }
 
 public partial class PdfMergeViewModel : ObservableObject
@@ -15,27 +16,21 @@ public partial class PdfMergeViewModel : ObservableObject
     private readonly IPdfService _pdfService;
     private readonly IFileService _fileService;
 
+    public FileListViewModel FileList { get; }
+    
     [ObservableProperty]
     private string _mergedPdfPath;
     
-    public ObservableCollection<string> PdfPaths { get; } = [];
-    
-    public PdfMergeViewModel(IPdfService pdfService, IFileService fileService)
+    public PdfMergeViewModel(
+        FileListViewModel fileList, 
+        IPdfService pdfService,
+        IFileService fileService)
     {
+        FileList = fileList;
         _pdfService = pdfService;
         _fileService = fileService;
     }
-
-    [RelayCommand]
-    private async Task PickFiles()
-    {
-        var files = await _fileService.PickFiles();
-        foreach (var storageFile in files)
-        {
-            PdfPaths.Add(storageFile.Path.AbsolutePath);
-        }
-    }
-
+    
     [RelayCommand]
     private async Task PickSaveFile()
     {
@@ -47,6 +42,6 @@ public partial class PdfMergeViewModel : ObservableObject
     [RelayCommand]
     private void Merge()
     {
-        _pdfService.MergePdfsIntoOne(PdfPaths.ToList(), MergedPdfPath);
+        _pdfService.MergePdfsIntoOne(FileList.Files.ToList(), MergedPdfPath);
     }
 }
