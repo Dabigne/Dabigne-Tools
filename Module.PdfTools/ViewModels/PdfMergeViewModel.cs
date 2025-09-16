@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using Application.Core.Interfaces.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -17,6 +18,9 @@ public partial class PdfMergeViewModel : ObservableObject
     private readonly IFileService _fileService;
 
     public FileListViewModel FileList { get; }
+
+    [ObservableProperty] 
+    private int _pageCount;
     
     [ObservableProperty]
     private string _mergedPdfPath;
@@ -27,10 +31,16 @@ public partial class PdfMergeViewModel : ObservableObject
         IFileService fileService)
     {
         FileList = fileList;
+        FileList.Files.CollectionChanged += FilesOnCollectionChanged;
         _pdfService = pdfService;
         _fileService = fileService;
     }
-    
+
+    private void FilesOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        PageCount = _pdfService.GetPageNumberFromFiles(FileList.Files);
+    }
+
     [RelayCommand]
     private async Task PickSaveFile()
     {

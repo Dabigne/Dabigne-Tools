@@ -16,6 +16,16 @@ public class PdfService : IPdfService
     {
         _outputService = outputService;
     }
+
+    public int GetPageNumberFromFiles(IList<string> pdfPaths)
+    {
+        if (pdfPaths.Count == 0)
+            return 0;
+
+        return pdfPaths.Select(pdfPath => PdfReader.Open(pdfPath, PdfDocumentOpenMode.Import))
+            .Select(pdfDocument => pdfDocument.PageCount)
+            .Sum();
+    }
     
     public bool CreatePdfFromImagesInFolder(string folderName, string pdfName)
     {
