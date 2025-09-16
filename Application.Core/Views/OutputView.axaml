@@ -32,6 +32,7 @@
                 Background="{DynamicResource AccentButtonBackground}"/>
         
         <ListBox Grid.Row="1"
+                 x:Name="ListBox"
                  ItemsSource="{Binding Content}"
                  SelectedItem="{Binding SelectedLine}">
             <ListBox.ItemContainerTheme>

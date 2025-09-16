@@ -58,7 +58,7 @@ public partial class MangaDownloadViewModel : ObservableObject
         var currentChapter = FirstChapter;
         while (processOk && currentChapter <= LastChapter)
         {
-            processOk = await _mangaPdfService.DownloadChapter(
+            processOk = await _mangaPdfService.DownloadChapterToPdf(
                 SearchViewModel.MangaName, 
                 currentChapter);
             currentChapter++;

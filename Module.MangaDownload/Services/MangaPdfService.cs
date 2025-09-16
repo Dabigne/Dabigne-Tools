@@ -19,13 +19,13 @@ public class MangaPdfService : IMangaPdfService
         _pdfService = pdfService;
     }
     
-    public async Task<bool> DownloadChapter(string mangaName, int chapterToDownload)
+    public async Task<bool> DownloadChapterToPdf(string mangaName, int chapterToDownload)
     {
         var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         var chapterString = chapterToDownload.ToString("D3");
         folderPath = Path.Combine(folderPath, MangasRoot);
         folderPath = Path.Combine(folderPath, mangaName);
-        folderPath = Path.Combine(folderPath, chapterString);
+        //folderPath = Path.Combine(folderPath, chapterString);
 
         var page = 1;
         var result = true;
@@ -38,7 +38,23 @@ public class MangaPdfService : IMangaPdfService
             page++;
         }
         _imageDownloaderService.Stop();
-        
-        return _pdfService.CreatePdfFromImagesInFolder(folderPath, $"{mangaName}{chapterString}");
+
+        var pdfResult = _pdfService.CreatePdfFromImagesInFolder(folderPath, $"{mangaName}-{chapterString}");
+        if (!pdfResult)
+            return false;
+
+        DeleteImages(folderPath);
+        return true;
+    }
+
+    private static void DeleteImages(string folder)
+    {
+        var orderedList = Directory.GetFiles(folder).ToList().Order();
+        var finalList = orderedList.Where(s => s.EndsWith(".jpg")).ToList();
+
+        foreach (var path in finalList)
+        {
+            File.Delete(path);
+        }
     }
 }
