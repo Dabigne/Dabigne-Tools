@@ -34,7 +34,7 @@
         </ListBox>
         
         <Grid Grid.Column="1"
-              RowDefinitions="Auto,*,Auto,Auto,*,Auto">
+              RowDefinitions="Auto,*,Auto,Auto,Auto,*,Auto">
             <Button Grid.Row="0"
                     Theme="{StaticResource ButtonTheme}"
                     Content="Move up"
@@ -47,7 +47,11 @@
                     Theme="{StaticResource ButtonTheme}"
                     Content="Remove"
                     Command="{Binding RemoveFileCommand}"/>
-            <Button Grid.Row="5"
+            <Button Grid.Row="4"
+                    Theme="{StaticResource ButtonTheme}"
+                    Content="Clear"
+                    Command="{Binding ClearFilesCommand}"/>
+            <Button Grid.Row="6"
                     Theme="{StaticResource ButtonTheme}"
                     Content="Move down"
                     Command="{Binding MoveDownCommand}"/>

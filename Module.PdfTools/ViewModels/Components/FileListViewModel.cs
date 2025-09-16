@@ -35,12 +35,26 @@ public partial class FileListViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private void ClearFiles()
+    {
+        Files.Clear();
+    }
+    
+    [RelayCommand]
     private void RemoveFile()
     {
         if (SelectedFile == null)
             return;
-        
+
+        var index = Files.IndexOf(SelectedFile);
         Files.Remove(SelectedFile);
+        
+        if (Files.Count == 0)
+            return;
+        
+        SelectedFile = index <= Files.Count - 1 
+            ? Files[index] 
+            : Files[Files.Count - 1];
     }
 
     [RelayCommand]
