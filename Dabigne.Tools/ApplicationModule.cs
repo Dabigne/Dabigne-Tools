@@ -1,8 +1,8 @@
-using Application.ViewModels;
-using Application.Views;
 using Autofac;
+using Dabigne.Tools.Views;
+using Dabigne.Tools.ViewModels;
 
-namespace Application;
+namespace Dabigne.Tools;
 
 public class ApplicationModule : Autofac.Module
 {

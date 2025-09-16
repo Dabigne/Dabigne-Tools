@@ -15,3 +15,7 @@ Module.MangaDownload/.DS_Store
 .DS_Store
 /Module.PdfTools/bin
 /Module.PdfTools/obj
+/Dabigne.Tools/bin
+/Dabigne.Tools/obj
+*.dll
+*.pdb

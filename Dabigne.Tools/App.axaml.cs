@@ -4,18 +4,17 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Application.Core;
-using Application.Core.Interfaces.Services;
 using Application.Core.Services;
 using Application.Core.Utils;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Application.Views;
+using Dabigne.Tools.Views;
 
-namespace Application;
+namespace Dabigne.Tools;
 
 public sealed class App : Avalonia.Application
 {
-    private IInstanceProvider  _instanceProvider;
+    private InstanceProvider  _instanceProvider = new();
     
     public override void Initialize()
     {
@@ -36,7 +35,6 @@ public sealed class App : Avalonia.Application
 
     private void LoadModules()
     {
-        _instanceProvider = new InstanceProvider();
         var modules = new List<Autofac.Module>
         {
             new CoreModule(),

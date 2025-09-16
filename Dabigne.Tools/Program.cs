@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace Application;
+namespace Dabigne.Tools;
 
 sealed class Program
 {

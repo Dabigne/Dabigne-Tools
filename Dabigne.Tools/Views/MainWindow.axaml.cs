@@ -1,8 +1,8 @@
 using Application.Core.Interfaces.Services;
-using Application.ViewModels;
 using Avalonia.Controls;
+using Dabigne.Tools.ViewModels;
 
-namespace Application.Views;
+namespace Dabigne.Tools.Views;
 
 public partial class MainWindow : Window
 {

@@ -5,7 +5,7 @@ using Application.Core.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-namespace Application.ViewModels;
+namespace Dabigne.Tools.ViewModels;
 
 public partial class MainWindowViewModel : ObservableObject
 {
