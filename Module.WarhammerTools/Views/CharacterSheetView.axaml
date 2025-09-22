@@ -2,7 +2,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:Module.WarhammerTools.Views.Components"
+             xmlns:viewModels="clr-namespace:Module.WarhammerTools.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.CharacterSheetView">
-    Welcome to Avalonia!
+    <UserControl.Styles>
+        <StyleInclude Source="../Styles/CharacterSheetStyle.axaml"></StyleInclude>
+    </UserControl.Styles>
+    
+    <Design.DataContext>
+        <viewModels:CharacterSheetViewModel/>    
+    </Design.DataContext>
+    
+    <StackPanel>
+        <components:CharacterInformationsView DataContext="{Binding Informations}"/>        
+    </StackPanel>
 </UserControl>
