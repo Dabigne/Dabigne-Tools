@@ -23,7 +23,7 @@
     <Target Name="CopyDLLs" AfterTargets="Build">
         <Message Text="Executing CopyDLLs task" Importance="High" />
         <Copy SourceFiles="$(TargetDir)\$(ProjectName).dll;$(TargetDir)\$(ProjectName).pdb;$(TargetDir)\AngleSharp.dll"
-              DestinationFolder="..\Application\bin\Debug\net9.0\Modules\"/>
+              DestinationFolder="..\Dabigne.Tools\bin\Debug\net9.0\Modules\"/>
         <Message Text="Copied build files" Importance="High" />
     </Target>
     

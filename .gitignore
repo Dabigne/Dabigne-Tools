@@ -19,3 +19,5 @@ Module.MangaDownload/.DS_Store
 /Dabigne.Tools/obj
 *.dll
 *.pdb
+/Module.WarhammerTools/bin
+/Module.WarhammerTools/obj
