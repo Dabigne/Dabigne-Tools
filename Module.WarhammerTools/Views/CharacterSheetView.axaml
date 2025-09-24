@@ -4,8 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.Views.Components"
              xmlns:viewModels="clr-namespace:Module.WarhammerTools.ViewModels"
+             xmlns:views="clr-namespace:Module.WarhammerTools.Views"
+             xmlns:cVm="clr-namespace:Module.WarhammerTools.ViewModels.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.CharacterSheetView">
+    
     <UserControl.Styles>
         <StyleInclude Source="../Styles/CharacterSheetStyle.axaml"></StyleInclude>
     </UserControl.Styles>
@@ -15,6 +18,6 @@
     </Design.DataContext>
     
     <StackPanel>
-        <components:CharacterInformationsView DataContext="{Binding Informations}"/>        
+        <views:SimpleLayout DataContext="{Binding}"/>
     </StackPanel>
 </UserControl>

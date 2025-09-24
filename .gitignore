@@ -21,3 +21,4 @@ Module.MangaDownload/.DS_Store
 *.pdb
 /Module.WarhammerTools/bin
 /Module.WarhammerTools/obj
+*.user

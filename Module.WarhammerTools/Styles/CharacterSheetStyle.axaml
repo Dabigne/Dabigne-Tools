@@ -8,6 +8,10 @@
         </Border>
     </Design.PreviewWith>
 
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    
     <Style Selector="Grid.labelInput">
         <Setter Property="behaviors:ColumnDefinitionsSetter.ColumnDefinitions">
             <ColumnDefinitions>

@@ -1,9 +1,10 @@
+using Module.WarhammerTools.Interfaces;
 using Module.WarhammerTools.Models;
 using Newtonsoft.Json;
 
 namespace Module.WarhammerTools.Services;
 
-public class CharacterSheetFileService
+public sealed class CharacterSheetFileService :  ICharacterSheetFileService
 {
     public CharacterSheet Load(string fileName)
     {

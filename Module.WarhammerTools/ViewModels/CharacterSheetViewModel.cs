@@ -3,12 +3,16 @@ using Module.WarhammerTools.ViewModels.Components;
 
 namespace Module.WarhammerTools.ViewModels;
 
-public class CharacterSheetViewModel : ObservableObject
+public sealed class CharacterSheetViewModel : ObservableObject
 {
-    public CharacterInformationsViewModel Informations { get; }
+    public List<ObservableObject> BodyComponents { get; private set; } = [];
 
     public CharacterSheetViewModel()
     {
-        Informations = new CharacterInformationsViewModel();
+        BodyComponents = 
+        [
+            new CharacterInformationsViewModel(),
+            new CharacterCharacteristicListViewModel()
+        ];
     }
 }

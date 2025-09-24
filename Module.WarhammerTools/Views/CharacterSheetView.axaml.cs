@@ -3,8 +3,13 @@ using Application.Core.Interfaces.Services;
 using Application.Core.Interfaces.Types;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Templates;
 using Avalonia.Markup.Xaml;
+using Avalonia.Markup.Xaml.Templates;
+using Module.WarhammerTools.Services;
 using Module.WarhammerTools.ViewModels;
+using Module.WarhammerTools.ViewModels.Components;
+using Module.WarhammerTools.Views.Components;
 
 namespace Module.WarhammerTools.Views;
 
@@ -17,9 +22,14 @@ public partial class CharacterSheetView : UserControl, INavigatable
     
     public string Description { get; } = "Display character sheet";
 
-    public CharacterSheetView(IInstanceProvider instanceProvider)
+    public CharacterSheetView(
+        TemplateService templateService,
+        CharacterSheetViewModel viewModel)
     {
+        var templates = templateService.GetTemplates();
+        DataTemplates.AddRange(templates);
+        
         InitializeComponent();
-        DataContext = instanceProvider.GetInstance<CharacterSheetViewModel>();
+        DataContext = viewModel;
     }
 }
