@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dabigne.Tools", "Dabigne.Tools\Dabigne.Tools.csproj", "{B767F535-F7F5-41E0-AED8-84390368A746}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E9DBA8AC-F31B-40E5-9BFE-C3DAE9ED1B9A} = {E9DBA8AC-F31B-40E5-9BFE-C3DAE9ED1B9A}
+		{8B2CE0F2-69BD-4E99-B0CA-28F6DA2B317C} = {8B2CE0F2-69BD-4E99-B0CA-28F6DA2B317C}
+		{26D79966-04F8-401D-9E6D-92BEFAA561CE} = {26D79966-04F8-401D-9E6D-92BEFAA561CE}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.MangaDownload", "Module.MangaDownload\Module.MangaDownload.csproj", "{8B2CE0F2-69BD-4E99-B0CA-28F6DA2B317C}"

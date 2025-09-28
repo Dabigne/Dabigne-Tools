@@ -46,7 +46,7 @@ public partial class PdfMergeViewModel : ObservableObject
     {
         var file = await _fileService.PickSaveFile();
         if (file != null)
-            MergedPdfPath = file.Path.AbsolutePath;
+            MergedPdfPath = file.Path.LocalPath;
     }
     
     [RelayCommand]

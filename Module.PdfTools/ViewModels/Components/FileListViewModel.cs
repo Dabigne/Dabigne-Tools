@@ -30,7 +30,7 @@ public partial class FileListViewModel : ObservableObject
         var files = await _fileService.PickFiles();
         foreach (var storageFile in files)
         {
-            Files.Add(storageFile.Path.AbsolutePath);
+            Files.Add(storageFile.Path.LocalPath);
         }
     }
 

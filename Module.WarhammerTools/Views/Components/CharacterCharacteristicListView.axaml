@@ -2,7 +2,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterCharacteristicListView">
-    Welcome to Avalonia!
+
+    <StackPanel Orientation="Horizontal">
+        <ListBox>
+            <ListBox.Items>
+                <ListBoxItem/>
+                <ListBoxItem Content="Initiales"/>
+                <ListBoxItem Content="Augmentation"/>
+                <ListBoxItem Content="Courantes"/>
+            </ListBox.Items>
+            <ListBox.ItemContainerTheme>
+                <ControlTheme TargetType="ListBoxItem" 
+                              BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <Setter Property="Padding" Value="8"/>
+                </ControlTheme>
+            </ListBox.ItemContainerTheme>
+        </ListBox>
+        
+        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ItemsSource="{Binding List}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemContainerTheme>
+                <ControlTheme TargetType="ListBoxItem" 
+                              BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <Setter Property="Padding" Value="0"/>
+                </ControlTheme>
+            </ListBox.ItemContainerTheme>
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type components:CharacterCharacteristicViewModel}">
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                                   Text="{Binding Shortcut}"/>
+                        <TextBox Text="{Binding InitialValue}"/>
+                        <TextBox Text="{Binding Improvements}"/>
+                        <TextBox Text="{Binding CurrentValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
 </UserControl>

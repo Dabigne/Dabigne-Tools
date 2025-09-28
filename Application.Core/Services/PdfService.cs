@@ -21,7 +21,7 @@ public class PdfService : IPdfService
     {
         if (pdfPaths.Count == 0)
             return 0;
-
+        
         return pdfPaths.Select(pdfPath => PdfReader.Open(pdfPath, PdfDocumentOpenMode.Import))
             .Select(pdfDocument => pdfDocument.PageCount)
             .Sum();

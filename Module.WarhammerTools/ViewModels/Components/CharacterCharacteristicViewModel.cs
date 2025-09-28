@@ -16,9 +16,9 @@ public partial class CharacterCharacteristicViewModel : ObservableObject
     
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(CurrentValue))]
-    private int _improvments;
+    private int _improvements;
 
-    public int CurrentValue => InitialValue + Improvments;
+    public int CurrentValue => InitialValue + Improvements;
 
     public CharacterCharacteristicViewModel(string name, string shortcut)
     {
