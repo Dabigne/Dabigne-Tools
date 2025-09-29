@@ -9,5 +9,6 @@ public partial class SimpleLayout : UserControl
     public SimpleLayout()
     {
         InitializeComponent();
+        
     }
 }

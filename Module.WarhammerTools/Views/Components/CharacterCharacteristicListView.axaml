@@ -3,49 +3,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterCharacteristicListView">
-
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="IsTabStop" Value="True"/>
+        </Style>
+    </UserControl.Styles>
+    
+    
     <StackPanel Orientation="Horizontal">
-        <ListBox>
-            <ListBox.Items>
-                <ListBoxItem/>
-                <ListBoxItem Content="Initiales"/>
-                <ListBoxItem Content="Augmentation"/>
-                <ListBoxItem Content="Courantes"/>
-            </ListBox.Items>
-            <ListBox.ItemContainerTheme>
-                <ControlTheme TargetType="ListBoxItem" 
-                              BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                    <Setter Property="Padding" Value="8"/>
-                </ControlTheme>
-            </ListBox.ItemContainerTheme>
-        </ListBox>
+        <StackPanel>
+            <TextBlock/>
+            <TextBlock Text="Initiales"/>
+            <TextBlock Text="Augmentation"/>
+            <TextBlock Text="Courantes"/>
+        </StackPanel>
         
-        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 ItemsSource="{Binding List}">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel/>
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.ItemContainerTheme>
-                <ControlTheme TargetType="ListBoxItem" 
-                              BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                    <Setter Property="Padding" Value="0"/>
-                </ControlTheme>
-            </ListBox.ItemContainerTheme>
-            <ListBox.ItemTemplate>
+        <userControls:ComponentsControl Components="{Binding List}"
+                                        IsHorizontale="True">
+            <userControls:ComponentsControl.DataTemplates>
                 <DataTemplate DataType="{x:Type components:CharacterCharacteristicViewModel}">
                     <StackPanel>
                         <TextBlock HorizontalAlignment="Center"
                                    Text="{Binding Shortcut}"/>
                         <TextBox Text="{Binding InitialValue}"/>
                         <TextBox Text="{Binding Improvements}"/>
-                        <TextBox Text="{Binding CurrentValue}"/>
+                        <TextBlock Text="{Binding CurrentValue}"/>
                     </StackPanel>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </userControls:ComponentsControl.DataTemplates>
+        </userControls:ComponentsControl>
     </StackPanel>
 </UserControl>
