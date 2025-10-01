@@ -9,7 +9,9 @@ public interface INavigationItem
 
     string Icon { get; }
 
-    Type Type { get;}
+    Type? Type { get;}
+    
+    IList<INavigationItem> Children { get; }
 }
 
 public interface INavigationService

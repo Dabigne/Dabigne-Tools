@@ -8,7 +8,7 @@ using Module.PdfTools.ViewModels;
 
 namespace Module.PdfTools.Views;
 
-[Navigatable(Title="Pdf merge", Icon="")]
+[Navigatable(Title="Pdf merge", Icon="", Folder="PDF")]
 public partial class PdfMergeView : UserControl, INavigatable
 {
     public string Icon { get; } = "Home";

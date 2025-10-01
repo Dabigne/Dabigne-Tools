@@ -46,6 +46,9 @@ public partial class MainWindowViewModel : ObservableObject
         if (SelectedItem == null)
             return;
         
+        if (SelectedItem.Type == null)
+            return;
+        
         _navigationService.NavigateTo(SelectedItem.Type);
     }
 }

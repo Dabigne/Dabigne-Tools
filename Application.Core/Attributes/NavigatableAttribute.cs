@@ -5,4 +5,6 @@ public class NavigatableAttribute : Attribute
 {
     public string Title { get; set; }
     public string Icon { get; set; }
+    
+    public string Folder {get; set; }
 }

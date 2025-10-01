@@ -31,7 +31,7 @@
 
         <SplitView DisplayMode="CompactInline"
                    IsPaneOpen="{Binding IsPaneOpen}"
-                   CompactPaneLength="40"
+                   CompactPaneLength="55"
                    OpenPaneLength="300">
             <SplitView.Pane>
                 <Grid RowDefinitions="Auto, *">
@@ -40,18 +40,15 @@
                             VerticalAlignment="Top"
                             Margin="4"
                             Command="{Binding TogglePaneCommand}"/>
-                    <ListBox Grid.Row="1"
-                             ItemsSource="{Binding NavigationItems}"
-                             SelectedItem="{Binding SelectedItem}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <TextBlock VerticalAlignment="Center"
-                                               Text="{Binding Title}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>                        
-                    </ListBox>
+                    <TreeView Grid.Row="1"
+                              ItemsSource="{Binding NavigationItems}"
+                              SelectedItem="{Binding SelectedItem}">
+                        <TreeView.ItemTemplate>
+                            <TreeDataTemplate ItemsSource="{Binding Children}">
+                                    <TextBlock Text="{Binding Title}"/>
+                            </TreeDataTemplate>
+                        </TreeView.ItemTemplate>                        
+                    </TreeView>
                 </Grid>
             </SplitView.Pane>
             <Grid RowDefinitions="2*, 1, *">

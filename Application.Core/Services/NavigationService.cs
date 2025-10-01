@@ -13,7 +13,9 @@ public sealed class NavigationItem(string title, string icon, Type pageType) : I
 
     public string Icon { get; set; } = icon;
 
-    public Type Type { get; set; } = pageType;
+    public Type? Type { get; set; } = pageType;
+
+    public IList<INavigationItem> Children { get; } = [];
 }
 
 public class NavigationService: INavigationService
@@ -42,7 +44,20 @@ public class NavigationService: INavigationService
             var attribute = navigatable.GetTypeInfo().GetCustomAttribute<NavigatableAttribute>();
             if (attribute == null)
                 continue;
-            _navigationItems.Add(new NavigationItem(attribute.Title, attribute.Icon, navigatable));
+
+            var item = new NavigationItem(attribute.Title, attribute.Icon, navigatable);
+            if (!string.IsNullOrEmpty(attribute.Folder))
+            {
+                var folderItem = _navigationItems.Find(n => n.Title == attribute.Folder);
+                if (folderItem == null)
+                {
+                    folderItem = new NavigationItem(attribute.Folder, "Folder", null);
+                    _navigationItems.Add(folderItem);
+                }
+                folderItem.Children.Add(item);
+            }
+            else
+                _navigationItems.Add(item);
         }
     }
 
