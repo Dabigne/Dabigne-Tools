@@ -31,8 +31,10 @@
                     <StackPanel>
                         <TextBlock HorizontalAlignment="Center"
                                    Text="{Binding Shortcut}"/>
-                        <TextBox Text="{Binding InitialValue}"/>
-                        <TextBox Text="{Binding Improvements}"/>
+                        <TextBox Classes="small"
+                                 Text="{Binding InitialValue}"/>
+                        <TextBox Classes="small"
+                                 Text="{Binding Improvements}"/>
                         <TextBlock Text="{Binding CurrentValue}"/>
                     </StackPanel>
                 </DataTemplate>
