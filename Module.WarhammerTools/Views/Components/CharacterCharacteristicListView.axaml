@@ -8,13 +8,9 @@
              x:Class="Module.WarhammerTools.Views.Components.CharacterCharacteristicListView">
     <UserControl.Styles>
         <Style Selector="TextBlock">
-            <Setter Property="Margin" Value="8"/>
-        </Style>
-        <Style Selector="TextBox">
-            <Setter Property="IsTabStop" Value="True"/>
+            <Setter Property="Margin" Value="4"/>
         </Style>
     </UserControl.Styles>
-    
     
     <StackPanel Orientation="Horizontal">
         <StackPanel>
@@ -32,10 +28,14 @@
                         <TextBlock HorizontalAlignment="Center"
                                    Text="{Binding Shortcut}"/>
                         <TextBox Classes="small"
+                                 HorizontalContentAlignment="Center"
                                  Text="{Binding InitialValue}"/>
                         <TextBox Classes="small"
+                                 HorizontalContentAlignment="Center"
                                  Text="{Binding Improvements}"/>
-                        <TextBlock Text="{Binding CurrentValue}"/>
+                        <TextBlock Margin="8,4" 
+                                   HorizontalAlignment="Center"
+                                   Text="{Binding CurrentValue}"/>
                     </StackPanel>
                 </DataTemplate>
             </userControls:ComponentsControl.DataTemplates>

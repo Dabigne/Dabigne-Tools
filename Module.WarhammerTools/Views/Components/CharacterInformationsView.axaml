@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             xmlns:uc="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterInformationsView">
     
@@ -14,123 +15,52 @@
           ColumnDefinitions="*,*,*,*">
         
         <!-- First Line -->
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-              Classes="labelInput">
-            <TextBlock Text="Nom:"/>
-            <TextBox Grid.Column="1" Classes="small"
-                     Text="{Binding Name}"/>
-        </Grid>
+        <uc:TextInput Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                      Header="Nom:"
+                      Text="{Binding Name}"/> 
 
-        <Grid Grid.Row="0" Grid.Column="2" 
-                    Classes="labelInput">
-            <TextBlock Text="Race:"/>
-            <TextBox Grid.Column="1" Classes="small"
-                     Text="{Binding Race}"/>
-        </Grid>
+        <uc:TextInput Grid.Row="0" Grid.Column="2"
+                      Header="Race:"
+                      Text="{Binding Race}"/>
 
-        <Grid Grid.Row="0" Grid.Column="3"
-                    Classes="labelInput">
-            <TextBlock Text="Classe:"/>
-            <TextBox Grid.Column="1" Classes="small"
-                     Text="{Binding Class}"/>
-        </Grid>
-        
-        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
-                BorderBrush="Wheat"
-                BorderThickness="0,0,0,1"/>
-
-        <Border Grid.Row="0" Grid.Column="2"
-                BorderBrush="Wheat"
-                BorderThickness="1,0,1,0"/>
+        <uc:TextInput Grid.Row="0" Grid.Column="3"
+                      Header="Classe:"
+                      Text="{Binding Class}"/>
         
         <!-- Second line -->
-        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                    Classes="labelInput">
-            <TextBlock Text="Carrière:"/>
-            <TextBox Grid.Column="1" Classes="small"
-                     Text="{Binding Career}"/>
-        </Grid>
+        <uc:TextInput Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                      Header="Carrière:"
+                      Text="{Binding Career}"/> 
 
-        <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
-              Classes="labelInput">
-            <TextBlock Text="Niveau de Carrière:"/>
-            <TextBox Grid.Column="1" Classes="small"
-                     Text="{Binding CareerLevel}"/>
-        </Grid>
-        
-        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
-                BorderBrush="Wheat"
-                BorderThickness="0,0,0,1"/>
-
-        <Border Grid.Row="1" Grid.Column="2"
-                BorderBrush="Wheat"
-                BorderThickness="1,0,0,0"/>
+        <uc:TextInput Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
+                      Header="Niveau de carrière:"
+                      Text="{Binding CareerLevel}"/> 
         
         <!-- Third line -->
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-              Classes="labelInput">
-            <TextBlock Text="Schéma de Carrière:"/>
-            <TextBox Grid.Column="1" Classes="small"
-                     Text="{Binding CareerSchema}"/>
-        </Grid>
-        
-        <Grid Grid.Row="2" Grid.Column="3"
-              Classes="labelInput">
-            <TextBlock Text="Status:"/>
-            <TextBox Grid.Column="1" Classes="small"
-                     Text="{Binding Status}"/>
-        </Grid>
-        
-        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
-                BorderBrush="Wheat"
-                BorderThickness="0,0,0,1"/>
+        <uc:TextInput Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                      Header="Schéma de carrière:"
+                      Text="{Binding CareerSchema}"/> 
 
-        <Border Grid.Row="2" Grid.Column="3"
-                BorderBrush="Wheat"
-                BorderThickness="1,0,0,0"/>
+        <uc:TextInput Grid.Row="2" Grid.Column="3"
+                      Header="Status:"
+                      Text="{Binding Status}"/> 
         
         <!-- Fourth line -->
-        <Grid Grid.Row="3" Grid.Column="0"
-              Classes="labelInput">
-            <TextBlock Text="Age:"/>
-            <TextBox Grid.Column="1" Classes="small"
-                     Text="{Binding Age}"/>
-        </Grid>
+        <uc:TextInput Grid.Row="3" Grid.Column="0"
+                      Header="Age:"
+                      Text="{Binding Age}"/> 
 
-        <Grid Grid.Row="3" Grid.Column="1"
-              Classes="labelInput">
-            <TextBlock Text="Taille:"/>
-            <TextBox Grid.Column="1" Classes="small"
-                     Text="{Binding Size}"/>
-        </Grid>
+        <uc:TextInput Grid.Row="3" Grid.Column="1"
+                      Header="Taille:"
+                      Text="{Binding Size}"/> 
 
-        <Grid Grid.Row="3" Grid.Column="2"
-              Classes="labelInput">
-            <TextBlock Text="Cheveux:"/>
-            <TextBox Grid.Column="1" Classes="small"
-                     Text="{Binding HairColor}"/>
-        </Grid>
+        <uc:TextInput Grid.Row="3" Grid.Column="2"
+                      Header="Cheveux:"
+                      Text="{Binding HairColor}"/> 
 
-        <Grid Grid.Row="3" Grid.Column="3"
-              Classes="labelInput">
-            <TextBlock Text="Yeux:"/>
-            <TextBox Grid.Column="1" Classes="small"
-                     Text="{Binding EyesColor}"/>
-        </Grid>
-
-        <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
-                BorderBrush="Wheat"
-                BorderThickness="0,0,0,1"/>
-
-        <Border Grid.Row="3" Grid.Column="1"
-                BorderBrush="Wheat"
-                BorderThickness="1,0,1,0"/>
-
-        <Border Grid.Row="3" Grid.Column="3"
-                BorderBrush="Wheat"
-                BorderThickness="1,0,0,0"/>
-
-
+        <uc:TextInput Grid.Row="3" Grid.Column="3"
+                      Header="Yeux:"
+                      Text="{Binding EyesColor}"/> 
     </Grid>
     
 </UserControl>
