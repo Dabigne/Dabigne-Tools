@@ -1,16 +1,49 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Application.Core.UserControls.TextInput">
-    <Border BorderThickness="4"
-            BorderBrush="Brown">
-        <Grid ColumnDefinitions="Auto, *">
-            <TextBlock Grid.Column="0"
-                       Text="{Binding Header, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-            <TextBox Grid.Column="1"
-                     Text="{Binding Text, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-        </Grid>
-    </Border>
-</UserControl>
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="4"
+                Width="100">
+            <StackPanel>
+                <TextBox BorderBrush="Gray"
+                         Padding="4,2"
+                         BorderThickness="0,0,1,1"
+                         Watermark="Label:"
+                         Text=""/>
+                <TextBox BorderBrush="Gray"
+                         Padding="4,2"
+                         BorderThickness="0,0,1,1"
+                         Text=""/>
+                <TextBox BorderBrush="Gray"
+                         Padding="4,2"
+                         BorderThickness="0,0,1,1"
+                         FontFamily="{StaticResource}"
+                         Watermark="Label:"
+                         Text="TextTrèsLong"/>
+                
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
+    <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Padding="{TemplateBinding Padding}">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <TextBlock Grid.Column="0"
+                                   Name="PART_FloatingWatermark"
+                                   Margin="0,0,4,0"
+                                   IsVisible="{TemplateBinding Watermark, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                                   Text="{TemplateBinding Watermark}"/>
+                        <TextPresenter Grid.Column="1"
+                                       Name="PART_TextPresenter"
+                                       VerticalAlignment="Center"
+                                       Text="{TemplateBinding Text}"/>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    
+</ResourceDictionary>

@@ -7,33 +7,31 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterCharacteristicListView">
     <UserControl.Styles>
-        <Style Selector="TextBlock">
-            <Setter Property="Margin" Value="4"/>
-        </Style>
     </UserControl.Styles>
     
     <StackPanel Orientation="Horizontal">
         <StackPanel>
-            <TextBlock/>
-            <TextBlock Text="Initiales"/>
-            <TextBlock Text="Augmentation"/>
-            <TextBlock Text="Courantes"/>
+            <TextBlock Margin="4,30,4,10" 
+                       Text="Initiales"/>
+            <TextBlock Margin="4,0,4, 10"
+                       Text="Augmentation"/>
+            <TextBlock Margin="4,0,4, 0"
+                       Text="Courantes"/>
         </StackPanel>
         
         <userControls:ComponentsControl Components="{Binding List}"
                                         IsHorizontale="True">
             <userControls:ComponentsControl.DataTemplates>
                 <DataTemplate DataType="{x:Type components:CharacterCharacteristicViewModel}">
-                    <StackPanel>
+                    <StackPanel MinWidth="30">
                         <TextBlock HorizontalAlignment="Center"
+                                   Margin="4"
                                    Text="{Binding Shortcut}"/>
-                        <TextBox Classes="small"
-                                 HorizontalContentAlignment="Center"
+                        <TextBox HorizontalContentAlignment="Center"
                                  Text="{Binding InitialValue}"/>
-                        <TextBox Classes="small"
-                                 HorizontalContentAlignment="Center"
+                        <TextBox HorizontalContentAlignment="Center"
                                  Text="{Binding Improvements}"/>
-                        <TextBlock Margin="8,4" 
+                        <TextBlock Margin="4,6" 
                                    HorizontalAlignment="Center"
                                    Text="{Binding CurrentValue}"/>
                     </StackPanel>

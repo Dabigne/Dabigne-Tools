@@ -3,9 +3,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
-             xmlns:uc="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterInformationsView">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+    </UserControl.Styles>
     
     <Design.DataContext>
         <components:CharacterInformationsViewModel/>    
@@ -15,52 +17,53 @@
           ColumnDefinitions="*,*,*,*">
         
         <!-- First Line -->
-        <uc:TextInput Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                      Header="Nom:"
-                      Text="{Binding Name}"/> 
+        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                 Watermark="Nom:"
+                 FontFamily="{StaticResource BrushScript}"
+                 Text="{Binding Name}"/> 
 
-        <uc:TextInput Grid.Row="0" Grid.Column="2"
-                      Header="Race:"
-                      Text="{Binding Race}"/>
+        <TextBox Grid.Row="0" Grid.Column="2"
+                 Watermark="Race:"
+                 Text="{Binding Race}"/>
 
-        <uc:TextInput Grid.Row="0" Grid.Column="3"
-                      Header="Classe:"
-                      Text="{Binding Class}"/>
+        <TextBox Grid.Row="0" Grid.Column="3"
+                 Watermark="Classe:"
+                 Text="{Binding Class}"/>
         
         <!-- Second line -->
-        <uc:TextInput Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                      Header="Carrière:"
-                      Text="{Binding Career}"/> 
+        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                 Watermark="Carrière:"
+                 Text="{Binding Career}"/> 
 
-        <uc:TextInput Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
-                      Header="Niveau de carrière:"
-                      Text="{Binding CareerLevel}"/> 
+        <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
+                 Watermark="Niveau de carrière:"
+                 Text="{Binding CareerLevel}"/> 
         
         <!-- Third line -->
-        <uc:TextInput Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-                      Header="Schéma de carrière:"
-                      Text="{Binding CareerSchema}"/> 
+        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                 Watermark="Schéma de carrière:"
+                 Text="{Binding CareerSchema}"/> 
 
-        <uc:TextInput Grid.Row="2" Grid.Column="3"
-                      Header="Status:"
-                      Text="{Binding Status}"/> 
+        <TextBox Grid.Row="2" Grid.Column="3"
+                 Watermark="Status:"
+                 Text="{Binding Status}"/> 
         
         <!-- Fourth line -->
-        <uc:TextInput Grid.Row="3" Grid.Column="0"
-                      Header="Age:"
-                      Text="{Binding Age}"/> 
+        <TextBox Grid.Row="3" Grid.Column="0"
+                 Watermark="Age:"
+                 Text="{Binding Age}"/> 
 
-        <uc:TextInput Grid.Row="3" Grid.Column="1"
-                      Header="Taille:"
-                      Text="{Binding Size}"/> 
+        <TextBox Grid.Row="3" Grid.Column="1"
+                 Watermark="Taille:"
+                 Text="{Binding Size}"/> 
 
-        <uc:TextInput Grid.Row="3" Grid.Column="2"
-                      Header="Cheveux:"
-                      Text="{Binding HairColor}"/> 
+        <TextBox Grid.Row="3" Grid.Column="2"
+                 Watermark="Cheveux:"
+                 Text="{Binding HairColor}"/> 
 
-        <uc:TextInput Grid.Row="3" Grid.Column="3"
-                      Header="Yeux:"
-                      Text="{Binding EyesColor}"/> 
+        <TextBox Grid.Row="3" Grid.Column="3"
+                 Watermark="Yeux:"
+                 Text="{Binding EyesColor}"/> 
     </Grid>
     
 </UserControl>

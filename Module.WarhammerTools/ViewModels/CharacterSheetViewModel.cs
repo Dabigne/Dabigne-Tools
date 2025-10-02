@@ -1,3 +1,5 @@
+using Avalonia.Media;
+using Avalonia.Media.Fonts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Module.WarhammerTools.ViewModels.Components;
 

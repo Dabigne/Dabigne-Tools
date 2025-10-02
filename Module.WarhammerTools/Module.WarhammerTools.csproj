@@ -16,6 +16,19 @@
       <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Styles\Fonts\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Styles\Fonts\BrushScript.ttf" />
+      <AvaloniaResource Include="Styles\Fonts\BrushScript.ttf">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="Styles\Fonts\Chalkduster.ttf" />
+      <AvaloniaResource Include="Styles\Fonts\Chalkduster.ttf" />
+    </ItemGroup>
+
     <Target Name="CopyDLLs" AfterTargets="Build">
         <Message Text="Executing CopyDLLs task" Importance="High" />
         <Copy SourceFiles="$(TargetDir)\$(ProjectName).dll;$(TargetDir)\$(ProjectName).pdb"

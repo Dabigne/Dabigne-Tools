@@ -10,7 +10,7 @@
              x:Class="Module.WarhammerTools.Views.CharacterSheetView">
     
     <UserControl.Styles>
-        <StyleInclude Source="../Styles/CharacterSheetStyle.axaml"></StyleInclude>
+        <StyleInclude Source="../Styles/CharacterSheetStyle.axaml"/>
     </UserControl.Styles>
     
     <Design.DataContext>
