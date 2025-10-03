@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using Module.WarhammerTools.Models;
 
 namespace Module.WarhammerTools.ViewModels.Components;
 
@@ -19,20 +20,28 @@ public partial class CharacterCharacteristicViewModel : ObservableObject
     private int _improvements;
 
     public int CurrentValue => InitialValue + Improvements;
-
-    public CharacterCharacteristicViewModel(string name, string shortcut)
+    
+    public void SetModel(CharacterCharacteristic model)
     {
-        Name = name;
-        Shortcut = shortcut;
+        Name = model.Name;
+        Shortcut = model.ShortCut;
+        InitialValue = model.InitialValue;
+        Improvements = model.Improvments;
     }
 }
 
 public partial class CharacterCharacteristicListViewModel : ObservableObject
 {
-    public List<CharacterCharacteristicViewModel> List { get; } =
-    [
-        new CharacterCharacteristicViewModel("Compétence Combat", "CC"),
-        new CharacterCharacteristicViewModel("Compétence Tir", "CT"),
-        new CharacterCharacteristicViewModel("Force", "F"),
-    ];
+    public List<CharacterCharacteristicViewModel> List { get; } = [];
+
+    public void SetModel(IList<CharacterCharacteristic> characteristics)
+    {
+        List.Clear();
+        foreach (var characteristic in characteristics)
+        {
+            var vm = new CharacterCharacteristicViewModel();
+            vm.SetModel(characteristic);
+            List.Add(vm);
+        }
+    }
 }

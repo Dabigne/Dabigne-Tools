@@ -8,35 +8,41 @@
              x:Class="Module.WarhammerTools.Views.Components.CharacterCharacteristicListView">
     <UserControl.Styles>
     </UserControl.Styles>
-    
-    <StackPanel Orientation="Horizontal">
-        <StackPanel>
-            <TextBlock Margin="4,30,4,10" 
-                       Text="Initiales"/>
-            <TextBlock Margin="4,0,4, 10"
-                       Text="Augmentation"/>
-            <TextBlock Margin="4,0,4, 0"
-                       Text="Courantes"/>
-        </StackPanel>
+    <Grid RowDefinitions="Auto,Auto">
+        <TextBlock Grid.Row="0"
+                   Text="CARACTERISTIQUES"
+                   HorizontalAlignment="Center"/>
         
-        <userControls:ComponentsControl Components="{Binding List}"
-                                        IsHorizontale="True">
-            <userControls:ComponentsControl.DataTemplates>
-                <DataTemplate DataType="{x:Type components:CharacterCharacteristicViewModel}">
-                    <StackPanel MinWidth="30">
-                        <TextBlock HorizontalAlignment="Center"
-                                   Margin="4"
-                                   Text="{Binding Shortcut}"/>
-                        <TextBox HorizontalContentAlignment="Center"
-                                 Text="{Binding InitialValue}"/>
-                        <TextBox HorizontalContentAlignment="Center"
-                                 Text="{Binding Improvements}"/>
-                        <TextBlock Margin="4,6" 
-                                   HorizontalAlignment="Center"
-                                   Text="{Binding CurrentValue}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </userControls:ComponentsControl.DataTemplates>
-        </userControls:ComponentsControl>
-    </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal">
+            <StackPanel>
+                <TextBlock Margin="4,30,4,10" 
+                           Text="Initiales"/>
+                <TextBlock Margin="4,0,4, 10"
+                           Text="Augmentation"/>
+                <TextBlock Margin="4,0,4, 0"
+                           Text="Courantes"/>
+            </StackPanel>
+        
+            <userControls:ComponentsControl Components="{Binding List}"
+                                            IsHorizontale="True">
+                <userControls:ComponentsControl.DataTemplates>
+                    <DataTemplate DataType="{x:Type components:CharacterCharacteristicViewModel}">
+                        <StackPanel MinWidth="30">
+                            <TextBlock HorizontalAlignment="Center"
+                                       Margin="4"
+                                       Text="{Binding Shortcut}"/>
+                            <TextBox HorizontalContentAlignment="Center"
+                                     Text="{Binding InitialValue}"/>
+                            <TextBox HorizontalContentAlignment="Center"
+                                     Text="{Binding Improvements}"/>
+                            <TextBlock Margin="4,6" 
+                                       HorizontalAlignment="Center"
+                                       Text="{Binding CurrentValue}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </userControls:ComponentsControl.DataTemplates>
+            </userControls:ComponentsControl>
+        </StackPanel>
+    </Grid>
 </UserControl>

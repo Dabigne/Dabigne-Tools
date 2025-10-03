@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using Module.WarhammerTools.Models;
 
 namespace Module.WarhammerTools.ViewModels.Components;
 
@@ -36,4 +37,19 @@ public sealed partial class CharacterInformationsViewModel : ObservableObject
 
     [ObservableProperty]
     private string _eyesColor;
+
+    public void SetModel(CharacterInformations model)
+    {
+        Name = model.Name;
+        Race = model.Race;
+        Class = model.Class;
+        Career = model.Career;
+        CareerLevel = model.CareerLevel;
+        CareerSchema = model.CareerSchema;
+        Status = model.Status;
+        Age = model.Age;
+        Size = model.Size;
+        HairColor = model.HairColor;
+        EyesColor = model.EyesColor;
+    }
 }
