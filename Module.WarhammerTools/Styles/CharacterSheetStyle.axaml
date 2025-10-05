@@ -45,7 +45,7 @@
     
     <Style Selector="TextBox">
         <Setter Property="BorderBrush" Value="Gray"/>
-        <Setter Property="CaretBrush" Value="White"/>
+        <Setter Property="SelectionBrush" Value="{DynamicResource TextControlSelectionHighlightColor}"/>
         <Setter Property="Padding" Value="4"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>

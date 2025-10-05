@@ -17,16 +17,14 @@
         <viewModels:CharacterSheetViewModel/>    
     </Design.DataContext>
     
-    <Grid RowDefinitions="Auto,Auto">
+    <Grid RowDefinitions="Auto,Auto"
+          HorizontalAlignment="Center">
         <cViews:CharacterInformationsView Grid.Row="0"
                                           Margin="8"
-                                          HorizontalAlignment="Center"
-                                          MinWidth="800"
                                           DataContext="{Binding Informations}"/>
         
         <Grid Grid.Row="1">
-            <Grid ColumnDefinitions="Auto,*"
-                  HorizontalAlignment="Center">
+            <Grid ColumnDefinitions="Auto,*">
                 <Border Grid.Column="0"
                         Classes="main">
                     <cViews:CharacterCharacteristicListView Margin="4"

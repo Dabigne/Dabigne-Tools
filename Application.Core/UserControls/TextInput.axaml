@@ -37,8 +37,22 @@
                                    Text="{TemplateBinding Watermark}"/>
                         <TextPresenter Grid.Column="1"
                                        Name="PART_TextPresenter"
-                                       VerticalAlignment="Center"
-                                       Text="{TemplateBinding Text}"/>
+                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       CaretBlinkInterval="{TemplateBinding CaretBlinkInterval}"
+                                       CaretBrush="White"
+                                       CaretIndex="{TemplateBinding CaretIndex}"
+                                       LetterSpacing="{TemplateBinding LetterSpacing}"
+                                       LineHeight="{TemplateBinding LineHeight}"
+                                       PasswordChar="{TemplateBinding PasswordChar}"
+                                       RevealPassword="{TemplateBinding RevealPassword}"
+                                       SelectionBrush="{TemplateBinding SelectionBrush}"
+                                       SelectionEnd="{TemplateBinding SelectionEnd}"
+                                       SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                       SelectionStart="{TemplateBinding SelectionStart}"
+                                       Text="{TemplateBinding Text, Mode=TwoWay}"
+                                       TextAlignment="{TemplateBinding TextAlignment}"
+                                       TextWrapping="{TemplateBinding TextWrapping}" />
                     </Grid>
                 </Border>
             </ControlTemplate>
