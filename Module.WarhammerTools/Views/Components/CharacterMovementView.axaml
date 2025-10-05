@@ -12,5 +12,28 @@
     <Design.DataContext>
         <components:CharacterMovementViewModel/>    
     </Design.DataContext>
-    CharacterMovement
+
+    <Grid RowDefinitions="Auto,Auto"
+          ColumnDefinitions="Auto,*,Auto,*,Auto,*">
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"
+                   Text="MOUVEMENT"
+                   HorizontalAlignment="Center"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="Mouvement"/>
+        <TextBox Grid.Row="1" Grid.Column="1"
+                 Text="{Binding Value}"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="2"
+                   Text="Marche"/>
+        <TextBlock Grid.Row="1" Grid.Column="3"
+                   Text="{Binding Walk}"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="4"
+                   Text="Course"/>
+        <TextBlock Grid.Row="1" Grid.Column="5"
+                   Text="{Binding Run}"/>
+ 
+    </Grid>
+    
 </UserControl>
