@@ -12,8 +12,13 @@ public sealed class TemplateService
     {
         var templates = new List<IDataTemplate>
         {
+            GetTemplate<CharacterCharacteristicListViewModel, CharacterCharacteristicListView>(),
+            GetTemplate<CharacterDestinyViewModel, CharacterDestinyView>(),
+            GetTemplate<CharacterExperienceViewModel, CharacterExperienceView>(),
+            GetTemplate<CharacterExpertiseViewModel, CharacterExpertiseView>(),
             GetTemplate<CharacterInformationsViewModel, CharacterInformationsView>(),
-            GetTemplate<CharacterCharacteristicListViewModel, CharacterCharacteristicListView>()
+            GetTemplate<CharacterMovementViewModel, CharacterMovementView>(),
+            GetTemplate<CharacterResilienceViewModel, CharacterResilienceView>(),
         };
 
         return templates;

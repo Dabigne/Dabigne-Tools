@@ -29,6 +29,21 @@
       <AvaloniaResource Include="Styles\Fonts\Chalkduster.ttf" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Views\Components\CharacterResilienceView.axaml.cs">
+        <DependentUpon>CharacterResilienceView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Components\CharacterDestinyView.axaml.cs">
+        <DependentUpon>CharacterDestinyView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Components\CharacterExpertiseView.axaml.cs">
+        <DependentUpon>CharacterExpertiseView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
     <Target Name="CopyDLLs" AfterTargets="Build">
         <Message Text="Executing CopyDLLs task" Importance="High" />
         <Copy SourceFiles="$(TargetDir)\$(ProjectName).dll;$(TargetDir)\$(ProjectName).pdb"

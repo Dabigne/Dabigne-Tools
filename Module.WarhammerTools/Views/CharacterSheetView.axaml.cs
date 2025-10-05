@@ -26,10 +26,11 @@ public partial class CharacterSheetView : UserControl, INavigatable
         TemplateService templateService,
         CharacterSheetViewModel viewModel)
     {
+        InitializeComponent();
+
         var templates = templateService.GetTemplates();
         DataTemplates.AddRange(templates);
         
-        InitializeComponent();
         DataContext = viewModel;
     }
 }

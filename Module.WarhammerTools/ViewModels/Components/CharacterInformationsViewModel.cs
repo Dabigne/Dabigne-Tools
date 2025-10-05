@@ -38,6 +38,10 @@ public sealed partial class CharacterInformationsViewModel : ObservableObject
     [ObservableProperty]
     private string _eyesColor;
 
+    partial void OnAgeChanged(int value)
+    {
+    }
+
     public void SetModel(CharacterInformations model)
     {
         Name = model.Name;

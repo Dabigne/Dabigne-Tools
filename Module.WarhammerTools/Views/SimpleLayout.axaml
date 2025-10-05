@@ -2,15 +2,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
+             xmlns:viewModels="clr-namespace:Module.WarhammerTools.ViewModels"
+             xmlns:cViews="clr-namespace:Module.WarhammerTools.Views.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.SimpleLayout">
-    <UserControl.Styles>
-        <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="Transparent"/>
-        </Style>
-    </UserControl.Styles>
     
-    <userControls:ComponentsControl Components="{Binding BodyComponents}"/>
+    <Design.DataContext>
+        <viewModels:CharacterSheetViewModel/>    
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto,Auto">
+        <cViews:CharacterInformationsView Grid.Row="0"
+                                          DataContext="{Binding Informations}"/>
+        
+        <Grid Grid.Row="1">
+            <Grid ColumnDefinitions="*,*">
+                <cViews:CharacterCharacteristicListView Grid.Column="0"
+                                                        DataContext="{Binding CharacteristicList}"/>
+                <Grid Grid.Column="1"
+                      RowDefinitions="*,*" ColumnDefinitions="*,*,*">
+                    
+                    <cViews:CharacterDestinyView Grid.Row="0" Grid.Column="0"
+                                                 DataContext="{Binding Destiny}"/>
+                    <cViews:CharacterResilienceView Grid.Row="0" Grid.Column="1"
+                                                    DataContext="{Binding Resilience}"/>
+                    <cViews:CharacterExperienceView Grid.Row="0" Grid.Column="2"
+                                                    DataContext="{Binding Experience}"/>
+                    
+                    <cViews:CharacterMovementView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                                                  DataContext="{Binding Movement}"/>
+                </Grid>
+            </Grid>    
+        </Grid>
+    </Grid>
     
 </UserControl>

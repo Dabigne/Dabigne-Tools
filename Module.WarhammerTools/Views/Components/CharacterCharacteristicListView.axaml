@@ -6,8 +6,11 @@
              xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterCharacteristicListView">
-    <UserControl.Styles>
-    </UserControl.Styles>
+
+    <Design.DataContext>
+        <components:CharacterCharacteristicListViewModel/>    
+    </Design.DataContext>
+
     <Grid RowDefinitions="Auto,Auto">
         <TextBlock Grid.Row="0"
                    Text="CARACTERISTIQUES"

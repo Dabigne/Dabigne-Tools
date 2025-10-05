@@ -1,6 +1,4 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 
 namespace Module.WarhammerTools.Views.Components;
 
@@ -9,5 +7,10 @@ public partial class CharacterInformationsView : UserControl
     public CharacterInformationsView()
     {
         InitializeComponent();
+    }
+
+    protected override void OnDataContextChanged(EventArgs e)
+    {
+        base.OnDataContextChanged(e);
     }
 }

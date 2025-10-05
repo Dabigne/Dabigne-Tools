@@ -35,7 +35,6 @@ public partial class ComponentsControl : UserControl
         set => SetAndRaise(IsHorizontaleProperty, ref _isHorizontale, value);
     }
     
-    
     public ComponentsControl()
     {
         InitializeComponent();
