@@ -6,6 +6,9 @@
              xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterCharacteristicListView">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+    </UserControl.Styles>
 
     <Design.DataContext>
         <components:CharacterCharacteristicListViewModel/>    
@@ -13,17 +16,24 @@
 
     <Grid RowDefinitions="Auto,Auto">
         <TextBlock Grid.Row="0"
+                   Classes="title"
                    Text="CARACTERISTIQUES"
                    HorizontalAlignment="Center"/>
         
         <StackPanel Grid.Row="1"
                     Orientation="Horizontal">
             <StackPanel>
-                <TextBlock Margin="4,30,4,10" 
+                <TextBlock Margin="4,35,4,13" 
+                           Classes="small"
+                           HorizontalAlignment="Right"
                            Text="Initiales"/>
-                <TextBlock Margin="4,0,4, 10"
+                <TextBlock Margin="4,0,4, 13"
+                           Classes="small"
+                           HorizontalAlignment="Right"
                            Text="Augmentation"/>
                 <TextBlock Margin="4,0,4, 0"
+                           Classes="small"
+                           HorizontalAlignment="Right"
                            Text="Courantes"/>
             </StackPanel>
         

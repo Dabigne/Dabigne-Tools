@@ -16,20 +16,24 @@
     <Grid RowDefinitions="Auto,Auto"
           ColumnDefinitions="Auto,*,Auto,*,Auto,*">
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"
+                   Classes="title"
                    Text="MOUVEMENT"
                    HorizontalAlignment="Center"/>
         
         <TextBlock Grid.Row="1" Grid.Column="0"
+                   Classes="small"
                    Text="Mouvement"/>
         <TextBox Grid.Row="1" Grid.Column="1"
                  Text="{Binding Value}"/>
         
         <TextBlock Grid.Row="1" Grid.Column="2"
+                   Classes="small"
                    Text="Marche"/>
         <TextBlock Grid.Row="1" Grid.Column="3"
                    Text="{Binding Walk}"/>
         
         <TextBlock Grid.Row="1" Grid.Column="4"
+                   Classes="small"
                    Text="Course"/>
         <TextBlock Grid.Row="1" Grid.Column="5"
                    Text="{Binding Run}"/>

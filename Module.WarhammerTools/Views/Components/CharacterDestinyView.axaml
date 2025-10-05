@@ -17,8 +17,10 @@
           ColumnDefinitions="Auto,*,*">
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
                    Text="DESTIN"
+                   Classes="title"
                    HorizontalAlignment="Center"/>
         <TextBlock Grid.Row="1" Grid.Column="0"
+                   Classes="small"
                    Text="Destin"/>
         <TextBox Grid.Row="1" Grid.Column="1"
                  Text="{Binding DestinyPoints}"/>
@@ -30,6 +32,7 @@
         </TextBlock>
         
         <TextBlock Grid.Row="2" Grid.Column="0"
+                   Classes="small"
                    Text="Chance"/>
         <TextBox Grid.Row="2" Grid.Column="1"
                  Text="{Binding ChancePoints}"/>

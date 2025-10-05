@@ -6,6 +6,12 @@
              xmlns:cViews="clr-namespace:Module.WarhammerTools.Views.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.SimpleLayout">
+    <UserControl.Styles>
+        <Style Selector="Border.main">
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="BorderBrush" Value="DimGray"/>
+        </Style>
+    </UserControl.Styles>
     
     <Design.DataContext>
         <viewModels:CharacterSheetViewModel/>    
@@ -13,24 +19,46 @@
     
     <Grid RowDefinitions="Auto,Auto">
         <cViews:CharacterInformationsView Grid.Row="0"
+                                          Margin="8"
+                                          HorizontalAlignment="Center"
+                                          MinWidth="800"
                                           DataContext="{Binding Informations}"/>
         
         <Grid Grid.Row="1">
-            <Grid ColumnDefinitions="*,*">
-                <cViews:CharacterCharacteristicListView Grid.Column="0"
-                                                        DataContext="{Binding CharacteristicList}"/>
+            <Grid ColumnDefinitions="Auto,*"
+                  HorizontalAlignment="Center">
+                <Border Grid.Column="0"
+                        Classes="main">
+                    <cViews:CharacterCharacteristicListView Margin="4"
+                                                            DataContext="{Binding CharacteristicList}"/>
+                </Border>
+                
                 <Grid Grid.Column="1"
                       RowDefinitions="*,*" ColumnDefinitions="Auto,Auto,Auto">
                     
-                    <cViews:CharacterDestinyView Grid.Row="0" Grid.Column="0"
-                                                 DataContext="{Binding Destiny}"/>
-                    <cViews:CharacterResilienceView Grid.Row="0" Grid.Column="1"
-                                                    DataContext="{Binding Resilience}"/>
-                    <cViews:CharacterExperienceView Grid.Row="0" Grid.Column="2"
-                                                    DataContext="{Binding Experience}"/>
+                    <Border Grid.Row="0" Grid.Column="0"
+                            Classes="main">
+                        <cViews:CharacterDestinyView Margin="4"
+                                                     DataContext="{Binding Destiny}"/>
+                    </Border>
+
+                    <Border Grid.Row="0" Grid.Column="1"
+                            Classes="main">
+                        <cViews:CharacterResilienceView Margin="4"
+                                                        DataContext="{Binding Resilience}"/>
+                    </Border>
                     
-                    <cViews:CharacterMovementView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                    <Border Grid.Row="0" Grid.Column="2"
+                            Classes="main">
+                    <cViews:CharacterExperienceView Margin="4"
+                                                    DataContext="{Binding Experience}"/>
+                    </Border>
+                    
+                    <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                            Classes="main">
+                    <cViews:CharacterMovementView Margin="4"
                                                   DataContext="{Binding Movement}"/>
+                    </Border>
                 </Grid>
             </Grid>    
         </Grid>

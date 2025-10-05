@@ -16,20 +16,24 @@
     <Grid RowDefinitions="Auto,Auto,Auto"
           ColumnDefinitions="Auto,Auto,Auto">
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                   Classes="title"
                    Text="RESISTANCE"
                    HorizontalAlignment="Center"/>
         
         <TextBlock Grid.Row="1" Grid.Column="0"
+                   Classes="small"
                    Text="Résistance"/>
         <TextBox Grid.Row="2" Grid.Column="0"
                  Text="{Binding Resilience}"/>
         
         <TextBlock Grid.Row="1" Grid.Column="1"
+                   Classes="small"
                    Text="Détermination"/>
         <TextBox Grid.Row="2" Grid.Column="1"
                  Text="{Binding Determination}"/>
         
         <TextBlock Grid.Row="1" Grid.Column="2"
+                   Classes="small"
                    Text="Motivation"/>
         <TextBox Grid.Row="2" Grid.Column="2"
                  Text="{Binding Motivation}"/>

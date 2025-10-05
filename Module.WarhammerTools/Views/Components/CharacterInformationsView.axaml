@@ -18,50 +18,60 @@
         
         <!-- First Line -->
         <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                 BorderThickness="0,0,1,1"
                  Watermark="Nom:"
-                 FontFamily="{StaticResource BrushScript}"
                  Text="{Binding Name}"/> 
 
         <TextBox Grid.Row="0" Grid.Column="2"
+                 BorderThickness="0,0,1,1"
                  Watermark="Race:"
                  Text="{Binding Race}"/>
 
         <TextBox Grid.Row="0" Grid.Column="3"
+                 BorderThickness="0,0,0,1"
                  Watermark="Classe:"
                  Text="{Binding Class}"/>
         
         <!-- Second line -->
         <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                 BorderThickness="0,0,1,1"
                  Watermark="Carrière:"
                  Text="{Binding Career}"/> 
 
         <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
+                 BorderThickness="0,0,0,1"
                  Watermark="Niveau de carrière:"
                  Text="{Binding CareerLevel}"/> 
         
         <!-- Third line -->
         <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                 BorderThickness="0,0,1,1"
                  Watermark="Schéma de carrière:"
                  Text="{Binding CareerSchema}"/> 
 
         <TextBox Grid.Row="2" Grid.Column="3"
+                 BorderThickness="0,0,0,1"
                  Watermark="Status:"
                  Text="{Binding Status}"/> 
         
         <!-- Fourth line -->
         <TextBox Grid.Row="3" Grid.Column="0"
+                 BorderThickness="0,0,1,0"
                  Watermark="Age:"
                  Text="{Binding Age}"/> 
 
         <TextBox Grid.Row="3" Grid.Column="1"
+                 BorderThickness="0,0,1,0"
                  Watermark="Taille:"
                  Text="{Binding Size}"/> 
 
         <TextBox Grid.Row="3" Grid.Column="2"
+                 BorderThickness="0,0,1,0"
                  Watermark="Cheveux:"
                  Text="{Binding HairColor}"/> 
 
         <TextBox Grid.Row="3" Grid.Column="3"
+                 BorderThickness="0"
                  Watermark="Yeux:"
                  Text="{Binding EyesColor}"/> 
     </Grid>

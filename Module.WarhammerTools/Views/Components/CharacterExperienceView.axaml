@@ -16,20 +16,24 @@
     <Grid RowDefinitions="Auto,Auto,Auto"
           ColumnDefinitions="Auto,Auto,Auto">
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                   Classes="title"
                    Text="EXPERIENCE"
                    HorizontalAlignment="Center"/>
         
         <TextBlock Grid.Row="1" Grid.Column="0"
+                   Classes="small"
                    Text="Actuelle"/>
         <TextBox Grid.Row="2" Grid.Column="0"
                  Text="{Binding Current}"/>
         
         <TextBlock Grid.Row="1" Grid.Column="1"
+                   Classes="small"
                    Text="Dépensée"/>
         <TextBox Grid.Row="2" Grid.Column="1"
                  Text="{Binding Spent}"/>
         
         <TextBlock Grid.Row="1" Grid.Column="2"
+                   Classes="small"
                    Text="Totale"/>
         <TextBox Grid.Row="2" Grid.Column="2"
                  Text="{Binding Total}"/>
