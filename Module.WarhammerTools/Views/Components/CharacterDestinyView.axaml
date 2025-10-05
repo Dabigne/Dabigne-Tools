@@ -12,5 +12,33 @@
     <Design.DataContext>
         <components:CharacterDestinyViewModel/>    
     </Design.DataContext>
-    CharacterDestinyView
+
+    <Grid RowDefinitions="Auto,Auto,Auto"
+          ColumnDefinitions="Auto,*,*">
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Text="DESTIN"
+                   HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="Destin"/>
+        <TextBox Grid.Row="1" Grid.Column="1"
+                 Text="{Binding DestinyPoints}"/>
+        <TextBlock Grid.Row="1" Grid.Column="2">
+            <TextBlock.Inlines>
+                <Run Text="/ "/>
+                <Run Text="{Binding MaxDestinyPoints}"/>
+            </TextBlock.Inlines>
+        </TextBlock>
+        
+        <TextBlock Grid.Row="2" Grid.Column="0"
+                   Text="Chance"/>
+        <TextBox Grid.Row="2" Grid.Column="1"
+                 Text="{Binding ChancePoints}"/>
+        <TextBlock Grid.Row="2" Grid.Column="2">
+            <TextBlock.Inlines>
+                <Run Text="/ "/>
+                <Run Text="{Binding MaxChancePoints}"/>
+            </TextBlock.Inlines>
+        </TextBlock>
+    </Grid>
+    
 </UserControl>
