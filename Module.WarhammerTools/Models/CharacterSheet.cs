@@ -8,20 +8,13 @@ public class CharacterSheet
 
     public IList<CharacterCharacteristic> Characteristics { get; set; } = [];
     
-    public CharacterSheet()
-    {
-        Characteristics =
-        [
-            new CharacterCharacteristic(StringConstants.CompetenceCombatName, StringConstants.CompetenceCombatShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.CompetenceTirName, StringConstants.CompetenceTirShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.ForceName, StringConstants.ForceShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.EnduranceName, StringConstants.EnduranceShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.InitiativeName, StringConstants.InitiativeShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.AgiliteName, StringConstants.AgiliteShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.DexteriteName, StringConstants.DexteriteShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.IntelligenceName, StringConstants.IntelligenceShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.ForceMentaleName, StringConstants.ForceMentaleShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.SociabiliteName, StringConstants.SociabiliteShortCut, 10, 1),
-        ];
-    }
+    public CharacterDestiny Destiny { get; set; } = new();
+    
+    public CharacterResilience Resilience { get; set; } = new();
+    
+    public CharacterExperience Experience { get; set; } = new();
+    
+    public CharacterMovement Movement { get; set; } = new();
+
+    public IList<CharacterExpertise> Expertises { get; set; } = [];
 }

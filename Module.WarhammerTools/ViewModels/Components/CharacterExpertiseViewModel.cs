@@ -12,8 +12,16 @@ public partial class CharacterExpertiseViewModel : ObservableObject
     private CharacterCharacteristic _characteristic;
     
     [ObservableProperty]
-    private int _improvment;
+    private int _improvement;
 
     [ObservableProperty] 
-    private int _totalValue;
+    private int _value;
+
+    public void SetModel(CharacterExpertise model)
+    {
+        Name = model.Name;
+        Characteristic = model.Characteristic;
+        Improvement = model.Improvement;
+        Value = model.Value;
+    }
 }

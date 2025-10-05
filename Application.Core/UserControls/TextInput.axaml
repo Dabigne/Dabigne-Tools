@@ -16,7 +16,6 @@
                 <TextBox BorderBrush="Gray"
                          Padding="4,2"
                          BorderThickness="0,0,1,1"
-                         FontFamily="{StaticResource}"
                          Watermark="Label:"
                          Text="TextTrèsLong"/>
                 

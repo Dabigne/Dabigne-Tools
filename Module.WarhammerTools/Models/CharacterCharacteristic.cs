@@ -10,6 +10,8 @@ public class CharacterCharacteristic
 
     public int Improvments { get; set; }
     
+    public int Value => InitialValue + Improvments;
+    
     public CharacterCharacteristic(
         string name,
         string shortCut, 
