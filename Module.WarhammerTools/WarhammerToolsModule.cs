@@ -18,6 +18,7 @@ public sealed class WarhammerToolsModule: Autofac.Module
 
     private void LoadServices(ContainerBuilder builder)
     {
+        builder.RegisterType<CharacterSheetService>().As<ICharacterSheetService>();
         builder.RegisterType<CharacterSheetFileService>().As<ICharacterSheetFileService>();
         builder.RegisterType<TemplateService>().AsSelf();
     }

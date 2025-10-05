@@ -1,6 +1,7 @@
 using Avalonia.Media;
 using Avalonia.Media.Fonts;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Module.WarhammerTools.Interfaces;
 using Module.WarhammerTools.Models;
 using Module.WarhammerTools.ViewModels.Components;
 
@@ -8,11 +9,11 @@ namespace Module.WarhammerTools.ViewModels;
 
 public sealed class CharacterSheetViewModel : ObservableObject
 {
-    private CharacterInformationsViewModel _informations = new();
-    private CharacterCharacteristicListViewModel _characteristicList = new();
-    public List<ObservableObject> BodyComponents { get; private set; } = [];
+    private readonly CharacterInformationsViewModel _informations = new();
+    private readonly CharacterCharacteristicListViewModel _characteristicList = new();
+    public List<ObservableObject> BodyComponents { get; private set; }
     
-    public CharacterSheetViewModel()
+    public CharacterSheetViewModel(ICharacterSheetService characterSheetService)
     {
         BodyComponents = 
         [
@@ -20,10 +21,10 @@ public sealed class CharacterSheetViewModel : ObservableObject
             _characteristicList
         ];
         
-        SetModel(new CharacterSheet());
+        SetModel(characterSheetService.BuildCharacterSheet());
     }
 
-    public void SetModel(CharacterSheet characterSheet)
+    private void SetModel(CharacterSheet characterSheet)
     {
         _informations.SetModel(characterSheet.Informations);
         _characteristicList.SetModel(characterSheet.Characteristics);
