@@ -20,7 +20,7 @@
                 <cViews:CharacterCharacteristicListView Grid.Column="0"
                                                         DataContext="{Binding CharacteristicList}"/>
                 <Grid Grid.Column="1"
-                      RowDefinitions="*,*" ColumnDefinitions="*,*,*">
+                      RowDefinitions="*,*" ColumnDefinitions="Auto,Auto,Auto">
                     
                     <cViews:CharacterDestinyView Grid.Row="0" Grid.Column="0"
                                                  DataContext="{Binding Destiny}"/>

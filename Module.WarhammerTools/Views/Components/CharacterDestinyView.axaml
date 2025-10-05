@@ -15,7 +15,7 @@
 
     <Grid RowDefinitions="Auto,Auto,Auto"
           ColumnDefinitions="Auto,*,*">
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
                    Text="DESTIN"
                    HorizontalAlignment="Center"/>
         <TextBlock Grid.Row="1" Grid.Column="0"

@@ -12,5 +12,28 @@
     <Design.DataContext>
         <components:CharacterResilienceViewModel/>    
     </Design.DataContext>
-    CharacterResilience
+    
+    <Grid RowDefinitions="Auto,Auto,Auto"
+          ColumnDefinitions="Auto,Auto,Auto">
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                   Text="RESISTANCE"
+                   HorizontalAlignment="Center"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="Résistance"/>
+        <TextBox Grid.Row="2" Grid.Column="0"
+                 Text="{Binding Resilience}"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="1"
+                   Text="Détermination"/>
+        <TextBox Grid.Row="2" Grid.Column="1"
+                 Text="{Binding Determination}"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="2"
+                   Text="Motivation"/>
+        <TextBox Grid.Row="2" Grid.Column="2"
+                 Text="{Binding Motivation}"/>
+ 
+    </Grid>
+
 </UserControl>
