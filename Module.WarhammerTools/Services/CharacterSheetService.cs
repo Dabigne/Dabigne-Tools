@@ -15,42 +15,29 @@ public class CharacterSheetService : ICharacterSheetService
             Destiny = BuildDestiny(),
             Resilience = BuildResilience(),
             Experience = BuildExperience(),
-            Movement = new CharacterMovement { Value = 6 }
+            Movement = new CharacterMovement { Value = 0 }
         };
         return sheet;
     }
     
     private CharacterInformations BuildInformations()
     {
-        return new CharacterInformations
-        {
-            Name  = "Shorleck Halmes",
-            Race  = "Humaine",
-            Class  = "Citadin",
-            Career  = string.Empty,
-            CareerLevel = "Limier",
-            CareerSchema = "Enquéteur",
-            Status = "Argent 1",
-            Age  = 17,
-            Size = 167,
-            HairColor = "Noir",
-            EyesColor = "Gris pale",
-        };
+        return new CharacterInformations();
     }
     
     private IList<CharacterCharacteristic> BuildCharacteristics()
     {
         return [
-            new CharacterCharacteristic(StringConstants.CompetenceCombatName, StringConstants.CompetenceCombatShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.CompetenceTirName, StringConstants.CompetenceTirShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.ForceName, StringConstants.ForceShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.EnduranceName, StringConstants.EnduranceShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.InitiativeName, StringConstants.InitiativeShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.AgiliteName, StringConstants.AgiliteShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.DexteriteName, StringConstants.DexteriteShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.IntelligenceName, StringConstants.IntelligenceShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.ForceMentaleName, StringConstants.ForceMentaleShortCut, 10, 1),
-            new CharacterCharacteristic(StringConstants.SociabiliteName, StringConstants.SociabiliteShortCut, 10, 1),
+            new CharacterCharacteristic(StringConstants.CompetenceCombatName, StringConstants.CompetenceCombatShortCut),
+            new CharacterCharacteristic(StringConstants.CompetenceTirName, StringConstants.CompetenceTirShortCut),
+            new CharacterCharacteristic(StringConstants.ForceName, StringConstants.ForceShortCut),
+            new CharacterCharacteristic(StringConstants.EnduranceName, StringConstants.EnduranceShortCut),
+            new CharacterCharacteristic(StringConstants.InitiativeName, StringConstants.InitiativeShortCut),
+            new CharacterCharacteristic(StringConstants.AgiliteName, StringConstants.AgiliteShortCut),
+            new CharacterCharacteristic(StringConstants.DexteriteName, StringConstants.DexteriteShortCut),
+            new CharacterCharacteristic(StringConstants.IntelligenceName, StringConstants.IntelligenceShortCut),
+            new CharacterCharacteristic(StringConstants.ForceMentaleName, StringConstants.ForceMentaleShortCut),
+            new CharacterCharacteristic(StringConstants.SociabiliteName, StringConstants.SociabiliteShortCut),
         ];
     }
 
@@ -58,10 +45,10 @@ public class CharacterSheetService : ICharacterSheetService
     {
         return new CharacterDestiny
         {
-            MaxDestinyPoints = 3,
-            DestinyPoints = 3,
-            MaxChancePoints = 3,
-            ChancePoints = 3,
+            MaxDestinyPoints = 0,
+            DestinyPoints = 0,
+            MaxChancePoints = 0,
+            ChancePoints = 0,
         };
     }
     
@@ -69,8 +56,8 @@ public class CharacterSheetService : ICharacterSheetService
     {
         return new CharacterResilience
         {
-            Resilience = 3,
-            Determination = 3,
+            Resilience = 0,
+            Determination = 0,
             Motivation = 0
         };
     }
@@ -79,8 +66,8 @@ public class CharacterSheetService : ICharacterSheetService
     {
         return new CharacterExperience
         {
-            Current = 35,
-            Spent = 515
+            Current = 0,
+            Spent = 0
         };
     }
 }

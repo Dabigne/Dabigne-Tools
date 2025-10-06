@@ -55,7 +55,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         _characterSheetFileService = characterSheetFileService;
         Informations = new CharacterInformationsViewModel();
         
-        //SetModel(characterSheetService.BuildCharacterSheet());
+        SetModel(characterSheetService.BuildCharacterSheet());
     }
 
     private void SetModel(CharacterSheet characterSheet)

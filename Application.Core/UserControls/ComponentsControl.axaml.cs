@@ -49,6 +49,7 @@ public partial class ComponentsControl : UserControl
     
     private void SetComponents()
     {
+        InnerGrid.Children.Clear();
         InnerGrid.RowDefinitions.Clear();
         InnerGrid.ColumnDefinitions.Clear();
         
