@@ -15,7 +15,8 @@ public class CharacterSheetService : ICharacterSheetService
             Destiny = BuildDestiny(),
             Resilience = BuildResilience(),
             Experience = BuildExperience(),
-            Movement = new CharacterMovement { Value = 0 }
+            Movement = new CharacterMovement { Value = 0 },
+            Expertises = BuildExpertise(),
         };
         return sheet;
     }
@@ -69,5 +70,38 @@ public class CharacterSheetService : ICharacterSheetService
             Current = 0,
             Spent = 0
         };
+    }
+
+    private IList<CharacterExpertise> BuildExpertise()
+    {
+        return 
+        [
+            new CharacterExpertise { Name = ExpertiseNames.Art, Characteristic = StringConstants.DexteriteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Athletisme, Characteristic = StringConstants.AgiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Calme, Characteristic = StringConstants.ForceMentaleShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Charme, Characteristic = StringConstants.SociabiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Chevaucher, Characteristic = StringConstants.AgiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Commandement, Characteristic = StringConstants.SociabiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.ConduiteAttelage, Characteristic = StringConstants.AgiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.CorpsACorpsBase, Characteristic = StringConstants.CompetenceCombatShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.CorpsACorps, Characteristic = StringConstants.CompetenceCombatShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Discretion, Characteristic = StringConstants.AgiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Divertissement, Characteristic = StringConstants.SociabiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.EmpriseAnimaux, Characteristic = StringConstants.ForceMentaleShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Escalade, Characteristic = StringConstants.ForceShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Esquive, Characteristic = StringConstants.AgiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Intimidation, Characteristic = StringConstants.ForceShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Intuition, Characteristic = StringConstants.InitiativeShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Marchandage, Characteristic = StringConstants.SociabiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Navigation, Characteristic = StringConstants.InitiativeShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Pari, Characteristic = StringConstants.AgiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Perception, Characteristic = StringConstants.IntelligenceShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Ragot, Characteristic = StringConstants.SociabiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Ramer, Characteristic = StringConstants.ForceShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Resistance, Characteristic = StringConstants.EnduranceShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.ResistanceAlcool, Characteristic = StringConstants.EnduranceShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.Subornation, Characteristic = StringConstants.SociabiliteShortCut},
+            new CharacterExpertise { Name = ExpertiseNames.SurvieExterieur, Characteristic = StringConstants.IntelligenceShortCut},
+        ];
     }
 }

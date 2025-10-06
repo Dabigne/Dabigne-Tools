@@ -27,5 +27,4 @@ public static class StringConstants
     public static string Improvment = "Augmentation";
     public static string InitialValues = "Initiales";
     public static string CurrentValue = "Courantes";
-    
 }
