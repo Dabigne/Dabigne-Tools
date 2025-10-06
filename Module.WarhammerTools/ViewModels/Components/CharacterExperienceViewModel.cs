@@ -20,4 +20,13 @@ public partial class CharacterExperienceViewModel : ObservableObject
         Current = model.Current;
         Spent = model.Spent;
     }
+
+    public CharacterExperience GetModel()
+    {
+        return new CharacterExperience
+        {
+            Current = Current,
+            Spent = Spent
+        };
+    }
 }

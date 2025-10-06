@@ -24,4 +24,15 @@ public partial class CharacterDestinyViewModel : ObservableObject
         DestinyPoints = model.DestinyPoints;
         ChancePoints = model.ChancePoints;
     }
+
+    public CharacterDestiny GetModel()
+    {
+        return new CharacterDestiny
+        {
+            MaxDestinyPoints = MaxDestinyPoints,
+            MaxChancePoints = MaxChancePoints,
+            DestinyPoints = DestinyPoints,
+            ChancePoints = ChancePoints,
+        };
+    }
 }

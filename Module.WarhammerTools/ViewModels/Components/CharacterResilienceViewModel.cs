@@ -20,4 +20,14 @@ public partial class CharacterResilienceViewModel : ObservableObject
         Determination = model.Determination;
         Motivation = model.Motivation;
     }
+
+    public CharacterResilience GetModel()
+    {
+        return new CharacterResilience
+        {
+            Resilience = Resilience,
+            Determination = Determination,
+            Motivation = Motivation
+        };
+    }
 }

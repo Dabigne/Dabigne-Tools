@@ -18,4 +18,12 @@ public partial class CharacterMovementViewModel : ObservableObject
     {
         Value = model.Value;
     }
+
+    public CharacterMovement GetModel()
+    {
+        return new CharacterMovement
+        {
+            Value = Value
+        };
+    }
 }

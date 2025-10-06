@@ -18,6 +18,11 @@
     </Design.DataContext>
     
     <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Command="{Binding LoadCommand}">Load</Button>
+            <Button Command="{Binding SaveCommand}">Save</Button>
+        </StackPanel>
+        
         <views:SimpleLayout DataContext="{Binding}"/>
     </StackPanel>
 </UserControl>

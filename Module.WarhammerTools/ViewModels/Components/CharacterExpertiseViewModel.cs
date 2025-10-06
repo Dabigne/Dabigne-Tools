@@ -9,7 +9,7 @@ public partial class CharacterExpertiseViewModel : ObservableObject
     private string _name;
     
     [ObservableProperty]
-    private CharacterCharacteristic _characteristic;
+    private string _characteristic;
     
     [ObservableProperty]
     private int _improvement;
@@ -22,6 +22,15 @@ public partial class CharacterExpertiseViewModel : ObservableObject
         Name = model.Name;
         Characteristic = model.Characteristic;
         Improvement = model.Improvement;
-        Value = model.Value;
+    }
+
+    public CharacterExpertise GetModel()
+    {
+        return new CharacterExpertise
+        {
+            Name = Name,
+            Characteristic = Characteristic,
+            Improvement = Improvement
+        };
     }
 }

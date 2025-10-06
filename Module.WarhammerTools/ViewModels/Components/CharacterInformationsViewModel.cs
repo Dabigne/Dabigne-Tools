@@ -37,11 +37,7 @@ public sealed partial class CharacterInformationsViewModel : ObservableObject
 
     [ObservableProperty]
     private string _eyesColor;
-
-    partial void OnAgeChanged(int value)
-    {
-    }
-
+    
     public void SetModel(CharacterInformations model)
     {
         Name = model.Name;
@@ -55,5 +51,23 @@ public sealed partial class CharacterInformationsViewModel : ObservableObject
         Size = model.Size;
         HairColor = model.HairColor;
         EyesColor = model.EyesColor;
+    }
+
+    public CharacterInformations GetModel()
+    {
+        return new CharacterInformations
+        {
+            Name = Name,
+            Race = Race,
+            Class = Class,
+            Career = Career,
+            CareerLevel = CareerLevel,
+            CareerSchema = CareerSchema,
+            Status = Status,
+            Age = Age,
+            Size = Size,
+            HairColor = HairColor,
+            EyesColor = EyesColor
+        };
     }
 }

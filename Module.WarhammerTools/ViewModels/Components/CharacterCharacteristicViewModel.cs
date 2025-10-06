@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Module.WarhammerTools.Models;
 
@@ -28,20 +29,33 @@ public partial class CharacterCharacteristicViewModel : ObservableObject
         InitialValue = model.InitialValue;
         Improvements = model.Improvments;
     }
+
+    public CharacterCharacteristic GetModel()
+    {
+        return new CharacterCharacteristic(Name, Shortcut, InitialValue, Improvements);
+    }
 }
 
 public partial class CharacterCharacteristicListViewModel : ObservableObject
 {
-    public List<CharacterCharacteristicViewModel> List { get; } = [];
+    [ObservableProperty]
+    private IList<CharacterCharacteristicViewModel> _list  = [];
 
     public void SetModel(IList<CharacterCharacteristic> characteristics)
     {
-        List.Clear();
+        var newList = new List<CharacterCharacteristicViewModel>();
         foreach (var characteristic in characteristics)
         {
             var vm = new CharacterCharacteristicViewModel();
             vm.SetModel(characteristic);
-            List.Add(vm);
+            newList.Add(vm);
         }
+        
+        List = newList;
+    }
+
+    public IList<CharacterCharacteristic> GetModel()
+    {
+        return List.Select(viewModel => viewModel.GetModel()).ToList();
     }
 }
