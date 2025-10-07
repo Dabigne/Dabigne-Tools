@@ -17,7 +17,7 @@
         <viewModels:CharacterSheetViewModel/>    
     </Design.DataContext>
     
-    <Grid RowDefinitions="Auto,Auto"
+    <Grid RowDefinitions="Auto,Auto, Auto"
           HorizontalAlignment="Center">
         <cViews:CharacterInformationsView Grid.Row="0"
                                           Margin="8"
@@ -60,6 +60,13 @@
                 </Grid>
             </Grid>    
         </Grid>
+        
+        <Grid Grid.Row="2" ColumnDefinitions="*,*">
+            <cViews:CharacterExpertiseListView Grid.Column="0"
+                                               DataContext="{Binding FirstExpertiseList}"/>
+            <cViews:CharacterExpertiseListView Grid.Column="1"
+                                               DataContext="{Binding SecondExpertiseList}"/>
+        </Grid>
+        
     </Grid>
-    
 </UserControl>
