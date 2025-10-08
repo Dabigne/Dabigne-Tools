@@ -28,10 +28,12 @@
                    Text="COMPETENCES DE BASE"/>
         <Label Grid.Row="1" Grid.Column="0"
                BorderThickness="0,1,1,1"
+               Padding="2,0"
                Classes="small"
                Content="Nom"/>
         <Label Grid.Row="1" Grid.Column="1"
                Classes="small"
+               FontSize="8"
                Content="Caractéristique"/>
         <Label Grid.Row="1" Grid.Column="2"
                Classes="small"
@@ -55,7 +57,8 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="0" 
-                               Padding="4, 0"
+                               Classes="small"
+                               Padding="2, 0"
                                BorderThickness="0,1,1,1"
                                Content="{Binding Name}"/>
                         <Grid Grid.Column="1" 

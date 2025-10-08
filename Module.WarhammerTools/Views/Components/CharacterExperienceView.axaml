@@ -14,7 +14,7 @@
     </Design.DataContext>
     
     <Grid RowDefinitions="Auto,Auto,Auto"
-          ColumnDefinitions="Auto,Auto,Auto">
+          ColumnDefinitions="*,*,*">
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
                    Classes="title"
                    Text="EXPERIENCE"

@@ -18,7 +18,8 @@
     </Design.DataContext>
     
     <Grid RowDefinitions="Auto,Auto, Auto"
-          HorizontalAlignment="Center">
+          Margin="30,4"
+          HorizontalAlignment="Stretch">
         <cViews:CharacterInformationsView Grid.Row="0"
                                           Margin="8"
                                           DataContext="{Binding Informations}"/>
@@ -32,7 +33,7 @@
                 </Border>
                 
                 <Grid Grid.Column="1"
-                      RowDefinitions="*,*" ColumnDefinitions="Auto,Auto,Auto">
+                      RowDefinitions="*,*" ColumnDefinitions="*,*,*">
                     
                     <Border Grid.Row="0" Grid.Column="0"
                             Classes="main">
@@ -48,8 +49,8 @@
                     
                     <Border Grid.Row="0" Grid.Column="2"
                             Classes="main">
-                    <cViews:CharacterExperienceView Margin="4"
-                                                    DataContext="{Binding Experience}"/>
+                        <cViews:CharacterExperienceView Margin="4"
+                                                        DataContext="{Binding Experience}"/>
                     </Border>
                     
                     <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
@@ -61,11 +62,19 @@
             </Grid>    
         </Grid>
         
-        <Grid Grid.Row="2" ColumnDefinitions="*,*">
-            <cViews:CharacterExpertiseListView Grid.Column="0"
-                                               DataContext="{Binding FirstExpertiseList}"/>
-            <cViews:CharacterExpertiseListView Grid.Column="1"
-                                               DataContext="{Binding SecondExpertiseList}"/>
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*">
+            <Border Grid.Column="0"
+                    Classes="main">
+                <cViews:CharacterExpertiseListView DataContext="{Binding FirstExpertiseList}"/>
+            </Border>
+            <Border Grid.Column="1"
+                    Classes="main">
+                <cViews:CharacterExpertiseListView DataContext="{Binding SecondExpertiseList}"/>
+            </Border>
+            <Border Grid.Column="2"
+                    Classes="main">
+                <!-- <cViews:CharacterExpertiseListView DataContext="{Binding SecondExpertiseList}"/> -->
+            </Border>
         </Grid>
         
     </Grid>
