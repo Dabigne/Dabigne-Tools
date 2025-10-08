@@ -1,4 +1,7 @@
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Module.WarhammerTools.Models;
 
 namespace Module.WarhammerTools.ViewModels.Components;
@@ -7,6 +10,27 @@ public partial class CharacterAdvancedExpertiseListViewModel : ObservableObject
 {
     [ObservableProperty]
     private IList<CharacterExpertiseViewModel> _list = [];
+    
+    [ObservableProperty]
+    private CharacterExpertiseViewModel? _selectedItem;
+
+    [RelayCommand]
+    public void AddExpertise()
+    {
+        var copy = List.ToList();
+        copy.Add(new CharacterExpertiseViewModel());
+        List = copy;
+    }
+
+    [RelayCommand]
+    public void RemoveExpertise()
+    {
+        if (SelectedItem is null)
+            return;
+        
+        List.Remove(SelectedItem);
+        OnPropertyChanged(new PropertyChangedEventArgs(nameof(List)));
+    }
 
     public void SetModel(
         IList<CharacterExpertise> expertises, 
@@ -20,7 +44,7 @@ public partial class CharacterAdvancedExpertiseListViewModel : ObservableObject
             newList.Add(vm);
         }
         
-        List =  newList;
+        List = newList;
     }
 
     public IList<CharacterExpertise> GetModel()

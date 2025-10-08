@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterAdvancedExpertiseListView">
     <UserControl.Styles>
@@ -13,6 +14,81 @@
         <components:CharacterAdvancedExpertiseListViewModel/>    
     </Design.DataContext>
     
-    CharacterAdvancedExpertiseListView
-    
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto"
+          Margin="4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" SharedSizeGroup="A"/>
+            <ColumnDefinition Width="2*" SharedSizeGroup="B"/>
+            <ColumnDefinition Width="*" SharedSizeGroup="C"/>
+            <ColumnDefinition Width="*" SharedSizeGroup="D"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Classes="title"
+                   HorizontalAlignment="Center"
+                   Text="COMPETENCES AVANCEES"/>
+        <Button Grid.Row="0" Grid.Column="2" Content="+" 
+                HorizontalAlignment="Stretch"
+                Margin="10,0"
+                Command="{Binding AddExpertiseCommand}"/>
+        <Button Grid.Row="0" Grid.Column="3" Content="-" 
+                HorizontalAlignment="Stretch"
+                Margin="10,0"
+                Command="{Binding RemoveExpertiseCommand}"/>
+
+        <Label Grid.Row="1" Grid.Column="0"
+               BorderThickness="0,1,1,1"
+               Padding="2,0"
+               Classes="small"
+               Content="Nom"/>
+        <Label Grid.Row="1" Grid.Column="1"
+               Classes="small"
+               FontSize="8"
+               Content="Caractéristique"/>
+        <Label Grid.Row="1" Grid.Column="2"
+               Classes="small"
+               Content="Aug"/>
+        <Label Grid.Row="1" Grid.Column="3"
+               BorderThickness="1,1,0,1"
+               Classes="small"
+               Content="Comp"/>
+        <userControls:ComponentsControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
+                                        Components="{Binding List, Mode=OneWay}">
+            <userControls:ComponentsControl.DataTemplates>
+                
+                <DataTemplate DataType="{x:Type components:CharacterExpertiseViewModel}">
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" SharedSizeGroup="A"/>
+                            <ColumnDefinition Width="2*" SharedSizeGroup="B"/>
+                            <ColumnDefinition Width="*" SharedSizeGroup="C"/>
+                            <ColumnDefinition Width="*" SharedSizeGroup="D"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Grid.Column="0" 
+                               Classes="small"
+                               Padding="2, 0"
+                               BorderThickness="0,1,1,1"
+                               Text="{Binding Name}"/>
+                        <Grid Grid.Column="1" 
+                                   ColumnDefinitions="*,*">
+                            <TextBox Grid.Column="0"
+                                     Text="{Binding Characteristic}"/>
+                            <Label Grid.Column="1"
+                                   Content="{Binding CharacteristicValue}"/>
+                        </Grid>
+                        <NumericUpDown Grid.Column="2"
+                                       Padding="0"
+                                       HorizontalAlignment="Center"
+                                       MinHeight="20"
+                                       Value="{Binding Improvement}"/>
+                        <Label Grid.Column="3"  
+                               Padding="4,0"
+                               BorderThickness="1,1,0,1"
+                               Content="{Binding Value}"/>
+                    </Grid>
+                </DataTemplate>
+            </userControls:ComponentsControl.DataTemplates>
+        </userControls:ComponentsControl>
+    </Grid>
 </UserControl>

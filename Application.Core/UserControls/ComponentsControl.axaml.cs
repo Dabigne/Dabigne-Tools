@@ -9,7 +9,7 @@ namespace Application.Core.UserControls;
 public partial class ComponentsControl : UserControl
 {
     private IEnumerable _components = new AvaloniaList<object>();
-    private bool _isHorizontale = false;
+    private bool _isHorizontal = false;
 
     public static readonly DirectProperty<ComponentsControl, IEnumerable> ComponentsProperty =
         AvaloniaProperty.RegisterDirect<ComponentsControl, IEnumerable>(
@@ -17,11 +17,11 @@ public partial class ComponentsControl : UserControl
             o => o.Components,
             (o, v) => o.Components = v);
     
-    public static readonly DirectProperty<ComponentsControl, bool> IsHorizontaleProperty =
+    public static readonly DirectProperty<ComponentsControl, bool> IsHorizontalProperty =
         AvaloniaProperty.RegisterDirect<ComponentsControl, bool>(
-            nameof(IsHorizontale),
-            o => o.IsHorizontale,
-            (o, v) => o.IsHorizontale = v);
+            nameof(IsHorizontal),
+            o => o.IsHorizontal,
+            (o, v) => o.IsHorizontal = v);
     
     public IEnumerable Components
     {
@@ -29,10 +29,10 @@ public partial class ComponentsControl : UserControl
         set => SetAndRaise(ComponentsProperty, ref _components, value);
     }
 
-    public bool IsHorizontale
+    public bool IsHorizontal
     {
-        get => _isHorizontale;
-        set => SetAndRaise(IsHorizontaleProperty, ref _isHorizontale, value);
+        get => _isHorizontal;
+        set => SetAndRaise(IsHorizontalProperty, ref _isHorizontal, value);
     }
     
     public ComponentsControl()
@@ -43,7 +43,7 @@ public partial class ComponentsControl : UserControl
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
         base.OnPropertyChanged(change);
-        if (change.Property == ComponentsProperty ||  change.Property == IsHorizontaleProperty)
+        if (change.Property == ComponentsProperty ||  change.Property == IsHorizontalProperty)
             SetComponents();
     }
     
@@ -59,7 +59,7 @@ public partial class ComponentsControl : UserControl
             var contentPresenter = new ContentPresenter { Content = component };
             InnerGrid.Children.Add(contentPresenter);
 
-            if (_isHorizontale)
+            if (_isHorizontal)
             {
                 InnerGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 Grid.SetColumn(contentPresenter, index);

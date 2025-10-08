@@ -38,7 +38,7 @@
             </StackPanel>
         
             <userControls:ComponentsControl Components="{Binding List}"
-                                            IsHorizontale="True">
+                                            IsHorizontal="True">
                 <userControls:ComponentsControl.DataTemplates>
                     <DataTemplate DataType="{x:Type components:CharacterCharacteristicViewModel}">
                         <StackPanel MinWidth="30">
