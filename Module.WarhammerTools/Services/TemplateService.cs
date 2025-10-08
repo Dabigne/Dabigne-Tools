@@ -15,7 +15,7 @@ public sealed class TemplateService
             GetTemplate<CharacterCharacteristicListViewModel, CharacterCharacteristicListView>(),
             GetTemplate<CharacterDestinyViewModel, CharacterDestinyView>(),
             GetTemplate<CharacterExperienceViewModel, CharacterExperienceView>(),
-            GetTemplate<CharacterExpertiseViewModel, CharacterExpertiseView>(),
+            GetTemplate<CharacterExpertiseViewModel, CharacterAdvancedExpertiseListView>(),
             GetTemplate<CharacterInformationsViewModel, CharacterInformationsView>(),
             GetTemplate<CharacterMovementViewModel, CharacterMovementView>(),
             GetTemplate<CharacterResilienceViewModel, CharacterResilienceView>(),

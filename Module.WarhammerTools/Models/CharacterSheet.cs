@@ -17,4 +17,6 @@ public class CharacterSheet
     public CharacterMovement Movement { get; set; } = new();
 
     public IList<CharacterExpertise> Expertises { get; set; } = [];
+
+    public IList<CharacterExpertise> AdvancedExpertises { get; set; } = [];
 }

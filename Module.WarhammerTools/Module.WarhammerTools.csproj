@@ -38,7 +38,7 @@
         <DependentUpon>CharacterDestinyView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
-      <Compile Update="Views\Components\CharacterExpertiseView.axaml.cs">
+      <Compile Update="Views\Components\CharacterAdvancedExpertiseListView.axaml.cs">
         <DependentUpon>CharacterExpertiseView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>

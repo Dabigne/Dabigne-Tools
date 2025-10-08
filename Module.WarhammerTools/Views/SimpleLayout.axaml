@@ -73,7 +73,7 @@
             </Border>
             <Border Grid.Column="2"
                     Classes="main">
-                <!-- <cViews:CharacterExpertiseListView DataContext="{Binding SecondExpertiseList}"/> -->
+                <cViews:CharacterAdvancedExpertiseListView DataContext="{Binding AdvancedExpertiseList}"/>
             </Border>
         </Grid>
         

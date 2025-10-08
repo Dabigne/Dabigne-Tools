@@ -27,6 +27,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     public CharacterExpertiseListViewModel FirstExpertiseList { get; }  = new();
 
     public CharacterExpertiseListViewModel SecondExpertiseList { get; }  = new();
+    
+    public CharacterAdvancedExpertiseListViewModel AdvancedExpertiseList { get; }  = new();
 
     [RelayCommand]
     private async Task Load()
@@ -69,6 +71,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         Experience.SetModel(characterSheet.Experience);
         Movement.SetModel(characterSheet.Movement);
         SetExpertises(characterSheet.Expertises, GetModel().Characteristics);
+        AdvancedExpertiseList.SetModel(characterSheet.AdvancedExpertises, GetModel().Characteristics);
     }
 
     private void SetExpertises(
@@ -92,7 +95,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
             Resilience = Resilience.GetModel(),
             Experience = Experience.GetModel(),
             Movement = Movement.GetModel(),
-            Expertises = GetExpertises()
+            Expertises = GetExpertises(),
+            AdvancedExpertises = AdvancedExpertiseList.GetModel(),
         };
 
         return model;
