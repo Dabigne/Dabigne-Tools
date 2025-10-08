@@ -11,8 +11,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
 {
     private readonly IFileService _fileService;
     private readonly ICharacterSheetFileService  _characterSheetFileService;
-    
-    public CharacterInformationsViewModel Informations;
+
+    public CharacterInformationsViewModel Informations { get; } = new();
     
     public CharacterCharacteristicListViewModel CharacteristicList { get; }  = new();
     
@@ -56,7 +56,6 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     {
         _fileService = fileService;
         _characterSheetFileService = characterSheetFileService;
-        Informations = new CharacterInformationsViewModel();
         
         SetModel(characterSheetService.BuildCharacterSheet());
     }
@@ -85,15 +84,17 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
 
     private CharacterSheet GetModel()
     {
-        var model = new CharacterSheet();
-        model.Informations = Informations.GetModel();
-        model.Characteristics = CharacteristicList.GetModel();
-        model.Destiny = Destiny.GetModel();
-        model.Resilience = Resilience.GetModel();
-        model.Experience = Experience.GetModel();
-        model.Movement = Movement.GetModel();
-        model.Expertises = GetExpertises();
-        
+        var model = new CharacterSheet
+        {
+            Informations = Informations.GetModel(),
+            Characteristics = CharacteristicList.GetModel(),
+            Destiny = Destiny.GetModel(),
+            Resilience = Resilience.GetModel(),
+            Experience = Experience.GetModel(),
+            Movement = Movement.GetModel(),
+            Expertises = GetExpertises()
+        };
+
         return model;
     }
 
