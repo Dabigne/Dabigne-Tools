@@ -45,10 +45,12 @@
                             <TextBlock HorizontalAlignment="Center"
                                        Margin="4"
                                        Text="{Binding Shortcut}"/>
-                            <TextBox HorizontalContentAlignment="Center"
-                                     Text="{Binding InitialValue}"/>
-                            <TextBox HorizontalContentAlignment="Center"
-                                     Text="{Binding Improvements}"/>
+                            <NumericUpDown HorizontalContentAlignment="Center"
+                                           Classes="small"
+                                           Value="{Binding InitialValue}"/>
+                            <NumericUpDown HorizontalContentAlignment="Center"
+                                           Classes="small"
+                                           Value="{Binding Improvements}"/>
                             <TextBlock Margin="4,6" 
                                        HorizontalAlignment="Center"
                                        Text="{Binding CurrentValue}"/>

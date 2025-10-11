@@ -28,10 +28,12 @@
                    Text="COMPETENCES AVANCEES"/>
         <Button Grid.Row="0" Grid.Column="2" Content="+" 
                 HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
                 Margin="10,0"
                 Command="{Binding AddExpertiseCommand}"/>
         <Button Grid.Row="0" Grid.Column="3" Content="-" 
                 HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
                 Margin="10,0"
                 Command="{Binding RemoveExpertiseCommand}"/>
 
@@ -78,9 +80,7 @@
                                    Content="{Binding CharacteristicValue}"/>
                         </Grid>
                         <NumericUpDown Grid.Column="2"
-                                       Padding="0"
-                                       HorizontalAlignment="Center"
-                                       MinHeight="20"
+                                       Classes="small"
                                        Value="{Binding Improvement}"/>
                         <Label Grid.Column="3"  
                                Padding="4,0"

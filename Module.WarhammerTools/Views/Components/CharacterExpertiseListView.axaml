@@ -68,8 +68,9 @@
                             <Label Grid.Column="1"
                                    Content="{Binding CharacteristicValue}"/>
                         </Grid>
-                        <TextBox Grid.Column="2"  
-                                 Text="{Binding Improvement}"/>
+                        <NumericUpDown Grid.Column="2"
+                                       Classes="small"
+                                       Value="{Binding Improvement}"/>
                         <Label Grid.Column="3"  
                                Padding="4,0"
                                BorderThickness="1,1,0,1"
