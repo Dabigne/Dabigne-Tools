@@ -23,4 +23,6 @@ public class CharacterSheet
     public IList<CharacterSkill> Skills { get; set; } = [];
     
     public CharacterAmbitions Ambitions { get; set; } = new();
+    
+    public CharacterGroup Group { get; set; } = new();
 }

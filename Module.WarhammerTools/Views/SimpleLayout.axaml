@@ -90,6 +90,12 @@
                     Classes="main">
                 <cViews:CharacterAmbitionsView DataContext="{Binding Ambitions}"/>
             </Border>
+            
+            <Border Grid.Row="1" Grid.Column="1"
+                    Classes="main">
+                <cViews:CharacterGroupView DataContext="{Binding Group}"/>
+            </Border>
+
         </Grid>
         
     </Grid>
