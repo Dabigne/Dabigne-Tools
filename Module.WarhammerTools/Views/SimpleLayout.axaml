@@ -17,7 +17,7 @@
         <viewModels:CharacterSheetViewModel/>    
     </Design.DataContext>
     
-    <Grid RowDefinitions="Auto,Auto, Auto"
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto"
           Margin="30,4"
           HorizontalAlignment="Stretch">
         <cViews:CharacterInformationsView Grid.Row="0"
@@ -74,6 +74,15 @@
             <Border Grid.Column="2"
                     Classes="main">
                 <cViews:CharacterAdvancedExpertiseListView DataContext="{Binding AdvancedExpertiseList}"/>
+            </Border>
+        </Grid>
+        
+        <Grid Grid.Row="3"
+              RowDefinitions="*,*"
+              ColumnDefinitions="*,*">
+            <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                    Classes="main">
+                <cViews:CharacterSkillListView DataContext="{Binding SkillList}"/>
             </Border>
         </Grid>
         

@@ -63,6 +63,7 @@
     
     <Style Selector="TextBox.small">
         <Setter Property="FontSize" Value="10"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
     
     <Style Selector="NumericUpDown.small">
