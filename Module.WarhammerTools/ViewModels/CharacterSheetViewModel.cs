@@ -9,6 +9,7 @@ namespace Module.WarhammerTools.ViewModels;
 
 public sealed partial class CharacterSheetViewModel : ObservableObject
 {
+    private readonly ICharacterSheetService _characterSheetService;
     private readonly IFileService _fileService;
     private readonly ICharacterSheetFileService  _characterSheetFileService;
 
@@ -40,6 +41,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     
     public CharacterPossessionListViewModel Possessions { get; } = new();
     
+    public CharacterWeaponListViewModel  Weapons { get; } = new();
+    
     [RelayCommand]
     private async Task Load()
     {
@@ -48,7 +51,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
             return;
 
         var model = _characterSheetFileService.Load(file.Path.LocalPath);
-        SetModel(model);
+        _characterSheetService.SetModel(this, model);
     }
 
     [RelayCommand]
@@ -58,7 +61,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         if (file == null) 
             return;
         
-        _characterSheetFileService.Save(GetModel(), file.Path.LocalPath);
+        _characterSheetFileService.Save(_characterSheetService.GetModel(this), file.Path.LocalPath);
     }
     
     public CharacterSheetViewModel(
@@ -66,30 +69,14 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         IFileService  fileService,
         ICharacterSheetFileService characterSheetFileService)
     {
+        _characterSheetService = characterSheetService;
         _fileService = fileService;
         _characterSheetFileService = characterSheetFileService;
         
-        SetModel(characterSheetService.BuildCharacterSheet());
+        _characterSheetService.SetModel(this, characterSheetService.BuildCharacterSheet());
     }
-
-    private void SetModel(CharacterSheet characterSheet)
-    {
-        Informations.SetModel(characterSheet.Informations);
-        CharacteristicList.SetModel(characterSheet.Characteristics);
-        Destiny.SetModel(characterSheet.Destiny);
-        Resilience.SetModel(characterSheet.Resilience);
-        Experience.SetModel(characterSheet.Experience);
-        Movement.SetModel(characterSheet.Movement);
-        SetExpertises(characterSheet.Expertises, GetModel().Characteristics);
-        AdvancedExpertiseList.SetModel(characterSheet.AdvancedExpertises, GetModel().Characteristics);
-        SkillList.SetModel(characterSheet.Skills);
-        Ambitions.SetModel(characterSheet.Ambitions);
-        Group.SetModel(characterSheet.Group);
-        Armors.SetModel(characterSheet.Armors);
-        Possessions.SetModel(characterSheet.Possessions);
-    }
-
-    private void SetExpertises(
+    
+    public void SetExpertises(
         IList<CharacterExpertise> expertises, 
         IList<CharacterCharacteristic> characteristics)
     {
@@ -99,30 +86,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         FirstExpertiseList.SetModel(firstList, characteristics);
         SecondExpertiseList.SetModel(secondList, characteristics);
     }
-
-    private CharacterSheet GetModel()
-    {
-        var model = new CharacterSheet
-        {
-            Informations = Informations.GetModel(),
-            Characteristics = CharacteristicList.GetModel(),
-            Destiny = Destiny.GetModel(),
-            Resilience = Resilience.GetModel(),
-            Experience = Experience.GetModel(),
-            Movement = Movement.GetModel(),
-            Expertises = GetExpertises(),
-            AdvancedExpertises = AdvancedExpertiseList.GetModel(),
-            Skills = SkillList.GetModel(),
-            Ambitions = Ambitions.GetModel(),
-            Group = Group.GetModel(),
-            Armors = Armors.GetModel(),
-            Possessions = Possessions.GetModel(),
-        };
-
-        return model;
-    }
-
-    private IList<CharacterExpertise> GetExpertises()
+    
+    public IList<CharacterExpertise> GetExpertises()
     {
         var list = FirstExpertiseList.GetModel();
         foreach (var expertise in SecondExpertiseList.GetModel())

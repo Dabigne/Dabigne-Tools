@@ -1,6 +1,7 @@
 using Module.WarhammerTools.Data;
 using Module.WarhammerTools.Interfaces;
 using Module.WarhammerTools.Models;
+using Module.WarhammerTools.ViewModels;
 
 namespace Module.WarhammerTools.Services;
 
@@ -103,5 +104,46 @@ public class CharacterSheetService : ICharacterSheetService
             new CharacterExpertise { Name = ExpertiseNames.Subornation, Characteristic = StringConstants.SociabiliteShortCut},
             new CharacterExpertise { Name = ExpertiseNames.SurvieExterieur, Characteristic = StringConstants.IntelligenceShortCut},
         ];
+    }
+    
+    public CharacterSheet GetModel(CharacterSheetViewModel viewModel)
+    {
+        var model = new CharacterSheet
+        {
+            Informations = viewModel.Informations.GetModel(),
+            Characteristics = viewModel.CharacteristicList.GetModel(),
+            Destiny = viewModel.Destiny.GetModel(),
+            Resilience = viewModel.Resilience.GetModel(),
+            Experience = viewModel.Experience.GetModel(),
+            Movement = viewModel.Movement.GetModel(),
+            Expertises = viewModel.GetExpertises(),
+            AdvancedExpertises = viewModel.AdvancedExpertiseList.GetModel(),
+            Skills = viewModel.SkillList.GetModel(),
+            Ambitions = viewModel.Ambitions.GetModel(),
+            Group = viewModel.Group.GetModel(),
+            Armors = viewModel.Armors.GetModel(),
+            Possessions = viewModel.Possessions.GetModel(),
+            Weapons = viewModel.Weapons.GetModel()
+        };
+
+        return model;
+    }
+
+    public void SetModel(CharacterSheetViewModel viewModel, CharacterSheet characterSheet)
+    {
+        viewModel.Informations.SetModel(characterSheet.Informations);
+        viewModel.CharacteristicList.SetModel(characterSheet.Characteristics);
+        viewModel.Destiny.SetModel(characterSheet.Destiny);
+        viewModel.Resilience.SetModel(characterSheet.Resilience);
+        viewModel.Experience.SetModel(characterSheet.Experience);
+        viewModel.Movement.SetModel(characterSheet.Movement);
+        viewModel.SetExpertises(characterSheet.Expertises, characterSheet.Characteristics);
+        viewModel.AdvancedExpertiseList.SetModel(characterSheet.AdvancedExpertises, characterSheet.Characteristics);
+        viewModel.SkillList.SetModel(characterSheet.Skills);
+        viewModel.Ambitions.SetModel(characterSheet.Ambitions);
+        viewModel.Group.SetModel(characterSheet.Group);
+        viewModel.Armors.SetModel(characterSheet.Armors);
+        viewModel.Possessions.SetModel(characterSheet.Possessions);
+        viewModel.Weapons.SetModel(characterSheet.Weapons);
     }
 }

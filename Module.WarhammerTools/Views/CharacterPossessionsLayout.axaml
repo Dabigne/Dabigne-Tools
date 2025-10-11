@@ -28,7 +28,13 @@
             <cViews:CharacterPossessionListView Margin="4"
                                                 DataContext="{Binding Possessions}"/>
         </Border>
-        
+
+        <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                Classes="main">
+            <cViews:CharacterWeaponListView Margin="4"
+                                            DataContext="{Binding Weapons}"/>
+        </Border>
+
     </Grid>
     
 </UserControl>
