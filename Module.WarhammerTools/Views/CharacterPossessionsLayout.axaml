@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Module.WarhammerTools.ViewModels"
+             xmlns:cViews="clr-namespace:Module.WarhammerTools.Views.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.WarhammerTools.Views.CharacterPossessionsLayout">
+
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+    </UserControl.Styles>
+    
+    <Design.DataContext>
+        <viewModels:CharacterSheetViewModel/>    
+    </Design.DataContext>
+    
+    <Grid>
+        <Border Grid.Column="0"
+                Classes="main">
+            <cViews:CharacterArmorListView Margin="4"
+                                           DataContext="{Binding Armors}"/>
+        </Border>
+
+    </Grid>
+    
+</UserControl>

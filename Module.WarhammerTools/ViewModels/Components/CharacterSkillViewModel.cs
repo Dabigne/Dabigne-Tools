@@ -1,9 +1,10 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using Module.WarhammerTools.Interfaces;
 using Module.WarhammerTools.Models;
 
 namespace Module.WarhammerTools.ViewModels.Components;
 
-public partial class CharacterSkillViewModel : ObservableObject
+public partial class CharacterSkillViewModel : ObservableObject, IViewModel<CharacterSkill>
 {
     [ObservableProperty]
     private string _name = string.Empty;

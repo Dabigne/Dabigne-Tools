@@ -3,7 +3,7 @@ using Module.WarhammerTools.ViewModels.Base;
 
 namespace Module.WarhammerTools.ViewModels.Components;
 
-public partial class CharacterSkillListViewModel 
-    : ListViewModel<CharacterSkill, CharacterSkillViewModel>
+public class CharacterArmorListViewModel 
+    : ListViewModel<CharacterArmor, CharacterArmorViewModel>
 {
 }

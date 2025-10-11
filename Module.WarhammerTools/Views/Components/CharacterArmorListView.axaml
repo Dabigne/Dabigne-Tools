@@ -1,0 +1,98 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.WarhammerTools.Views.Components.CharacterArmorListView">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+    </UserControl.Styles>
+
+    <Design.DataContext>
+        <components:CharacterArmorListViewModel/>    
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto, Auto, *">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" SharedSizeGroup="A"/>
+            <ColumnDefinition Width="4*" SharedSizeGroup="B"/>
+            <ColumnDefinition Width="*" SharedSizeGroup="C"/>
+            <ColumnDefinition Width="*" SharedSizeGroup="D"/>
+            <ColumnDefinition Width="4*" SharedSizeGroup="E"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
+                   Classes="title"
+                   HorizontalAlignment="Center"
+                   Text="ARMURES"/>
+        <StackPanel Grid.Row="0" Grid.Column="4"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Content="+" 
+                    HorizontalContentAlignment="Center"
+                    Margin="2"
+                    Command="{Binding AddCommand}"/>
+            <Button Content="-" 
+                    HorizontalContentAlignment="Center"
+                    Margin="2"
+                    Command="{Binding RemoveCommand}"/>
+        </StackPanel>
+
+        <Label Grid.Row="1" Grid.Column="0"
+               BorderThickness="0,1,1,1"
+               Padding="2,0"
+               Classes="small"
+               Content="Nom"/>
+        <Label Grid.Row="1" Grid.Column="1"
+               Classes="small"
+               Content="Localisation"/>
+        <Label Grid.Row="1" Grid.Column="2"
+               Classes="small"
+               Content="Enc"/>
+        <Label Grid.Row="1" Grid.Column="3"
+               Classes="small"
+               Content="PA"/>
+        <Label Grid.Row="1" Grid.Column="4"
+               Classes="small"
+               BorderThickness="1,1,0,1"
+               Content="Atouts / Défauts"/>
+        
+        <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5">
+            <userControls:ComponentsControl Components="{Binding List, Mode=OneWay}">
+                <userControls:ComponentsControl.DataTemplates>
+                    <DataTemplate DataType="{x:Type components:CharacterArmorViewModel}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*" SharedSizeGroup="A"/>
+                                <ColumnDefinition Width="4*" SharedSizeGroup="B"/>
+                                <ColumnDefinition Width="*" SharedSizeGroup="C"/>
+                                <ColumnDefinition Width="*" SharedSizeGroup="D"/>
+                                <ColumnDefinition Width="4*" SharedSizeGroup="E"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox Grid.Column="0" 
+                                     Classes="small"
+                                     BorderThickness="0,1,1,1"
+                                     Text="{Binding Name}"/>
+                            <TextBox Grid.Column="1" 
+                                     Classes="small"
+                                     Text="{Binding Location}"/>
+                            <NumericUpDown Grid.Column="2"
+                                           Classes="small"
+                                           Value="{Binding Footprint}"/>
+                            <NumericUpDown Grid.Column="3"
+                                           Classes="small"
+                                           Value="{Binding ArmorPoints}"/>
+                            <TextBox Grid.Column="4"  
+                                     BorderThickness="1,1,0,1"
+                                     Text="{Binding AssetsAndDefaults}"/>
+                        </Grid>
+                    </DataTemplate>
+                </userControls:ComponentsControl.DataTemplates>
+            </userControls:ComponentsControl>
+        </ScrollViewer>
+    </Grid>
+    
+</UserControl>

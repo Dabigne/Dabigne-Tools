@@ -36,6 +36,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     
     public CharacterGroupViewModel Group { get; } = new();
     
+    public CharacterArmorListViewModel Armors { get; } = new();
+    
     [RelayCommand]
     private async Task Load()
     {
@@ -81,6 +83,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         SkillList.SetModel(characterSheet.Skills);
         Ambitions.SetModel(characterSheet.Ambitions);
         Group.SetModel(characterSheet.Group);
+        Armors.SetModel(characterSheet.Armors);
     }
 
     private void SetExpertises(
@@ -109,6 +112,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
             Skills = SkillList.GetModel(),
             Ambitions = Ambitions.GetModel(),
             Group = Group.GetModel(),
+            Armors = Armors.GetModel()
         };
 
         return model;

@@ -26,11 +26,11 @@ public class CharacterSheet
     
     public CharacterGroup Group { get; set; } = new();
 
-    public List<CharacterArmor> Armors { get; set; } = [];
+    public IList<CharacterArmor> Armors { get; set; } = [];
     
-    public List<CharacterPossession> Possessions { get; set; } = [];
+    public IList<CharacterPossession> Possessions { get; set; } = [];
     
-    public List<CharacterWeapon>  Weapons { get; set; } = [];
+    public IList<CharacterWeapon>  Weapons { get; set; } = [];
     
     public CharacterWealth Wealth { get; set; } = new();
     

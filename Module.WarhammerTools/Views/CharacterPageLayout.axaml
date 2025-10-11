@@ -7,10 +7,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.CharacterPageLayout">
     <UserControl.Styles>
-        <Style Selector="Border.main">
-            <Setter Property="BorderThickness" Value="3"/>
-            <Setter Property="BorderBrush" Value="DimGray"/>
-        </Style>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
     </UserControl.Styles>
     
     <Design.DataContext>

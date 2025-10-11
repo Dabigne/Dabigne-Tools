@@ -17,6 +17,11 @@
         </Border>
     </Design.PreviewWith>
     
+    <Style Selector="Border.main">
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="BorderBrush" Value="DimGray"/>
+    </Style>
+    
     <Style Selector="Grid.labelInput">
         <Setter Property="behaviors:ColumnDefinitionsSetter.ColumnDefinitions">
             <ColumnDefinitions>
