@@ -50,34 +50,37 @@
         <Label Grid.Row="1" Grid.Column="2"
                Classes="small"
                Content="Description"/>
-        <userControls:ComponentsControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-                                        Components="{Binding List, Mode=OneWay}">
-            <userControls:ComponentsControl.DataTemplates>
+        
+        <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+            <userControls:ComponentsControl Components="{Binding List, Mode=OneWay}">
+                <userControls:ComponentsControl.DataTemplates>
                 
-                <DataTemplate DataType="{x:Type components:CharacterSkillViewModel}">
+                    <DataTemplate DataType="{x:Type components:CharacterSkillViewModel}">
                     
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" SharedSizeGroup="A"/>
-                            <ColumnDefinition Width="Auto" SharedSizeGroup="B"/>
-                            <ColumnDefinition Width="*" SharedSizeGroup="C"/>
-                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" SharedSizeGroup="A"/>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="B"/>
+                                <ColumnDefinition Width="*" SharedSizeGroup="C"/>
+                            </Grid.ColumnDefinitions>
 
-                        <TextBox Grid.Column="0" 
-                               Classes="small"
-                               Padding="2, 0"
-                               BorderThickness="0,1,1,1"
-                               Text="{Binding Name}"/>
-                        <NumericUpDown Grid.Column="1"
-                                       Classes="small"
-                                       Value="{Binding Level}"/>
-                        <TextBox Grid.Column="2"  
-                               Padding="4,0"
-                               BorderThickness="1,1,0,1"
-                               Text="{Binding Description}"/>
-                    </Grid>
-                </DataTemplate>
-            </userControls:ComponentsControl.DataTemplates>
-        </userControls:ComponentsControl>
+                            <TextBox Grid.Column="0" 
+                                     Classes="small"
+                                     Padding="2, 0"
+                                     BorderThickness="0,1,1,1"
+                                     Text="{Binding Name}"/>
+                            <NumericUpDown Grid.Column="1"
+                                           Classes="small"
+                                           Value="{Binding Level}"/>
+                            <TextBox Grid.Column="2"  
+                                     Padding="4,0"
+                                     BorderThickness="1,1,0,1"
+                                     Text="{Binding Description}"/>
+                        </Grid>
+                    </DataTemplate>
+                </userControls:ComponentsControl.DataTemplates>
+            </userControls:ComponentsControl>
+            
+        </ScrollViewer>
     </Grid>
 </UserControl>

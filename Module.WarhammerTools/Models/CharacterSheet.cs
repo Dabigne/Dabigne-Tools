@@ -21,4 +21,6 @@ public class CharacterSheet
     public IList<CharacterExpertise> AdvancedExpertises { get; set; } = [];
 
     public IList<CharacterSkill> Skills { get; set; } = [];
+    
+    public CharacterAmbitions Ambitions { get; set; } = new();
 }

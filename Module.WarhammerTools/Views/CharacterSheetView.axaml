@@ -24,12 +24,16 @@
             <Button Command="{Binding SaveCommand}">Save</Button>
         </StackPanel>
         <TabControl Grid.Row="1">
-            <TabItem Header="Coucou">
+            <TabItem Header="Personnage">
                 <ScrollViewer>
                     <views:SimpleLayout DataContext="{Binding}"/>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="Autres"></TabItem>
+            <TabItem Header="Possessions">
+                <ScrollViewer>
+                    
+                </ScrollViewer>
+            </TabItem>
         </TabControl>
     </Grid>
 </UserControl>
