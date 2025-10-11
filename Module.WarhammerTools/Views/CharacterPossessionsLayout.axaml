@@ -15,13 +15,20 @@
         <viewModels:CharacterSheetViewModel/>    
     </Design.DataContext>
     
-    <Grid>
-        <Border Grid.Column="0"
+    <Grid ColumnDefinitions="*,*,*"
+          RowDefinitions="*,*,*,*,*">
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                 Classes="main">
             <cViews:CharacterArmorListView Margin="4"
                                            DataContext="{Binding Armors}"/>
         </Border>
 
+        <Border Grid.Row="1" Grid.RowSpan="3" Grid.Column="0"
+                Classes="main">
+            <cViews:CharacterPossessionListView Margin="4"
+                                                DataContext="{Binding Possessions}"/>
+        </Border>
+        
     </Grid>
     
 </UserControl>
