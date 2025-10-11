@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace Module.WarhammerTools.Views;
 
-public partial class SimpleLayout : UserControl
+public partial class CharacterPageLayout : UserControl
 {
-    public SimpleLayout()
+    public CharacterPageLayout()
     {
         InitializeComponent();
     }

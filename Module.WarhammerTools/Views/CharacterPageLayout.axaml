@@ -5,7 +5,7 @@
              xmlns:viewModels="clr-namespace:Module.WarhammerTools.ViewModels"
              xmlns:cViews="clr-namespace:Module.WarhammerTools.Views.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Module.WarhammerTools.Views.SimpleLayout">
+             x:Class="Module.WarhammerTools.Views.CharacterPageLayout">
     <UserControl.Styles>
         <Style Selector="Border.main">
             <Setter Property="BorderThickness" Value="3"/>

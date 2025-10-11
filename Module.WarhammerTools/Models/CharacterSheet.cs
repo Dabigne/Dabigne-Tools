@@ -25,4 +25,20 @@ public class CharacterSheet
     public CharacterAmbitions Ambitions { get; set; } = new();
     
     public CharacterGroup Group { get; set; } = new();
+
+    public List<CharacterArmor> Armors { get; set; } = [];
+    
+    public List<CharacterPossession> Possessions { get; set; } = [];
+    
+    public List<CharacterWeapon>  Weapons { get; set; } = [];
+    
+    public CharacterWealth Wealth { get; set; } = new();
+    
+    public string Psychology { get; set; } = string.Empty;
+    
+    public string CorruptionAndMutations  { get; set; } = string.Empty;
+    
+    public CharacterInjuries Injuries { get; set; } = new();
+    
+    public IList<CharacterSpell>  Spells { get; set; } = [];
 }
