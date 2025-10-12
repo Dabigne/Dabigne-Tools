@@ -7,6 +7,7 @@
              x:Class="Module.WarhammerTools.Views.Components.CharacterWeaponDataView">
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+        <StyleInclude Source="avares://Application.Core/UserControls/DataGridStyle.axaml"/>
     </UserControl.Styles>
 
     <Design.DataContext>

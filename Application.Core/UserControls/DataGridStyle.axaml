@@ -1,0 +1,113 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:objectModel="clr-namespace:System.Collections.ObjectModel;assembly=netstandard">
+    <Design.PreviewWith>
+        <Border Padding="20" Background="Transparent">
+            <DataGrid Height="200"
+                      AutoGenerateColumns="True"
+                      CanUserResizeColumns="True"
+                      GridLinesVisibility="All">
+                <DataGrid.ItemsSource>
+                    <objectModel:ObservableCollection x:TypeArguments="DataGridCell">
+                        <DataGridCell HorizontalAlignment="Left" />
+                        <DataGridCell HorizontalAlignment="Left" />
+                        <DataGridCell HorizontalAlignment="Left" />
+                    </objectModel:ObservableCollection>
+                </DataGrid.ItemsSource>
+            </DataGrid>
+        </Border>
+    </Design.PreviewWith>
+    
+    <Style Selector="DataGridCell">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Padding" Value="2,0"/>
+        <Setter Property="Height" Value="12"/>
+        <Style Selector="^ TextBlock">
+            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+            <Setter Property="Margin" Value="5 0 0 0" />
+        </Style>
+        <Style Selector="^.CenterAlign">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="^.RightAlign">
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Margin" Value="0 0 15 0" />
+        </Style>
+    </Style>
+
+    <Style Selector="DataGridColumnHeader">
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="SeparatorBrush" Value="Gray" />
+        <Setter Property="Padding" Value="8,2" />
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="BorderThickness" Value="0,0,.5,1"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Style Selector="^ TextBlock">
+            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        </Style>
+    </Style>
+
+    <Style Selector="DataGrid[CanUserResizeColumns=True] DataGridColumnHeader:not(#PART_TopRightCornerHeader) /template/ Border#PART_Border">
+        <Setter Property="BorderThickness" Value="0,0,0,1.5" />
+    </Style>
+
+    <Style Selector="DataGridColumnHeader:dragIndicator">
+        <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+    </Style>
+    
+    <Style Selector="DataGridRow">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="30" />
+    </Style>
+
+    <Style Selector="DataGridRow:nth-child(even) /template/ Border#BackgroundRectangle">
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style Selector="DataGridRow /template/ Border#BackgroundRectangle">
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style Selector="DataGridRow:pointerover /template/ Border#BackgroundRectangle">
+        <Setter Property="Background" Value="{DynamicResource ListBoxFocusBackgroundThemeBrush}" />
+    </Style>
+
+    <Style Selector="DataGridRow:selected /template/ Border#BackgroundRectangle">
+        <Setter Property="Background" Value="{DynamicResource CalendarViewFocusBorderBrush}" />
+    </Style>
+
+    <Style Selector="DataGridRowHeader">
+        <Setter Property="Focusable" Value="False" />
+    </Style>
+
+    <Style Selector="DataGridRowGroupHeader">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Height" Value="32" />
+    </Style>
+    
+    <Style Selector="DataGrid">
+        <Setter Property="RowBackground" Value="Transparent" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HeadersVisibility" Value="Column" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="SelectionMode" Value="Extended" />
+        <Setter Property="HorizontalGridLinesBrush" Value="Transparent" />
+        <Setter Property="VerticalGridLinesBrush" Value="Gray" />
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="DropLocationIndicatorTemplate">
+            <Template>
+                <Rectangle Width="2" Fill="Transparent" />
+            </Template>
+        </Setter>
+    </Style>
+</Styles>
