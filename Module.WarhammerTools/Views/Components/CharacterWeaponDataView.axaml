@@ -35,6 +35,7 @@
 
         <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"
                   ItemsSource="{Binding List}"
+                  SelectedItem="{Binding SelectedItem}"
                   BorderBrush="Gray"
                   GridLinesVisibility="All"
                   HorizontalGridLinesBrush="Gray"

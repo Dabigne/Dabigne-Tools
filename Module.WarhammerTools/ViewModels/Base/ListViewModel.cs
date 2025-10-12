@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Module.WarhammerTools.Interfaces;
@@ -7,7 +8,7 @@ namespace Module.WarhammerTools.ViewModels.Base;
 public abstract partial class ListViewModel<Tm, Tvm> : ObservableObject where Tvm : IViewModel<Tm>, new()
 {
     [ObservableProperty]
-    private IList<Tvm> _list = [];
+    private ObservableCollection<Tvm> _list = [];
     
     [ObservableProperty]
     private Tvm? _selectedItem;
@@ -15,9 +16,7 @@ public abstract partial class ListViewModel<Tm, Tvm> : ObservableObject where Tv
     [RelayCommand]
     public void Add()
     {
-        var copy = List.ToList();
-        copy.Add(new Tvm());
-        List = copy;
+        List.Add(new Tvm());
     }
 
     [RelayCommand]
@@ -27,7 +26,6 @@ public abstract partial class ListViewModel<Tm, Tvm> : ObservableObject where Tv
             return;
         
         List.Remove(SelectedItem);
-        List = List.ToList();
     }
 
     public void SetModel(IList<Tm> models)
@@ -37,10 +35,8 @@ public abstract partial class ListViewModel<Tm, Tvm> : ObservableObject where Tv
         {
             var vm = new Tvm();
             vm.SetModel(model);
-            newList.Add(vm);
+            List.Add(vm);
         }
-        
-        List = newList;
     }
 
     public IList<Tm> GetModel()

@@ -3,28 +3,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
-             xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterPossessionListView">
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+        <StyleInclude Source="avares://Application.Core/UserControls/DataGridStyle.axaml"/>
     </UserControl.Styles>
 
     <Design.DataContext>
         <components:CharacterPossessionListViewModel/>    
     </Design.DataContext>
     
-    <Grid RowDefinitions="Auto,Auto,Auto"
+    <Grid RowDefinitions="Auto,Auto"
           Margin="4">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" SharedSizeGroup="A"/>
-            <ColumnDefinition Width="Auto" SharedSizeGroup="B"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+        <TextBlock Grid.Row="0" Grid.Column="0"
                    Classes="title"
                    HorizontalAlignment="Center"
                    Text="POSSESSIONS"/>
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+        <StackPanel Grid.Row="0" Grid.Column="0"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
             <Button Content="+" 
@@ -37,41 +33,39 @@
                     Command="{Binding RemoveCommand}"/>
         </StackPanel>
 
-        <Label Grid.Row="1" Grid.Column="0"
-               BorderThickness="0,1,1,1"
-               Padding="2,0"
-               Classes="small"
-               Content="Nom"/>
-        <Label Grid.Row="1" Grid.Column="1"
-               BorderThickness="1,1,0,1"
-               Classes="small"
-               Content="Enc"/>
-        
-        <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-            <userControls:ComponentsControl Components="{Binding List, Mode=OneWay}">
-                <userControls:ComponentsControl.DataTemplates>
-                
-                    <DataTemplate DataType="{x:Type components:CharacterPossessionViewModel}">
-                    
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" SharedSizeGroup="A"/>
-                                <ColumnDefinition Width="Auto" SharedSizeGroup="B"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBox Grid.Column="0" 
-                                     Classes="small"
-                                     BorderThickness="0,1,1,1"
-                                     Text="{Binding Name}"/>
-                            <NumericUpDown Grid.Column="1"
-                                           Classes="small"
-                                           BorderThickness="1,1,0,1"
-                                           Value="{Binding Footprint}"/>
-                        </Grid>
-                    </DataTemplate>
-                </userControls:ComponentsControl.DataTemplates>
-            </userControls:ComponentsControl>
-            
-        </ScrollViewer>
+        <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"
+                  ItemsSource="{Binding List}"
+                  SelectedItem="{Binding SelectedItem}"
+                  BorderBrush="Gray"
+                  GridLinesVisibility="All"
+                  HorizontalGridLinesBrush="Gray"
+                  VerticalGridLinesBrush="DimGray">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom"
+                                    Width="4*"
+                                    FontSize="10"
+                                    Binding="{Binding Name}"/>
+                <DataGridTemplateColumn Header="Enc"
+                                        Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate DataType="components:CharacterPossessionViewModel">
+                            <TextBlock Text="{Binding Footprint, StringFormat='{}{0}'}" 
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Center"
+                                       FontSize="10"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate DataType="components:CharacterPossessionViewModel">
+                            <NumericUpDown Value="{Binding Footprint}"  
+                                           FormatString="N0" 
+                                           Minimum="0" 
+                                           FontSize="10"
+                                           HorizontalAlignment="Stretch"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

@@ -3,11 +3,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
-             xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterSkillListView">
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+        <StyleInclude Source="avares://Application.Core/UserControls/DataGridStyle.axaml"/>
     </UserControl.Styles>
     
     <Design.DataContext>
@@ -16,16 +16,11 @@
     
     <Grid RowDefinitions="Auto,Auto,Auto,Auto"
           Margin="4">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" SharedSizeGroup="A"/>
-            <ColumnDefinition Width="Auto" SharedSizeGroup="B"/>
-            <ColumnDefinition Width="*" SharedSizeGroup="C"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+        <TextBlock Grid.Row="0"
                    Classes="title"
                    HorizontalAlignment="Center"
                    Text="TALENTS"/>
-        <StackPanel Grid.Row="0" Grid.Column="2"
+        <StackPanel Grid.Row="0"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
             <Button Content="+" 
@@ -38,49 +33,45 @@
                     Command="{Binding RemoveCommand}"/>
         </StackPanel>
 
-        <Label Grid.Row="1" Grid.Column="0"
-               BorderThickness="0,1,1,1"
-               Padding="2,0"
-               Classes="small"
-               Content="Nom"/>
-        <Label Grid.Row="1" Grid.Column="1"
-               Classes="small"
-               FontSize="8"
-               Content="Nbr pts"/>
-        <Label Grid.Row="1" Grid.Column="2"
-               Classes="small"
-               Content="Description"/>
-        
-        <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
-            <userControls:ComponentsControl Components="{Binding List, Mode=OneWay}">
-                <userControls:ComponentsControl.DataTemplates>
-                
-                    <DataTemplate DataType="{x:Type components:CharacterSkillViewModel}">
-                    
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" SharedSizeGroup="A"/>
-                                <ColumnDefinition Width="Auto" SharedSizeGroup="B"/>
-                                <ColumnDefinition Width="*" SharedSizeGroup="C"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBox Grid.Column="0" 
-                                     Classes="small"
-                                     Padding="2, 0"
-                                     BorderThickness="0,1,1,1"
-                                     Text="{Binding Name}"/>
-                            <NumericUpDown Grid.Column="1"
-                                           Classes="small"
-                                           Value="{Binding Level}"/>
-                            <TextBox Grid.Column="2"  
-                                     Padding="4,0"
-                                     BorderThickness="1,1,0,1"
-                                     Text="{Binding Description}"/>
-                        </Grid>
-                    </DataTemplate>
-                </userControls:ComponentsControl.DataTemplates>
-            </userControls:ComponentsControl>
-            
-        </ScrollViewer>
+        <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"
+                  ItemsSource="{Binding List}"
+                  SelectedItem="{Binding SelectedItem}"
+                  MaxHeight="360"
+                  VerticalScrollBarVisibility="Auto"
+                  BorderBrush="Gray"
+                  GridLinesVisibility="All"
+                  HorizontalGridLinesBrush="Gray"
+                  VerticalGridLinesBrush="DimGray">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom"
+                                    Width="3*"
+                                    FontSize="10"
+                                    Binding="{Binding Name}"/>
+                <DataGridTemplateColumn Header="Nbre pris"
+                                        Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate DataType="components:CharacterSkillViewModel">
+                            <TextBlock Text="{Binding Level, StringFormat='{}{0}'}" 
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Center"
+                                       FontSize="10"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate DataType="components:CharacterSkillViewModel">
+                            <NumericUpDown Value="{Binding Level}"  
+                                           FormatString="N0" 
+                                           Minimum="0" 
+                                           FontSize="10"
+                                           HorizontalAlignment="Stretch"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Description"
+                                    Width="3*"
+                                    FontSize="10"
+                                    Binding="{Binding Description}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
