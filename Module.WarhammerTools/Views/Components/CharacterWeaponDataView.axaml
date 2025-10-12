@@ -1,0 +1,87 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.WarhammerTools.Views.Components.CharacterWeaponDataView">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+    </UserControl.Styles>
+
+    <Design.DataContext>
+        <components:CharacterWeaponListViewModel/>    
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto,*">
+        <TextBlock Grid.Row="0"
+                   Classes="title"
+                   HorizontalAlignment="Center"
+                   Text="ARMES"/>
+        
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Content="+" 
+                    HorizontalContentAlignment="Center"
+                    Margin="2"
+                    Command="{Binding AddCommand}"/>
+            <Button Content="-" 
+                    HorizontalContentAlignment="Center"
+                    Margin="2"
+                    Command="{Binding RemoveCommand}"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"
+                  ItemsSource="{Binding List}"
+                  BorderBrush="Gray"
+                  GridLinesVisibility="All"
+                  HorizontalGridLinesBrush="Gray"
+                  VerticalGridLinesBrush="DimGray">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom"
+                                    Width="3*"
+                                    FontSize="10"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Groupe"
+                                    Width="*"
+                                    FontSize="10"
+                                    Binding="{Binding Group}"/>
+                <DataGridTemplateColumn Header="Enc"
+                                        Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate DataType="components:CharacterWeaponViewModel">
+                            <TextBlock Text="{Binding Footprint, StringFormat='{}{0}'}" 
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Center"
+                                       FontSize="10"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate DataType="components:CharacterWeaponViewModel">
+                            <NumericUpDown Value="{Binding Footprint}"  
+                                           FormatString="N0" 
+                                           Minimum="0" 
+                                           FontSize="10"
+                                           HorizontalAlignment="Stretch"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Portée/Allonge"
+                                    Width="2*"
+                                    FontSize="10"
+                                    Binding="{Binding Range}"/>
+                <DataGridTextColumn Header="Dégâts"
+                                    Width="2*"
+                                    FontSize="10"
+                                    Binding="{Binding Damages}"/>
+                <DataGridTextColumn Header="Atouts/Défauts"
+                                    Width="3*"
+                                    FontSize="10"
+                                    Binding="{Binding AssetsAndDefaults}"/>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        
+    </Grid>
+</UserControl>
