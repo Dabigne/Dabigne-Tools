@@ -5,9 +5,13 @@ namespace Module.WarhammerTools.Interfaces;
 
 public interface ICharacterSheetService
 {
+    void LoadModel(CharacterSheet characterSheet);
+
+    CharacterSheet GetLoadedCharacterSheet();
+
     CharacterSheet BuildCharacterSheet();
 
-    CharacterSheet GetModel(CharacterSheetViewModel viewModel);
+    CharacterSheet UpdateModel(CharacterSheetViewModel viewModel);
     
-    void SetModel(CharacterSheetViewModel viewModel, CharacterSheet characterSheet);
+    void InjectModel(CharacterSheetViewModel viewModel);
 }

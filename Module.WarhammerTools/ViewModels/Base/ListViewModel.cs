@@ -1,22 +1,25 @@
 using System.Collections.ObjectModel;
+using Application.Core.Interfaces.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Module.WarhammerTools.Interfaces;
 
 namespace Module.WarhammerTools.ViewModels.Base;
 
-public abstract partial class ListViewModel<Tm, Tvm> : ObservableObject where Tvm : IViewModel<Tm>, new()
+public abstract partial class ListViewModel<TM, TVm> : ObservableObject where TVm : IViewModel<TM>
 {
-    [ObservableProperty]
-    private ObservableCollection<Tvm> _list = [];
+    protected readonly IInstanceProvider _instanceProvider;
     
     [ObservableProperty]
-    private Tvm? _selectedItem;
+    private ObservableCollection<TVm> _list = [];
+    
+    [ObservableProperty]
+    private TVm? _selectedItem;
 
     [RelayCommand]
     public void Add()
     {
-        List.Add(new Tvm());
+        List.Add(_instanceProvider.GetInstance<TVm>());
     }
 
     [RelayCommand]
@@ -27,19 +30,24 @@ public abstract partial class ListViewModel<Tm, Tvm> : ObservableObject where Tv
         
         List.Remove(SelectedItem);
     }
-
-    public void SetModel(IList<Tm> models)
+    
+    protected ListViewModel(IInstanceProvider instanceProvider)
     {
-        var newList = new List<Tvm>();
+        _instanceProvider = instanceProvider;
+    }
+
+    public void SetModel(IList<TM> models)
+    {
+        var newList = new List<TVm>();
         foreach (var model in models)
         {
-            var vm = new Tvm();
+            var vm = _instanceProvider.GetInstance<TVm>();
             vm.SetModel(model);
             List.Add(vm);
         }
     }
 
-    public IList<Tm> GetModel()
+    public IList<TM> GetModel()
     {
         return List.Select(i => i.GetModel()).ToList();
     }

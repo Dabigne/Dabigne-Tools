@@ -7,9 +7,26 @@ namespace Module.WarhammerTools.Services;
 
 public class CharacterSheetService : ICharacterSheetService
 {
+    private CharacterSheet _loadedCharacterSheet;
+
+    public CharacterSheetService()
+    {
+        BuildCharacterSheet();
+    }
+    
+    public void LoadModel(CharacterSheet characterSheet)
+    {
+        _loadedCharacterSheet = characterSheet;
+    }
+
+    public CharacterSheet GetLoadedCharacterSheet()
+    {
+        return _loadedCharacterSheet;
+    }
+    
     public CharacterSheet BuildCharacterSheet()
     {
-        var sheet = new CharacterSheet
+        _loadedCharacterSheet = new CharacterSheet
         {
             Informations = BuildInformations(),
             Characteristics = BuildCharacteristics(),
@@ -19,7 +36,7 @@ public class CharacterSheetService : ICharacterSheetService
             Movement = new CharacterMovement { Value = 0 },
             Expertises = BuildExpertise(),
         };
-        return sheet;
+        return _loadedCharacterSheet;
     }
     
     private CharacterInformations BuildInformations()
@@ -106,7 +123,7 @@ public class CharacterSheetService : ICharacterSheetService
         ];
     }
     
-    public CharacterSheet GetModel(CharacterSheetViewModel viewModel)
+    public CharacterSheet UpdateModel(CharacterSheetViewModel viewModel)
     {
         var model = new CharacterSheet
         {
@@ -126,24 +143,28 @@ public class CharacterSheetService : ICharacterSheetService
             Weapons = viewModel.Weapons.GetModel()
         };
 
-        return model;
+        _loadedCharacterSheet = model;
+        return _loadedCharacterSheet;
     }
 
-    public void SetModel(CharacterSheetViewModel viewModel, CharacterSheet characterSheet)
+    public void InjectModel(CharacterSheetViewModel viewModel)
     {
-        viewModel.Informations.SetModel(characterSheet.Informations);
-        viewModel.CharacteristicList.SetModel(characterSheet.Characteristics);
-        viewModel.Destiny.SetModel(characterSheet.Destiny);
-        viewModel.Resilience.SetModel(characterSheet.Resilience);
-        viewModel.Experience.SetModel(characterSheet.Experience);
-        viewModel.Movement.SetModel(characterSheet.Movement);
-        viewModel.SetExpertises(characterSheet.Expertises, characterSheet.Characteristics);
-        viewModel.AdvancedExpertiseList.SetModel(characterSheet.AdvancedExpertises, characterSheet.Characteristics);
-        viewModel.SkillList.SetModel(characterSheet.Skills);
-        viewModel.Ambitions.SetModel(characterSheet.Ambitions);
-        viewModel.Group.SetModel(characterSheet.Group);
-        viewModel.Armors.SetModel(characterSheet.Armors);
-        viewModel.Possessions.SetModel(characterSheet.Possessions);
-        viewModel.Weapons.SetModel(characterSheet.Weapons);
+        if (_loadedCharacterSheet == null)
+            return;
+        
+        viewModel.Informations.SetModel(_loadedCharacterSheet.Informations);
+        viewModel.CharacteristicList.SetModel(_loadedCharacterSheet.Characteristics);
+        viewModel.Destiny.SetModel(_loadedCharacterSheet.Destiny);
+        viewModel.Resilience.SetModel(_loadedCharacterSheet.Resilience);
+        viewModel.Experience.SetModel(_loadedCharacterSheet.Experience);
+        viewModel.Movement.SetModel(_loadedCharacterSheet.Movement);
+        viewModel.SetExpertises(_loadedCharacterSheet.Expertises);
+        viewModel.AdvancedExpertiseList.SetModel(_loadedCharacterSheet.AdvancedExpertises);
+        viewModel.SkillList.SetModel(_loadedCharacterSheet.Skills);
+        viewModel.Ambitions.SetModel(_loadedCharacterSheet.Ambitions);
+        viewModel.Group.SetModel(_loadedCharacterSheet.Group);
+        viewModel.Armors.SetModel(_loadedCharacterSheet.Armors);
+        viewModel.Possessions.SetModel(_loadedCharacterSheet.Possessions);
+        viewModel.Weapons.SetModel(_loadedCharacterSheet.Weapons);
     }
 }

@@ -1,10 +1,13 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using Module.WarhammerTools.Interfaces;
 using Module.WarhammerTools.Models;
 
 namespace Module.WarhammerTools.ViewModels.Components;
 
-public partial class CharacterExpertiseViewModel : ObservableObject
+public partial class CharacterExpertiseViewModel : ObservableObject, IViewModel<CharacterExpertise>
 {
+    private readonly ICharacterSheetService _characterSheetService;
+    
     [ObservableProperty] 
     private string _name;
     
@@ -21,8 +24,18 @@ public partial class CharacterExpertiseViewModel : ObservableObject
 
     public int Value => CharacteristicValue + Improvement;
 
-    public void SetModel(CharacterExpertise expertise, CharacterCharacteristic characteristic)
+    public CharacterExpertiseViewModel(ICharacterSheetService characterSheetService)
     {
+        _characterSheetService = characterSheetService;
+    }
+    
+    public void SetModel(CharacterExpertise expertise)
+    {
+        var characteristic = _characterSheetService
+            .GetLoadedCharacterSheet()
+            .Characteristics
+            .First(c => c.ShortCut == expertise.Characteristic);
+        
         Name = expertise.Name;
         Characteristic = expertise.Characteristic;
         CharacteristicValue = characteristic.Value;

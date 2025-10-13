@@ -25,23 +25,23 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     
     public CharacterMovementViewModel Movement { get; }  = new();
     
-    public CharacterExpertiseListViewModel FirstExpertiseList { get; }  = new();
+    public CharacterExpertiseListViewModel FirstExpertiseList { get; }
 
-    public CharacterExpertiseListViewModel SecondExpertiseList { get; }  = new();
+    public CharacterExpertiseListViewModel SecondExpertiseList { get; }
     
-    public CharacterAdvancedExpertiseListViewModel AdvancedExpertiseList { get; }  = new();
+    public CharacterAdvancedExpertiseListViewModel AdvancedExpertiseList { get; }
 
-    public CharacterSkillListViewModel SkillList { get; }  = new();
+    public CharacterSkillListViewModel SkillList { get; }
     
     public CharacterAmbitionsViewModel Ambitions { get; } = new();
     
     public CharacterGroupViewModel Group { get; } = new();
+
+    public CharacterArmorListViewModel Armors { get; }
+
+    public CharacterPossessionListViewModel Possessions { get; }
     
-    public CharacterArmorListViewModel Armors { get; } = new();
-    
-    public CharacterPossessionListViewModel Possessions { get; } = new();
-    
-    public CharacterWeaponListViewModel  Weapons { get; } = new();
+    public CharacterWeaponListViewModel  Weapons { get; }
     
     [RelayCommand]
     private async Task Load()
@@ -50,8 +50,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         if (file == null) 
             return;
 
-        var model = _characterSheetFileService.Load(file.Path.LocalPath);
-        _characterSheetService.SetModel(this, model);
+        _characterSheetService.LoadModel(_characterSheetFileService.Load(file.Path.LocalPath));
+        _characterSheetService.InjectModel(this);
     }
 
     [RelayCommand]
@@ -61,30 +61,37 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         if (file == null) 
             return;
         
-        _characterSheetFileService.Save(_characterSheetService.GetModel(this), file.Path.LocalPath);
+        _characterSheetFileService.Save(_characterSheetService.UpdateModel(this), file.Path.LocalPath);
     }
     
     public CharacterSheetViewModel(
         ICharacterSheetService characterSheetService,
         IFileService  fileService,
-        ICharacterSheetFileService characterSheetFileService)
+        ICharacterSheetFileService characterSheetFileService,
+        IInstanceProvider instanceProvider)
     {
         _characterSheetService = characterSheetService;
         _fileService = fileService;
         _characterSheetFileService = characterSheetFileService;
+
+        FirstExpertiseList = new CharacterExpertiseListViewModel(instanceProvider);
+        SecondExpertiseList = new CharacterExpertiseListViewModel(instanceProvider);
+        AdvancedExpertiseList = new CharacterAdvancedExpertiseListViewModel(instanceProvider);
+        SkillList = new CharacterSkillListViewModel(instanceProvider);
+        Armors = new CharacterArmorListViewModel(instanceProvider);
+        Possessions = new CharacterPossessionListViewModel(instanceProvider);
+        Weapons = new CharacterWeaponListViewModel(instanceProvider);
         
-        _characterSheetService.SetModel(this, characterSheetService.BuildCharacterSheet());
+        _characterSheetService.InjectModel(this);
     }
     
-    public void SetExpertises(
-        IList<CharacterExpertise> expertises, 
-        IList<CharacterCharacteristic> characteristics)
+    public void SetExpertises(IList<CharacterExpertise> expertises)
     {
         var halfCount = expertises.Count / 2;
         var firstList = expertises.Take(halfCount).ToList();
         var secondList = expertises.Skip(halfCount).ToList();
-        FirstExpertiseList.SetModel(firstList, characteristics);
-        SecondExpertiseList.SetModel(secondList, characteristics);
+        FirstExpertiseList.SetModel(firstList);
+        SecondExpertiseList.SetModel(secondList);
     }
     
     public IList<CharacterExpertise> GetExpertises()

@@ -47,10 +47,6 @@
         <DependentUpon>CharacterSkillListView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
-      <Compile Update="Views\Components\CharacterWeaponListView.axaml.cs">
-        <DependentUpon>CharacterWeaponListView.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
     </ItemGroup>
 
     <Target Name="CopyDLLs" AfterTargets="Build">

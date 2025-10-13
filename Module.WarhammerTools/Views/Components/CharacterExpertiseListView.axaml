@@ -3,83 +3,66 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
-             xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterExpertiseListView">
+    
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+        <StyleInclude Source="avares://Application.Core/UserControls/DataGridStyle.axaml"/>
     </UserControl.Styles>
 
     <Design.DataContext>
         <components:CharacterExpertiseListViewModel/>    
     </Design.DataContext>
 
-    <Grid RowDefinitions="Auto,Auto,Auto"
+    <Grid RowDefinitions="Auto,Auto"
           Margin="4">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" SharedSizeGroup="A"/>
-            <ColumnDefinition Width="2*" SharedSizeGroup="B"/>
-            <ColumnDefinition Width="*" SharedSizeGroup="C"/>
-            <ColumnDefinition Width="*" SharedSizeGroup="D"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="4"
+        <TextBlock Grid.Row="0"
                    Classes="title"
                    HorizontalAlignment="Center"
                    Text="COMPETENCES DE BASE"/>
-        <Label Grid.Row="1" Grid.Column="0"
-               BorderThickness="0,1,1,1"
-               Padding="2,0"
-               Classes="small"
-               Content="Nom"/>
-        <Label Grid.Row="1" Grid.Column="1"
-               Classes="small"
-               FontSize="8"
-               Content="Caractéristique"/>
-        <Label Grid.Row="1" Grid.Column="2"
-               Classes="small"
-               Content="Aug"/>
-        <Label Grid.Row="1" Grid.Column="3"
-               BorderThickness="1,1,0,1"
-               Classes="small"
-               Content="Comp"/>
-        <userControls:ComponentsControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
-                                        Components="{Binding List}">
-            <userControls:ComponentsControl.DataTemplates>
-                
-                <DataTemplate DataType="{x:Type components:CharacterExpertiseViewModel}">
-                    
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" SharedSizeGroup="A"/>
-                            <ColumnDefinition Width="2*" SharedSizeGroup="B"/>
-                            <ColumnDefinition Width="*" SharedSizeGroup="C"/>
-                            <ColumnDefinition Width="*" SharedSizeGroup="D"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Label Grid.Column="0" 
-                               Classes="small"
-                               Padding="2, 0"
-                               BorderThickness="0,1,1,1"
-                               Content="{Binding Name}"/>
-                        <Grid Grid.Column="1" 
-                                   ColumnDefinitions="*,*">
-                            <Label Grid.Column="0"
-                                   Content="{Binding Characteristic}"/>
-                            <Label Grid.Column="1"
-                                   Content="{Binding CharacteristicValue}"/>
-                        </Grid>
-                        <NumericUpDown Grid.Column="2"
-                                       Classes="small"
-                                       Value="{Binding Improvement}"/>
-                        <Label Grid.Column="3"  
-                               Padding="4,0"
-                               BorderThickness="1,1,0,1"
-                               Content="{Binding Value}"/>
-                    </Grid>
-                </DataTemplate>
-            </userControls:ComponentsControl.DataTemplates>
-
-        </userControls:ComponentsControl>
+        <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"
+                  ItemsSource="{Binding List}"
+                  BorderBrush="Gray"
+                  GridLinesVisibility="All"
+                  HorizontalGridLinesBrush="Gray"
+                  VerticalGridLinesBrush="DimGray">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom"
+                                    FontSize="10"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Car"
+                                    FontSize="10"
+                                    IsReadOnly="True"
+                                    Binding="{Binding Characteristic}"/>
+                <DataGridTextColumn Header="Val"
+                                    FontSize="10"
+                                    IsReadOnly="True"
+                                    Binding="{Binding CharacteristicValue}"/>
+                <DataGridTemplateColumn Header="Aug">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate DataType="components:CharacterExpertiseViewModel">
+                            <TextBlock Text="{Binding Improvement, StringFormat='{}{0}'}" 
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Center"
+                                       FontSize="10"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate DataType="components:CharacterExpertiseViewModel">
+                            <NumericUpDown Value="{Binding Improvement}"  
+                                           FormatString="N0" 
+                                           Minimum="0" 
+                                           FontSize="10"
+                                           HorizontalAlignment="Stretch"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Comp"
+                                    FontSize="10"
+                                    IsReadOnly="True"
+                                    Binding="{Binding Value}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
-    
 </UserControl>
