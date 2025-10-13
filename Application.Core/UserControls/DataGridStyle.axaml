@@ -24,7 +24,8 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Padding" Value="2,0"/>
-        <Setter Property="Height" Value="12"/>
+        <Setter Property="Height" Value="10"/>
+        <Setter Property="MaxHeight" Value="10"/>
         <Style Selector="^ TextBlock">
             <Setter Property="TextTrimming" Value="CharacterEllipsis" />
             <Setter Property="Margin" Value="5 0 0 0" />
@@ -45,7 +46,7 @@
         <Setter Property="FontWeight" Value="DemiBold" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SeparatorBrush" Value="Gray" />
-        <Setter Property="Padding" Value="8,2" />
+        <Setter Property="Padding" Value="4,2" />
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="BorderThickness" Value="0,0,.5,1"/>
         <Setter Property="Background" Value="Transparent" />
@@ -64,7 +65,8 @@
     
     <Style Selector="DataGridRow">
         <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="30" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Height" Value="26"/>
     </Style>
 
     <Style Selector="DataGridRow:nth-child(even) /template/ Border#BackgroundRectangle">
@@ -90,7 +92,7 @@
 
     <Style Selector="DataGridRowGroupHeader">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Height" Value="32" />
+        <Setter Property="Height" Value="22" />
     </Style>
     
     <Style Selector="DataGrid">
@@ -100,7 +102,7 @@
         <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="SelectionMode" Value="Extended" />
-        <Setter Property="HorizontalGridLinesBrush" Value="Transparent" />
+        <Setter Property="HorizontalGridLinesBrush" Value="Gray" />
         <Setter Property="VerticalGridLinesBrush" Value="Gray" />
         <Setter Property="BorderBrush" Value="Gray" />
         <Setter Property="BorderThickness" Value="0" />

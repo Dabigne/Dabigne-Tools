@@ -38,7 +38,7 @@ public abstract partial class ListViewModel<TM, TVm> : ObservableObject where TV
 
     public void SetModel(IList<TM> models)
     {
-        var newList = new List<TVm>();
+        List.Clear();        
         foreach (var model in models)
         {
             var vm = _instanceProvider.GetInstance<TVm>();
