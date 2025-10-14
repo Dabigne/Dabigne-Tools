@@ -81,7 +81,6 @@
         <Setter Property="MaxHeight" Value="24"/>
     </Style>
     
-    
     <Style Selector="RepeatButton">
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Background" Value="BurlyWood"/>
@@ -111,5 +110,20 @@
         <Setter Property="Background" Value="DarkGoldenrod"/>
         <Setter Property="BorderBrush" Value="BurlyWood"/>
     </Style>
+    
+    <Style Selector="TabItem">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style Selector="TabItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="Gray"/>
+    </Style>
+    <Style Selector="TabItem:selected">
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+    <Style Selector="TabItem:selected /template/ Border#PART_SelectedPipe">
+        <Setter Property="Background" Value="DarkGoldenrod"/>
+    </Style>
+    
     
 </Styles>
