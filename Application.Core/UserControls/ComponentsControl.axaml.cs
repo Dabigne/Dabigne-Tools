@@ -61,7 +61,7 @@ public partial class ComponentsControl : UserControl
 
             if (_isHorizontal)
             {
-                InnerGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                InnerGrid.ColumnDefinitions.Add(new ColumnDefinition{Width = GridLength.Star});
                 Grid.SetColumn(contentPresenter, index);
             }
             else

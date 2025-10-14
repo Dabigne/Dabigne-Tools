@@ -20,44 +20,68 @@
                    Text="CARACTERISTIQUES"
                    HorizontalAlignment="Center"/>
         
-        <StackPanel Grid.Row="1"
-                    Orientation="Horizontal">
-            <StackPanel>
-                <TextBlock Margin="4,35,4,13" 
+        <Grid Grid.Row="1"
+              ColumnDefinitions="Auto,*"
+              HorizontalAlignment="Stretch">
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition SharedSizeGroup="A"/>
+                    <RowDefinition SharedSizeGroup="B"/>
+                    <RowDefinition SharedSizeGroup="C"/>
+                    <RowDefinition SharedSizeGroup="D"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1"
                            Classes="small"
                            HorizontalAlignment="Right"
                            Text="Initiales"/>
-                <TextBlock Margin="4,0,4, 13"
+                <TextBlock Grid.Row="2"
                            Classes="small"
                            HorizontalAlignment="Right"
                            Text="Augmentation"/>
-                <TextBlock Margin="4,0,4, 0"
+                <TextBlock Grid.Row="3"
                            Classes="small"
                            HorizontalAlignment="Right"
                            Text="Courantes"/>
-            </StackPanel>
+            </Grid>
         
-            <userControls:ComponentsControl Components="{Binding List}"
+            <userControls:ComponentsControl Grid.Column="1"
+                                            Components="{Binding List}"
+                                            HorizontalAlignment="Stretch"
                                             IsHorizontal="True">
                 <userControls:ComponentsControl.DataTemplates>
                     <DataTemplate DataType="{x:Type components:CharacterCharacteristicViewModel}">
-                        <StackPanel MinWidth="30">
-                            <TextBlock HorizontalAlignment="Center"
-                                       Margin="4"
-                                       Text="{Binding Shortcut}"/>
-                            <NumericUpDown HorizontalContentAlignment="Center"
+                        <Grid MinWidth="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition SharedSizeGroup="A"/>
+                                <RowDefinition SharedSizeGroup="B"/>
+                                <RowDefinition SharedSizeGroup="C"/>
+                                <RowDefinition SharedSizeGroup="D"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0"
+                                   Padding="4"
+                                   Margin="0"
+                                   HorizontalContentAlignment="Center"
+                                   Content="{Binding Shortcut}"/>
+                            <NumericUpDown Grid.Row="1"
                                            Classes="small"
+                                           Margin="0"
+                                           HorizontalContentAlignment="Center"
                                            Value="{Binding InitialValue}"/>
-                            <NumericUpDown HorizontalContentAlignment="Center"
+                            <NumericUpDown Grid.Row="2" 
                                            Classes="small"
+                                           Margin="0"
+                                           HorizontalContentAlignment="Center"
                                            Value="{Binding Improvements}"/>
-                            <TextBlock Margin="4,6" 
-                                       HorizontalAlignment="Center"
-                                       Text="{Binding CurrentValue}"/>
-                        </StackPanel>
+                            <Label Grid.Row="3"
+                                   Padding="4,6" 
+                                   Margin="0"
+                                   HorizontalContentAlignment="Center"
+                                   Content="{Binding CurrentValue}"/>
+                        </Grid>
                     </DataTemplate>
                 </userControls:ComponentsControl.DataTemplates>
             </userControls:ComponentsControl>
-        </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

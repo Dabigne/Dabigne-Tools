@@ -23,12 +23,24 @@
                          BorderThickness="0,0,3,3"
                          Watermark="Label:"
                          Text="Coucou"/>
+                <TextBox BorderBrush="Gray"
+                         Padding="4,2"
+                         BorderThickness="0,0,5,5"
+                         Height="80"
+                         Watermark="Label:"
+                         Text="Coucou"/>
                 
             </StackPanel>
         </Border>
     </Design.PreviewWith>
     
     <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="CaretBrush" Value="White"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="TextAlignment" Value="Start"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <Border BorderBrush="{TemplateBinding BorderBrush}"
@@ -37,15 +49,18 @@
                     <Grid ColumnDefinitions="Auto,*">
                         <TextBlock Grid.Column="0"
                                    Name="PART_FloatingWatermark"
+                                   Background="{TemplateBinding Background}"
+                                   Foreground="{TemplateBinding Foreground}"
                                    Margin="0,0,4,0"
                                    IsVisible="{TemplateBinding Watermark, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
                                    Text="{TemplateBinding Watermark}"/>
                         <TextPresenter Grid.Column="1"
                                        Name="PART_TextPresenter"
-                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       Background="{TemplateBinding Background}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                       VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                        CaretBlinkInterval="{TemplateBinding CaretBlinkInterval}"
-                                       CaretBrush="White"
+                                       CaretBrush="{TemplateBinding CaretBrush}"
                                        CaretIndex="{TemplateBinding CaretIndex}"
                                        LetterSpacing="{TemplateBinding LetterSpacing}"
                                        LineHeight="{TemplateBinding LineHeight}"

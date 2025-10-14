@@ -2,10 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:components="clr-namespace:Module.WarhammerTools.Views.Components"
              xmlns:viewModels="clr-namespace:Module.WarhammerTools.ViewModels"
              xmlns:views="clr-namespace:Module.WarhammerTools.Views"
-             xmlns:cVm="clr-namespace:Module.WarhammerTools.ViewModels.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.CharacterSheetView">
     
@@ -16,6 +14,11 @@
     <Design.DataContext>
         <viewModels:CharacterSheetViewModel/>    
     </Design.DataContext>
+    
+    <UserControl.Background>
+        <ImageBrush Source="../Assets/OldPaper.jpg"
+                    Stretch="UniformToFill"/>
+    </UserControl.Background>
     
     <Grid RowDefinitions="Auto,*">
         <StackPanel Grid.Row="0"

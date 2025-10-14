@@ -10,29 +10,13 @@
         </ResourceDictionary>
     </Styles.Resources>
     
-    <Design.PreviewWith>
-        <Border Padding="20">
-            <!-- Add Controls for Previewer Here -->
-            <TextBox Text="Coucou"></TextBox>
-        </Border>
-    </Design.PreviewWith>
-    
     <Style Selector="Border.main">
         <Setter Property="BorderThickness" Value="3"/>
         <Setter Property="BorderBrush" Value="DimGray"/>
     </Style>
     
-    <Style Selector="Grid.labelInput">
-        <Setter Property="behaviors:ColumnDefinitionsSetter.ColumnDefinitions">
-            <ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </ColumnDefinitions>
-        </Setter>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-    </Style>
-    
     <Style Selector="TextBlock">
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="4, 2"/>
     </Style>
@@ -48,6 +32,7 @@
     </Style>
 
     <Style Selector="Label">
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="BorderBrush" Value="Gray"/>        
         <Setter Property="BorderThickness" Value="1"/>
@@ -61,6 +46,8 @@
     </Style>
     
     <Style Selector="TextBox">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="CaretBrush" Value="Black"/>
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource TextControlSelectionHighlightColor}"/>
         <Setter Property="Padding" Value="4"/>
@@ -72,14 +59,57 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
     
+    <Style Selector="NumericUpDown">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="ShowButtonSpinner" Value="False"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+    
+    <Style Selector="NumericUpDown:pointerover">
+        <Setter Property="ShowButtonSpinner" Value="True"/>
+    </Style>
+
     <Style Selector="NumericUpDown.small">
-        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="Gray"/>
-        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="MinHeight" Value="16"/>
-        <Setter Property="Height" Value="28"/>
+        <Setter Property="Padding" Value="4,2"/>
+        <Setter Property="MinHeight" Value="24"/>
+        <Setter Property="MaxHeight" Value="24"/>
+    </Style>
+    
+    
+    <Style Selector="RepeatButton">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="BurlyWood"/>
+        <Setter Property="BorderBrush" Value="DarkGoldenrod"/>
+        <Setter Property="BorderThickness" Value="1,1,1,2"/>
+    </Style>
+
+    <Style Selector="RepeatButton:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="DarkGoldenrod"/>
+        <Setter Property="BorderBrush" Value="BurlyWood"/>
+    </Style>
+    
+    <Style Selector="Button">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="BurlyWood"/>
+        <Setter Property="BorderBrush" Value="DarkGoldenrod"/>
+        <Setter Property="MinWidth" Value="24"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Padding" Value="4,2"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="BorderThickness" Value="1,1,1,2"/>
+    </Style>
+    
+    <Style Selector="Button:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="DarkGoldenrod"/>
+        <Setter Property="BorderBrush" Value="BurlyWood"/>
     </Style>
     
 </Styles>

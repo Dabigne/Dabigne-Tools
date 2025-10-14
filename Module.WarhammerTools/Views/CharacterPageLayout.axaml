@@ -22,7 +22,7 @@
                                           DataContext="{Binding Informations}"/>
         
         <Grid Grid.Row="1">
-            <Grid ColumnDefinitions="Auto,*">
+            <Grid ColumnDefinitions="*,*">
                 <Border Grid.Column="0"
                         Classes="main">
                     <cViews:CharacterCharacteristicListView Margin="4"
@@ -30,7 +30,8 @@
                 </Border>
                 
                 <Grid Grid.Column="1"
-                      RowDefinitions="*,*" ColumnDefinitions="*,*,*">
+                      RowDefinitions="*,*" 
+                      ColumnDefinitions="*,*,*">
                     
                     <Border Grid.Row="0" Grid.Column="0"
                             Classes="main">
