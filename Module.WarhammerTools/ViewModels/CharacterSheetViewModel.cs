@@ -42,6 +42,10 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     public CharacterPossessionListViewModel Possessions { get; }
     
     public CharacterWeaponListViewModel  Weapons { get; }
+
+    public CharacterPsychologyViewModel Psychology { get; } = new();
+    
+    public CharacterCorruptionAndMutationViewModel CorruptionAndMutations {get;} = new();
     
     [RelayCommand]
     private async Task Load()

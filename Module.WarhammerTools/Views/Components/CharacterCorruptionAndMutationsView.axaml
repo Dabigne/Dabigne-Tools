@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.WarhammerTools.Views.Components.CharacterCorruptionAndMutationsView">
+    
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+    </UserControl.Styles>
+
+    <Design.DataContext>
+        <components:CharacterCorruptionAndMutationViewModel/>    
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,*">
+        <TextBlock Grid.Row="0" Grid.Column="0"
+                   Classes="title"
+                   Text="CORRUPTION ET MUTATION"
+                   HorizontalAlignment="Center"/>
+
+        <TextBox Grid.Row="1"
+                 Classes="small"
+                 AcceptsReturn="True"
+                 MaxLines="4"
+                 Text="{Binding Value}"/>
+    </Grid>
+</UserControl>

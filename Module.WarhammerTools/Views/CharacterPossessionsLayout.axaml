@@ -28,6 +28,18 @@
             <cViews:CharacterPossessionListView Margin="4"
                                                 DataContext="{Binding Possessions}"/>
         </Border>
+        
+        <Border Grid.Row="1" Grid.Column="1"
+                Classes="main">
+            <cViews:CharacterPsychologyView Margin="4"
+                                            DataContext="{Binding Psychology}"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="1"
+                Classes="main">
+            <cViews:CharacterCorruptionAndMutationsView Margin="4"
+                                                        DataContext="{Binding CorruptionAndMutations}"/>
+        </Border>
 
         <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
                 Classes="main">
