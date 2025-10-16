@@ -32,5 +32,6 @@ public sealed class WarhammerToolsModule: Autofac.Module
         builder.RegisterType<CharacterSkillViewModel>().AsSelf().InstancePerDependency();
         builder.RegisterType<CharacterExpertiseViewModel>().AsSelf().InstancePerDependency();
         builder.RegisterType<CharacterPossessionViewModel>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CharacterSpellViewModel>().AsSelf().InstancePerDependency();
     }
 }

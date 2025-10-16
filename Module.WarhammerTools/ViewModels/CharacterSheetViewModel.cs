@@ -45,7 +45,9 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
 
     public CharacterPsychologyViewModel Psychology { get; } = new();
     
-    public CharacterCorruptionAndMutationViewModel CorruptionAndMutations {get;} = new();
+    public CharacterCorruptionAndMutationViewModel CorruptionAndMutations { get; } = new();
+
+    public CharacterSpellListViewModel Spells { get; }
     
     [RelayCommand]
     private async Task Load()
@@ -85,6 +87,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         Armors = new CharacterArmorListViewModel(instanceProvider);
         Possessions = new CharacterPossessionListViewModel(instanceProvider);
         Weapons = new CharacterWeaponListViewModel(instanceProvider);
+        Spells = new CharacterSpellListViewModel(instanceProvider);
         
         _characterSheetService.InjectModel(this);
     }

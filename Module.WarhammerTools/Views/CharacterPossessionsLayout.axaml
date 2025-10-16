@@ -16,7 +16,7 @@
     </Design.DataContext>
     
     <Grid ColumnDefinitions="*,*,*"
-          RowDefinitions="*,*,*,*,*">
+          RowDefinitions="*,*,*,*,*,*">
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                 Classes="main">
             <cViews:CharacterArmorListView Margin="4"
@@ -43,8 +43,14 @@
 
         <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
                 Classes="main">
-            <cViews:CharacterWeaponDataView Margin="4"
+            <cViews:CharacterWeaponListView Margin="4"
                                             DataContext="{Binding Weapons}"/>
+        </Border>
+        
+        <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
+                Classes="main">
+            <cViews:CharacterSpellListView Margin="4"
+                                           DataContext="{Binding Spells}"/>
         </Border>
 
     </Grid>

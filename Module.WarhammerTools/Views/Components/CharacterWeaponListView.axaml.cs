@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace Module.WarhammerTools.Views.Components;
 
-public partial class CharacterWeaponDataView : UserControl
+public partial class CharacterWeaponListView : UserControl
 {
-    public CharacterWeaponDataView()
+    public CharacterWeaponListView()
     {
         InitializeComponent();
     }
