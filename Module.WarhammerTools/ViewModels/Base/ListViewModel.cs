@@ -11,6 +11,9 @@ public abstract partial class ListViewModel<TM, TVm> : ObservableObject where TV
     protected readonly IInstanceProvider _instanceProvider;
     
     [ObservableProperty]
+    private string _title = string.Empty;
+    
+    [ObservableProperty]
     private ObservableCollection<TVm> _list = [];
     
     [ObservableProperty]

@@ -10,5 +10,6 @@ public class CharacterSpellListViewModel
     public CharacterSpellListViewModel(IInstanceProvider instanceProvider) 
         : base(instanceProvider)
     {
+        Title = "SORTS & PRIERES";
     }
 }

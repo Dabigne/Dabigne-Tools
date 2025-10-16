@@ -10,5 +10,6 @@ public class CharacterWeaponListViewModel
     public CharacterWeaponListViewModel(IInstanceProvider instanceProvider) 
         : base(instanceProvider)
     {
+        Title = "ARMES";
     }
 }

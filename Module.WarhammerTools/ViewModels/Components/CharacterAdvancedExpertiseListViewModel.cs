@@ -10,5 +10,6 @@ public class CharacterAdvancedExpertiseListViewModel
     public CharacterAdvancedExpertiseListViewModel(IInstanceProvider instanceProvider) 
         : base(instanceProvider)
     {
+        Title = "COMPETENCES AVANCEES";
     }
 }

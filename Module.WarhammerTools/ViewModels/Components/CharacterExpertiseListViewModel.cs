@@ -10,5 +10,6 @@ public partial class CharacterExpertiseListViewModel
     public CharacterExpertiseListViewModel(IInstanceProvider instanceProvider) 
         : base(instanceProvider)
     {
+        Title = "COMPETENCES DE BASE";
     }
 }

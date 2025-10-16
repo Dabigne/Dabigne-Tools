@@ -10,5 +10,6 @@ public class CharacterArmorListViewModel
     public CharacterArmorListViewModel(IInstanceProvider instanceProvider) 
         : base(instanceProvider)
     {
+        Title = "ARMURES";
     }
 }

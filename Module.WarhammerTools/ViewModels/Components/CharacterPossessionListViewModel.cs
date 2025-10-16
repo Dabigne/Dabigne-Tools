@@ -10,5 +10,6 @@ public class CharacterPossessionListViewModel
     public CharacterPossessionListViewModel(IInstanceProvider instanceProvider) 
         : base(instanceProvider)
     {
+        Title = "POSSESSIONS";
     }
 }

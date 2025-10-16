@@ -10,5 +10,6 @@ public partial class CharacterSkillListViewModel
     public CharacterSkillListViewModel(IInstanceProvider instanceProvider) 
         : base(instanceProvider)
     {
+        Title = "TALENTS";
     }
 }

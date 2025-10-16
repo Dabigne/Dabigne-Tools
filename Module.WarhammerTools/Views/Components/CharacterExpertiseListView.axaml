@@ -20,7 +20,7 @@
         <TextBlock Grid.Row="0"
                    Classes="title"
                    HorizontalAlignment="Center"
-                   Text="COMPETENCES DE BASE"/>
+                   Text="{Binding Title}"/>
         <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"
                   ItemsSource="{Binding List}"
                   BorderBrush="Gray"
