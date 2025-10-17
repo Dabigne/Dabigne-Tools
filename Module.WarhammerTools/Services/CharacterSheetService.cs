@@ -143,6 +143,8 @@ public class CharacterSheetService : ICharacterSheetService
             Weapons = viewModel.Weapons.GetModel(),
             Psychology = viewModel.Psychology.GetModel(),
             CorruptionAndMutations = viewModel.CorruptionAndMutations.GetModel(),
+            Wealth = viewModel.Wealth.GetModel(),
+            Injuries = viewModel.Injuries.GetModel(),
         };
 
         _loadedCharacterSheet = model;
@@ -170,5 +172,7 @@ public class CharacterSheetService : ICharacterSheetService
         viewModel.Weapons.SetModel(_loadedCharacterSheet.Weapons);
         viewModel.Psychology.SetModel(_loadedCharacterSheet.Psychology);
         viewModel.CorruptionAndMutations.SetModel(_loadedCharacterSheet.CorruptionAndMutations);
+        viewModel.Wealth.SetModel(_loadedCharacterSheet.Wealth);
+        viewModel.Injuries.SetModel(_loadedCharacterSheet.Injuries);
     }
 }

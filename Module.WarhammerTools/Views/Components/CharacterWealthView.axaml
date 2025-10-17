@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.WarhammerTools.Views.Components.CharacterWealthView">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+    </UserControl.Styles>
+    
+    <Design.DataContext>
+        <components:CharacterWealthViewModel/>    
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto,*,*,*"
+          ColumnDefinitions="Auto,*">
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Classes="title"
+                   Text="RICHESSES"
+                   HorizontalAlignment="Center"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="SC"/>
+        <NumericUpDown Grid.Row="1" Grid.Column="1"
+                       HorizontalContentAlignment="Center"
+                       Value="{Binding Copper}"/>
+        
+        <TextBlock Grid.Row="2" Grid.Column="0"
+                   Text="PA"/>
+        <NumericUpDown Grid.Row="2" Grid.Column="1"
+                       HorizontalContentAlignment="Center"
+                       Value="{Binding Silver}"/>
+        
+        <TextBlock Grid.Row="3" Grid.Column="0"
+                   Text="CO"/>
+        <NumericUpDown Grid.Row="3" Grid.Column="1"
+                       HorizontalContentAlignment="Center"
+                       Value="{Binding Gold}"/>
+ 
+    </Grid>
+
+</UserControl>

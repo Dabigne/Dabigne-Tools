@@ -13,15 +13,20 @@ public sealed class WarhammerToolsModule: Autofac.Module
     {
         LoadServices(builder);
         LoadComponents(builder);
-        
+        LoadViewModels(builder);
+    }
+
+    private void LoadViewModels(ContainerBuilder builder)
+    {
         builder.RegisterType<CharacterSheetView>().AsSelf();
         builder.RegisterType<CharacterSheetViewModel>().AsSelf();
     }
-
+    
     private void LoadServices(ContainerBuilder builder)
     {
         builder.RegisterType<CharacterSheetService>().As<ICharacterSheetService>().SingleInstance();
         builder.RegisterType<CharacterSheetFileService>().As<ICharacterSheetFileService>();
+        builder.RegisterType<CharacteristicRulesService>().As<ICharacteristicRulesService>();
         builder.RegisterType<TemplateService>().AsSelf();
     }
 

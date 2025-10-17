@@ -46,6 +46,10 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     public CharacterPsychologyViewModel Psychology { get; } = new();
     
     public CharacterCorruptionAndMutationViewModel CorruptionAndMutations { get; } = new();
+    
+    public CharacterWealthViewModel Wealth { get; } = new();
+    
+    public CharacterInjuriesViewModel Injuries { get; }
 
     public CharacterSpellListViewModel Spells { get; }
     
@@ -88,6 +92,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         Possessions = new CharacterPossessionListViewModel(instanceProvider);
         Weapons = new CharacterWeaponListViewModel(instanceProvider);
         Spells = new CharacterSpellListViewModel(instanceProvider);
+
+        Injuries = new CharacterInjuriesViewModel(instanceProvider.GetInstance<ICharacteristicRulesService>());
         
         _characterSheetService.InjectModel(this);
     }

@@ -41,7 +41,7 @@
 
                     <Border Grid.Row="0" Grid.Column="1"
                             Classes="main">
-                        <cViews:CharacterResilienceView Margin="4"
+                        <cViews:CharacterWealthView Margin="4"
                                                         DataContext="{Binding Resilience}"/>
                     </Border>
                     

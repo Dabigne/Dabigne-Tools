@@ -43,6 +43,10 @@
         <DependentUpon>CharacterSpellListView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Views\Components\CharacterWealthView.axaml.cs">
+        <DependentUpon>CharacterWealthView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
