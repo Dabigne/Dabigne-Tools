@@ -51,6 +51,10 @@
         <DependentUpon>CharacterInjuriesView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Views\Components\CharacterClutterView.axaml.cs">
+        <DependentUpon>CharacterClutterView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

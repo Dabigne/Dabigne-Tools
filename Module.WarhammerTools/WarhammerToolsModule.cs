@@ -27,6 +27,7 @@ public sealed class WarhammerToolsModule: Autofac.Module
         builder.RegisterType<CharacterSheetService>().As<ICharacterSheetService>().SingleInstance();
         builder.RegisterType<CharacterSheetFileService>().As<ICharacterSheetFileService>();
         builder.RegisterType<CharacteristicRulesService>().As<ICharacteristicRulesService>();
+        builder.RegisterType<ClutterRulesService>().As<IClutterRulesService>();
         builder.RegisterType<TemplateService>().AsSelf();
     }
 

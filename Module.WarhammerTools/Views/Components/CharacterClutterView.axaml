@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.WarhammerTools.Views.Components.CharacterClutterView">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+    </UserControl.Styles>
+    
+    <Design.DataContext>
+        <components:CharacterClutterViewModel/>    
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto,*,*,*,*,*"
+          ColumnDefinitions="Auto,*">
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Classes="title"
+                   Text="ENCOMBREMENT"
+                   HorizontalAlignment="Center"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="Armes"/>
+        <TextBlock Grid.Row="1" Grid.Column="1"
+                   Text="{Binding WeaponClutter}"/>
+        
+        <TextBlock Grid.Row="2" Grid.Column="0"
+                   Text="Armure"/>
+        <TextBlock Grid.Row="2" Grid.Column="1"
+                   Text="{Binding ArmorClutter}"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0"
+                   Text="Possessions"/>
+        <TextBlock Grid.Row="3" Grid.Column="1"
+                   Text="{Binding PossessionsClutter}"/>
+        
+        <TextBlock Grid.Row="4" Grid.Column="0"
+                   Text="Enc. Max"/>
+        <TextBlock Grid.Row="4" Grid.Column="1"
+                   Text="{Binding MaxClutter}"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0"
+                   Text="Total"/>
+        <TextBlock Grid.Row="5" Grid.Column="1"
+                   Text="{Binding TotalClutter}"/>
+
+    </Grid>
+
+</UserControl>

@@ -49,6 +49,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     
     public CharacterWealthViewModel Wealth { get; } = new();
     
+    public CharacterClutterViewModel Clutter { get; }
+    
     public CharacterInjuriesViewModel Injuries { get; }
 
     public CharacterSpellListViewModel Spells { get; }
@@ -93,6 +95,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         Weapons = new CharacterWeaponListViewModel(instanceProvider);
         Spells = new CharacterSpellListViewModel(instanceProvider);
 
+        Clutter = new CharacterClutterViewModel(instanceProvider.GetInstance<IClutterRulesService>());
         Injuries = new CharacterInjuriesViewModel(instanceProvider.GetInstance<ICharacteristicRulesService>());
         
         _characterSheetService.InjectModel(this);

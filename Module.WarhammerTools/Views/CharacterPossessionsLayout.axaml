@@ -56,7 +56,8 @@
 
             <Border Grid.Column="1"
                     Classes="main">
-                <TextBox >ENCOMBREMENT (TODO) </TextBox>
+                <cViews:CharacterClutterView Margin="4"
+                                             DataContext="{Binding Clutter}"/>
             </Border>
         </Grid>
         
