@@ -9,6 +9,7 @@ public partial class CharacterInjuriesViewModel : ObservableObject, IViewModel<C
     private readonly ICharacteristicRulesService _rulesService;
     
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(Total))]
     private int _toughBonus;
     
     [ObservableProperty]

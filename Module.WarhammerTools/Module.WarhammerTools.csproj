@@ -47,6 +47,10 @@
         <DependentUpon>CharacterWealthView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Views\Components\CharacterInjuriesView.axaml.cs">
+        <DependentUpon>CharacterInjuriesView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

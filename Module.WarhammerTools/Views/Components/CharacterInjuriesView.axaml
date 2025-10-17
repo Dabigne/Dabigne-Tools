@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.WarhammerTools.Views.Components.CharacterInjuriesView">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+    </UserControl.Styles>
+    
+    <Design.DataContext>
+        <components:CharacterInjuriesViewModel/>    
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto,*,*,*,*,*"
+          ColumnDefinitions="Auto,Auto,*">
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                   Classes="title"
+                   Text="BLESSURES"
+                   HorizontalAlignment="Center"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="BF"/>
+        <TextBlock Grid.Row="1" Grid.Column="1"
+                   Text="{Binding ForceBonus}"/>
+        
+        <TextBlock Grid.Row="2" Grid.Column="0"
+                   Text="BEx2"/>
+        <TextBlock Grid.Row="2" Grid.Column="1"
+                   Text="{Binding EnduranceBonus}"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0"
+                   Text="BFM"/>
+        <TextBlock Grid.Row="3" Grid.Column="1"
+                   Text="{Binding ForceMentalBonus}"/>
+        
+        <TextBlock Grid.Row="4" Grid.Column="0"
+                   Text="Dur à cuire"/>
+        <NumericUpDown Grid.Row="4" Grid.Column="1"
+                       HorizontalContentAlignment="Center"
+                       Value="{Binding ToughBonus}"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0"
+                   Text="Blessures"/>
+        <TextBlock Grid.Row="5" Grid.Column="1"
+                   Text="{Binding Total}"/>
+
+        <TextBox Grid.Row="1" Grid.RowSpan="5" Grid.Column="2"
+                 AcceptsReturn="True"
+                 Text="{Binding Description}"/>
+    </Grid>
+
+</UserControl>
