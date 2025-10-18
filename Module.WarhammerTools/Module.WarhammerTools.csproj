@@ -58,11 +58,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\" />
+      <Folder Include="Views\UserControls\" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Assets\OldPaper.jpg" />
+      <AvaloniaResource Include="Assets\InnerBorderSide.png" />
       <AvaloniaResource Include="Assets\OldPaper.jpg" />
       <None Remove="Assets\Border.png" />
       <AvaloniaResource Include="Assets\Border.png" />

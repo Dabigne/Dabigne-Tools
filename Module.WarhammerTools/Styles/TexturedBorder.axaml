@@ -1,0 +1,63 @@
+<Styles xmlns="https://github.com/avaloniaui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    
+    <Style Selector="ContentControl.textured">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    
+                    <Grid RowDefinitions="4,*,4" ColumnDefinitions="4,*,4">
+        
+                        <Border Grid.Row="0" Grid.Column="0"
+                                Margin="1,1,0,0"
+                                BorderThickness="3,3,0,0"
+                                BorderBrush="Black"/>
+                        <Border Grid.Row="0" Grid.Column="2"
+                                Margin="0,1,1,0"
+                                BorderThickness="0,3,3,0"
+                                BorderBrush="Black"/>
+                        <Image Grid.Row="0" Grid.Column="1"
+                               Source="../../Assets/InnerBorder.png"
+                               Stretch="Fill"/>
+                        <Image Grid.Row="1" Grid.Column="0"
+                               Source="../../Assets/InnerBorderSide.png"
+                               Stretch="Fill"/>
+                        
+                        <ContentPresenter Grid.Row="1" Grid.Column="1"
+                                          Content="{TemplateBinding Content}"/>
+        
+                        <Image Grid.Row="1" Grid.Column="2"
+                               Source="../../Assets/InnerBorderSide.png"
+                               Stretch="Fill">
+                            <Image.RenderTransform>
+                                <RotateTransform Angle="180"/>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Image Grid.Row="2" Grid.Column="1"
+                               Source="../../Assets/InnerBorder.png"
+                               Stretch="Fill">
+                            <Image.RenderTransform>
+                                <RotateTransform Angle="180"/>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Border Grid.Row="2" Grid.Column="0"
+                                Margin="1,0,0,1"
+                                BorderThickness="3,0,0,3"
+                                BorderBrush="Black"/>
+                        <Border Grid.Row="2" Grid.Column="2"
+                                Margin="0,0,1,1"
+                                BorderThickness="0,0,3,3"
+                                BorderBrush="Black"/>
+
+                    </Grid>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
+    
+</Styles>

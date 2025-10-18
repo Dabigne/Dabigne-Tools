@@ -124,6 +124,4 @@
     <Style Selector="TabItem:selected /template/ Border#PART_SelectedPipe">
         <Setter Property="Background" Value="DarkGoldenrod"/>
     </Style>
-    
-    
 </Styles>

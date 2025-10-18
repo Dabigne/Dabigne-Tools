@@ -8,6 +8,7 @@
              x:Class="Module.WarhammerTools.Views.CharacterPageLayout">
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/TexturedBorder.axaml"/>
     </UserControl.Styles>
     
     <Design.DataContext>
@@ -23,76 +24,75 @@
         
         <Grid Grid.Row="1">
             <Grid ColumnDefinitions="*,*">
-                <Border Grid.Column="0"
-                        Classes="main">
-                    <cViews:CharacterCharacteristicListView Margin="4"
-                                                            DataContext="{Binding CharacteristicList}"/>
-                </Border>
+                <ContentControl Grid.Column="0"
+                                Classes="textured">
+                    <cViews:CharacterCharacteristicListView Margin="4" DataContext="{Binding CharacteristicList}"/>
+                </ContentControl>
                 
                 <Grid Grid.Column="1"
                       RowDefinitions="*,*" 
                       ColumnDefinitions="*,*,*">
                     
-                    <Border Grid.Row="0" Grid.Column="0"
-                            Classes="main">
+                    <ContentControl Grid.Row="0" Grid.Column="0"
+                                    Classes="textured">
                         <cViews:CharacterDestinyView Margin="4"
                                                      DataContext="{Binding Destiny}"/>
-                    </Border>
+                    </ContentControl>
 
-                    <Border Grid.Row="0" Grid.Column="1"
-                            Classes="main">
+                    <ContentControl Grid.Row="0" Grid.Column="1"
+                                    Classes="textured">
                         <cViews:CharacterResilienceView Margin="4"
                                                         DataContext="{Binding Resilience}"/>
-                    </Border>
+                    </ContentControl>
                     
-                    <Border Grid.Row="0" Grid.Column="2"
-                            Classes="main">
+                    <ContentControl Grid.Row="0" Grid.Column="2"
+                                    Classes="textured">
                         <cViews:CharacterExperienceView Margin="4"
                                                         DataContext="{Binding Experience}"/>
-                    </Border>
+                    </ContentControl>
                     
-                    <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
-                            Classes="main">
-                    <cViews:CharacterMovementView Margin="4"
-                                                  DataContext="{Binding Movement}"/>
-                    </Border>
+                    <ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                                    Classes="textured">
+                        <cViews:CharacterMovementView Margin="4"
+                                                      DataContext="{Binding Movement}"/>
+                    </ContentControl>
                 </Grid>
             </Grid>    
         </Grid>
         
         <Grid Grid.Row="2" ColumnDefinitions="*,*,*">
-            <Border Grid.Column="0"
-                    Classes="main">
+            <ContentControl Grid.Column="0"
+                            Classes="textured">
                 <cViews:CharacterExpertiseListView DataContext="{Binding FirstExpertiseList}"/>
-            </Border>
-            <Border Grid.Column="1"
-                    Classes="main">
+            </ContentControl>
+            <ContentControl Grid.Column="1"
+                            Classes="textured">
                 <cViews:CharacterExpertiseListView DataContext="{Binding SecondExpertiseList}"/>
-            </Border>
-            <Border Grid.Column="2"
-                    Classes="main">
+            </ContentControl>
+            <ContentControl Grid.Column="2"
+                            Classes="textured">
                 <cViews:CharacterAdvancedExpertiseListView DataContext="{Binding AdvancedExpertiseList}"/>
-            </Border>
+            </ContentControl>
         </Grid>
         
         <Grid Grid.Row="3"
               RowDefinitions="*,*"
               ColumnDefinitions="*,*">
-            <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
-                    Classes="main"
-                    VerticalAlignment="Stretch">
+            <ContentControl Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                            Classes="textured"
+                            VerticalAlignment="Stretch">
                 <cViews:CharacterSkillListView DataContext="{Binding SkillList}"/>
-            </Border>
+            </ContentControl>
 
-            <Border Grid.Row="0" Grid.Column="1"
-                    Classes="main">
+            <ContentControl Grid.Row="0" Grid.Column="1"
+                            Classes="textured">
                 <cViews:CharacterAmbitionsView DataContext="{Binding Ambitions}"/>
-            </Border>
+            </ContentControl>
             
-            <Border Grid.Row="1" Grid.Column="1"
-                    Classes="main">
+            <ContentControl Grid.Row="1" Grid.Column="1"
+                            Classes="textured">
                 <cViews:CharacterGroupView DataContext="{Binding Group}"/>
-            </Border>
+            </ContentControl>
 
         </Grid>
         
