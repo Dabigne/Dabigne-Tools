@@ -3,22 +3,23 @@
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+    <Styles.Resources>
+        <Color x:Key="BorderColor">#454545</Color>
+        <SolidColorBrush x:Key="BorderColorBrush" Color="{StaticResource BorderColor}"/>
+    </Styles.Resources>
     
     <Style Selector="ContentControl.textured">
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
                     
                     <Grid RowDefinitions="4,*,4" ColumnDefinitions="4,*,4">
         
-                        <Border Grid.Row="0" Grid.Column="0"
-                                Margin="1,1,0,0"
-                                BorderThickness="3,3,0,0"
-                                BorderBrush="Black"/>
-                        <Border Grid.Row="0" Grid.Column="2"
-                                Margin="0,1,1,0"
-                                BorderThickness="0,3,3,0"
-                                BorderBrush="Black"/>
+                        <Rectangle Grid.Row="0" Grid.Column="0"
+                                   Fill="{StaticResource BorderColorBrush}"/>
+                        <Rectangle Grid.Row="0" Grid.Column="2"
+                                   Fill="{StaticResource BorderColorBrush}"/>
                         <Image Grid.Row="0" Grid.Column="1"
                                Source="../../Assets/InnerBorder.png"
                                Stretch="Fill"/>
@@ -43,14 +44,10 @@
                                 <RotateTransform Angle="180"/>
                             </Image.RenderTransform>
                         </Image>
-                        <Border Grid.Row="2" Grid.Column="0"
-                                Margin="1,0,0,1"
-                                BorderThickness="3,0,0,3"
-                                BorderBrush="Black"/>
-                        <Border Grid.Row="2" Grid.Column="2"
-                                Margin="0,0,1,1"
-                                BorderThickness="0,0,3,3"
-                                BorderBrush="Black"/>
+                        <Rectangle Grid.Row="2" Grid.Column="0"
+                                   Fill="{StaticResource BorderColorBrush}"/>
+                        <Rectangle Grid.Row="2" Grid.Column="2"
+                                   Fill="{StaticResource BorderColorBrush}"/>
 
                     </Grid>
                     
@@ -59,5 +56,55 @@
         </Setter>
         
     </Style>
+
+    <Style Selector="ContentControl.test">
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    
+                    <Grid RowDefinitions="4,*,4" ColumnDefinitions="4,*,4">
+        
+                        <Rectangle Grid.Row="0" Grid.Column="0"
+                                   Fill="{StaticResource BorderColorBrush}"/>
+                        <Rectangle Grid.Row="0" Grid.Column="2"
+                                   Fill="{StaticResource BorderColorBrush}"/>
+                        <Image Grid.Row="0" Grid.Column="1"
+                               Source="../../Assets/InnerBorder.png"
+                               Stretch="None"/>
+                        <Image Grid.Row="1" Grid.Column="0"
+                               Source="../../Assets/InnerBorderSide.png"
+                               Stretch="None"/>
+                        
+                        <ContentPresenter Grid.Row="1" Grid.Column="1"
+                                          Content="{TemplateBinding Content}"/>
+        
+                        <Image Grid.Row="1" Grid.Column="2"
+                               Source="../../Assets/InnerBorderSide.png"
+                               Stretch="None">
+                            <Image.RenderTransform>
+                                <RotateTransform Angle="180"/>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Image Grid.Row="2" Grid.Column="1"
+                               Source="../../Assets/InnerBorder.png"
+                               Stretch="None">
+                            <Image.RenderTransform>
+                                <RotateTransform Angle="180"/>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Rectangle Grid.Row="2" Grid.Column="0"
+                                   Fill="{StaticResource BorderColorBrush}"/>
+                        <Rectangle Grid.Row="2" Grid.Column="2"
+                                   Fill="{StaticResource BorderColorBrush}"/>
+
+                    </Grid>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
+    
     
 </Styles>

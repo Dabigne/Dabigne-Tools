@@ -22,43 +22,37 @@
                                           Margin="8"
                                           DataContext="{Binding Informations}"/>
         
-        <Grid Grid.Row="1">
-            <Grid ColumnDefinitions="*,*">
-                <ContentControl Grid.Column="0"
-                                Classes="textured">
-                    <cViews:CharacterCharacteristicListView Margin="4" DataContext="{Binding CharacteristicList}"/>
-                </ContentControl>
-                
-                <Grid Grid.Column="1"
-                      RowDefinitions="*,*" 
-                      ColumnDefinitions="*,*,*">
-                    
-                    <ContentControl Grid.Row="0" Grid.Column="0"
-                                    Classes="textured">
-                        <cViews:CharacterDestinyView Margin="4"
-                                                     DataContext="{Binding Destiny}"/>
-                    </ContentControl>
+        <Grid Grid.Row="1"
+              RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*,*,*">
+            <ContentControl Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3"
+                            Classes="textured">
+                <cViews:CharacterCharacteristicListView Margin="4" DataContext="{Binding CharacteristicList}"/>
+            </ContentControl>
+            
+            <ContentControl Grid.Row="0" Grid.Column="3"
+                            Classes="textured">
+                <cViews:CharacterDestinyView Margin="4"
+                                             DataContext="{Binding Destiny}"/>
+            </ContentControl>
 
-                    <ContentControl Grid.Row="0" Grid.Column="1"
-                                    Classes="textured">
-                        <cViews:CharacterResilienceView Margin="4"
-                                                        DataContext="{Binding Resilience}"/>
-                    </ContentControl>
-                    
-                    <ContentControl Grid.Row="0" Grid.Column="2"
-                                    Classes="textured">
-                        <cViews:CharacterExperienceView Margin="4"
-                                                        DataContext="{Binding Experience}"/>
-                    </ContentControl>
-                    
-                    <ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
-                                    Classes="textured">
-                        <cViews:CharacterMovementView Margin="4"
-                                                      DataContext="{Binding Movement}"/>
-                    </ContentControl>
-                </Grid>
-            </Grid>    
-        </Grid>
+            <ContentControl Grid.Row="0" Grid.Column="4"
+                            Classes="textured">
+                <cViews:CharacterResilienceView Margin="4"
+                                                DataContext="{Binding Resilience}"/>
+            </ContentControl>
+            
+            <ContentControl Grid.Row="0" Grid.Column="5"
+                            Classes="textured">
+                <cViews:CharacterExperienceView Margin="4"
+                                                DataContext="{Binding Experience}"/>
+            </ContentControl>
+            
+            <ContentControl Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3"
+                            Classes="textured">
+                <cViews:CharacterMovementView Margin="4"
+                                              DataContext="{Binding Movement}"/>
+            </ContentControl>
+        </Grid>    
         
         <Grid Grid.Row="2" ColumnDefinitions="*,*,*">
             <ContentControl Grid.Column="0"
