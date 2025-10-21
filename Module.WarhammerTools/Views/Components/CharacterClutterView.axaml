@@ -20,30 +20,30 @@
                    Text="ENCOMBREMENT"
                    HorizontalAlignment="Center"/>
         
-        <TextBlock Grid.Row="1" Grid.Column="0"
-                   Text="Armes"/>
-        <TextBlock Grid.Row="1" Grid.Column="1"
-                   Text="{Binding WeaponClutter}"/>
+        <Label Grid.Row="1" Grid.Column="0"
+               Content="Armes"/>
+        <Label Grid.Row="1" Grid.Column="1"
+               Content="{Binding WeaponClutter}"/>
         
-        <TextBlock Grid.Row="2" Grid.Column="0"
-                   Text="Armure"/>
-        <TextBlock Grid.Row="2" Grid.Column="1"
-                   Text="{Binding ArmorClutter}"/>
+        <Label Grid.Row="2" Grid.Column="0"
+               Content="Armure"/>
+        <Label Grid.Row="2" Grid.Column="1"
+               Content="{Binding ArmorClutter}"/>
 
-        <TextBlock Grid.Row="3" Grid.Column="0"
-                   Text="Possessions"/>
-        <TextBlock Grid.Row="3" Grid.Column="1"
-                   Text="{Binding PossessionsClutter}"/>
+        <Label Grid.Row="3" Grid.Column="0"
+               Content="Possessions"/>
+        <Label Grid.Row="3" Grid.Column="1"
+               Content="{Binding PossessionsClutter}"/>
         
-        <TextBlock Grid.Row="4" Grid.Column="0"
-                   Text="Enc. Max"/>
-        <TextBlock Grid.Row="4" Grid.Column="1"
-                   Text="{Binding MaxClutter}"/>
+        <Label Grid.Row="4" Grid.Column="0"
+               Content="Enc. Max"/>
+        <Label Grid.Row="4" Grid.Column="1"
+               Content="{Binding MaxClutter}"/>
 
-        <TextBlock Grid.Row="5" Grid.Column="0"
-                   Text="Total"/>
-        <TextBlock Grid.Row="5" Grid.Column="1"
-                   Text="{Binding TotalClutter}"/>
+        <Label Grid.Row="5" Grid.Column="0"
+               Content="Total"/>
+        <Label Grid.Row="5" Grid.Column="1"
+               Content="{Binding TotalClutter}"/>
 
     </Grid>
 

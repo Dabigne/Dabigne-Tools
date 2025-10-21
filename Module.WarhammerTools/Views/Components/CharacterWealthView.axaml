@@ -7,6 +7,13 @@
              x:Class="Module.WarhammerTools.Views.Components.CharacterWealthView">
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+        
+        <Style Selector="NumericUpDown">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+        </Style>
     </UserControl.Styles>
     
     <Design.DataContext>
@@ -14,26 +21,26 @@
     </Design.DataContext>
     
     <Grid RowDefinitions="Auto,*,*,*"
-          ColumnDefinitions="Auto,*">
+          ColumnDefinitions="*,2*">
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                    Classes="title"
                    Text="RICHESSES"
                    HorizontalAlignment="Center"/>
         
-        <TextBlock Grid.Row="1" Grid.Column="0"
-                   Text="SC"/>
+        <Label Grid.Row="1" Grid.Column="0"
+               Content="SC"/>
         <NumericUpDown Grid.Row="1" Grid.Column="1"
                        HorizontalContentAlignment="Center"
                        Value="{Binding Copper}"/>
         
-        <TextBlock Grid.Row="2" Grid.Column="0"
-                   Text="PA"/>
+        <Label Grid.Row="2" Grid.Column="0"
+               Content="PA"/>
         <NumericUpDown Grid.Row="2" Grid.Column="1"
                        HorizontalContentAlignment="Center"
                        Value="{Binding Silver}"/>
         
-        <TextBlock Grid.Row="3" Grid.Column="0"
-                   Text="CO"/>
+        <Label Grid.Row="3" Grid.Column="0"
+               Content="CO"/>
         <NumericUpDown Grid.Row="3" Grid.Column="1"
                        HorizontalContentAlignment="Center"
                        Value="{Binding Gold}"/>

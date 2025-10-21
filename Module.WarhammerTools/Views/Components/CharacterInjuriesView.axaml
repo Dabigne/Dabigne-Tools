@@ -7,6 +7,10 @@
              x:Class="Module.WarhammerTools.Views.Components.CharacterInjuriesView">
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+
+        <Style Selector="Label.centered">
+               <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
     </UserControl.Styles>
     
     <Design.DataContext>
@@ -14,39 +18,46 @@
     </Design.DataContext>
     
     <Grid RowDefinitions="Auto,*,*,*,*,*"
-          ColumnDefinitions="Auto,Auto,*">
+          ColumnDefinitions="*,Auto,*">
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
                    Classes="title"
                    Text="BLESSURES"
                    HorizontalAlignment="Center"/>
         
-        <TextBlock Grid.Row="1" Grid.Column="0"
-                   Text="BF"/>
-        <TextBlock Grid.Row="1" Grid.Column="1"
-                   Text="{Binding ForceBonus}"/>
+        <Label Grid.Row="1" Grid.Column="0"
+                   Content="BF"/>
+        <Label Grid.Row="1" Grid.Column="1"
+               Classes="centered"
+               Content="{Binding ForceBonus}"/>
         
-        <TextBlock Grid.Row="2" Grid.Column="0"
-                   Text="BEx2"/>
-        <TextBlock Grid.Row="2" Grid.Column="1"
-                   Text="{Binding EnduranceBonus}"/>
+        <Label Grid.Row="2" Grid.Column="0"
+               Content="BEx2"/>
+        <Label Grid.Row="2" Grid.Column="1"
+               Classes="centered"
+               Content="{Binding EnduranceBonus}"/>
 
-        <TextBlock Grid.Row="3" Grid.Column="0"
-                   Text="BFM"/>
-        <TextBlock Grid.Row="3" Grid.Column="1"
-                   Text="{Binding ForceMentalBonus}"/>
+        <Label Grid.Row="3" Grid.Column="0"
+               Content="BFM"/>
+        <Label Grid.Row="3" Grid.Column="1"
+               Classes="centered"
+               Content="{Binding ForceMentalBonus}"/>
         
-        <TextBlock Grid.Row="4" Grid.Column="0"
-                   Text="Dur à cuire"/>
+        <Label Grid.Row="4" Grid.Column="0"
+               Content="Dur à cuire"/>
         <NumericUpDown Grid.Row="4" Grid.Column="1"
                        HorizontalContentAlignment="Center"
+                       BorderThickness="1"
+                       BorderBrush="Gray"
                        Value="{Binding ToughBonus}"/>
 
-        <TextBlock Grid.Row="5" Grid.Column="0"
-                   Text="Blessures"/>
-        <TextBlock Grid.Row="5" Grid.Column="1"
-                   Text="{Binding Total}"/>
+        <Label Grid.Row="5" Grid.Column="0"
+               Content="Blessures"/>
+        <Label Grid.Row="5" Grid.Column="1"
+               Classes="centered"
+               Content="{Binding Total}"/>
 
         <TextBox Grid.Row="1" Grid.RowSpan="5" Grid.Column="2"
+                 BorderThickness="1"
                  AcceptsReturn="True"
                  Text="{Binding Description}"/>
     </Grid>

@@ -1,6 +1,5 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:behaviors="clr-namespace:Application.Core.Behaviors;assembly=Application.Core">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -62,6 +61,7 @@
     <Style Selector="NumericUpDown">
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="ShowButtonSpinner" Value="False"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="TextAlignment" Value="Center"/>
@@ -85,7 +85,6 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Background" Value="BurlyWood"/>
         <Setter Property="BorderBrush" Value="DarkGoldenrod"/>
-        <Setter Property="BorderThickness" Value="1,1,1,2"/>
     </Style>
 
     <Style Selector="RepeatButton:pointerover /template/ ContentPresenter">

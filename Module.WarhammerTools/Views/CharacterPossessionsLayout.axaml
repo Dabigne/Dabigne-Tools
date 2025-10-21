@@ -9,6 +9,7 @@
 
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/TexturedBorder.axaml"/>
     </UserControl.Styles>
     
     <Design.DataContext>
@@ -17,67 +18,67 @@
     
     <Grid ColumnDefinitions="*,*,*"
           RowDefinitions="*,*,*,*,*,*">
-        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                Classes="main">
+        <ContentControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                        Classes="textured">
             <cViews:CharacterArmorListView Margin="4"
                                            DataContext="{Binding Armors}"/>
-        </Border>
+        </ContentControl>
         
-        <Border Grid.Row="0" Grid.RowSpan="3" Grid.Column="2"
-                Classes="main">
+        <ContentControl Grid.Row="0" Grid.RowSpan="3" Grid.Column="2"
+                        Classes="textured">
             <TextBlock>POINTS D'ARMURES (TODO)</TextBlock>
-        </Border>
+        </ContentControl>
 
-        <Border Grid.Row="1" Grid.RowSpan="3" Grid.Column="0"
-                Classes="main">
+        <ContentControl Grid.Row="1" Grid.RowSpan="3" Grid.Column="0"
+                        Classes="textured">
             <cViews:CharacterPossessionListView Margin="4"
                                                 DataContext="{Binding Possessions}"/>
-        </Border>
+        </ContentControl>
         
-        <Border Grid.Row="1" Grid.Column="1"
-                Classes="main">
+        <ContentControl Grid.Row="1" Grid.Column="1"
+                        Classes="textured">
             <cViews:CharacterPsychologyView Margin="4"
                                             DataContext="{Binding Psychology}"/>
-        </Border>
+        </ContentControl>
 
-        <Border Grid.Row="2" Grid.Column="1"
-                Classes="main">
+        <ContentControl Grid.Row="2" Grid.Column="1"
+                        Classes="textured">
             <cViews:CharacterCorruptionAndMutationsView Margin="4"
                                                         DataContext="{Binding CorruptionAndMutations}"/>
-        </Border>
+        </ContentControl>
         
         <Grid Grid.Row="3" Grid.Column="1"
               ColumnDefinitions="*,*">
-            <Border Grid.Column="0"
-                    Classes="main">
+            <ContentControl Grid.Column="0"
+                            Classes="textured">
                 <cViews:CharacterWealthView Margin="4"
                                             DataContext="{Binding Wealth}"/>
-                </Border>
+            </ContentControl>
 
-            <Border Grid.Column="1"
-                    Classes="main">
+            <ContentControl Grid.Column="1"
+                            Classes="textured">
                 <cViews:CharacterClutterView Margin="4"
                                              DataContext="{Binding Clutter}"/>
-            </Border>
+            </ContentControl>
         </Grid>
         
-        <Border Grid.Row="3" Grid.Column="2"
-                Classes="main">
+        <ContentControl Grid.Row="3" Grid.Column="2"
+                        Classes="textured">
             <cViews:CharacterInjuriesView Margin="4"
                                           DataContext="{Binding Injuries}"/>
-        </Border>
+        </ContentControl>
 
-        <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
-                Classes="main">
+        <ContentControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                        Classes="textured">
             <cViews:CharacterWeaponListView Margin="4"
                                             DataContext="{Binding Weapons}"/>
-        </Border>
+        </ContentControl>
         
-        <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
-                Classes="main">
+        <ContentControl Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
+                        Classes="textured">
             <cViews:CharacterSpellListView Margin="4"
                                            DataContext="{Binding Spells}"/>
-        </Border>
+        </ContentControl>
 
     </Grid>
     
