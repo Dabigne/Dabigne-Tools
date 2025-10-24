@@ -4,7 +4,7 @@ public class CharacterArmor
 {
     public string Name { get; set; }
     
-    public string Location {get; set;}
+    public ArmorLocationId Location {get; set;}
     
     public int Footprint { get; set; }
     

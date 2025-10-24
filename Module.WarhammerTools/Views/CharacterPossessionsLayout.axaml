@@ -27,7 +27,8 @@
         
         <ContentControl Grid.Row="0" Grid.RowSpan="3" Grid.Column="2"
                         Classes="textured">
-            <TextBlock>POINTS D'ARMURES (TODO)</TextBlock>
+            <cViews:CharacterArmorLocationListView Margin="4"
+                                                   DataContext="{Binding ArmorLocations}"/>
         </ContentControl>
 
         <ContentControl Grid.Row="1" Grid.RowSpan="3" Grid.Column="0"

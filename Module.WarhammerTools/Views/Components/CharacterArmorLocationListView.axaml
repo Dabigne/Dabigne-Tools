@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             xmlns:views="clr-namespace:Module.WarhammerTools.Views.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.WarhammerTools.Views.Components.CharacterArmorLocationListView">
+
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+        <StyleInclude Source="avares://Application.Core/UserControls/DataGridStyle.axaml"/>
+    </UserControl.Styles>
+
+    <Design.DataContext>
+        <components:CharacterArmorLocationListViewModel/>    
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="*,*,*,*,*,*,*"
+          ColumnDefinitions="*,*">
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Classes="title"
+                   Text="POINTS D'ARMURES (PA)"/>
+
+        <views:CharacterArmorLocationView Grid.Row="1" Grid.Column="0"
+                                          HorizontalAlignment="Left"
+                                          DataContext="{Binding Locations[0]}"/>
+        <views:CharacterArmorLocationView Grid.Row="2" Grid.Column="1"
+                                          HorizontalAlignment="Right"
+                                          DataContext="{Binding Locations[1]}"/>
+        <views:CharacterArmorLocationView Grid.Row="3" Grid.Column="0"
+                                          HorizontalAlignment="Left"
+                                          DataContext="{Binding Locations[2]}"/>
+        <views:CharacterArmorLocationView Grid.Row="4" Grid.Column="1"
+                                          HorizontalAlignment="Right"
+                                          DataContext="{Binding Locations[3]}"/>
+        <views:CharacterArmorLocationView Grid.Row="5" Grid.Column="0"
+                                          HorizontalAlignment="Left"
+                                          DataContext="{Binding Locations[4]}"/>
+        <views:CharacterArmorLocationView Grid.Row="6" Grid.Column="1"
+                                          HorizontalAlignment="Right"
+                                          DataContext="{Binding Locations[5]}"/>
+
+    </Grid>
+    
+    
+</UserControl>

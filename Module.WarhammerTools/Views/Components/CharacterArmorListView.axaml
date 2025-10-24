@@ -31,10 +31,28 @@
                                     Width="3*"
                                     FontSize="10"
                                     Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Localisation"
-                                    Width="*"
-                                    FontSize="10"
-                                    Binding="{Binding Location}"/>
+                
+                <DataGridTemplateColumn Header="Localisation"
+                                        Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate DataType="components:CharacterArmorViewModel">
+                            <TextBlock Text="{Binding Location.Name, StringFormat='{}{0}'}" 
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Center"
+                                       FontSize="10"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate DataType="components:CharacterArmorViewModel">
+                            <ComboBox SelectedValue="{Binding Location}"  
+                                      DisplayMemberBinding="{Binding Name}"
+                                      ItemsSource="{Binding LocationList}"
+                                      HorizontalAlignment="Stretch"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                
                 <DataGridTemplateColumn Header="Enc"
                                         Width="*">
                     <DataGridTemplateColumn.CellTemplate>
@@ -55,6 +73,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
+                
                 <DataGridTemplateColumn Header="PA"
                                         Width="*">
                     <DataGridTemplateColumn.CellTemplate>

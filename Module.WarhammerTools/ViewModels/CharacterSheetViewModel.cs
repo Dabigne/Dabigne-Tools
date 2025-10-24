@@ -38,6 +38,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     public CharacterGroupViewModel Group { get; } = new();
 
     public CharacterArmorListViewModel Armors { get; }
+    
+    public CharacterArmorLocationListViewModel ArmorLocations { get; }
 
     public CharacterPossessionListViewModel Possessions { get; }
     
@@ -91,6 +93,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         AdvancedExpertiseList = new CharacterAdvancedExpertiseListViewModel(instanceProvider);
         SkillList = new CharacterSkillListViewModel(instanceProvider);
         Armors = new CharacterArmorListViewModel(instanceProvider);
+        ArmorLocations = new CharacterArmorLocationListViewModel(instanceProvider.GetInstance<IArmorRulesService>());
         Possessions = new CharacterPossessionListViewModel(instanceProvider);
         Weapons = new CharacterWeaponListViewModel(instanceProvider);
         Spells = new CharacterSpellListViewModel(instanceProvider);

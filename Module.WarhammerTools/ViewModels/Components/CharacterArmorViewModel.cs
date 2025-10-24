@@ -10,21 +10,28 @@ public partial class CharacterArmorViewModel : ObservableObject, IViewModel<Char
     private string _name = string.Empty;
     
     [ObservableProperty]
-    private string _location = string.Empty;
+    private ArmorLocation _location = new();
     
     [ObservableProperty]
-    private int _footprint = 0;
+    private int _footprint;
     
     [ObservableProperty]
-    private int _armorPoints = 0;
+    private int _armorPoints;
     
     [ObservableProperty]
     private string _assetsAndDefaults = string.Empty;
 
+    public IList<ArmorLocation> LocationList { get; }
+    
+    public CharacterArmorViewModel(IArmorRulesService armorRulesService)
+    {
+        LocationList =  armorRulesService.GetLocations();
+    }
+
     public void SetModel(CharacterArmor model)
     {
         Name = model.Name;
-        Location = model.Location;
+        Location = LocationList.First(l => l.Id == model.Location);
         Footprint = model.Footprint;
         ArmorPoints = model.ArmorPoints;
         AssetsAndDefaults = model.AssetsAndDefaults;
@@ -35,7 +42,7 @@ public partial class CharacterArmorViewModel : ObservableObject, IViewModel<Char
         return new CharacterArmor
         {
             Name = Name,
-            Location = Location,
+            Location = Location.Id,
             Footprint = Footprint,
             ArmorPoints = ArmorPoints,
             AssetsAndDefaults = AssetsAndDefaults
