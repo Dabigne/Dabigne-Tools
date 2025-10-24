@@ -15,7 +15,7 @@
         <components:CharacterPossessionListViewModel/>    
     </Design.DataContext>
     
-    <Grid RowDefinitions="Auto,Auto"
+    <Grid RowDefinitions="Auto,*"
           Margin="4">
         <local:ListViewHeader Grid.Row="0"/>
 
