@@ -168,6 +168,7 @@ public class CharacterSheetService : ICharacterSheetService
         viewModel.Ambitions.SetModel(_loadedCharacterSheet.Ambitions);
         viewModel.Group.SetModel(_loadedCharacterSheet.Group);
         viewModel.Armors.SetModel(_loadedCharacterSheet.Armors);
+        viewModel.ArmorLocations.SetModel();
         viewModel.Possessions.SetModel(_loadedCharacterSheet.Possessions);
         viewModel.Weapons.SetModel(_loadedCharacterSheet.Weapons);
         viewModel.Psychology.SetModel(_loadedCharacterSheet.Psychology);

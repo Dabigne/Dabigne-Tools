@@ -16,4 +16,8 @@ public class ArmorLocation
     public ArmorLocationId Id { get; set; }
     
     public string Name { get; set; }
+    
+    public int MinHitInformation { get; set; }
+
+    public int MaxHitInformation { get; set; }
 }

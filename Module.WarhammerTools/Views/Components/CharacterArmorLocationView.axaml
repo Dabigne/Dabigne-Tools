@@ -2,14 +2,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterArmorLocationView">
+    
+    <Design.DataContext>
+        <components:CharacterArmorLocationViewModel/>    
+    </Design.DataContext>
+
     <Grid RowDefinitions="Auto,Auto,Auto">
         <TextBlock Grid.Row="0"
                    HorizontalAlignment="Center"
                    Text="{Binding HitScore}"/>
         <TextBox Grid.Row="1"
                  HorizontalAlignment="Center"
+                 Width="30"
+                 Height="30"
                  FontSize="18"
                  Text="{Binding Value}"/>
         <TextBlock Grid.Row="2"

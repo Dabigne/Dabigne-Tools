@@ -13,12 +13,21 @@ public partial class CharacterArmorLocationListViewModel : ObservableObject
     public CharacterArmorLocationListViewModel(IArmorRulesService armorRulesService)
     {
         _armorRulesService = armorRulesService;
-        
-        _locations.Add(new CharacterArmorLocationViewModel{HitScore = "01-09", Title = "Tête", Value = 0});
-        _locations.Add(new CharacterArmorLocationViewModel{HitScore = "10-24", Title = "Bras gauche", Value = 0});
-        _locations.Add(new CharacterArmorLocationViewModel{HitScore = "25-44", Title = "Bras droit", Value = 0});
-        _locations.Add(new CharacterArmorLocationViewModel{HitScore = "45-79", Title = "Corps", Value = 0});
-        _locations.Add(new CharacterArmorLocationViewModel{HitScore = "90-00", Title = "Jambe droite", Value = 0});
-        _locations.Add(new CharacterArmorLocationViewModel{HitScore = "80-89", Title = "Jambe gauche", Value = 0});
+    }
+
+    public void SetModel()
+    {
+        var locations = _armorRulesService.GetLocations();
+        var values = _armorRulesService.GetValues();
+
+        var newLocations = 
+        locations.Select(armorLocation => new CharacterArmorLocationViewModel
+        {
+            Title = armorLocation.Name, 
+            HitScore = $"{armorLocation.MinHitInformation}-{armorLocation.MaxHitInformation}", 
+            Value = values[armorLocation.Id]
+        }).ToList();
+
+        Locations = newLocations;
     }
 }

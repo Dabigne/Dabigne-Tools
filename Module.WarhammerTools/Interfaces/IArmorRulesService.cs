@@ -5,4 +5,6 @@ namespace Module.WarhammerTools.Interfaces;
 public interface IArmorRulesService
 {
     IList<ArmorLocation> GetLocations();
+
+    Dictionary<ArmorLocationId, int> GetValues();
 }

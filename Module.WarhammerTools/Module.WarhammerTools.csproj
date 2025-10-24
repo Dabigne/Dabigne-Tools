@@ -67,6 +67,8 @@
       <AvaloniaResource Include="Assets\BorderSide.png" />
       <None Remove="Assets\InnerBorder.png" />
       <AvaloniaResource Include="Assets\InnerBorder.png" />
+      <None Remove="Assets\Silhouette.png" />
+      <AvaloniaResource Include="Assets\Silhouette.png" />
     </ItemGroup>
 
     <Target Name="CopyDLLs" AfterTargets="Build">
