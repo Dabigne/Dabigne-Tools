@@ -89,9 +89,15 @@ public class RatingControl : TemplatedControl
     
     private void ChecksPresenter_PointerReleased(object? sender, Avalonia.Input.PointerReleasedEventArgs e)
     {
-        if (e.Source is Path check)
+        if (e.Source is not Path check)
+            return;
+        
+        if (Value == 1 && check.DataContext as int? == 1)
         {
-            Value = check.DataContext as int? ?? 0;
+            Value = 0;
+            return;
         }
+            
+        Value = check.DataContext as int? ?? 0;
     }
 }
