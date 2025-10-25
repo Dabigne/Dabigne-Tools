@@ -10,7 +10,9 @@
 				<StackPanel Spacing="10" Background="{DynamicResource SystemRegionBrush}">
 					<userControls:RatingControl Value="0" MaxValue="5" />
 					<userControls:RatingControl Value="2" MaxValue="5" />
-					<userControls:RatingControl Value="6" MaxValue="6" />
+					<userControls:RatingControl Value="6" MaxValue="6" 
+					                            Width="150" 
+					                            HorizontalAlignment="Left"/>
 				</StackPanel>
 			</ThemeVariantScope>
 			<!-- Force using Light Theme Variant -->
@@ -18,7 +20,7 @@
 				<StackPanel Spacing="10" Background="{DynamicResource SystemRegionBrush}">
 					<userControls:RatingControl Value="0" MaxValue="5" />
 					<userControls:RatingControl Value="2" MaxValue="5" />
-					<userControls:RatingControl Value="6" MaxValue="6" />
+					<userControls:RatingControl Value="6" MaxValue="6" Width="150" HorizontalAlignment="Left"/>
 				</StackPanel>
 			</ThemeVariantScope>
 			<!-- Force using Dark Theme Variant -->
@@ -54,8 +56,8 @@
 		</ResourceDictionary>
 		<ResourceDictionary x:Key="Dark">
 			<StreamGeometry x:Key="RatingControlCheckPath">
-				m 2.8,2.0 
-				a 0.8,0.8 1 0 0 -0.8,0.8 0.8,0.8 1 0 0 -0.8,-0.8 0.8,0.8 1 0 0 0.8,-0.8 0.8,0.8 1 0 0 0.8 0.8 
+				m 1 1
+				a 1 1 0 1 0 0.01 0.01
 				z
 			</StreamGeometry>
 			<SolidColorBrush x:Key="RatingControlSelectedBrush" Color="Red"/>
@@ -102,8 +104,7 @@
                         </ItemsControl.Styles>
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"
-                                            Spacing="4"/>
+                                <WrapPanel Orientation="Horizontal"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
