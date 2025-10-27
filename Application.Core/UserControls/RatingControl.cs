@@ -11,6 +11,17 @@ namespace Application.Core.UserControls;
 public class RatingControl : TemplatedControl
 {
     private ItemsControl? _checksPresenter;
+
+    public static readonly StyledProperty<double> CheckSizeProperty = 
+        AvaloniaProperty.Register<RatingControl, double>(
+            nameof(CheckSize),
+            defaultValue:32);
+
+    public double CheckSize
+    {
+        get => GetValue(CheckSizeProperty);
+        set => SetValue(CheckSizeProperty, value);
+    }
     
     public static readonly StyledProperty<int> MaxValueProperty = 
         AvaloniaProperty.Register<RatingControl, int>(

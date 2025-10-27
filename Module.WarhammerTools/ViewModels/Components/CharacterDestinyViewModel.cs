@@ -19,8 +19,8 @@ public partial class CharacterDestinyViewModel : ObservableObject
 
     public void SetModel(CharacterDestiny model)
     {
-        MaxDestinyPoints = model.MaxDestinyPoints;
-        MaxChancePoints = model.MaxChancePoints;
+        MaxDestinyPoints = model.MaxDestinyPoints > 0 ? model.MaxDestinyPoints : 3;
+        MaxChancePoints = model.MaxChancePoints > 0 ? model.MaxChancePoints : 3;
         DestinyPoints = model.DestinyPoints;
         ChancePoints = model.ChancePoints;
     }

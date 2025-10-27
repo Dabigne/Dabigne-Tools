@@ -8,8 +8,8 @@
 			<!-- Force using default Theme Variant -->
 			<ThemeVariantScope RequestedThemeVariant="Default">
 				<StackPanel Spacing="10" Background="{DynamicResource SystemRegionBrush}">
-					<userControls:RatingControl Value="0" MaxValue="5" />
-					<userControls:RatingControl Value="2" MaxValue="5" />
+					<userControls:RatingControl Value="0" MaxValue="5"/>
+					<userControls:RatingControl Value="2" MaxValue="5"/>
 					<userControls:RatingControl Value="6" MaxValue="6" 
 					                            Width="150" 
 					                            HorizontalAlignment="Left"/>
@@ -26,9 +26,9 @@
 			<!-- Force using Dark Theme Variant -->
 			<ThemeVariantScope RequestedThemeVariant="Dark">
 				<StackPanel Spacing="10" Background="{DynamicResource SystemRegionBrush}">
-					<userControls:RatingControl Value="0" MaxValue="5" />
-					<userControls:RatingControl Value="2" MaxValue="5" />
-					<userControls:RatingControl Value="6" MaxValue="6" />
+					<userControls:RatingControl Value="0" MaxValue="5"/>
+					<userControls:RatingControl Value="2" MaxValue="5"/>
+					<userControls:RatingControl Value="6" MaxValue="6"/>
 				</StackPanel>
 			</ThemeVariantScope>
 		</StackPanel>
@@ -38,32 +38,30 @@
 	<ResourceDictionary.ThemeDictionaries>
 		<ResourceDictionary x:Key="Default">
 			<StreamGeometry x:Key="RatingControlCheckPath">
-				M 3.9687501,0 5.1351364,2.3633569 7.7432556,2.7423389 5.8560028,4.5819556 6.3015226,7.1795363 3.96875,5.953125 1.6359772,7.1795361 2.0814972,4.5819556 0.19424448,2.7423387 2.8023636,2.3633569 Z
+				m 1 1 a 1 1 0 1 0 0.01 0.01 z
 			</StreamGeometry>
 			<SolidColorBrush x:Key="RatingControlSelectedBrush" Color="Gold"/>
-			<SolidColorBrush x:Key="RatingControlSelectedStrokenBrush" Color="Goldenrod"/>
+			<SolidColorBrush x:Key="RatingControlSelectedStrokeBrush" Color="Goldenrod"/>
 			<SolidColorBrush x:Key="RatingControlUnselectedBrush" Color="White"/>
-			<SolidColorBrush x:Key="RatingControlUnselectedStrokenBrush" Color="Gray"/>
+			<SolidColorBrush x:Key="RatingControlUnselectedStrokeBrush" Color="Gray"/>
 		</ResourceDictionary>
 		<ResourceDictionary x:Key="Light">
 			<StreamGeometry x:Key="RatingControlCheckPath">
-				M 3.9687501,0 5.1351364,2.3633569 7.7432556,2.7423389 5.8560028,4.5819556 6.3015226,7.1795363 3.96875,5.953125 1.6359772,7.1795361 2.0814972,4.5819556 0.19424448,2.7423387 2.8023636,2.3633569 Z
+				m 1 1 a 1 1 0 1 0 0.01 0.01 z
 			</StreamGeometry>
 			<SolidColorBrush x:Key="RatingControlSelectedBrush" Color="Gold"/>
-			<SolidColorBrush x:Key="RatingControlSelectedStrokenBrush" Color="Gray"/>
+			<SolidColorBrush x:Key="RatingControlSelectedStrokeBrush" Color="DarkGoldenrod"/>
 			<SolidColorBrush x:Key="RatingControlUnselectedBrush" Color="White"/>
-			<SolidColorBrush x:Key="RatingControlUnselectedStrokenBrush" Color="Gray"/>
+			<SolidColorBrush x:Key="RatingControlUnselectedStrokeBrush" Color="Gray"/>
 		</ResourceDictionary>
 		<ResourceDictionary x:Key="Dark">
 			<StreamGeometry x:Key="RatingControlCheckPath">
-				m 1 1
-				a 1 1 0 1 0 0.01 0.01
-				z
+				m 1 1 a 1 1 0 1 0 0.01 0.01 z
 			</StreamGeometry>
 			<SolidColorBrush x:Key="RatingControlSelectedBrush" Color="Red"/>
-			<SolidColorBrush x:Key="RatingControlSelectedStrokenBrush" Color="White"/>
+			<SolidColorBrush x:Key="RatingControlSelectedStrokeBrush" Color="White"/>
 			<SolidColorBrush x:Key="RatingControlUnselectedBrush" Color="Transparent"/>
-			<SolidColorBrush x:Key="RatingControlUnselectedStrokenBrush" Color="White"/>
+			<SolidColorBrush x:Key="RatingControlUnselectedStrokeBrush" Color="White"/>
 		</ResourceDictionary>
 	</ResourceDictionary.ThemeDictionaries>
     
@@ -72,7 +70,8 @@
         <ControlTheme.Resources>
             <converters:IsSmallerOrEqualConverter x:Key="IsSmallerOrEqualConverter"/>
         </ControlTheme.Resources>
-        
+	    
+	    <Setter Property="CheckSize" Value="20"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -82,23 +81,21 @@
                         <ItemsControl.Styles>
                             <Style Selector="Path.check" >
                                 <Setter Property="Data" Value="{DynamicResource RatingControlCheckPath}" />
-                                <Setter Property="Width" Value="32" />
-                                <Setter Property="Height" Value="32" />
                                 <Setter Property="Margin" Value="5" />
                                 <Setter Property="Fill" Value="{DynamicResource RatingControlUnselectedBrush}" />
-                                <Setter Property="Stroke" Value="{DynamicResource RatingControlUnselectedStrokenBrush}" />
+                                <Setter Property="Stroke" Value="{DynamicResource RatingControlUnselectedStrokeBrush}" />
                                 <Setter Property="StrokeThickness" Value="2" />
                                 <Setter Property="Stretch" Value="Uniform" />
                             </Style>
     
                             <Style Selector="Path.selected" >
                                 <Setter Property="Fill" Value="{DynamicResource RatingControlSelectedBrush}" />
-                                <Setter Property="Stroke" Value="{DynamicResource RatingControlSelectedStrokenBrush}" />
+                                <Setter Property="Stroke" Value="{DynamicResource RatingControlSelectedStrokeBrush}" />
                             </Style>
     
                             <Style Selector="Path.check:pointerover" >
                                 <Setter Property="RenderTransform" Value="scale(1.3)" />
-                                <Setter Property="Fill" Value="{DynamicResource RatingControlSelectedStrokenBrush}" />
+                                <Setter Property="Fill" Value="{DynamicResource RatingControlSelectedStrokeBrush}" />
                             </Style>
 
                         </ItemsControl.Styles>
@@ -109,7 +106,8 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Path Classes="check">
+                                <Path Classes="check"
+                                      Width="{Binding CheckSize, RelativeSource={RelativeSource AncestorType=userControls:RatingControl}}">
                                     <Classes.selected>
                                         <MultiBinding Converter="{StaticResource IsSmallerOrEqualConverter}">
                                             <Binding />

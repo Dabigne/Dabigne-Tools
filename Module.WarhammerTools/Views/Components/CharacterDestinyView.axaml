@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterDestinyView">
     <UserControl.Styles>
@@ -14,34 +15,24 @@
     </Design.DataContext>
 
     <Grid RowDefinitions="Auto,Auto,Auto"
-          ColumnDefinitions="Auto,*,*">
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+          ColumnDefinitions="Auto,*">
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                    Text="DESTIN"
                    Classes="title"
                    HorizontalAlignment="Center"/>
         <TextBlock Grid.Row="1" Grid.Column="0"
                    Classes="small"
                    Text="Destin"/>
-        <TextBox Grid.Row="1" Grid.Column="1"
-                 Text="{Binding DestinyPoints}"/>
-        <TextBlock Grid.Row="1" Grid.Column="2">
-            <TextBlock.Inlines>
-                <Run Text="/ "/>
-                <Run Text="{Binding MaxDestinyPoints}"/>
-            </TextBlock.Inlines>
-        </TextBlock>
-        
+        <userControls:RatingControl Grid.Row="1" Grid.Column="1"
+                                    CheckSize="20"
+                                    Value="{Binding DestinyPoints}"
+                                    MaxValue="{Binding MaxDestinyPoints}"/>
         <TextBlock Grid.Row="2" Grid.Column="0"
                    Classes="small"
                    Text="Chance"/>
-        <TextBox Grid.Row="2" Grid.Column="1"
-                 Text="{Binding ChancePoints}"/>
-        <TextBlock Grid.Row="2" Grid.Column="2">
-            <TextBlock.Inlines>
-                <Run Text="/ "/>
-                <Run Text="{Binding MaxChancePoints}"/>
-            </TextBlock.Inlines>
-        </TextBlock>
+        <userControls:RatingControl Grid.Row="2" Grid.Column="1"
+                                    CheckSize="20"
+                                    Value="{Binding ChancePoints}"
+                                    MaxValue="{Binding MaxChancePoints}"/>
     </Grid>
-    
 </UserControl>

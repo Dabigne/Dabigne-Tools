@@ -5,7 +5,15 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="avares://Application.Core/UserControls/TextInput.axaml"/>
                 <ResourceInclude Source="avares://Application.Core/UserControls/NumericUpDown.axaml"/>
+                <ResourceInclude Source="avares://Application.Core/Themes/RatingControlTheme.axaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <StreamGeometry x:Key="RatingControlCheckPath">
+                m 1 1 a 1 1 0 1 0 0.01 0.01 z
+            </StreamGeometry>
+            <SolidColorBrush x:Key="RatingControlSelectedBrush" Color="BurlyWood"/>
+            <SolidColorBrush x:Key="RatingControlSelectedStrokeBrush" Color="DarkGoldenrod"/>
+            <SolidColorBrush x:Key="RatingControlUnselectedBrush" Color="White"/>
+            <SolidColorBrush x:Key="RatingControlUnselectedStrokeBrush" Color="Gray"/>
         </ResourceDictionary>
     </Styles.Resources>
     
