@@ -57,6 +57,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
 
     public CharacterSpellListViewModel Spells { get; }
     
+    public CharacterNoteListViewModel Notes { get; } = new();
+    
     [RelayCommand]
     private async Task Load()
     {

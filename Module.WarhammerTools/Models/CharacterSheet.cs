@@ -41,4 +41,6 @@ public class CharacterSheet
     public CharacterInjuries Injuries { get; set; } = new();
     
     public IList<CharacterSpell>  Spells { get; set; } = [];
+
+    public IList<Note> Notes { get; set; } = [];
 }

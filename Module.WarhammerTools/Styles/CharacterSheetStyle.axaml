@@ -105,6 +105,7 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Background" Value="BurlyWood"/>
         <Setter Property="BorderBrush" Value="DarkGoldenrod"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="MinWidth" Value="24"/>
         <Setter Property="Margin" Value="2"/>
         <Setter Property="Padding" Value="4,2"/>
@@ -116,6 +117,10 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Background" Value="DarkGoldenrod"/>
         <Setter Property="BorderBrush" Value="BurlyWood"/>
+    </Style>
+    
+    <Style Selector="ListBox">
+        <Setter Property="Background" Value="Transparent"/>
     </Style>
     
     <Style Selector="TabItem">

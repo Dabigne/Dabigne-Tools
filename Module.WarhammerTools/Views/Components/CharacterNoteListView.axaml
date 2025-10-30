@@ -4,31 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Module.WarhammerTools.Views.Components.ListViewHeader">
+             x:Class="Module.WarhammerTools.Views.Components.CharacterNoteListView">
     
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
-        <StyleInclude Source="avares://Application.Core/UserControls/DataGridStyle.axaml"/>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/TexturedBorder.axaml"/>
     </UserControl.Styles>
 
     <Design.DataContext>
-        <components:CharacterWeaponListViewModel/>    
+        <components:CharacterNoteListViewModel/>
     </Design.DataContext>
     
-    <Grid>
-        <TextBlock Grid.Row="0"
-                   Classes="title"
-                   HorizontalAlignment="Center"
-                   Text="{Binding Title}"/>
-        
+    <Grid RowDefinitions="Auto,*">
         <StackPanel Grid.Row="0"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
-            <Button Content="+" 
+            <Button Content="+"
                     Command="{Binding AddCommand}"/>
-            <Button Content="-" 
+            <Button Content="-"
                     Command="{Binding RemoveCommand}"/>
         </StackPanel>
-
+        
+        <ListBox Grid.Row="1"
+                 ItemsSource="{Binding Items}"
+                 SelectedItem="{Binding SelectedNote}"
+                 DisplayMemberBinding="{Binding Title}"/>
     </Grid>
+    
 </UserControl>

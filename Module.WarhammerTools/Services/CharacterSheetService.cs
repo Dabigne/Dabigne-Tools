@@ -145,6 +145,8 @@ public class CharacterSheetService : ICharacterSheetService
             CorruptionAndMutations = viewModel.CorruptionAndMutations.GetModel(),
             Wealth = viewModel.Wealth.GetModel(),
             Injuries = viewModel.Injuries.GetModel(),
+            Spells = viewModel.Spells.GetModel(),
+            Notes = viewModel.Notes.GetModel(),
         };
 
         _loadedCharacterSheet = model;
@@ -175,5 +177,7 @@ public class CharacterSheetService : ICharacterSheetService
         viewModel.CorruptionAndMutations.SetModel(_loadedCharacterSheet.CorruptionAndMutations);
         viewModel.Wealth.SetModel(_loadedCharacterSheet.Wealth);
         viewModel.Injuries.SetModel(_loadedCharacterSheet.Injuries);
+        viewModel.Spells.SetModel(_loadedCharacterSheet.Spells);
+        viewModel.Notes.SetModel(_loadedCharacterSheet.Notes);
     }
 }

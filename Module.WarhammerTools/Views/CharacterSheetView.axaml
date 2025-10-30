@@ -44,6 +44,9 @@
                         <views:CharacterPossessionsLayout DataContext="{Binding}"/>
                     </ScrollViewer>
                 </TabItem>
+                <TabItem Header="Notes">
+                    <views:CharacterNotesLayout DataContext="{Binding}"/>
+                </TabItem>
             </TabControl>
 
             <StackPanel Orientation="Horizontal"

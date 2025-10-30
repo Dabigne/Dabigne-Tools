@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Module.WarhammerTools.ViewModels"
+             xmlns:cViews="clr-namespace:Module.WarhammerTools.Views.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.WarhammerTools.Views.CharacterNotesLayout">
+
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/TexturedBorder.axaml"/>
+    </UserControl.Styles>
+    
+    <Design.DataContext>
+        <viewModels:CharacterSheetViewModel/>    
+    </Design.DataContext>
+    
+    <Grid ColumnDefinitions="*,2*">
+        <ContentControl Grid.Column="0"
+                        Classes="textured">
+            <cViews:CharacterNoteListView DataContext="{Binding Notes}"/>
+        </ContentControl>
+        
+        <ContentControl Grid.Column="1"
+                        Classes="textured">
+            <cViews:CharacterNoteEditionView DataContext="{Binding  Notes.SelectedNote}"/>
+        </ContentControl>
+    </Grid>
+
+</UserControl>
