@@ -7,7 +7,7 @@ public interface ICharacterSheetService
 {
     void LoadModel(CharacterSheet characterSheet);
 
-    CharacterSheet GetLoadedCharacterSheet();
+    CharacterSheet? GetLoadedCharacterSheet();
 
     CharacterSheet BuildCharacterSheet();
 

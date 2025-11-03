@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using Application.Core.Interfaces.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -23,17 +22,17 @@ public partial class PdfMergeViewModel : ObservableObject
     private int _pageCount;
     
     [ObservableProperty]
-    private string _mergedPdfPath;
+    private string _mergedPdfPath = string.Empty;
     
     public PdfMergeViewModel(
-        FileListViewModel fileList, 
-        IPdfService pdfService,
-        IFileService fileService)
+        FileListViewModel? fileList, 
+        IPdfService? pdfService,
+        IFileService? fileService)
     {
-        FileList = fileList;
+        FileList = fileList!;
         FileList.Files.CollectionChanged += FilesOnCollectionChanged;
-        _pdfService = pdfService;
-        _fileService = fileService;
+        _pdfService = pdfService!;
+        _fileService = fileService!;
     }
 
     private void FilesOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)

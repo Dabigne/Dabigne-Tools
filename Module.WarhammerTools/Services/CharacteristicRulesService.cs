@@ -13,13 +13,13 @@ public class CharacteristicRulesService : ICharacteristicRulesService
 
     public int GetValue(string characteristicShortCut)
     {
-        return _characterSheetService.GetLoadedCharacterSheet()
+        return _characterSheetService.GetLoadedCharacterSheet()!
             .Characteristics.First(c => c.ShortCut == characteristicShortCut).Value;
     }
     
     public int GetBonusValue(string characteristicShortCut)
     {
-        return _characterSheetService.GetLoadedCharacterSheet()
+        return _characterSheetService.GetLoadedCharacterSheet()!
             .Characteristics.First(c => c.ShortCut == characteristicShortCut).Value / 10;
     }
 

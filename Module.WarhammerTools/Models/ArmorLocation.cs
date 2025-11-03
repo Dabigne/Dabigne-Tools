@@ -15,7 +15,7 @@ public class ArmorLocation
 {
     public ArmorLocationId Id { get; set; }
     
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
     
     public int MinHitInformation { get; set; }
 

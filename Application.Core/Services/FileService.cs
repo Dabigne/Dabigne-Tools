@@ -6,7 +6,7 @@ namespace Application.Core.Services;
 
 public class FileService : IFileService
 {
-    private Window _window;
+    private Window? _window;
     
     public void SetWindow(Window window)
     {
@@ -15,7 +15,7 @@ public class FileService : IFileService
 
     public async Task<IStorageFile?> PickLoadFile()
     {
-        var files = await _window.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+        var files = await _window!.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
         {
             Title = "Select file to load",
         });
@@ -25,7 +25,7 @@ public class FileService : IFileService
     
     public async Task<IReadOnlyList<IStorageFile>> PickFiles()
     {
-        var files = await _window.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+        var files = await _window!.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
         {
             Title = "Select files",
             AllowMultiple = true
@@ -37,7 +37,7 @@ public class FileService : IFileService
 
     public async Task<IStorageFile?> PickSaveFile()
     {
-        var file = await _window.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
+        var file = await _window!.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
         {
             Title = "Select file to save",
         });

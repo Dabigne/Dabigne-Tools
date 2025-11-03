@@ -17,9 +17,9 @@ public partial class OutputViewModel : ObservableObject
     public ObservableCollection<IOutputLine> Content { get; } = [];
 
     [ObservableProperty] 
-    private IOutputLine? _selectedLine = null;
+    private IOutputLine? _selectedLine;
     
-    partial void OnSelectedLineChanged(IOutputLine? selectedLine)
+    partial void OnSelectedLineChanged(IOutputLine? value)
     {
         if (SelectedLine != null) 
             _outputService.SelectLine(SelectedLine);
@@ -32,9 +32,9 @@ public partial class OutputViewModel : ObservableObject
         SelectedLine = null;
     }
 
-    public OutputViewModel(IOutputService outputService)
+    public OutputViewModel(IOutputService? outputService)
     {
-        _outputService = outputService;
+        _outputService = outputService!;
         _outputService.LinePushed += Append;
     }
 

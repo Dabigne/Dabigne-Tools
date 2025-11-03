@@ -40,13 +40,13 @@ public partial class MangaDownloadViewModel : ObservableObject
     }
     
     public MangaDownloadViewModel(
-        ICatalogService catalogService, 
-        IMangaPdfService mangaPdfService,
-        IOutputService outputService)
+        ICatalogService? catalogService, 
+        IMangaPdfService? mangaPdfService,
+        IOutputService? outputService)
     {
-        _mangaPdfService = mangaPdfService;
+        _mangaPdfService = mangaPdfService!;
 
-        SearchViewModel = new MangaSearchViewModel(catalogService, outputService);
+        SearchViewModel = new MangaSearchViewModel(catalogService!, outputService!);
     }
     
     [RelayCommand]

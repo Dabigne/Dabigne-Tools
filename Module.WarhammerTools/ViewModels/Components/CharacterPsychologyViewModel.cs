@@ -5,9 +5,9 @@ namespace Module.WarhammerTools.ViewModels.Components;
 public partial class CharacterPsychologyViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _value;
+    private string _value = string.Empty;
     
-    public void SetModel(string value) => _value = value;
+    public void SetModel(string value) => Value = value;
     
-    public string GetModel() => _value;
+    public string GetModel() => Value;
 }

@@ -8,11 +8,11 @@ public partial class CharacterArmorLocationViewModel : ObservableObject
     public ArmorLocationId Id { get; set; }
     
     [ObservableProperty] 
-    private string _hitScore;
+    private string _hitScore = string.Empty;
 
     [ObservableProperty]
     private int _value;
 
     [ObservableProperty] 
-    private string _title;
+    private string _title = string.Empty;
 }

@@ -19,9 +19,9 @@ public partial class FileListViewModel : ObservableObject
     [ObservableProperty]
     private string? _selectedFile;
 
-    public FileListViewModel(IFileService  fileService)
+    public FileListViewModel(IFileService?  fileService)
     {
-        _fileService = fileService;
+        _fileService = fileService!;
     }
     
     [RelayCommand]

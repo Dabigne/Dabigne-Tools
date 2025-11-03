@@ -10,14 +10,13 @@ namespace Dabigne.Tools.ViewModels;
 public partial class MainWindowViewModel : ObservableObject
 {
     private readonly INavigationService _navigationService;
-    private readonly IOutputService _outputService;
 
-    public IList<INavigationItem> NavigationItems { get; } = new List<INavigationItem>();
+    public IList<INavigationItem> NavigationItems { get; }
     
     public OutputViewModel Output  { get; }
     
     [ObservableProperty]
-    private INavigationItem _selectedItem;
+    private INavigationItem? _selectedItem;
     
     [ObservableProperty]
     private bool _isPaneOpen = true;
@@ -35,18 +34,14 @@ public partial class MainWindowViewModel : ObservableObject
     public MainWindowViewModel(INavigationService navigationService, IOutputService outputService)
     {
         _navigationService = navigationService;
-        _outputService = outputService;
         Output = new OutputViewModel(outputService);
         NavigationItems = _navigationService.GetNavigationItems().ToList();
         SelectedItem = NavigationItems.First();
     }
 
-    partial void OnSelectedItemChanged(INavigationItem navigationItem)
+    partial void OnSelectedItemChanged(INavigationItem? value)
     {
-        if (SelectedItem == null)
-            return;
-        
-        if (SelectedItem.Type == null)
+        if (SelectedItem?.Type == null)
             return;
         
         _navigationService.NavigateTo(SelectedItem.Type);

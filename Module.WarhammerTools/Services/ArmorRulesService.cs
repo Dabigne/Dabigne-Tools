@@ -41,7 +41,7 @@ public class ArmorRulesService : IArmorRulesService
             { ArmorLocationId.Shield, 0 }
         };
 
-        var armors = _characterSheetService.GetLoadedCharacterSheet().Armors;
+        var armors = _characterSheetService.GetLoadedCharacterSheet()!.Armors;
         foreach (var armor in armors)
         {
             result[armor.Location] += armor.ArmorPoints;

@@ -7,7 +7,7 @@ namespace Module.WarhammerTools.ViewModels.Components;
 public partial class CharacterPossessionViewModel : ObservableObject, IViewModel<CharacterPossession>
 {
     [ObservableProperty]
-    private string _name;
+    private string _name = string.Empty;
     
     [ObservableProperty]
     private int _footprint;

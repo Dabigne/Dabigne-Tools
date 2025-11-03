@@ -6,10 +6,10 @@ namespace Module.WarhammerTools.ViewModels.Components;
 public partial class CharacterAmbitionsViewModel : ObservableObject
 {
     [ObservableProperty] 
-    private string _shortTerm;
+    private string _shortTerm = string.Empty;
     
     [ObservableProperty]
-    private string _longTerm;
+    private string _longTerm = string.Empty;
 
     public void SetModel(CharacterAmbitions model)
     {
@@ -21,8 +21,8 @@ public partial class CharacterAmbitionsViewModel : ObservableObject
     {
         return new CharacterAmbitions
         {
-            ShortTerm = _shortTerm,
-            LongTerm = _longTerm
+            ShortTerm = ShortTerm,
+            LongTerm = LongTerm
         };
     }
 }

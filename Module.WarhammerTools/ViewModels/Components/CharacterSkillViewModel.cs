@@ -26,9 +26,9 @@ public partial class CharacterSkillViewModel : ObservableObject, IViewModel<Char
     {
         return new CharacterSkill
         {
-            Name = _name,
-            Description = _description,
-            Level = _level
+            Name = Name,
+            Description = Description,
+            Level = Level
         };
     }
 }

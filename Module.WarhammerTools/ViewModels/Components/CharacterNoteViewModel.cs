@@ -6,10 +6,10 @@ namespace Module.WarhammerTools.ViewModels.Components;
 public partial class CharacterNoteViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _title;
+    private string _title = string.Empty;
     
     [ObservableProperty]
-    private string _text;
+    private string _text = string.Empty;
     
     public CharacterNoteViewModel SetModel(Note note)
     {

@@ -2,12 +2,11 @@ using System.Reflection;
 using Application.Core.Attributes;
 using Application.Core.Interfaces.Services;
 using Application.Core.Interfaces.Types;
-using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
 
 namespace Application.Core.Services;
 
-public sealed class NavigationItem(string title, string icon, Type pageType) : INavigationItem
+public sealed class NavigationItem(string title, string icon, Type? pageType) : INavigationItem
 {
     public string Title { get; set; } = title;
 

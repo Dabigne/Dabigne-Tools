@@ -6,16 +6,16 @@ namespace Module.WarhammerTools.ViewModels.Components;
 public partial class CharacterGroupViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _name;
+    private string _name = string.Empty;
     
     [ObservableProperty]
-    private string _shortTerm;
+    private string _shortTerm = string.Empty;
 
     [ObservableProperty]
-    private string _longTerm;
+    private string _longTerm = string.Empty;
     
     [ObservableProperty]
-    private string _members;
+    private string _members = string.Empty;
 
     public void SetModel(CharacterGroup model)
     {

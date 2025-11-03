@@ -9,10 +9,10 @@ public partial class CharacterExpertiseViewModel : ObservableObject, IViewModel<
     private readonly ICharacterSheetService _characterSheetService;
     
     [ObservableProperty] 
-    private string _name;
+    private string _name = string.Empty;
     
     [ObservableProperty]
-    private string _characteristic;
+    private string _characteristic = string.Empty;
     
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(Value))]
@@ -32,7 +32,7 @@ public partial class CharacterExpertiseViewModel : ObservableObject, IViewModel<
     public void SetModel(CharacterExpertise expertise)
     {
         var characteristic = _characterSheetService
-            .GetLoadedCharacterSheet()
+            .GetLoadedCharacterSheet()!
             .Characteristics
             .First(c => c.ShortCut == expertise.Characteristic);
         

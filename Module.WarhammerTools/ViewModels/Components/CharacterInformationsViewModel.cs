@@ -6,25 +6,25 @@ namespace Module.WarhammerTools.ViewModels.Components;
 public sealed partial class CharacterInformationsViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _name;
+    private string _name = string.Empty;
 
     [ObservableProperty] 
-    private string _race;
+    private string _race  = string.Empty;
     
     [ObservableProperty]
-    private string _class;
+    private string _class   = string.Empty;
 
     [ObservableProperty]
-    private string _career;
+    private string _career   = string.Empty;
     
     [ObservableProperty]
-    private string _careerLevel;
+    private string _careerLevel = string.Empty;
 
     [ObservableProperty]
-    private string _careerSchema;
+    private string _careerSchema = string.Empty;
 
     [ObservableProperty]
-    private string _status;
+    private string _status = string.Empty;
  
     [ObservableProperty]
     private int _age;
@@ -33,10 +33,10 @@ public sealed partial class CharacterInformationsViewModel : ObservableObject
     private int _size;
 
     [ObservableProperty]
-    private string _hairColor;
+    private string _hairColor = string.Empty;
 
     [ObservableProperty]
-    private string _eyesColor;
+    private string _eyesColor = string.Empty;
     
     public void SetModel(CharacterInformations model)
     {

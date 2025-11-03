@@ -17,17 +17,17 @@ public class ClutterRulesService : IClutterRulesService
     
     public int GetArmorClutter()
     {
-        return _characterSheetService.GetLoadedCharacterSheet().Armors.Sum(a => a.Footprint);
+        return _characterSheetService.GetLoadedCharacterSheet()!.Armors.Sum(a => a.Footprint);
     }
 
     public int GetWeaponClutter()
     {
-        return _characterSheetService.GetLoadedCharacterSheet().Weapons.Sum(a => a.Footprint);
+        return _characterSheetService.GetLoadedCharacterSheet()!.Weapons.Sum(a => a.Footprint);
     }
 
     public int GetPossessionClutter()
     {
-        return _characterSheetService.GetLoadedCharacterSheet().Possessions.Sum(a => a.Footprint);
+        return _characterSheetService.GetLoadedCharacterSheet()!.Possessions.Sum(a => a.Footprint);
     }
 
     public int GetMaxClutter()

@@ -6,7 +6,7 @@ namespace Module.WarhammerTools.ViewModels.Components;
 public partial class CharacterCharacteristicListViewModel : ObservableObject
 {
     [ObservableProperty] 
-    private IList<CharacterCharacteristicViewModel> _list;
+    private IList<CharacterCharacteristicViewModel>? _list;
     
     public void SetModel(IList<CharacterCharacteristic> models)
     {
@@ -23,6 +23,6 @@ public partial class CharacterCharacteristicListViewModel : ObservableObject
 
     public IList<CharacterCharacteristic> GetModel()
     {
-        return List.Select(i => i.GetModel()).ToList();
+        return List!.Select(i => i.GetModel()).ToList();
     }
 }

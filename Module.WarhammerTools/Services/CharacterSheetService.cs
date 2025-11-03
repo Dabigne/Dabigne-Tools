@@ -7,7 +7,7 @@ namespace Module.WarhammerTools.Services;
 
 public class CharacterSheetService : ICharacterSheetService
 {
-    private CharacterSheet _loadedCharacterSheet;
+    private CharacterSheet? _loadedCharacterSheet;
 
     public CharacterSheetService()
     {
@@ -19,7 +19,7 @@ public class CharacterSheetService : ICharacterSheetService
         _loadedCharacterSheet = characterSheet;
     }
 
-    public CharacterSheet GetLoadedCharacterSheet()
+    public CharacterSheet? GetLoadedCharacterSheet()
     {
         return _loadedCharacterSheet;
     }

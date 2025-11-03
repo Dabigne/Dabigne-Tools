@@ -6,7 +6,7 @@ namespace Application.Core.Services;
 
 public class InstanceProvider : IInstanceProvider
 {
-    private IContainer _container;
+    private IContainer? _container;
     
     public void Start(IList<Module> modules)
     {
@@ -19,17 +19,17 @@ public class InstanceProvider : IInstanceProvider
     
     public T GetInstance<T>() where T : notnull
     {
-        return _container.Resolve<T>();
+        return _container!.Resolve<T>();
     }
 
     public object GetInstance(Type type)
     {
-        return _container.Resolve(type);
+        return _container!.Resolve(type);
     }
 
     public IList<Type> GetRegisteredTypes<T>()
     {
-        var registrations = _container.ComponentRegistry.Registrations;
+        var registrations = _container!.ComponentRegistry.Registrations;
         var result = new List<Type>();
         
         foreach (var registration in registrations)
