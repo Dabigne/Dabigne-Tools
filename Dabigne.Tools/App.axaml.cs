@@ -14,6 +14,10 @@ namespace Dabigne.Tools;
 
 public sealed class App : Avalonia.Application
 {
+    private const string ModuleFolder = "Modules";
+    private const string ModulePrefix = "Module.";
+    private const string ModuleSuffix = ".dll";
+    
     private InstanceProvider  _instanceProvider = new();
     
     public override void Initialize()
@@ -41,8 +45,8 @@ public sealed class App : Avalonia.Application
             new ApplicationModule()
         };
 
-        var dynamicModules = Directory.GetFiles("Modules")
-            .Where(f => f.EndsWith(".dll"))
+        var dynamicModules = Directory.GetFiles(ModuleFolder)
+            .Where(f => f.StartsWith($"{ModuleFolder}/{ModulePrefix}") && f.EndsWith(ModuleSuffix))
             .ToList();
         foreach (var module in dynamicModules)
         {

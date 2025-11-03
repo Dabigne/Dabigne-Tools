@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             xmlns:md="https://github.com/whistyun/Markdown.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterNoteEditionView">
 
@@ -10,13 +11,19 @@
         <components:CharacterNoteViewModel/>
     </Design.DataContext>
 
-    <Grid RowDefinitions="Auto,*">
-        <TextBox Grid.Row="0"
+    <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,*">
+        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                  Text="{Binding Title}"/>
-        <TextBox Grid.Row="1"
+        <TextBox Grid.Row="1" Grid.Column="0"
                  Text="{Binding Text}"
                  AcceptsReturn="True"
                  AcceptsTab="True"/>
+        <Border Grid.Row="1" Grid.Column="1"
+                BorderThickness="1"
+                BorderBrush="Gray"
+                Background="Black">
+            <md:MarkdownScrollViewer Markdown="{Binding Text}"/>
+        </Border>
     </Grid>
 
 </UserControl>
