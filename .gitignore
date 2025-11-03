@@ -9,7 +9,6 @@
 /.idea
 /Application.Core.Interfaces/bin
 MangaDownload.sln.DotSettings.user
-/Application/Users/papou/RiderProjects/MangaDownload/Module.MangaDownload/bin
 Application/.DS_Store
 Module.MangaDownload/.DS_Store
 .DS_Store
@@ -17,7 +16,6 @@ Module.MangaDownload/.DS_Store
 /Module.PdfTools/obj
 /Dabigne.Tools/bin
 /Dabigne.Tools/obj
-*.dll
 *.pdb
 /Module.WarhammerTools/bin
 /Module.WarhammerTools/obj
