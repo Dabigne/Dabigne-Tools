@@ -1,0 +1,84 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ctxt="clr-namespace:ColorTextBlock.Avalonia;assembly=ColorTextBlock.Avalonia"
+        xmlns:mdctl="clr-namespace:Markdown.Avalonia.Controls;assembly=Markdown.Avalonia">
+
+    <Style Selector="ctxt|CTextBlock">
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+    <Style Selector="ctxt|CTextBlock.Heading1">
+        <Setter Property="Foreground" Value="DarkGoldenrod"/>
+        <Setter Property="FontWeight" Value="ExtraBold"/>
+    </Style>
+    <Style Selector="ctxt|CTextBlock.Heading2">
+        <Setter Property="Foreground" Value="Goldenrod"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style Selector="ctxt|CTextBlock.Heading3">
+        <Setter Property="Foreground" Value="Gold"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+    </Style>
+    <Style Selector="ctxt|CTextBlock.Heading4">
+        <Setter Property="Foreground" Value="Orange"/>
+    </Style>
+    <Style Selector="ctxt|CTextBlock.Heading5">
+        <Setter Property="Foreground" Value="DarkOrange"/>
+    </Style>
+    <Style Selector="ctxt|CTextBlock.Heading6">
+        <Setter Property="Foreground" Value="OrangeRed"/>
+    </Style>
+    
+    <Style Selector="mdctl|Rule.Single">
+        <Setter Property="Foreground" Value="DarkGoldenrod"/>
+    </Style>
+    <Style Selector="mdctl|Rule.TwoLines">
+        <Setter Property="Foreground" Value="DarkGoldenrod"/>
+    </Style>
+    <Style Selector="mdctl|Rule.Bold">
+        <Setter Property="Foreground" Value="DarkGoldenrod"/>
+    </Style>
+    <Style Selector="mdctl|Rule.BoldWithSingle">
+        <Setter Property="Foreground" Value="DarkGoldenrod"/>
+    </Style>
+    
+    <Style Selector=".List ctxt|CTextBlock">
+        <Setter Property="Foreground" Value="DarkGoldenrod"/>
+    </Style>
+    <Style Selector="ctxt|CTextBlock.ListMarker">
+        <Setter Property="Foreground" Value="DarkGoldenrod"/>
+    </Style>
+
+    <Style Selector="Border.Blockquote">
+        <Setter Property="BorderBrush" Value="DarkGoldenrod" />
+        <Setter Property="Background" Value="Wheat" />
+        <Setter Property="BorderThickness" Value="4,6"/>
+        <Setter Property="CornerRadius" Value="8"/>
+    </Style>
+    
+    <Style Selector="Border.Table">
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="BorderBrush" Value="DarkGoldenrod"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+    <Style Selector="Grid.Table">
+        <Setter Property="Background" Value="Wheat"/>
+    </Style>
+    <Style Selector="Border.TableHeader">
+        <Setter Property="BorderBrush" Value="DarkGoldenrod"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Background" Value="Wheat"/>
+    </Style>
+    <Style Selector="Border.OddTableRow">
+        <Setter Property="BorderBrush" Value="DarkGoldenrod"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Background" Value="BurlyWood"/>
+    </Style>
+    <Style Selector="Border.EvenTableRow">
+        <Setter Property="BorderBrush" Value="DarkGoldenrod"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Background" Value="NavajoWhite"/>
+    </Style>
+    <Style Selector="Border.TableHeader ctxt|CTextBlock">
+        <Setter Property="FontStyle" Value="Italic"/>
+    </Style>
+</Styles>

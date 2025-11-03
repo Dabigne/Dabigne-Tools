@@ -6,6 +6,9 @@
              xmlns:md="https://github.com/whistyun/Markdown.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterNoteEditionView">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
+    </UserControl.Styles>
 
     <Design.DataContext>
         <components:CharacterNoteViewModel/>
@@ -14,15 +17,21 @@
     <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,*">
         <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                  Text="{Binding Title}"/>
-        <TextBox Grid.Row="1" Grid.Column="0"
-                 Text="{Binding Text}"
-                 AcceptsReturn="True"
-                 AcceptsTab="True"/>
+        <ScrollViewer Grid.Row="1" Grid.Column="0">
+            <TextBox Text="{Binding Text}"
+                     FontFamily="SFMono"
+                     AcceptsReturn="True"
+                     AcceptsTab="True"/>
+        </ScrollViewer>
         <Border Grid.Row="1" Grid.Column="1"
                 BorderThickness="1"
                 BorderBrush="Gray"
-                Background="Black">
-            <md:MarkdownScrollViewer Markdown="{Binding Text}"/>
+                Padding="2,0">
+            <md:MarkdownScrollViewer Markdown="{Binding Text}">
+                <md:MarkdownScrollViewer.Styles>
+                    <StyleInclude Source="avares://Module.WarhammerTools/Styles/MarkdownStyles.axaml"/>
+                </md:MarkdownScrollViewer.Styles>
+            </md:MarkdownScrollViewer>
         </Border>
     </Grid>
 
