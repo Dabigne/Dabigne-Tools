@@ -5,7 +5,7 @@ namespace Module.MangaDownload.Services;
 
 public class MangaPdfService : IMangaPdfService
 {
-    private const string UrlRoot = "https://anime-sama.fr/s2/scans/";
+    private readonly string _urlRoot = $"{UrlConstants.SiteBaseUrl}s2/scans/";
     private const string MangasRoot = "Mangas";
 
     private readonly IImageDownloaderService  _imageDownloaderService;
@@ -25,15 +25,14 @@ public class MangaPdfService : IMangaPdfService
         var chapterString = chapterToDownload.ToString("D3");
         folderPath = Path.Combine(folderPath, MangasRoot);
         folderPath = Path.Combine(folderPath, mangaName);
-        //folderPath = Path.Combine(folderPath, chapterString);
 
         var page = 1;
         var result = true;
         
         _imageDownloaderService.Start();
-        while (result == true)
+        while (result)
         {
-            var imageUri = new Uri($"{UrlRoot}{mangaName}/{chapterToDownload}/{page}.jpg");
+            var imageUri = new Uri($"{_urlRoot}{mangaName}/{chapterToDownload}/{page}.jpg");
             result = await _imageDownloaderService.GetImage(folderPath, page.ToString("D3"), imageUri);
             page++;
         }

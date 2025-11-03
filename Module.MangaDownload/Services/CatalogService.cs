@@ -10,7 +10,7 @@ namespace Module.MangaDownload.Services;
 
 public class CatalogService : ICatalogService
 {
-    private const string Uri = "https://anime-sama.fr/catalogue/?type%5B%5D=Scans&search=";
+    private readonly string _uri = $"{UrlConstants.SiteBaseUrl}catalogue/?type%5B%5D=Scans&search=";
     private const string TitleSelector = ".infoCarteHorizontale > h1";
     private readonly IOutputService _outputService;
 
@@ -26,7 +26,7 @@ public class CatalogService : ICatalogService
         
         var config = Configuration.Default.WithDefaultLoader();
         var context = BrowsingContext.New(config);
-        var document = await context.OpenAsync($"{Uri}{query}");
+        var document = await context.OpenAsync($"{_uri}{query}");
         var result = document.QuerySelectorAll<IHtmlHeadingElement>(TitleSelector);
         var titles = result.Select(r => r.InnerHtml).ToList();
         
