@@ -12,6 +12,7 @@ public class CoreModule : Module
         builder.RegisterType<ImageDownloaderService>().As<IImageDownloaderService>().SingleInstance();
         builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
         builder.RegisterType<OutputService>().As<IOutputService>().SingleInstance();
-        builder.RegisterType<PdfService>().As<IPdfService>();
+        builder.RegisterType<PdfService>().As<IPdfService>().InstancePerDependency();
+        builder.RegisterType<SessionService>().As<ISessionService>().SingleInstance();
     }
 }

@@ -10,6 +10,7 @@ namespace Dabigne.Tools.ViewModels;
 public partial class MainWindowViewModel : ObservableObject
 {
     private readonly INavigationService _navigationService;
+    private readonly ISessionService _sessionService;
 
     public IList<INavigationItem> NavigationItems { get; }
     
@@ -31,19 +32,33 @@ public partial class MainWindowViewModel : ObservableObject
         PaneButtonContent = IsPaneOpen ? "<" : ">";
     }
     
-    public MainWindowViewModel(INavigationService navigationService, IOutputService outputService)
+    public MainWindowViewModel(
+        INavigationService navigationService, 
+        IOutputService outputService,
+        ISessionService sessionService)
     {
         _navigationService = navigationService;
+        _sessionService = sessionService;
+
         Output = new OutputViewModel(outputService);
         NavigationItems = _navigationService.GetNavigationItems().ToList();
-        SelectedItem = NavigationItems.First();
+        
+        _sessionService.LoadSession();
+        SelectedItem = _navigationService.PageType != null 
+            ? NavigationItems.FirstOrDefault(x => x.Type == _navigationService.PageType) 
+            : NavigationItems.First();
     }
 
     partial void OnSelectedItemChanged(INavigationItem? value)
     {
-        if (SelectedItem?.Type == null)
+        if (SelectedItem?.Type == null || SelectedItem?.Type == _navigationService.PageType)
             return;
         
         _navigationService.NavigateTo(SelectedItem.Type);
+    }
+
+    public void Close()
+    {
+        _sessionService.SaveSession();
     }
 }

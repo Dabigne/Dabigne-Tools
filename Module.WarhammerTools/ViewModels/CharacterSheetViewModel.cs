@@ -10,9 +10,13 @@ namespace Module.WarhammerTools.ViewModels;
 public sealed partial class CharacterSheetViewModel : ObservableObject
 {
     private readonly ICharacterSheetService _characterSheetService;
-    private readonly IFileService _fileService;
     private readonly ICharacterSheetFileService  _characterSheetFileService;
 
+    private readonly IFileService _fileService;
+    private readonly ISessionService _sessionService;
+    
+    public string? LastFilePath { get; private set; }
+    
     public CharacterInformationsViewModel Informations { get; } = new();
     
     public CharacterCharacteristicListViewModel CharacteristicList { get; }  = new();
@@ -66,7 +70,18 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         if (file == null) 
             return;
 
-        _characterSheetService.LoadModel(_characterSheetFileService.Load(file.Path.LocalPath));
+        _sessionService.Parameters = file.Path.LocalPath; 
+        LoadCharacterSheet(file.Path.LocalPath);
+    }
+
+    public void LoadCharacterSheet(string? filePath)
+    {
+        if (string.IsNullOrEmpty(filePath))
+            return;
+        
+        LastFilePath = filePath;
+
+        _characterSheetService.LoadModel(_characterSheetFileService.Load(filePath));
         _characterSheetService.InjectModel(this);
     }
 
@@ -77,19 +92,22 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         if (file == null) 
             return;
         
+        LastFilePath = file.Path.LocalPath;
         _characterSheetFileService.Save(_characterSheetService.UpdateModel(this), file.Path.LocalPath);
     }
     
     public CharacterSheetViewModel(
         ICharacterSheetService characterSheetService,
-        IFileService  fileService,
         ICharacterSheetFileService characterSheetFileService,
+        IFileService  fileService,
+        ISessionService sessionService,
         IInstanceProvider instanceProvider)
     {
         _characterSheetService = characterSheetService;
-        _fileService = fileService;
         _characterSheetFileService = characterSheetFileService;
-
+        _fileService = fileService;
+        _sessionService = sessionService;
+        
         FirstExpertiseList = new CharacterExpertiseListViewModel(instanceProvider);
         SecondExpertiseList = new CharacterExpertiseListViewModel(instanceProvider);
         AdvancedExpertiseList = new CharacterAdvancedExpertiseListViewModel(instanceProvider);

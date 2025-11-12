@@ -29,6 +29,8 @@ public class NavigationService: INavigationService
         _instanceProvider = instanceProvider;
     }
 
+    public Type? PageType { get; private set; }
+
     public void Init(ContentPresenter  presenter)
     {
         _contentPresenter = presenter;
@@ -65,12 +67,19 @@ public class NavigationService: INavigationService
         return _navigationItems;
     }
     
-    public void NavigateTo(Type pageType)
+    public void NavigateTo(Type pageType,  string? pageParameter = null)
     {
         if (_contentPresenter == null)
             return;
         
+        PageType = pageType;
         var control = _instanceProvider.GetInstance(pageType);
+
+        if (control is IParameterizable parameterizable)
+        {
+            parameterizable.Parameter = pageParameter;
+        }
+        
         _contentPresenter.Content = control;
     }
 }

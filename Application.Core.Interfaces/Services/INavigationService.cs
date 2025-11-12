@@ -16,9 +16,11 @@ public interface INavigationItem
 
 public interface INavigationService
 {
+    Type? PageType { get; }
+    
     void Init(ContentPresenter presenter);
     
     IList<INavigationItem> GetNavigationItems();
     
-    void NavigateTo(Type pageType);
+    void NavigateTo(Type pageType, string? pageParameter = null);
 }

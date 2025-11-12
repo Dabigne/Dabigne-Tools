@@ -6,6 +6,8 @@ namespace Dabigne.Tools.Views;
 
 public partial class MainWindow : Window
 {
+    private MainWindowViewModel ViewModel => DataContext as MainWindowViewModel;
+    
     public MainWindow(IInstanceProvider instanceProvider)
     {
         InitializeComponent();
@@ -17,5 +19,7 @@ public partial class MainWindow : Window
         navigationService.Init(ContentPresenter);
 
         DataContext = instanceProvider.GetInstance<MainWindowViewModel>();
+
+        Closing += (sender, args) => ViewModel.Close();
     }
 }
