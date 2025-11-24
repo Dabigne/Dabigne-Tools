@@ -16,7 +16,7 @@ public partial class MainWindow : Window
         fileService.SetWindow(this);
         
         var navigationService = instanceProvider.GetInstance<INavigationService>();
-        navigationService.Init(ContentPresenter);
+        navigationService.Init(TabControl);
 
         DataContext = instanceProvider.GetInstance<MainWindowViewModel>();
 

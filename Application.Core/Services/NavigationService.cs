@@ -2,6 +2,7 @@ using System.Reflection;
 using Application.Core.Attributes;
 using Application.Core.Interfaces.Services;
 using Application.Core.Interfaces.Types;
+using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
 
 namespace Application.Core.Services;
@@ -20,7 +21,7 @@ public sealed class NavigationItem(string title, string icon, Type? pageType) : 
 public class NavigationService: INavigationService
 {
     private readonly IInstanceProvider _instanceProvider;
-    private ContentPresenter? _contentPresenter;
+    private TabControl? _tabControl;
     
     private List<INavigationItem> _navigationItems = [];
     
@@ -31,9 +32,9 @@ public class NavigationService: INavigationService
 
     public Type? PageType { get; private set; }
 
-    public void Init(ContentPresenter  presenter)
+    public void Init(TabControl tabControl)
     {
-        _contentPresenter = presenter;
+        _tabControl = tabControl;
         BuildNavigationItem();
     }
 
@@ -69,7 +70,7 @@ public class NavigationService: INavigationService
     
     public void NavigateTo(Type pageType,  string? pageParameter = null)
     {
-        if (_contentPresenter == null)
+        if (_tabControl == null)
             return;
         
         PageType = pageType;
@@ -79,7 +80,11 @@ public class NavigationService: INavigationService
         {
             parameterizable.Parameter = pageParameter;
         }
-        
-        _contentPresenter.Content = control;
+
+        var title = control is INavigatable navigatable ? navigatable.Title : "Tab"; 
+
+        var contentPresenter = new ContentPresenter { Content = control };
+        var tabItem = new TabItem { Header = title, Content = contentPresenter};
+        _tabControl.Items.Add(tabItem);
     }
 }

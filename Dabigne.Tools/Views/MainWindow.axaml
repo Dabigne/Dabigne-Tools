@@ -52,8 +52,14 @@
                 </Grid>
             </SplitView.Pane>
             <Grid RowDefinitions="2*, 1, *">
-                <ContentPresenter Grid.Row="0"
-                                  x:Name="ContentPresenter"/>
+                <TabControl Grid.Row="0"
+                            x:Name="TabControl">
+                    <TabControl.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Close"/>
+                        </ContextMenu>
+                    </TabControl.ContextMenu>
+                </TabControl>
                 <GridSplitter Grid.Row="1"
                               ResizeDirection="Rows"
                               Height="2"/>
