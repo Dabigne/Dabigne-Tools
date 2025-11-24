@@ -7,10 +7,10 @@ namespace Module.WarhammerTools.ViewModels.Components;
 
 public partial class CharacterNoteListViewModel : ObservableObject
 {
-    public ObservableCollection<CharacterNoteViewModel> Items { get; private set; } = [];
+    public ObservableCollection<CharacterNoteViewModel> Items { get; } = [];
     
     [ObservableProperty]
-    private CharacterNoteViewModel? _selectedNote;
+    private CharacterNoteViewModel? _selectedNote = new();
 
     [RelayCommand]
     private void Add()
