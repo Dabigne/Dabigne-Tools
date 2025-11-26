@@ -1,9 +1,11 @@
 using System.Reflection;
+using System.Windows.Input;
 using Application.Core.Attributes;
 using Application.Core.Interfaces.Services;
 using Application.Core.Interfaces.Types;
 using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Application.Core.Services;
 
@@ -84,7 +86,30 @@ public class NavigationService: INavigationService
         var title = control is INavigatable navigatable ? navigatable.Title : "Tab"; 
 
         var contentPresenter = new ContentPresenter { Content = control };
-        var tabItem = new TabItem { Header = title, Content = contentPresenter};
+        var tabItem = new TabItem { Header = title, Content = contentPresenter };
+        tabItem.ContextMenu = BuildContextMenu(tabItem);
         _tabControl.Items.Add(tabItem);
+    }
+
+    private ContextMenu BuildContextMenu(TabItem tabItem)
+    {
+        var contextMenu = new ContextMenu();
+        var menuItem = new MenuItem
+        {
+            Header = "Close", 
+            Command = new RelayCommand<object>(Close),
+            CommandParameter = tabItem
+        };
+        contextMenu.Items.Add(menuItem);
+        return contextMenu;
+    }
+
+    private void Close(object parameter)
+    {
+        var tabItem = parameter as TabItem;
+        if (tabItem == null)
+            return;
+        
+        _tabControl?.Items.Remove(tabItem);
     }
 }
