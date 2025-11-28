@@ -88,12 +88,15 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     [RelayCommand]
     private async Task Save()
     {
-        var file = await _fileService.PickSaveFile();
-        if (file == null) 
-            return;
+        if (string.IsNullOrEmpty(LastFilePath))
+        {
+            var file = await _fileService.PickSaveFile();
+            if (file == null) 
+                return;
+            LastFilePath = file.Path.LocalPath;
+        }
         
-        LastFilePath = file.Path.LocalPath;
-        _characterSheetFileService.Save(_characterSheetService.UpdateModel(this), file.Path.LocalPath);
+        _characterSheetFileService.Save(_characterSheetService.UpdateModel(this), LastFilePath);
     }
     
     public CharacterSheetViewModel(

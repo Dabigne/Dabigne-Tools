@@ -16,13 +16,16 @@
         <viewModels:CharacterSheetViewModel/>    
     </Design.DataContext>
     
-    <Grid ColumnDefinitions="*,2*">
+    <Grid ColumnDefinitions="*,3,2*">
         <ContentControl Grid.Column="0"
                         Classes="textured">
             <cViews:CharacterNoteListView DataContext="{Binding Notes}"/>
         </ContentControl>
         
-        <ContentControl Grid.Column="1"
+        <GridSplitter Grid.Column="1"
+                      ResizeDirection="Columns"/>
+        
+        <ContentControl Grid.Column="2"
                         Classes="textured">
             <cViews:CharacterNoteEditionView DataContext="{Binding  Notes.SelectedNote}"/>
         </ContentControl>
