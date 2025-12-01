@@ -15,9 +15,6 @@ public partial class MainWindow : Window
         var fileService = instanceProvider.GetInstance<IFileService>();
         fileService.SetWindow(this);
         
-        var navigationService = instanceProvider.GetInstance<INavigationService>();
-        navigationService.Init(TabControl);
-
         DataContext = instanceProvider.GetInstance<MainWindowViewModel>();
 
         Closing += (sender, args) => ViewModel.Close();

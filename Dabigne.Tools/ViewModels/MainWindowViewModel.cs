@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Application.Core.Interfaces.Services;
 using Application.Core.ViewModels;
@@ -13,6 +14,8 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly ISessionService _sessionService;
 
     public IList<INavigationItem> NavigationItems { get; }
+
+    public ObservableCollection<INavigationViewTabItem> TabItems { get; } = [];
     
     public OutputViewModel Output  { get; }
     
@@ -40,10 +43,14 @@ public partial class MainWindowViewModel : ObservableObject
         _navigationService = navigationService;
         _sessionService = sessionService;
 
+        _navigationService.Init();
+        
         Output = new OutputViewModel(outputService);
         NavigationItems = _navigationService.GetNavigationItems().ToList();
         
-        _sessionService.LoadSession();
+        var item = _sessionService.LoadSession();
+        AddTabItem(item);
+        
         SelectedItem = _navigationService.PageType != null 
             ? NavigationItems.FirstOrDefault(x => x.Type == _navigationService.PageType) 
             : NavigationItems.First();
@@ -54,11 +61,27 @@ public partial class MainWindowViewModel : ObservableObject
         if (SelectedItem?.Type == null || SelectedItem?.Type == _navigationService.PageType)
             return;
         
-        _navigationService.NavigateTo(SelectedItem.Type);
+        var item = _navigationService.NavigateTo(SelectedItem.Type);
+        AddTabItem(item);
+    }
+
+    private void AddTabItem(INavigationViewTabItem? tabItem)
+    {
+        if (tabItem == null)
+            return;
+        
+        tabItem.CloseCommand = new RelayCommand<INavigationViewTabItem>(CloseTabItem);
+        TabItems.Add(tabItem);
+    }
+    
+    private void CloseTabItem(INavigationViewTabItem tabItem)
+    {
+        TabItems.Remove(tabItem);
     }
 
     public void Close()
     {
         _sessionService.SaveSession();
+        TabItems.Clear();
     }
 }

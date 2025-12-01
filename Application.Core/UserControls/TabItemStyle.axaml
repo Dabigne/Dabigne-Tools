@@ -1,0 +1,47 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <TabControl Classes="navigation">
+            <TabControl.Items>
+                <TabItem Header="Coucou"
+                         MinHeight="14"
+                         Padding="4,0"
+                         Margin="0"/>
+                <TabItem Header="Autre"
+                         MinHeight="14"
+                         Padding="4,0"
+                         Margin="0"/>
+                <TabItem Header="Encore"
+                         MinHeight="14"
+                         Padding="4,0"
+                         Margin="0"/>
+            </TabControl.Items>
+        </TabControl>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="TabControl.navigation > TabItem">
+        <Setter Property="ContentTemplate">
+            <DataTemplate>
+                <ContentPresenter Content="{Binding Content}"/>
+            </DataTemplate>
+        </Setter>
+        <Setter Property="HeaderTemplate">
+            <DataTemplate>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Header}"/>
+                    <Button Width="20" 
+                            Height="20" 
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            FontSize="14"
+                            FontWeight="ExtraBold"
+                            Padding="0"
+                            Content="x"
+                            Command="{Binding CloseCommand}"
+                            CommandParameter="{Binding}"/>
+                </StackPanel>
+            </DataTemplate>
+        </Setter>
+    </Style>
+</Styles>

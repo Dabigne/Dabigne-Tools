@@ -1,6 +1,5 @@
 using Application.Core.Interfaces.Services;
 using Application.Core.Models;
-using Avalonia.Controls;
 using Newtonsoft.Json;
 
 namespace Application.Core.Services;
@@ -18,19 +17,18 @@ public class SessionService : ISessionService
         _navigationService = navigationService;
     }
     
-    public void LoadSession()
+    public INavigationViewTabItem? LoadSession()
     {
         if (!File.Exists(FILE_NAME))
-            return;
+            return null;
         
         var reader = new JsonTextReader(new StringReader(File.ReadAllText(FILE_NAME)));
         var serializer = new JsonSerializer();
         var session = serializer.Deserialize<Session>(reader) ?? new Session();
 
-        if (session.OpenedPageType != null)
-        {
-            _navigationService.NavigateTo(session.OpenedPageType, session.OpenedPageParameter);
-        }
+        return session.OpenedPageType != null 
+            ? _navigationService.NavigateTo(session.OpenedPageType, session.OpenedPageParameter) 
+            : null;
     }
 
     public void SaveSession()

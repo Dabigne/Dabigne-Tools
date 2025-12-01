@@ -4,7 +4,7 @@ public interface ISessionService
 {
     string? Parameters {get; set;}
     
-    void LoadSession();
+    INavigationViewTabItem? LoadSession();
     
     void SaveSession();
 }

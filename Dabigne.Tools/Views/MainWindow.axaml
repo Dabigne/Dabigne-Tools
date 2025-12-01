@@ -13,6 +13,9 @@
         Title="Dabigne Tools"
         TransparencyLevelHint="AcrylicBlur"
         Background="Transparent">
+    <Window.Styles>
+        <StyleInclude Source="avares://Application.Core/UserControls/TabItemStyle.axaml"/>
+    </Window.Styles>
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>
@@ -53,13 +56,8 @@
             </SplitView.Pane>
             <Grid RowDefinitions="2*, 1, *">
                 <TabControl Grid.Row="0"
-                            x:Name="TabControl">
-                    <TabControl.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Close"/>
-                        </ContextMenu>
-                    </TabControl.ContextMenu>
-                </TabControl>
+                            Classes="navigation"
+                            ItemsSource="{Binding TabItems}"/>
                 <GridSplitter Grid.Row="1"
                               ResizeDirection="Rows"
                               Height="2"/>

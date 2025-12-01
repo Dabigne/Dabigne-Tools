@@ -4,26 +4,36 @@ using Application.Core.Attributes;
 using Application.Core.Interfaces.Services;
 using Application.Core.Interfaces.Types;
 using Avalonia.Controls;
-using Avalonia.Controls.Presenters;
-using CommunityToolkit.Mvvm.Input;
 
 namespace Application.Core.Services;
 
-public sealed class NavigationItem(string title, string icon, Type? pageType) : INavigationItem
+public sealed class NavigationItem(string title, string icon, Type? pageType) 
+    : INavigationItem
 {
-    public string Title { get; set; } = title;
+    public string Title { get; } = title;
 
-    public string Icon { get; set; } = icon;
+    public string Icon { get; } = icon;
 
-    public Type? Type { get; set; } = pageType;
+    public Type? Type { get; } = pageType;
 
     public IList<INavigationItem> Children { get; } = [];
+}
+
+public sealed class NavigationTabItem(string header) 
+    : INavigationViewTabItem
+{
+    public string Header { get; set; } = header;
+
+    public string Class { get; set; } = "navigation";
+
+    public ICommand CloseCommand { get; set; }
+    
+    public object Content { get; set; }
 }
 
 public class NavigationService: INavigationService
 {
     private readonly IInstanceProvider _instanceProvider;
-    private TabControl? _tabControl;
     
     private List<INavigationItem> _navigationItems = [];
     
@@ -34,9 +44,8 @@ public class NavigationService: INavigationService
 
     public Type? PageType { get; private set; }
 
-    public void Init(TabControl tabControl)
+    public void Init()
     {
-        _tabControl = tabControl;
         BuildNavigationItem();
     }
 
@@ -70,11 +79,8 @@ public class NavigationService: INavigationService
         return _navigationItems;
     }
     
-    public void NavigateTo(Type pageType,  string? pageParameter = null)
+    public INavigationViewTabItem? NavigateTo(Type pageType,  string? pageParameter = null)
     {
-        if (_tabControl == null)
-            return;
-        
         PageType = pageType;
         var control = _instanceProvider.GetInstance(pageType);
 
@@ -83,33 +89,10 @@ public class NavigationService: INavigationService
             parameterizable.Parameter = pageParameter;
         }
 
-        var title = control is INavigatable navigatable ? navigatable.Title : "Tab"; 
-
-        var contentPresenter = new ContentPresenter { Content = control };
-        var tabItem = new TabItem { Header = title, Content = contentPresenter };
-        tabItem.ContextMenu = BuildContextMenu(tabItem);
-        _tabControl.Items.Add(tabItem);
-    }
-
-    private ContextMenu BuildContextMenu(TabItem tabItem)
-    {
-        var contextMenu = new ContextMenu();
-        var menuItem = new MenuItem
+        var title = control is INavigatable navigatable ? navigatable.Title : "Tab";
+        return new NavigationTabItem(title)
         {
-            Header = "Close", 
-            Command = new RelayCommand<object>(Close),
-            CommandParameter = tabItem
+            Content = control,
         };
-        contextMenu.Items.Add(menuItem);
-        return contextMenu;
-    }
-
-    private void Close(object parameter)
-    {
-        var tabItem = parameter as TabItem;
-        if (tabItem == null)
-            return;
-        
-        _tabControl?.Items.Remove(tabItem);
     }
 }

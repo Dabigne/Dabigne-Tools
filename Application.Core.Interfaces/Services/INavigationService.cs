@@ -1,3 +1,4 @@
+using System.Windows.Input;
 using Application.Core.Interfaces.Types;
 using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
@@ -15,13 +16,24 @@ public interface INavigationItem
     IList<INavigationItem> Children { get; }
 }
 
+public interface INavigationViewTabItem
+{
+    string Header { get; set; }
+    
+    string Class { get; set; }
+    
+    ICommand CloseCommand { get; set; }
+    
+    object Content { get; set; }
+}
+
 public interface INavigationService
 {
     Type? PageType { get; }
     
-    void Init(TabControl tabControl);
+    void Init();
     
     IList<INavigationItem> GetNavigationItems();
     
-    void NavigateTo(Type pageType, string? pageParameter = null);
+    INavigationViewTabItem? NavigateTo(Type pageType, string? pageParameter = null);
 }
