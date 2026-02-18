@@ -1,5 +1,6 @@
 using Application.Core.Interfaces.Services;
 using Application.Core.Models;
+using SkiaSharp;
 
 namespace Application.Core.Services;
 
@@ -15,7 +16,14 @@ public class ImageDownloaderService : IImageDownloaderService
    
    public void Start()
    {
-      _httpClient ??= new HttpClient();
+      var handler = new HttpClientHandler();
+      handler.ServerCertificateCustomValidationCallback = 
+         (httpRequestMessage, cert, cetChain, policyErrors) =>
+         {
+            return true;
+         };
+      
+      _httpClient ??= new HttpClient(handler);
    }
 
    public void Stop()
@@ -45,7 +53,14 @@ public class ImageDownloaderService : IImageDownloaderService
       {
          _outputService.Push(new OutputLine($"Getting image from {uri}"));
          var imageBytes = await _httpClient.GetByteArrayAsync(uri);
-         await File.WriteAllBytesAsync(path, imageBytes);
+         
+         var image = SKImage.FromEncodedData(imageBytes);
+         var bitmap = SKBitmap.FromImage(image);
+         var data = bitmap.Encode(SKEncodedImageFormat.Png, 100);
+         var stream = File.Create(path);
+         data.SaveTo(stream);
+         stream.Close();
+         //await File.WriteAllBytesAsync(path, imageBytes);
          _outputService.Push(new OutputLine($"File saved to {path}"));
       }
       catch (HttpRequestException e)

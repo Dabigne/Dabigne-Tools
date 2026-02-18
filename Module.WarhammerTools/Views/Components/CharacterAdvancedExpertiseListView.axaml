@@ -27,21 +27,16 @@
                   VerticalGridLinesBrush="DimGray">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom"
-                                    Width="3*"
                                     FontSize="10"
                                     Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Charactéristique"
-                                    Width="*"
+                <DataGridTextColumn Header="Car"
                                     FontSize="10"
-                                    IsReadOnly="True"
                                     Binding="{Binding Characteristic}"/>
-                <DataGridTextColumn Header="Valeur"
-                                    Width="*"
+                <DataGridTextColumn Header="Val"
                                     FontSize="10"
                                     IsReadOnly="True"
                                     Binding="{Binding CharacteristicValue}"/>
-                <DataGridTemplateColumn Header="Aug"
-                                        Width="*">
+                <DataGridTemplateColumn Header="Aug">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate DataType="components:CharacterExpertiseViewModel">
                             <TextBlock Text="{Binding Improvement, StringFormat='{}{0}'}" 

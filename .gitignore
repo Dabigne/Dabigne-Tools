@@ -20,3 +20,5 @@ Module.MangaDownload/.DS_Store
 /Module.WarhammerTools/bin
 /Module.WarhammerTools/obj
 *.user
+/Module.WorkShopTools/bin
+/Module.WorkShopTools/obj
