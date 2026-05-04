@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Module.PdfTools.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.PdfTools.Views.PdfToMarkdownView">
+    
+    <Design.DataContext>
+        <viewModels:PdfToMarkdownViewModelDesign/>    
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto,*"
+          ColumnDefinitions="*, Auto">
+        <TextBlock Grid.Row="0" Grid.Column="0"
+                   Text="{Binding PdfPath}"/>
+        <Button Grid.Row="0" Grid.Column="1"
+                Content="Choose file..."
+                Command="{Binding PickFileCommand}"/>
+        
+        <TextBox Grid.Row="1" Grid.Column="0"
+                 Text="{Binding PageText}"/>
+        
+        <NumericUpDown Grid.Row="1" Grid.Column="1"
+                       VerticalAlignment="Top"
+                       Value="{Binding PageNumber}"/>
+    </Grid>
+
+</UserControl>

@@ -11,6 +11,7 @@
       <PackageReference Include="Autofac" Version="8.4.0" />
       <PackageReference Include="Avalonia" Version="11.3.9" />
       <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+      <PackageReference Include="PdfPig" Version="0.1.14" />
     </ItemGroup>
 
     <ItemGroup>
@@ -18,9 +19,15 @@
     </ItemGroup>
 
     <Target Name="CopyDLLs" AfterTargets="Build">
+        <ItemGroup>
+            <PdfPigDlls Include="$(TargetDir)UglyToad.PdfPig.*.dll; $(TargetDir)UglyToad.PdfPig.dll;" />
+        </ItemGroup>
+        
         <Message Text="Executing CopyDLLs task" Importance="High" />
+        <Message Text="$(BinPath)" Importance="high" />
         <Copy SourceFiles="$(TargetDir)\$(ProjectName).dll;$(TargetDir)\$(ProjectName).pdb"
-              DestinationFolder="..\Dabigne.Tools\bin\Debug\net9.0\Modules\"/>
+              DestinationFolder="..\Dabigne.Tools\$(OutputPath)Modules\"/>
+        <Copy SourceFiles="@(PdfPigDlls)" DestinationFolder="..\Dabigne.Tools\$(OutputPath)Modules\"/>
         <Message Text="Copied build files" Importance="High" />
     </Target>
     
