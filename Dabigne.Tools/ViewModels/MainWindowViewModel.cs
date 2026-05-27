@@ -58,10 +58,10 @@ public partial class MainWindowViewModel : ObservableObject
 
     partial void OnSelectedItemChanged(INavigationItem? value)
     {
-        if (SelectedItem?.Type == null || SelectedItem?.Type == _navigationService.PageType)
+        if(value?.Type == null || value.Type == _navigationService.PageType)
             return;
         
-        var item = _navigationService.NavigateTo(SelectedItem.Type);
+        var item = _navigationService.NavigateTo(value.Type);
         AddTabItem(item);
     }
 
@@ -74,8 +74,11 @@ public partial class MainWindowViewModel : ObservableObject
         TabItems.Add(tabItem);
     }
     
-    private void CloseTabItem(INavigationViewTabItem tabItem)
+    private void CloseTabItem(INavigationViewTabItem? tabItem)
     {
+        if (tabItem == null)
+            return;
+        
         TabItems.Remove(tabItem);
     }
 
