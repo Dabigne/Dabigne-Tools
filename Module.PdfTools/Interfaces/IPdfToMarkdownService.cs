@@ -4,7 +4,22 @@ namespace Module.PdfTools.Interfaces;
 
 public interface IPdfInformation
 {
-	int PageNumber { get; }
+	int PageCount { get; }
+}
+
+public interface IFontInformation
+{
+	string Status { get; }
+	
+	string FontName { get; }
+	
+	int Weight { get; }
+
+	public bool IsBold { get; set; }
+	
+	public bool IsItalic { get; set; }
+
+	IList<string> Words { get; }
 }
 
 public interface IPdfToMarkdownService
@@ -12,4 +27,6 @@ public interface IPdfToMarkdownService
 	IPdfInformation OpenPdf(string path);
 	
 	string GetMarkDownFromPdfPage(int pageNumber);
+
+	IList<IFontInformation> GetFontsInformationFromPdfPage(int pageNumber);
 }

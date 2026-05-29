@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:Module.PdfTools.ViewModels.Components"
+             xmlns:models="clr-namespace:Module.PdfTools.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Module.PdfTools.Views.Components.FontsInformationView">
+   
+    <Design.DataContext>
+        <components:FontsInformationViewModel/>    
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,*"
+          ColumnDefinitions="*,*"
+          Margin="4">
+        <TextBlock Grid.Row="0" Grid.Column="0"
+                   Text="Fonts"/>
+        <DataGrid Grid.Row="1" Grid.Column="0"
+                  ItemsSource="{Binding FontsList}"
+                  SelectedItem="{Binding SelectedFont}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom"
+                                    Binding="{Binding FontName}"/>
+                <DataGridTextColumn Header="Weight"
+                                    Binding="{Binding Weight}"/>
+                <DataGridCheckBoxColumn Header="Bold"
+                                        Binding="{Binding IsBold}"/>
+                <DataGridCheckBoxColumn Header="Italic"
+                                        Binding="{Binding IsItalic}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <TextBlock Grid.Row="0" Grid.Column="1"
+                   Text="Detail"/>
+        <ListBox Grid.Row="1" Grid.Column="1"
+                 ItemsSource="{Binding SelectedFont.Words}">
+            <ListBox.ItemContainerTheme>
+                <ControlTheme TargetType="ListBoxItem" 
+                              BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <Setter Property="Padding" Value="2"/>
+                </ControlTheme>
+            </ListBox.ItemContainerTheme>
+        </ListBox>
+        
+        
+    </Grid>
+</UserControl>

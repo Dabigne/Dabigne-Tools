@@ -5,5 +5,5 @@ namespace Module.PdfTools.Models;
 public class PdfInformation(int pageNumber) 
 	: IPdfInformation
 {
-	public int PageNumber { get; } = pageNumber;
+	public int PageCount { get; } = pageNumber;
 }

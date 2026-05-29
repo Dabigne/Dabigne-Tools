@@ -47,6 +47,9 @@ public partial class MainWindowViewModel : ObservableObject
         
         Output = new OutputViewModel(outputService);
         NavigationItems = _navigationService.GetNavigationItems().ToList();
+
+        if (NavigationItems.Count == 0)
+	        return;
         
         var item = _sessionService.LoadSession();
         AddTabItem(item);

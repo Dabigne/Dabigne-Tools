@@ -12,6 +12,7 @@ public class PdfToolsModule: Autofac.Module
     protected override void Load(ContainerBuilder builder)
     {
 	    builder.RegisterType<PdfToMarkdownService>().As<IPdfToMarkdownService>().InstancePerDependency();
+	    builder.RegisterType<PdfTextBlockStringService>().As<IPdfTextBlockStringService>().InstancePerDependency();
 	    
         builder.RegisterType<PdfMergeView>().AsSelf();
         builder.RegisterType<PdfToMarkdownView>().AsSelf();

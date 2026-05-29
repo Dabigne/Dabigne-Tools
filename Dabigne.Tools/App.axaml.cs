@@ -46,7 +46,8 @@ public sealed class App : Avalonia.Application
         };
 
         var dynamicModules = Directory.GetFiles(ModuleFolder)
-            .Where(f => f.StartsWith($"{ModuleFolder}\\{ModulePrefix}") && f.EndsWith(ModuleSuffix))
+            .Where(f => f.StartsWith($"{ModuleFolder}{Path.DirectorySeparatorChar}{ModulePrefix}") 
+                        && f.EndsWith(ModuleSuffix))
             .ToList();
         foreach (var module in dynamicModules)
         {

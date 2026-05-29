@@ -2,6 +2,7 @@ using Application.Core.Interfaces.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Module.PdfTools.Interfaces;
+using Module.PdfTools.ViewModels.Components;
 
 namespace Module.PdfTools.ViewModels;
 
@@ -26,6 +27,9 @@ public partial class PdfToMarkdownViewModel(
 	[ObservableProperty]
 	private int _pageNumber;
 	
+	[ObservableProperty]
+	private FontsInformationViewModel  _fontsInformation = new();
+	
 	[RelayCommand]
 	private async Task PickFile()
 	{
@@ -44,9 +48,10 @@ public partial class PdfToMarkdownViewModel(
 			return;
 		if (value < 1)
 			return;
-		if (value > _pdfInformation.PageNumber)
+		if (value > _pdfInformation.PageCount)
 			return;
 		
+		FontsInformation.Init(pdfToMarkdownService.GetFontsInformationFromPdfPage(value));
 		PageText = pdfToMarkdownService.GetMarkDownFromPdfPage(value);
 	}
 }
