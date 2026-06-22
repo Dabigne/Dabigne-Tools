@@ -1,7 +1,9 @@
 using System.Text;
+using Avalonia.Platform.Storage;
 using Module.PdfTools.Interfaces;
 using Module.PdfTools.Models;
 using UglyToad.PdfPig;
+using UglyToad.PdfPig.Content;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.PageSegmenter;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.ReadingOrderDetector;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
@@ -81,6 +83,69 @@ public class PdfToMarkdownService(
 		}
 		
 		return list;
+	}
+
+	public void ExportPdfToFolder(IStorageFolder folder)
+	{
+		if (_pdfDocument == null)
+			return;
+
+		for (int i = 1; i < _pdfDocument.NumberOfPages; i++)
+		{
+			var fileName = $"Page_{i:D3}.md";
+			var path = Path.Combine(folder.Path.LocalPath, fileName);
+			File.WriteAllText(path, GetMarkDownFromPdfPage(i));
+		}
+	}
+
+	public void ExportImagesToFolder(IStorageFolder folder)
+	{
+		if (_pdfDocument == null)
+			return;
+
+		for (int i = 1; i < _pdfDocument.NumberOfPages; i++)
+		{
+			var page = _pdfDocument.GetPage(i);
+			var images = page.GetImages();
+			var test = page.GetOptionalContents();
+			int imageIndex = 0;
+			foreach (var image in images)
+			{
+				var fileName = $"Page{i:D3}_Image{imageIndex++:D3}";
+				var path = Path.Combine(folder.Path.LocalPath, fileName);
+				if (ExportPngToFolder(image, $"{path}.png"))
+					continue;
+				if (ExportRawBytesToFolder(image, $"{path}.jpeg"))
+					continue;
+				ExportRawBytesToFolder(image, $"{path}.bin");
+			}
+		}
+	}
+
+	private bool ExportPngToFolder(IPdfImage image, string path)
+	{
+		if (!image.TryGetPng(out var pngBytes))
+			return false;
+		File.WriteAllBytes(path, pngBytes);
+		return true;
+	}
+	
+	private bool ExportRawBytesToFolder(IPdfImage image, string path)
+	{
+		try
+		{
+			var raw = image.RawBytes;
+			if (raw != null && raw.Length > 0)
+			{
+				File.WriteAllBytes(path, raw);
+				return true;
+			}
+		}
+		catch
+		{
+			// ignored
+		}
+		return false;
 	}
 
 	private IFontInformation? GetExistingFontInformation(IList<IFontInformation> list, FontDetails fontDetails)

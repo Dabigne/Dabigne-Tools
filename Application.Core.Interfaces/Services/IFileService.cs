@@ -7,6 +7,8 @@ public interface IFileService
 {
     void SetWindow(Window window);
     
+    Task<IStorageFolder?> PickFolder();
+    
     Task<IStorageFile?> PickLoadFile();
     
     Task<IReadOnlyList<IStorageFile>> PickFiles();

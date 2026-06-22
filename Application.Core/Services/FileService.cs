@@ -13,6 +13,16 @@ public class FileService : IFileService
         _window = window;
     }
 
+    public async Task<IStorageFolder?> PickFolder()
+	{
+		var folders = await _window!.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
+		{
+			Title = "Select folder",
+		});
+		
+		return folders.Count == 0 ? null : folders[0];
+	}
+    
     public async Task<IStorageFile?> PickLoadFile()
     {
         var files = await _window!.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions

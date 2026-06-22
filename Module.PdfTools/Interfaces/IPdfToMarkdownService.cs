@@ -1,3 +1,4 @@
+using Avalonia.Platform.Storage;
 using PdfSharp.Pdf;
 
 namespace Module.PdfTools.Interfaces;
@@ -29,4 +30,8 @@ public interface IPdfToMarkdownService
 	string GetMarkDownFromPdfPage(int pageNumber);
 
 	IList<IFontInformation> GetFontsInformationFromPdfPage(int pageNumber);
+	
+	void ExportPdfToFolder(IStorageFolder folder);
+
+	void ExportImagesToFolder(IStorageFolder folder);
 }

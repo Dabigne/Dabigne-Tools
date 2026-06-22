@@ -41,6 +41,32 @@ public partial class PdfToMarkdownViewModel(
 		_pdfInformation =  pdfToMarkdownService.OpenPdf(PdfPath);
 		PageNumber = 1;
 	}
+
+	[RelayCommand]
+	private async Task ExportPdf()
+	{
+		if (_pdfInformation == null)
+			return;
+		
+		var folder = await fileService.PickFolder();
+		if (folder == null)
+			return;
+
+		pdfToMarkdownService.ExportPdfToFolder(folder);
+	}
+	
+	[RelayCommand]
+	private async Task ExportPdfImages()
+	{
+		if (_pdfInformation == null)
+			return;
+		
+		var folder = await fileService.PickFolder();
+		if (folder == null)
+			return;
+
+		pdfToMarkdownService.ExportImagesToFolder(folder);
+	}
 	
 	partial void OnPageNumberChanged(int value)
 	{
