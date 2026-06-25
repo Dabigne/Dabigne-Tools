@@ -23,3 +23,5 @@ Module.MangaDownload/.DS_Store
 /Module.WorkShopTools/bin
 /Module.WorkShopTools/obj
 DabigneTools.sln.DotSettings.user
+/Dabigne.Shell/bin
+/Dabigne.Shell/obj

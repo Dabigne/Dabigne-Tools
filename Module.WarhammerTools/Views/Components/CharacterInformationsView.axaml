@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Module.WarhammerTools.Views.Components.CharacterInformationsView">
+             x:Class="Module.WarhammerTools.Views.Components.CharacterInformationsView"
+             x:DataType="components:CharacterInformationsViewModel">
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
     </UserControl.Styles>

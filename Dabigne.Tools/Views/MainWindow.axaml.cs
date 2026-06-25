@@ -6,17 +6,18 @@ namespace Dabigne.Tools.Views;
 
 public partial class MainWindow : Window
 {
-    private MainWindowViewModel? ViewModel => DataContext as MainWindowViewModel;
+    private MainWindowViewModel ViewModel => (DataContext as MainWindowViewModel)!;
     
-    public MainWindow(IInstanceProvider instanceProvider)
+    public MainWindow(
+	    IFileService fileService, 
+	    MainWindowViewModel viewModel)
     {
         InitializeComponent();
 
-        var fileService = instanceProvider.GetInstance<IFileService>();
         fileService.SetWindow(this);
         
-        DataContext = instanceProvider.GetInstance<MainWindowViewModel>();
+        DataContext = viewModel;
 
-        Closing += (sender, args) => ViewModel?.Close();
+        Closing += (sender, args) => ViewModel.Close();
     }
 }

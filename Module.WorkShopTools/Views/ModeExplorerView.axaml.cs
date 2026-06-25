@@ -14,10 +14,9 @@ public partial class ModeExplorerView : UserControl, INavigatable
 
     public string Description => "Explore a TTS mode";
 
-    public ModeExplorerView(ModeExplorerViewModel  viewModeExplorerViewModel)
+    public ModeExplorerView(ModeExplorerViewModel viewModeExplorerViewModel)
     {
         InitializeComponent();
-        
         DataContext = viewModeExplorerViewModel;
     }
 }

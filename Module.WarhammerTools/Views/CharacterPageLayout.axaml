@@ -6,7 +6,8 @@
              xmlns:cViews="clr-namespace:Module.WarhammerTools.Views.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              Height="1280"
-             x:Class="Module.WarhammerTools.Views.CharacterPageLayout">
+             x:Class="Module.WarhammerTools.Views.CharacterPageLayout"
+             x:DataType="viewModels:CharacterSheetViewModel">
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/TexturedBorder.axaml"/>

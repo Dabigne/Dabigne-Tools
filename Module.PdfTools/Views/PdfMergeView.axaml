@@ -5,7 +5,8 @@
              xmlns:viewModels="clr-namespace:Module.PdfTools.ViewModels"
              xmlns:components="clr-namespace:Module.PdfTools.Views.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Module.PdfTools.Views.PdfMergeView">
+             x:Class="Module.PdfTools.Views.PdfMergeView"
+             x:DataType="viewModels:PdfMergeViewModel">
     
     <UserControl.Resources>
         <ControlTheme x:Key="ButtonTheme"

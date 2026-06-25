@@ -11,7 +11,7 @@ namespace Module.MangaDownload.Services;
 public class CatalogService : ICatalogService
 {
     private readonly string _uri = $"{UrlConstants.SiteBaseUrl}catalogue/?type%5B%5D=Scans&search=";
-    private const string TitleSelector = ".infoCarteHorizontale > h1";
+    private const string TitleSelector = "h2.card-title";
     private readonly IOutputService _outputService;
 
     public CatalogService(IOutputService outputService)

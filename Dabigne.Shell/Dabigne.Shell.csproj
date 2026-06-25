@@ -6,17 +6,11 @@
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-        <RootNamespace>Dabigne.Tools</RootNamespace>
     </PropertyGroup>
-
-    <ItemGroup>
-        <AvaloniaResource Include="Assets\**"/>
-    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Autofac" Version="9.3.0" />
         <PackageReference Include="Avalonia" Version="12.0.5" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.0.1" />
         <PackageReference Include="Avalonia.Desktop" Version="12.0.5" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.5" />
         <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.5" />
@@ -25,11 +19,14 @@
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-        <PackageReference Include="Dock.Avalonia" Version="11.3.8" />
-        <PackageReference Include="Dock.Avalonia.Themes.Fluent" Version="11.3.8" />
-        <PackageReference Include="Dock.Model.Avalonia" Version="11.3.8" />
-        <PackageReference Include="Dock.Model.Mvvm" Version="11.3.8" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\MainWindow.axaml.cs">
+        <DependentUpon>MainWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

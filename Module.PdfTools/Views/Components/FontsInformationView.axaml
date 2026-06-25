@@ -5,7 +5,8 @@
              xmlns:components="clr-namespace:Module.PdfTools.ViewModels.Components"
              xmlns:models="clr-namespace:Module.PdfTools.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Module.PdfTools.Views.Components.FontsInformationView">
+             x:Class="Module.PdfTools.Views.Components.FontsInformationView"
+             x:DataType="components:FontsInformationViewModel">
    
     <Design.DataContext>
         <components:FontsInformationViewModel/>    

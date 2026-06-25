@@ -5,7 +5,8 @@
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
              xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Module.WarhammerTools.Views.Components.CharacterDestinyView">
+             x:Class="Module.WarhammerTools.Views.Components.CharacterDestinyView"
+             x:DataType="components:CharacterDestinyViewModel">
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
     </UserControl.Styles>

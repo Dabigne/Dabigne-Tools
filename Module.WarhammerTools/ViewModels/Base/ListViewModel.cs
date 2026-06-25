@@ -6,7 +6,7 @@ using Module.WarhammerTools.Interfaces;
 
 namespace Module.WarhammerTools.ViewModels.Base;
 
-public abstract partial class ListViewModel<TM, TVm> : ObservableObject where TVm : IViewModel<TM>
+public abstract partial class ListViewModel<TM, TVm> : ObservableObject, IListHeader where TVm : IViewModel<TM>
 {
     protected readonly IInstanceProvider _instanceProvider;
     
@@ -20,13 +20,13 @@ public abstract partial class ListViewModel<TM, TVm> : ObservableObject where TV
     private TVm? _selectedItem;
 
     [RelayCommand]
-    public void Add()
+    private void Add()
     {
         List.Add(_instanceProvider.GetInstance<TVm>());
     }
 
     [RelayCommand]
-    public void Remove()
+    private void Remove()
     {
         if (SelectedItem is null)
             return;

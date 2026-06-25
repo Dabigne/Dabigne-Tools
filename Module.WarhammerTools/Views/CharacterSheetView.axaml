@@ -6,7 +6,8 @@
              xmlns:views="clr-namespace:Module.WarhammerTools.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              Background="Black"
-             x:Class="Module.WarhammerTools.Views.CharacterSheetView">
+             x:Class="Module.WarhammerTools.Views.CharacterSheetView"
+             x:DataType="viewModels:CharacterSheetViewModel">
     
     <UserControl.Styles>
         <StyleInclude Source="../Styles/CharacterSheetStyle.axaml"/>

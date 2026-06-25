@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Application.Core;
 using Application.Core.Services;
-using Application.Core.Utils;
+//using Application.Core.Utils;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Dabigne.Tools.Views;
@@ -18,7 +18,7 @@ public sealed class App : Avalonia.Application
     private const string ModulePrefix = "Module.";
     private const string ModuleSuffix = ".dll";
     
-    private InstanceProvider  _instanceProvider = new();
+    private InstanceProvider _instanceProvider = new();
     
     public override void Initialize()
     {
@@ -29,7 +29,7 @@ public sealed class App : Avalonia.Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            AvaloniaUtils.DisableAvaloniaDataAnnotationValidation();
+            //AvaloniaUtils.DisableAvaloniaDataAnnotationValidation();
             LoadModules();
             desktop.MainWindow = _instanceProvider.GetInstance<MainWindow>();
         }

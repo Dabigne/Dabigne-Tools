@@ -8,10 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Autofac" Version="8.4.0" />
-      <PackageReference Include="Avalonia" Version="11.3.9" />
+      <PackageReference Include="Autofac" Version="9.3.0" />
+      <PackageReference Include="Avalonia" Version="12.0.5" />
       <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-      <PackageReference Include="PdfPig" Version="0.1.14" />
+      <PackageReference Include="PdfPig" Version="0.1.15" />
     </ItemGroup>
 
     <ItemGroup>

@@ -5,7 +5,8 @@
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
              xmlns:local="clr-namespace:Module.WarhammerTools.Views.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Module.WarhammerTools.Views.Components.CharacterArmorListView">
+             x:Class="Module.WarhammerTools.Views.Components.CharacterArmorListView"
+             x:DataType="components:CharacterArmorListViewModel">
 
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>

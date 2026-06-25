@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignWidth="800" 
              d:DesignHeight="450"
-             x:Class="Module.WarhammerTools.Views.Components.CharacterNoteEditionView">
+             x:Class="Module.WarhammerTools.Views.Components.CharacterNoteEditionView"
+             x:DataType="components:CharacterNoteViewModel">
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
     </UserControl.Styles>
@@ -56,11 +57,11 @@
                 BorderThickness="1"
                 BorderBrush="Gray"
                 Padding="2">
-            <md:MarkdownScrollViewer Markdown="{Binding Text}">
-                <md:MarkdownScrollViewer.Styles>
-                    <StyleInclude Source="avares://Module.WarhammerTools/Styles/MarkdownStyles.axaml"/>
-                </md:MarkdownScrollViewer.Styles>
-            </md:MarkdownScrollViewer>
+            <!-- <md:MarkdownScrollViewer Markdown="{Binding Text}"> -->
+            <!--     <md:MarkdownScrollViewer.Styles> -->
+            <!--         <StyleInclude Source="avares://Module.WarhammerTools/Styles/MarkdownStyles.axaml"/> -->
+            <!--     </md:MarkdownScrollViewer.Styles> -->
+            <!-- </md:MarkdownScrollViewer> -->
         </Border>
     </Grid>
 
