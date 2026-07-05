@@ -1,4 +1,5 @@
 using Application.Core.Interfaces.Services;
+using Application.Core.Interfaces.Types;
 using Application.Core.Models;
 using Newtonsoft.Json;
 

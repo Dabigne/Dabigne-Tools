@@ -14,7 +14,7 @@
         TransparencyLevelHint="AcrylicBlur"
         Background="Transparent">
     <Window.Styles>
-        <StyleInclude Source="avares://Application.Core/UserControls/TabItemStyle.axaml"/>
+        <StyleInclude Source="avares://Application.Core.UI/Styles/TabItemStyle.axaml"/>
     </Window.Styles>
 
     <Design.DataContext>

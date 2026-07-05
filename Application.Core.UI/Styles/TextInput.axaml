@@ -9,20 +9,24 @@
                          BorderThickness="0,0,1,1"
                          Watermark="Label:"
                          Text=""/>
+                
                 <TextBox BorderBrush="Gray"
                          Padding="4,2"
                          BorderThickness="0,0,1,1"
                          Text=""/>
+                
                 <TextBox BorderBrush="Gray"
                          Padding="4,2"
                          BorderThickness="0,0,1,1"
                          Watermark="Label:"
                          Text="TextTrèsLong"/>
+                
                 <TextBox BorderBrush="Gray"
                          Padding="4,2"
                          BorderThickness="0,0,3,3"
                          Watermark="Label:"
                          Text="Coucou"/>
+                
                 <TextBox BorderBrush="Gray"
                          Padding="4,2"
                          BorderThickness="0,0,5,5"

@@ -15,34 +15,15 @@ public partial class MangaDownloadViewModel : ObservableObject
 {
     private readonly IMangaPdfService _mangaPdfService;
     
-    public MangaSearchViewModel SearchViewModel { get; }
+    public MangaSearchViewModel MangaSearch { get; }
         
-    [ObservableProperty] 
-    private int _firstChapter = 1;
+    public ChaptersSelectionViewModel  ChaptersSelection { get; } = new();
     
-    [ObservableProperty] 
-    private int _lastChapter = 1;
-
     [ObservableProperty]
     private int? _numberOfPagesInImage = null;
     
     [ObservableProperty] 
     private bool _canDownload = true;
-
-    partial void OnFirstChapterChanged(int value)
-    {
-        if (value <= LastChapter)
-            return;
-        
-        LastChapter = value;    
-    }
-
-    partial void OnLastChapterChanged(int value)
-    {
-        if (value >= FirstChapter)
-            return;
-        FirstChapter = value;
-    }
     
     public MangaDownloadViewModel(
         ICatalogService? catalogService, 
@@ -51,7 +32,7 @@ public partial class MangaDownloadViewModel : ObservableObject
     {
         _mangaPdfService = mangaPdfService!;
 
-        SearchViewModel = new MangaSearchViewModel(catalogService!, outputService!);
+        MangaSearch = new MangaSearchViewModel(catalogService!, outputService!);
     }
     
     [RelayCommand]
@@ -60,11 +41,11 @@ public partial class MangaDownloadViewModel : ObservableObject
         CanDownload = false;
 
         var processOk = true;
-        var currentChapter = FirstChapter;
-        while (processOk && currentChapter <= LastChapter)
+        var currentChapter = ChaptersSelection.FirstChapter;
+        while (processOk && currentChapter <= ChaptersSelection.LastChapter)
         {
             processOk = await _mangaPdfService.DownloadChapterToPdf(
-                SearchViewModel.MangaName, 
+                MangaSearch.MangaName, 
                 currentChapter,
                 NumberOfPagesInImage);
             currentChapter++;

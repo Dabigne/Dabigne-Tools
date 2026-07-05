@@ -17,6 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Application.Core.Interfaces\Application.Core.Interfaces.csproj" />
+      <ProjectReference Include="..\Application.Core.UI\Application.Core.UI.csproj" />
       <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
     </ItemGroup>
 

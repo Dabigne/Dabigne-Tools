@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
-             xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core"
+             xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core.UI"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterDestinyView"
              x:DataType="components:CharacterDestinyViewModel">

@@ -9,7 +9,7 @@
              x:DataType="components:CharacterPossessionListViewModel">
     <UserControl.Styles>
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
-        <StyleInclude Source="avares://Application.Core/UserControls/DataGridStyle.axaml"/>
+        <StyleInclude Source="avares://Application.Core.UI/Styles/DataGridStyle.axaml"/>
     </UserControl.Styles>
 
     <Design.DataContext>

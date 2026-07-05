@@ -19,30 +19,11 @@
               RowDefinitions="Auto,Auto,Auto,Auto">
 
             <components:MangaSearchControl Grid.Row="0"
-                                           DataContext="{Binding SearchViewModel}"/>
+                                           DataContext="{Binding MangaSearch}"/>
             
-            <Grid Grid.Row="1"
-                  Grid.Column="0"
-                  Grid.ColumnSpan="2" 
-                  ColumnDefinitions="*,*,*,*">
-
-                <TextBlock Grid.Column="0"
-                           Margin="10"
-                           Text="From chapter:"/>
-                <NumericUpDown Grid.Column="1"
-                               Margin="10"
-                               FormatString="0"
-                               Value="{Binding FirstChapter}"/>
-                
-                <TextBlock Grid.Column="2"
-                           Margin="10"
-                           Text="To:"/>
-                <NumericUpDown Grid.Column="3"
-                               Margin="10"
-                               FormatString="0"
-                               Value="{Binding LastChapter}"/>
-            </Grid>
-
+            <components:ChaptersSelectionView Grid.Row="1"
+                                              DataContext="{Binding ChaptersSelection}"/>
+            
             <TextBox Grid.Row="2"
                      Margin="10"
                      Text="{Binding NumberOfPagesInImage, Mode=TwoWay}"/>

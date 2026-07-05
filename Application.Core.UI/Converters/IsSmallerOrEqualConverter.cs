@@ -1,7 +1,7 @@
 using System.Globalization;
 using Avalonia.Data.Converters;
 
-namespace Application.Core.Converters;
+namespace Application.Core.UI.Converters;
 
 public class IsSmallerOrEqualConverter : IMultiValueConverter
 {

@@ -3,9 +3,9 @@
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://Application.Core/UserControls/TextInput.axaml"/>
-                <ResourceInclude Source="avares://Application.Core/UserControls/NumericUpDown.axaml"/>
-                <ResourceInclude Source="avares://Application.Core/Themes/RatingControlTheme.axaml"/>
+                <ResourceInclude Source="avares://Application.Core.UI/Styles/TextInput.axaml"/>
+                <ResourceInclude Source="avares://Application.Core.UI/Styles/NumericUpDown.axaml"/>
+                <ResourceInclude Source="avares://Application.Core.UI/Styles/RatingControlTheme.axaml"/>
             </ResourceDictionary.MergedDictionaries>
             <StreamGeometry x:Key="RatingControlCheckPath">
                 m 1 1 a 1 1 0 1 0 0.01 0.01 z

@@ -11,4 +11,10 @@
       <PackageReference Include="Avalonia" Version="12.0.5" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="Application.Core.Interfaces">
+        <HintPath>..\Dabigne.Shell\bin\Debug\net9.0\Application.Core.Interfaces.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

@@ -4,7 +4,7 @@ using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
 
-namespace Application.Core.UserControls;
+namespace Application.Core.UI.UserControls;
 
 public partial class ComponentsControl : UserControl
 {

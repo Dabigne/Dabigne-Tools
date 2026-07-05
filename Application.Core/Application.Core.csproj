@@ -9,8 +9,6 @@
     <ItemGroup>
       <PackageReference Include="Autofac" Version="9.3.0" />
       <PackageReference Include="Avalonia" Version="12.0.5" />
-      <PackageReference Include="Avalonia.AvaloniaEdit" Version="12.0.0" />
-      <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.0.1" />
       <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
       <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
@@ -23,6 +21,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Reference Include="Application.Core.Interfaces">
+        <HintPath>..\Dabigne.Shell\bin\Debug\net9.0\Application.Core.Interfaces.dll</HintPath>
+      </Reference>
       <Reference Include="Avalonia.Controls.DataGrid">
         <HintPath>..\..\..\.nuget\packages\avalonia.controls.datagrid\11.3.5\lib\net8.0\Avalonia.Controls.DataGrid.dll</HintPath>
       </Reference>
