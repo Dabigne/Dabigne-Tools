@@ -25,3 +25,5 @@ Module.MangaDownload/.DS_Store
 DabigneTools.sln.DotSettings.user
 /Dabigne.Shell/bin
 /Dabigne.Shell/obj
+/Application.Core.UI/obj
+/Application.Core.UI/bin

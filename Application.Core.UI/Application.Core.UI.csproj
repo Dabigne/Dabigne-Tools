@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia" Version="12.0.5" />
+      <PackageReference Include="Avalonia.AvaloniaEdit" Version="12.0.0" />
+      <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Application.Core.Interfaces\Application.Core.Interfaces.csproj" />
+      <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="UserControls\ComponentsControl.axaml.cs">
+        <DependentUpon>ComponentsControl.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+</Project>
