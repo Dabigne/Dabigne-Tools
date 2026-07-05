@@ -19,8 +19,13 @@ public partial class MangaDownloadViewModel : ObservableObject
         
     [ObservableProperty] 
     private int _firstChapter = 1;
+    
     [ObservableProperty] 
     private int _lastChapter = 1;
+
+    [ObservableProperty]
+    private int? _numberOfPagesInImage = null;
+    
     [ObservableProperty] 
     private bool _canDownload = true;
 
@@ -60,7 +65,8 @@ public partial class MangaDownloadViewModel : ObservableObject
         {
             processOk = await _mangaPdfService.DownloadChapterToPdf(
                 SearchViewModel.MangaName, 
-                currentChapter);
+                currentChapter,
+                NumberOfPagesInImage);
             currentChapter++;
         }
         

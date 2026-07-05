@@ -2,5 +2,5 @@ namespace Module.MangaDownload.Interfaces;
 
 public interface IMangaPdfService
 {
-    Task<bool> DownloadChapterToPdf(string mangaName, int chapterToDownload);
+    Task<bool> DownloadChapterToPdf(string mangaName, int chapterToDownload, int? maxPageHeight = null);
 }

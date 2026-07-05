@@ -27,7 +27,7 @@ public class PdfService : IPdfService
             .Sum();
     }
     
-    public bool CreatePdfFromImagesInFolder(string folderName, string pdfName)
+    public bool CreatePdfFromImagesInFolder(string folderName, string pdfName, int? maxPageHeight = null)
     {
         var orderedList = Directory.GetFiles(folderName).ToList().Order();
         var finalList = orderedList.Where(s => s.EndsWith(".jpg")).ToList();
@@ -38,20 +38,33 @@ public class PdfService : IPdfService
         try
         {
             using var document = new PdfDocument();
+            
             foreach (var pageName in finalList)
             {
                 _outputService.Push(new OutputLine($"Adding page {pageName}"));
-                var page = document.AddPage();
-                using var img = GetXImageFromPath(pageName);
-                var pageWidth = img.PixelWidth;
-                var pageHeight = img.PixelHeight;
-                    
-                // Change PDF Page size to match image
-                page.Width = new XUnit(pageWidth);
-                page.Height = new XUnit(pageHeight);
+                
+                using var image = SKImage.FromEncodedData(pageName);
+                
+                var finalPageHeight = maxPageHeight ?? image.Height;
+                if (finalPageHeight > image.Height)
+					finalPageHeight = image.Height;
+                
+                var numberOfPagesInImage = image.Height / finalPageHeight;
+                
+                for (var i = 0; i < numberOfPagesInImage; i++)
+                {
+	                var page = document.AddPage();
+	                using var img = GetXImageFromPath(image, finalPageHeight, i * finalPageHeight);
+	                var pageWidth = img.PixelWidth;
+	                var pageHeight = img.PixelHeight;
+	                    
+	                // Change PDF Page size to match image
+	                page.Width = new XUnit(pageWidth);
+	                page.Height = new XUnit(pageHeight);
 
-                var gfx = XGraphics.FromPdfPage(page);
-                gfx.DrawImage(img, 0, 0, pageWidth, pageHeight);
+	                var gfx = XGraphics.FromPdfPage(page);
+	                gfx.DrawImage(img, 0, 0, pageWidth, pageHeight);
+                }
             }
             var pdfPath = Path.Join(folderName, pdfName);
             document.Save($"{pdfPath}.pdf");
@@ -93,19 +106,18 @@ public class PdfService : IPdfService
         return true;
     }
 
-    private XImage GetXImageFromPath(string path)
+    private XImage GetXImageFromPath(SKImage image, int height, int? heightStart = null)
     {
-        try
-        {
-            var fileStream = File.OpenRead(path);
-            return XImage.FromStream(fileStream);
-        }
-        catch (Exception)
-        {
-            _outputService.Push(new OutputLine($"Converting image to supported format: {path}", false, Colors.DarkOrange));
-            var image = SKImage.FromEncodedData(path);
-            var data = image.Encode(SKEncodedImageFormat.Png, 100);
-            return XImage.FromStream(data.AsStream());
-        }
+        using var skBitmap = SKBitmap.Decode(image.EncodedData);
+        using var pixmap =  new SKPixmap(skBitmap.Info, skBitmap.GetPixels());
+        var top = heightStart ?? 0;
+        SKRectI rectI = new SKRectI(0, 
+	        top, 
+	        image.Width, 
+	        top + height);
+        var subset = pixmap.ExtractSubset(rectI);
+        
+        using var data = subset.Encode(SKEncodedImageFormat.Png, 100);
+        return XImage.FromStream(data.AsStream());
     }
 }
