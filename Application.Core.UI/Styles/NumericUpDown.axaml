@@ -6,6 +6,7 @@
         <ResourceInclude Source="Sizes.axaml"/>
         <ResourceInclude Source="Brushes.axaml"/>
         <ResourceInclude Source="Pathes.axaml"/>
+        <StyleInclude Source="PathStyles.axaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <Design.PreviewWith>
@@ -55,16 +56,20 @@
                                           VerticalContentAlignment="Center"
                                           Width="{StaticResource MediumHeight}"
                                           Margin="1"
-                                          BorderThickness="0"
-                                          Content="{StaticResource UpArrow}">
+                                          BorderThickness="0">
+                                <Path  Classes="small" 
+                                       Fill="{TemplateBinding Foreground}"
+                                       Data="{StaticResource UpArrow}"/>
                             </RepeatButton>
                             <RepeatButton Name="PART_DecreaseButton"
                                           VerticalAlignment="Stretch"
                                           VerticalContentAlignment="Center"
                                           Width="{StaticResource MediumHeight}"
                                           Margin="1"
-                                          BorderThickness="0"
-                                          Content="{StaticResource DownArrow}">
+                                          BorderThickness="0">
+                                <Path  Classes="small" 
+                                       Fill="{TemplateBinding Foreground}"
+                                       Data="{StaticResource DownArrow}"/>
                             </RepeatButton>
                         </UniformGrid>
                     </Grid>

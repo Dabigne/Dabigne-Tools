@@ -5,20 +5,8 @@
         <ResourceInclude Source="Sizes.axaml"/>
     </ResourceDictionary.MergedDictionaries>
     
-    <Path x:Key="UpArrow"
-          Width="{StaticResource ExtraSmallIconWidth}"
-          Height="{StaticResource ExtraSmallIconHeight}"
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center"
-          Data="M0,5 L4.5,.5 9,5 6,5 4.5,3.5 3,5 z"
-          Stretch="Fill" />
+    <StreamGeometry x:Key="UpArrow">M0,5 L4.5,.5 9,5 6,5 4.5,3.5 3,5 z</StreamGeometry>
 
-    <Path x:Key="DownArrow"
-          Width="{StaticResource ExtraSmallIconWidth}"
-          Height="{StaticResource ExtraSmallIconHeight}"
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center"
-          Data="M0,0 L3,0 4.5,1.5 6,0 9,0 4.5,4.5 z"
-          Stretch="Fill" />
+    <StreamGeometry x:Key="DownArrow">M0,0 L3,0 4.5,1.5 6,0 9,0 4.5,4.5 z</StreamGeometry>
     
 </ResourceDictionary>
