@@ -1,0 +1,101 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="CornerRadius.axaml"/>
+                <ResourceInclude Source="Sizes.axaml"/>
+                <ResourceInclude Source="Brushes.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+    
+    <Design.PreviewWith>
+        <Border Padding="20"
+                Background="{StaticResource SurfaceBrush}">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <TextBlock Text="Default"/>
+                    <Button Classes="extraSmall">X Small</Button>
+                    <Button Classes="small">Small</Button>
+                    <Button>Default</Button>
+                    <Button IsEnabled="False">Disabled</Button>
+                    <Button Classes="rounded">Rounded</Button>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Secondary"/>
+                    <Button Classes="secondary extraSmall">X Small</Button>
+                    <Button Classes="secondary small">Small</Button>
+                    <Button Classes="secondary">Default</Button>
+                    <Button Classes="secondary" IsEnabled="False">Disabled</Button>
+                    <Button Classes="secondary rounded">Rounded</Button>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Tertiary"/>
+                    <Button Classes="tertiary">Tertiary</Button>
+                    <Button Classes="tertiary" IsEnabled="False">Tertiary</Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="Button">
+        <Setter Property="Height" Value="{StaticResource MediumHeight}"/>
+        <Setter Property="Padding" Value="{StaticResource MediumSidePadding}"/>
+        <Setter Property="Margin" Value="{StaticResource MediumAllMargin}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource SmallRadius}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    
+    <Style Selector="Button.extraSmall">
+        <Setter Property="Height" Value="{StaticResource ExtraSmallHeight}"/>
+        <Setter Property="Padding" Value="{StaticResource ExtraSmallSidePadding}"/>
+        <Setter Property="Margin" Value="{StaticResource ExtraSmallAllMargin}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource ExtraSmallRadius}"/>
+        <Setter Property="FontSize" Value="{StaticResource ExtraSmallFontSize}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+    </Style>
+
+    <Style Selector="Button.small">
+        <Setter Property="Height" Value="{StaticResource SmallHeight}"/>
+        <Setter Property="Padding" Value="{StaticResource SmallSidePadding}"/>
+        <Setter Property="Margin" Value="{StaticResource SmallAllMargin}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource SmallRadius}"/>
+        <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+    </Style>
+    
+    <Style Selector="Button.rounded">
+        <Setter Property="CornerRadius" Value="999"/>
+    </Style>
+
+    <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="Brown"/>
+        <!-- <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}"/> -->
+        <!-- <Setter Property="Foreground" Value="{StaticResource OnPrimaryContainerBrush}"/> -->
+    </Style>
+
+    <Style Selector="Button:disabled">
+        <Setter Property="Opacity" Value="0.7"/>
+    </Style>
+
+    <Style Selector="Button.secondary">
+        <Setter Property="Background" Value="{StaticResource SecondaryBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource OnSecondaryBrush}"/>
+    </Style>
+    
+    <Style Selector="Button.secondary:pointerover">
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+    </Style>
+
+    <Style Selector="Button.tertiary">
+        <Setter Property="Background" Value="{StaticResource TertiaryBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource OnTertiaryBrush}"/>
+    </Style>
+</Styles>

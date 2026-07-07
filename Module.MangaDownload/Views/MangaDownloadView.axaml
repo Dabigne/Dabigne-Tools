@@ -9,6 +9,9 @@
              d:DesignHeight="450"
              x:Class="Module.MangaDownload.Views.MangaDownloadView"
              x:DataType="vm:MangaDownloadViewModel">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Application.Core.UI/Themes/Theme.axaml"/>
+    </UserControl.Styles>
     
     <Design.DataContext>
         <vm:DesignTimeMangaDownloadViewModel/>
@@ -29,12 +32,6 @@
                      Text="{Binding NumberOfPagesInImage, Mode=TwoWay}"/>
             
             <Button Grid.Row="3"
-                    Foreground="{DynamicResource AccentButtonForeground}"
-                    Background="{DynamicResource AccentButtonBackground}"
-                    Margin="10,20"
-                    Padding="20, 5"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Stretch"
                     Content="Download"
                     Command="{Binding ProcessCommand}"
                     IsEnabled="{Binding CanDownload}"/>
