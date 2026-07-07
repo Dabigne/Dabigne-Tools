@@ -1,6 +1,9 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
+    <x:Double x:Key="ExtraSmallIconWidth">8</x:Double>
+    <x:Double x:Key="ExtraSmallIconHeight">6</x:Double>
+
     <x:Double x:Key="ExtraSmallHeight">16</x:Double>
     <x:Double x:Key="SmallHeight">20</x:Double>
     <x:Double x:Key="MediumHeight">28</x:Double>

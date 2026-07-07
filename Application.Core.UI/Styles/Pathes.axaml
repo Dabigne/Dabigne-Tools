@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="Sizes.axaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Path x:Key="UpArrow"
+          Width="{StaticResource ExtraSmallIconWidth}"
+          Height="{StaticResource ExtraSmallIconHeight}"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Data="M0,5 L4.5,.5 9,5 6,5 4.5,3.5 3,5 z"
+          Stretch="Fill" />
+
+    <Path x:Key="DownArrow"
+          Width="{StaticResource ExtraSmallIconWidth}"
+          Height="{StaticResource ExtraSmallIconHeight}"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Data="M0,0 L3,0 4.5,1.5 6,0 9,0 4.5,4.5 z"
+          Stretch="Fill" />
+    
+</ResourceDictionary>
