@@ -24,6 +24,10 @@
                 <NumericUpDown TextAlignment="Right"
                                Classes="tertiary"
                                Value="120"/>
+                <NumericUpDown TextAlignment="Right"
+                               Height="{StaticResource LargeHeight}"
+                               Classes="tertiary"
+                               Value="100"/>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -48,25 +52,16 @@
                                           ContentTemplate="{TemplateBinding ContentTemplate}" />
                         <UniformGrid Grid.Column="1"
                                      Name="PART_SpinnerPanel"
+                                     VerticalAlignment="Stretch"
                                      HorizontalAlignment="Right"
                                      IsVisible="{TemplateBinding ShowButtonSpinner}"
                                      Rows="2">
-                            <RepeatButton Name="PART_IncreaseButton"
-                                          VerticalAlignment="Stretch"
-                                          VerticalContentAlignment="Center"
-                                          Width="{StaticResource MediumHeight}"
-                                          Margin="1"
-                                          BorderThickness="0">
+                            <RepeatButton Name="PART_IncreaseButton">
                                 <Path  Classes="small" 
                                        Fill="{TemplateBinding Foreground}"
                                        Data="{StaticResource UpArrow}"/>
                             </RepeatButton>
-                            <RepeatButton Name="PART_DecreaseButton"
-                                          VerticalAlignment="Stretch"
-                                          VerticalContentAlignment="Center"
-                                          Width="{StaticResource MediumHeight}"
-                                          Margin="1"
-                                          BorderThickness="0">
+                            <RepeatButton Name="PART_DecreaseButton">
                                 <Path  Classes="small" 
                                        Fill="{TemplateBinding Foreground}"
                                        Data="{StaticResource DownArrow}"/>
@@ -76,6 +71,17 @@
                 </Border>
             </ControlTemplate>
         </Setter>
+        
+        <Style Selector="^ /template/ RepeatButton">
+            <Setter Property="Width" Value="{StaticResource MediumHeight}"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Padding" Value="3"/>
+        </Style>
+
     </ControlTheme>
     
     <ControlTheme x:Key="{x:Type NumericUpDown}" TargetType="NumericUpDown">
@@ -115,7 +121,7 @@
                 </ButtonSpinner>
             </ControlTemplate>
         </Setter>
-
+        
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="0.75"/>
         </Style>

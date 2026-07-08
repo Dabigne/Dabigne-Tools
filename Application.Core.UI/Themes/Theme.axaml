@@ -6,6 +6,7 @@
                 <ResourceInclude Source="avares://Application.Core.UI/Styles/Brushes.axaml"/>
                 <ResourceInclude Source="avares://Application.Core.UI/Styles/Sizes.axaml"/>
                 <ResourceInclude Source="avares://Application.Core.UI/Styles/CornerRadius.axaml"/>
+                <ResourceInclude Source="avares://Application.Core.UI/Styles/NumericUpDown.axaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
