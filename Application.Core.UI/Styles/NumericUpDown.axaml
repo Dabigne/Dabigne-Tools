@@ -11,7 +11,7 @@
     
     <Design.PreviewWith>
         <Border Padding="4"
-                Width="200">
+                Width="300">
             <StackPanel>
                 <NumericUpDown TextAlignment="Left"
                                Value="120"/>
@@ -25,6 +25,12 @@
                                Classes="tertiary"
                                Value="120"/>
                 <NumericUpDown TextAlignment="Right"
+                               CornerRadius="0"
+                               BorderThickness="1"
+                               BorderBrush="Black"
+                               Background="BurlyWood"
+                               Value="120"/>
+                <NumericUpDown TextAlignment="Right"
                                Height="{StaticResource LargeHeight}"
                                Classes="tertiary"
                                Value="100"/>
@@ -35,7 +41,7 @@
     <ControlTheme x:Key="{x:Type ButtonSpinner}" TargetType="ButtonSpinner">
         <Setter Property="Template">
             <ControlTemplate>
-                <Border Margin="{TemplateBinding Padding}"
+                <Border Margin="{TemplateBinding Margin}"
                         HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                         VerticalAlignment="{TemplateBinding VerticalAlignment}"
                         Background="{TemplateBinding Background}"
@@ -54,6 +60,7 @@
                                      Name="PART_SpinnerPanel"
                                      VerticalAlignment="Stretch"
                                      HorizontalAlignment="Right"
+                                     Margin="0,0, 0, 0"
                                      IsVisible="{TemplateBinding ShowButtonSpinner}"
                                      Rows="2">
                             <RepeatButton Name="PART_IncreaseButton">

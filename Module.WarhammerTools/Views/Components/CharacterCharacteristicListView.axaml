@@ -51,7 +51,7 @@
                                             IsHorizontal="True">
                 <userControls:ComponentsControl.DataTemplates>
                     <DataTemplate DataType="{x:Type components:CharacterCharacteristicViewModel}">
-                        <Grid MinWidth="30">
+                        <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition SharedSizeGroup="A"/>
                                 <RowDefinition SharedSizeGroup="B"/>
@@ -60,23 +60,17 @@
                             </Grid.RowDefinitions>
 
                             <Label Grid.Row="0"
-                                   Padding="4"
-                                   Margin="0"
                                    HorizontalContentAlignment="Center"
                                    Content="{Binding Shortcut}"/>
                             <NumericUpDown Grid.Row="1"
-                                           Classes="small"
                                            Margin="0"
                                            HorizontalContentAlignment="Center"
                                            Value="{Binding InitialValue}"/>
                             <NumericUpDown Grid.Row="2" 
-                                           Classes="small"
                                            Margin="0"
                                            HorizontalContentAlignment="Center"
                                            Value="{Binding Improvements}"/>
                             <Label Grid.Row="3"
-                                   Padding="4,6" 
-                                   Margin="0"
                                    HorizontalContentAlignment="Center"
                                    Content="{Binding CurrentValue}"/>
                         </Grid>
