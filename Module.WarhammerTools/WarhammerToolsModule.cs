@@ -40,5 +40,17 @@ public sealed class WarhammerToolsModule: Autofac.Module
         builder.RegisterType<CharacterExpertiseViewModel>().AsSelf().InstancePerDependency();
         builder.RegisterType<CharacterPossessionViewModel>().AsSelf().InstancePerDependency();
         builder.RegisterType<CharacterSpellViewModel>().AsSelf().InstancePerDependency();
+        
+        builder.RegisterType<CharacterExpertiseListViewModel>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CharacterAdvancedExpertiseListViewModel>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CharacterSkillListViewModel>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CharacterArmorListViewModel>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CharacterArmorLocationListViewModel>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CharacterPossessionListViewModel>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CharacterSpellListViewModel>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CharacterWeaponListViewModel>().AsSelf().InstancePerDependency();
+        
+        builder.RegisterType<CharacterClutterViewModel>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CharacterInjuriesViewModel>().AsSelf().InstancePerDependency();
     }
 }

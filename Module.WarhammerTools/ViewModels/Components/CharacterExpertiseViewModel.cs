@@ -27,19 +27,28 @@ public partial class CharacterExpertiseViewModel : ObservableObject, IViewModel<
     public CharacterExpertiseViewModel(ICharacterSheetService characterSheetService)
     {
         _characterSheetService = characterSheetService;
+        _characterSheetService.CharacterSheetChanged += CharacterSheetServiceOnCharacterSheetChanged;
     }
-    
+
+    private void CharacterSheetServiceOnCharacterSheetChanged()
+    {
+	    CharacteristicValue = GetCharacteristic(Characteristic).Value;
+    }
+
     public void SetModel(CharacterExpertise expertise)
     {
-        var characteristic = _characterSheetService
-            .GetLoadedCharacterSheet()!
-            .Characteristics
-            .First(c => c.ShortCut == expertise.Characteristic);
-        
         Name = expertise.Name;
         Characteristic = expertise.Characteristic;
-        CharacteristicValue = characteristic.Value;
+        CharacteristicValue = GetCharacteristic(Characteristic).Value;
         Improvement = expertise.Improvement;
+    }
+
+    private CharacterCharacteristic GetCharacteristic(string characteristicShortcut)
+    {
+	    return  _characterSheetService
+		    .GetLoadedCharacterSheet()!
+		    .Characteristics
+		    .First(c => c.ShortCut == characteristicShortcut);
     }
 
     public CharacterExpertise GetModel()

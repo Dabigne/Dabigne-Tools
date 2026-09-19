@@ -19,7 +19,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     
     public CharacterInformationsViewModel Informations { get; } = new();
     
-    public CharacterCharacteristicListViewModel CharacteristicList { get; }  = new();
+    public CharacterCharacteristicListViewModel CharacteristicList { get; }
     
     public CharacterDestinyViewModel Destiny { get; }  = new();
     
@@ -83,6 +83,8 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
 
         _characterSheetService.LoadModel(_characterSheetFileService.Load(filePath));
         _characterSheetService.InjectModel(this);
+        
+        Clutter.Refresh();
     }
 
     [RelayCommand]
@@ -110,20 +112,22 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         _characterSheetFileService = characterSheetFileService;
         _fileService = fileService;
         _sessionService = sessionService;
-        
-        FirstExpertiseList = new CharacterExpertiseListViewModel(instanceProvider);
-        SecondExpertiseList = new CharacterExpertiseListViewModel(instanceProvider);
-        AdvancedExpertiseList = new CharacterAdvancedExpertiseListViewModel(instanceProvider);
-        SkillList = new CharacterSkillListViewModel(instanceProvider);
-        Armors = new CharacterArmorListViewModel(instanceProvider);
-        ArmorLocations = new CharacterArmorLocationListViewModel(instanceProvider.GetInstance<IArmorRulesService>());
-        Possessions = new CharacterPossessionListViewModel(instanceProvider);
-        Weapons = new CharacterWeaponListViewModel(instanceProvider);
-        Spells = new CharacterSpellListViewModel(instanceProvider);
 
-        Clutter = new CharacterClutterViewModel(instanceProvider.GetInstance<IClutterRulesService>());
-        Injuries = new CharacterInjuriesViewModel(instanceProvider.GetInstance<ICharacteristicRulesService>());
+        CharacteristicList = new CharacterCharacteristicListViewModel(_characterSheetService);
         
+        FirstExpertiseList = instanceProvider.GetInstance<CharacterExpertiseListViewModel>();
+        SecondExpertiseList = instanceProvider.GetInstance<CharacterExpertiseListViewModel>();
+        AdvancedExpertiseList = instanceProvider.GetInstance<CharacterAdvancedExpertiseListViewModel>();
+        SkillList = instanceProvider.GetInstance<CharacterSkillListViewModel>();
+        Armors = instanceProvider.GetInstance<CharacterArmorListViewModel>();
+        ArmorLocations = instanceProvider.GetInstance<CharacterArmorLocationListViewModel>();
+        Possessions = instanceProvider.GetInstance<CharacterPossessionListViewModel>();
+        Weapons = instanceProvider.GetInstance<CharacterWeaponListViewModel>();
+        Spells = instanceProvider.GetInstance<CharacterSpellListViewModel>();
+
+        Clutter = instanceProvider.GetInstance<CharacterClutterViewModel>();
+        Injuries = instanceProvider.GetInstance<CharacterInjuriesViewModel>();
+
         _characterSheetService.InjectModel(this);
     }
     

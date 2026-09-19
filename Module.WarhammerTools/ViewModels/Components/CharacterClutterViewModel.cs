@@ -3,22 +3,25 @@ using Module.WarhammerTools.Interfaces;
 
 namespace Module.WarhammerTools.ViewModels.Components;
 
-public class CharacterClutterViewModel : ObservableObject
+public class CharacterClutterViewModel(IClutterRulesService clutterRulesService) 
+	: ObservableObject
 {
-    private IClutterRulesService _rulesService;
-    
-    public int ArmorClutter => _rulesService.GetArmorClutter();
+    public int ArmorClutter => clutterRulesService.GetArmorClutter();
 
-    public int WeaponClutter => _rulesService.GetWeaponClutter();
+    public int WeaponClutter => clutterRulesService.GetWeaponClutter();
     
-    public int PossessionsClutter => _rulesService.GetPossessionClutter();
+    public int PossessionsClutter => clutterRulesService.GetPossessionClutter();	
     
-    public int TotalClutter => _rulesService.GetTotalClutter();
+    public int TotalClutter => clutterRulesService.GetTotalClutter();
     
-    public int MaxClutter => _rulesService.GetMaxClutter();
+    public int MaxClutter => clutterRulesService.GetMaxClutter();
     
-    public CharacterClutterViewModel(IClutterRulesService rulesService)
-    {
-        _rulesService = rulesService;
-    }
+    public void Refresh()
+	{
+		OnPropertyChanged(nameof(ArmorClutter));
+		OnPropertyChanged(nameof(WeaponClutter));
+		OnPropertyChanged(nameof(PossessionsClutter));
+		OnPropertyChanged(nameof(TotalClutter));
+		OnPropertyChanged(nameof(MaxClutter));
+	}
 }

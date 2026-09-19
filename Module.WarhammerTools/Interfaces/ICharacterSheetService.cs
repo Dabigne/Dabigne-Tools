@@ -5,6 +5,8 @@ namespace Module.WarhammerTools.Interfaces;
 
 public interface ICharacterSheetService
 {
+	event Action CharacterSheetChanged;
+	
     void LoadModel(CharacterSheet characterSheet);
 
     CharacterSheet? GetLoadedCharacterSheet();
@@ -14,4 +16,6 @@ public interface ICharacterSheetService
     CharacterSheet UpdateModel(CharacterSheetViewModel viewModel);
     
     void InjectModel(CharacterSheetViewModel viewModel);
+
+	void UpdateCharacterSheet();
 }

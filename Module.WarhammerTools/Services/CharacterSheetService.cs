@@ -8,6 +8,8 @@ namespace Module.WarhammerTools.Services;
 public class CharacterSheetService : ICharacterSheetService
 {
     private CharacterSheet? _loadedCharacterSheet;
+    
+    public event Action? CharacterSheetChanged;
 
     public CharacterSheetService()
     {
@@ -179,5 +181,10 @@ public class CharacterSheetService : ICharacterSheetService
         viewModel.Injuries.SetModel(_loadedCharacterSheet.Injuries);
         viewModel.Spells.SetModel(_loadedCharacterSheet.Spells);
         viewModel.Notes.SetModel(_loadedCharacterSheet.Notes);
+    }
+
+    public void UpdateCharacterSheet()
+    {
+	    CharacterSheetChanged?.Invoke();
     }
 }

@@ -32,7 +32,8 @@ public class ClutterRulesService : IClutterRulesService
 
     public int GetMaxClutter()
     {
-        return 10 * _characteristicRulesService.GetValue("F");
+	    return _characteristicRulesService.GetBonusValue("F") +
+		    _characteristicRulesService.GetBonusValue("E");
     }
 
     public int GetTotalClutter()

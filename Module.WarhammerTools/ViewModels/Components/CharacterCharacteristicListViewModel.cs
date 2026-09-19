@@ -1,9 +1,11 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using Module.WarhammerTools.Interfaces;
 using Module.WarhammerTools.Models;
 
 namespace Module.WarhammerTools.ViewModels.Components;
 
-public partial class CharacterCharacteristicListViewModel : ObservableObject
+public partial class CharacterCharacteristicListViewModel(ICharacterSheetService characterSheetService)
+	: ObservableObject
 {
     [ObservableProperty] 
     private IList<CharacterCharacteristicViewModel>? _list;
@@ -13,7 +15,7 @@ public partial class CharacterCharacteristicListViewModel : ObservableObject
         var newList = new List<CharacterCharacteristicViewModel>();
         foreach (var model in models)
         {
-            var vm = new CharacterCharacteristicViewModel();
+            var vm = new CharacterCharacteristicViewModel(characterSheetService);
             vm.SetModel(model);
             newList.Add(vm);
         }
