@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="TextInput.axaml"/>
         <ResourceInclude Source="CornerRadius.axaml"/>
         <ResourceInclude Source="Sizes.axaml"/>
         <ResourceInclude Source="Brushes.axaml"/>
@@ -12,29 +13,31 @@
     <Design.PreviewWith>
         <Border Padding="4"
                 Width="300">
-            <StackPanel>
-                <NumericUpDown TextAlignment="Left"
+            <Grid RowDefinitions="30,40,50,60,80,100"
+                  ColumnDefinitions="*">
+                <NumericUpDown Grid.Row="0" TextAlignment="Left"
                                Value="120"/>
-                <NumericUpDown TextAlignment="Left"
+                <NumericUpDown Grid.Row="1" TextAlignment="Left"
                                IsEnabled="False"
                                Value="120"/>
-                <NumericUpDown TextAlignment="Center"
+                <NumericUpDown Grid.Row="2" TextAlignment="Center"
                                Classes="secondary"
                                Value="120"/>
-                <NumericUpDown TextAlignment="Right"
+                <NumericUpDown Grid.Row="3" TextAlignment="Right"
                                Classes="tertiary"
                                Value="120"/>
-                <NumericUpDown TextAlignment="Right"
+                <NumericUpDown Grid.Row="4" TextAlignment="Right"
                                CornerRadius="0"
                                BorderThickness="1"
                                BorderBrush="Black"
                                Background="BurlyWood"
                                Value="120"/>
-                <NumericUpDown TextAlignment="Right"
-                               Height="{StaticResource LargeHeight}"
+                <NumericUpDown Grid.Row="5" 
+                               TextAlignment="Right"
+                               VerticalAlignment="Stretch"
                                Classes="tertiary"
                                Value="100"/>
-            </StackPanel>
+            </Grid>
         </Border>
     </Design.PreviewWith>
     
@@ -112,39 +115,46 @@
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Stretch"
                                  TextAlignment="{TemplateBinding TextAlignment}"
-                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                  AcceptsReturn="False"
                                  Background="Transparent"
-                                 BorderBrush="Transparent"
+                                 BorderBrush="Red"
                                  BorderThickness="0"
+                                 Padding="4,8"
                                  FontSize="{TemplateBinding FontSize}"
                                  FontWeight="{TemplateBinding FontWeight}"
                                  Foreground="{TemplateBinding Foreground}"
+                                 CaretBrush="{TemplateBinding Foreground}"
                                  IsReadOnly="{TemplateBinding IsReadOnly}"
                                  Text="{TemplateBinding Text}"
                                  TextWrapping="NoWrap"
-                                 PlaceholderText="{TemplateBinding Watermark}" />
+                                 PlaceholderText="{TemplateBinding Watermark}">
+                        </TextBox>
                     </DataValidationErrors>
                 </ButtonSpinner>
             </ControlTemplate>
         </Setter>
         
         <Style Selector="^:disabled">
-            <Setter Property="Opacity" Value="0.75"/>
-        </Style>
-        
-        <Style Selector="^:disabled /template/ TextBox">
-            <Setter Property="Opacity" Value="1"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Opacity" Value="0.7"/>
         </Style>
         
         <Style Selector="^:error">
             <Setter Property="BorderBrush" Value="{DynamicResource ErrorBrush}" />
         </Style>
+        
+        <Style Selector="^:focus /template/ TextBox#PART_TextBox#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+
+        <Style Selector="^:focus /template/ Border">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        
+        <Style Selector="^:pointerover /template/ Border">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
 
         <Style Selector="^">
-            <Setter Property="Height" Value="{StaticResource MediumHeight}"/>
             <Setter Property="Padding" Value="{StaticResource SmallSidePadding}"/>
             <Setter Property="Margin" Value="{StaticResource MediumAllMargin}"/>
             <Setter Property="CornerRadius" Value="{StaticResource MediumRadius}"/>

@@ -19,7 +19,7 @@
     </Design.DataContext>
     
     <Grid RowDefinitions="Auto,*,*,*,*,*"
-          ColumnDefinitions="*,Auto,*">
+          ColumnDefinitions="*,*,2*">
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
                    Classes="title"
                    Text="BLESSURES"
@@ -46,9 +46,6 @@
         <Label Grid.Row="4" Grid.Column="0"
                Content="Dur à cuire"/>
         <NumericUpDown Grid.Row="4" Grid.Column="1"
-                       HorizontalContentAlignment="Center"
-                       BorderThickness="1"
-                       BorderBrush="Gray"
                        Value="{Binding ToughBonus}"/>
 
         <Label Grid.Row="5" Grid.Column="0"

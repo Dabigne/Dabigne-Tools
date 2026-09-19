@@ -63,11 +63,9 @@
                                    HorizontalContentAlignment="Center"
                                    Content="{Binding Shortcut}"/>
                             <NumericUpDown Grid.Row="1"
-                                           Margin="0"
                                            HorizontalContentAlignment="Center"
                                            Value="{Binding InitialValue}"/>
                             <NumericUpDown Grid.Row="2" 
-                                           Margin="0"
                                            HorizontalContentAlignment="Center"
                                            Value="{Binding Improvements}"/>
                             <Label Grid.Row="3"

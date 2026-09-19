@@ -21,7 +21,7 @@
         <components:CharacterWealthViewModel/>    
     </Design.DataContext>
     
-    <Grid RowDefinitions="Auto,*,*,*"
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,*"
           ColumnDefinitions="*,2*">
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                    Classes="title"
@@ -31,19 +31,19 @@
         <Label Grid.Row="1" Grid.Column="0"
                Content="SC"/>
         <NumericUpDown Grid.Row="1" Grid.Column="1"
-                       HorizontalContentAlignment="Center"
+                       HorizontalContentAlignment="Stretch"
                        Value="{Binding Copper}"/>
         
         <Label Grid.Row="2" Grid.Column="0"
                Content="PA"/>
         <NumericUpDown Grid.Row="2" Grid.Column="1"
-                       HorizontalContentAlignment="Center"
+                       HorizontalContentAlignment="Stretch"
                        Value="{Binding Silver}"/>
         
         <Label Grid.Row="3" Grid.Column="0"
                Content="CO"/>
         <NumericUpDown Grid.Row="3" Grid.Column="1"
-                       HorizontalContentAlignment="Center"
+                       HorizontalContentAlignment="Stretch"
                        Value="{Binding Gold}"/>
  
     </Grid>
