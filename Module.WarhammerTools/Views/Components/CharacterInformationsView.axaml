@@ -20,60 +20,60 @@
         <!-- First Line -->
         <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                  BorderThickness="0,0,1,1"
-                 Watermark="Nom:"
+                 PlaceholderText="Nom:"
                  Text="{Binding Name}"/> 
 
         <TextBox Grid.Row="0" Grid.Column="2"
                  BorderThickness="0,0,1,1"
-                 Watermark="Race:"
+                 PlaceholderText="Race:"
                  Text="{Binding Race}"/>
 
         <TextBox Grid.Row="0" Grid.Column="3"
                  BorderThickness="0,0,0,1"
-                 Watermark="Classe:"
+                 PlaceholderText="Classe:"
                  Text="{Binding Class}"/>
         
         <!-- Second line -->
         <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                  BorderThickness="0,0,1,1"
-                 Watermark="Carrière:"
+                 PlaceholderText="Carrière:"
                  Text="{Binding Career}"/> 
 
         <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
                  BorderThickness="0,0,0,1"
-                 Watermark="Niveau de carrière:"
+                 PlaceholderText="Niveau de carrière:"
                  Text="{Binding CareerLevel}"/> 
         
         <!-- Third line -->
         <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
                  BorderThickness="0,0,1,1"
-                 Watermark="Schéma de carrière:"
+                 PlaceholderText="Schéma de carrière:"
                  Text="{Binding CareerSchema}"/> 
 
         <TextBox Grid.Row="2" Grid.Column="3"
                  BorderThickness="0,0,0,1"
-                 Watermark="Status:"
+                 PlaceholderText="Status:"
                  Text="{Binding Status}"/> 
         
         <!-- Fourth line -->
         <TextBox Grid.Row="3" Grid.Column="0"
                  BorderThickness="0,0,1,0"
-                 Watermark="Age:"
+                 PlaceholderText="Age:"
                  Text="{Binding Age}"/> 
 
         <TextBox Grid.Row="3" Grid.Column="1"
                  BorderThickness="0,0,1,0"
-                 Watermark="Taille:"
+                 PlaceholderText="Taille:"
                  Text="{Binding Size}"/> 
 
         <TextBox Grid.Row="3" Grid.Column="2"
                  BorderThickness="0,0,1,0"
-                 Watermark="Cheveux:"
+                 PlaceholderText="Cheveux:"
                  Text="{Binding HairColor}"/> 
 
         <TextBox Grid.Row="3" Grid.Column="3"
                  BorderThickness="0"
-                 Watermark="Yeux:"
+                 PlaceholderText="Yeux:"
                  Text="{Binding EyesColor}"/> 
     </Grid>
     

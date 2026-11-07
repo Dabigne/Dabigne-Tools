@@ -11,19 +11,17 @@
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
         <StyleInclude Source="avares://Application.Core.UI/Styles/DataGridStyle.axaml"/>
     </UserControl.Styles>
-
-    <Design.DataContext>
-        <components:CharacterExpertiseListViewModel/>    
-    </Design.DataContext>
-
+    
     <Grid RowDefinitions="Auto,Auto"
           Margin="4">
         <TextBlock Grid.Row="0"
                    Classes="title"
                    HorizontalAlignment="Center"
                    Text="{Binding Title}"/>
-        <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"
+        <DataGrid Grid.Row="1" 
+                  HorizontalAlignment="Stretch"
                   ItemsSource="{Binding List}"
+                  AutoGenerateColumns="False"
                   BorderBrush="Gray"
                   GridLinesVisibility="All"
                   HorizontalGridLinesBrush="Gray"

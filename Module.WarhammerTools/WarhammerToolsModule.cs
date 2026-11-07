@@ -29,7 +29,6 @@ public sealed class WarhammerToolsModule: Autofac.Module
         builder.RegisterType<ArmorRulesService>().As<IArmorRulesService>().SingleInstance();
         builder.RegisterType<CharacteristicRulesService>().As<ICharacteristicRulesService>();
         builder.RegisterType<ClutterRulesService>().As<IClutterRulesService>();
-        builder.RegisterType<TemplateService>().AsSelf();
     }
 
     private void LoadComponents(ContainerBuilder builder)

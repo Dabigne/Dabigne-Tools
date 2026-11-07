@@ -1,7 +1,6 @@
 using Application.Core.Attributes;
 using Application.Core.Interfaces.Types;
 using Avalonia.Controls;
-using Module.WarhammerTools.Services;
 using Module.WarhammerTools.ViewModels;
 
 namespace Module.WarhammerTools.Views;
@@ -21,15 +20,9 @@ public partial class CharacterSheetView : UserControl, INavigatable, IParameteri
         set => (DataContext as CharacterSheetViewModel)?.LoadCharacterSheet(value);
     }
 
-    public CharacterSheetView(
-        TemplateService templateService,
-        CharacterSheetViewModel viewModel)
+    public CharacterSheetView(CharacterSheetViewModel viewModel)
     {
-        InitializeComponent();
-
-        var templates = templateService.GetTemplates();
-        DataTemplates.AddRange(templates);
-        
         DataContext = viewModel;
+        InitializeComponent();
     }
 }

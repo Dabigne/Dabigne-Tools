@@ -37,16 +37,16 @@
             <TabControl>
                 <TabItem Header="Personnage">
                     <ScrollViewer>
-                        <views:CharacterPageLayout DataContext="{Binding}"/>
+                        <views:CharacterPageLayout/>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Possessions">
                     <ScrollViewer>
-                        <views:CharacterPossessionsLayout DataContext="{Binding}"/>
+                        <views:CharacterPossessionsLayout/>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Notes">
-                    <views:CharacterNotesLayout DataContext="{Binding}"/>
+                    <views:CharacterNotesLayout/>
                 </TabItem>
             </TabControl>
 

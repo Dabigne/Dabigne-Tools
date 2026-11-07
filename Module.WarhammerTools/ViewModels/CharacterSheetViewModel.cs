@@ -17,52 +17,75 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     
     public string? LastFilePath { get; private set; }
     
-    public CharacterInformationsViewModel Informations { get; } = new();
-    
-    public CharacterCharacteristicListViewModel CharacteristicList { get; }
-    
-    public CharacterDestinyViewModel Destiny { get; }  = new();
-    
-    public CharacterResilienceViewModel Resilience { get; }  = new();
-    
-    public CharacterExperienceViewModel Experience { get; }  = new();
-    
-    public CharacterMovementViewModel Movement { get; }  = new();
-    
-    public CharacterExpertiseListViewModel FirstExpertiseList { get; }
+    [ObservableProperty]
+    private CharacterInformationsViewModel _informations  = new();
 
-    public CharacterExpertiseListViewModel SecondExpertiseList { get; }
+    [ObservableProperty] 
+    private CharacterCharacteristicListViewModel _characteristicList;
     
-    public CharacterAdvancedExpertiseListViewModel AdvancedExpertiseList { get; }
+    [ObservableProperty]
+    private CharacterDestinyViewModel _destiny  = new();
+    
+    [ObservableProperty]
+    private CharacterResilienceViewModel _resilience = new();
+    
+    [ObservableProperty]
+    private CharacterExperienceViewModel _experience = new();
+    
+    [ObservableProperty]
+    private CharacterMovementViewModel _movement = new();
 
-    public CharacterSkillListViewModel SkillList { get; }
-    
-    public CharacterAmbitionsViewModel Ambitions { get; } = new();
-    
-    public CharacterGroupViewModel Group { get; } = new();
+    [ObservableProperty]
+    private CharacterExpertiseListViewModel _firstExpertiseList;
 
-    public CharacterArmorListViewModel Armors { get; }
-    
-    public CharacterArmorLocationListViewModel ArmorLocations { get; }
+    [ObservableProperty] 
+    private CharacterExpertiseListViewModel _secondExpertiseList;
 
-    public CharacterPossessionListViewModel Possessions { get; }
-    
-    public CharacterWeaponListViewModel  Weapons { get; }
+    [ObservableProperty]
+    private CharacterAdvancedExpertiseListViewModel _advancedExpertiseList;
 
-    public CharacterPsychologyViewModel Psychology { get; } = new();
+    [ObservableProperty]
+    private CharacterSkillListViewModel _skillList;
     
-    public CharacterCorruptionAndMutationViewModel CorruptionAndMutations { get; } = new();
+    [ObservableProperty]
+    private CharacterAmbitionsViewModel _ambitions = new();
     
-    public CharacterWealthViewModel Wealth { get; } = new();
-    
-    public CharacterClutterViewModel Clutter { get; }
-    
-    public CharacterInjuriesViewModel Injuries { get; }
+    [ObservableProperty]
+    private CharacterGroupViewModel _group = new();
 
-    public CharacterSpellListViewModel Spells { get; }
+    [ObservableProperty] 
+    private CharacterArmorListViewModel _armors;
+
+    [ObservableProperty] 
+    private CharacterArmorLocationListViewModel _armorLocations;
+
+    [ObservableProperty] 
+    private CharacterPossessionListViewModel _possessions;
     
-    public CharacterNoteListViewModel Notes { get; } = new();
+    [ObservableProperty]
+    private CharacterWeaponListViewModel _weapons;
+
+    [ObservableProperty]
+    private CharacterPsychologyViewModel _psychology = new();
     
+    [ObservableProperty]
+    private CharacterCorruptionAndMutationViewModel _corruptionAndMutations = new();
+    
+    [ObservableProperty]
+    private CharacterWealthViewModel _wealth = new();
+    
+    [ObservableProperty]
+    private CharacterClutterViewModel _clutter;
+    
+    [ObservableProperty]
+    private CharacterInjuriesViewModel _injuries;
+
+    [ObservableProperty]
+    private CharacterSpellListViewModel _spells;
+
+    [ObservableProperty]
+    private CharacterNoteListViewModel _notes = new();
+
     [RelayCommand]
     private async Task Load()
     {
