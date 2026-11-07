@@ -22,7 +22,7 @@ public partial class CharacterSheetView : UserControl, INavigatable, IParameteri
 
     public CharacterSheetView(CharacterSheetViewModel viewModel)
     {
-        DataContext = viewModel;
         InitializeComponent();
+        DataContext = viewModel;
     }
 }

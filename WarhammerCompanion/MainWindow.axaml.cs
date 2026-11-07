@@ -25,6 +25,6 @@ public partial class MainWindow : Window
 
 	private void OnLoaded(object? sender, RoutedEventArgs e)
 	{
-		Root.Children.Add(new CharacterSheetView(ViewModel.CharacterSheet));
+		Content = new CharacterSheetView(ViewModel.CharacterSheet);
 	}
 }

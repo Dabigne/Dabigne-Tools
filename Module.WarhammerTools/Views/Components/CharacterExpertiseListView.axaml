@@ -19,9 +19,9 @@
                    HorizontalAlignment="Center"
                    Text="{Binding Title}"/>
         <DataGrid Grid.Row="1" 
-                  HorizontalAlignment="Stretch"
                   ItemsSource="{Binding List}"
                   AutoGenerateColumns="False"
+                  HorizontalAlignment="Stretch"
                   BorderBrush="Gray"
                   GridLinesVisibility="All"
                   HorizontalGridLinesBrush="Gray"
