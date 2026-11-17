@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
+             xmlns:md="https://github.com/whistyun/Markdown.Avalonia"
+             x:Class="Module.WarhammerTools.Views.Components.MarkdownLineView"
+             x:DataType="components:MarkdownLineViewModel">
+    <Border MinHeight="24"
+            Background="Transparent"
+            Padding="4"
+            PointerPressed="OnLinePointerPressed">
+        <Grid>
+            <md:MarkdownScrollViewer Markdown="{Binding Text}"
+                                     IsVisible="{Binding IsPreviewing}"
+                                     MinHeight="24">
+                <md:MarkdownScrollViewer.Styles>
+                    <StyleInclude Source="avares://Module.WarhammerTools/Styles/MarkdownStyles.axaml"/>
+                </md:MarkdownScrollViewer.Styles>
+            </md:MarkdownScrollViewer>
+            <TextBox x:Name="LineEditor"
+                     Text="{Binding DraftText, UpdateSourceTrigger=PropertyChanged}"
+                     IsVisible="{Binding IsEditing}"
+                     BorderThickness="1"
+                     BorderBrush="DarkGoldenrod"
+                     CornerRadius="8"
+                     FontFamily="SFMono"
+                     AcceptsReturn="True"
+                     AcceptsTab="True"
+                     TextWrapping="Wrap"/>
+        </Grid>
+    </Border>
+</UserControl>

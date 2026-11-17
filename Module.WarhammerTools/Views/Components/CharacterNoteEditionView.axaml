@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
-             xmlns:md="https://github.com/whistyun/Markdown.Avalonia"
+             xmlns:views="clr-namespace:Module.WarhammerTools.Views.Components"
              mc:Ignorable="d" 
              d:DesignWidth="800" 
              d:DesignHeight="450"
@@ -17,51 +17,24 @@
         <components:CharacterNoteViewModel/>
     </Design.DataContext>
 
-    <Grid RowDefinitions="Auto,*" 
+    <Grid RowDefinitions="Auto,*"
           HorizontalAlignment="Stretch"
           VerticalAlignment="Stretch">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="{Binding EditionWidth, Mode=TwoWay}"/>
-            <ColumnDefinition Width="3"/>
-            <ColumnDefinition Width="{Binding ViewWidth, Mode=TwoWay}"/>
-        </Grid.ColumnDefinitions>
-        
-        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
-                 Text="{Binding Title}"/>
-        <ComboBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
-                  HorizontalAlignment="Right"
-                  MaxHeight="14"
-                  Margin="2"
-                  Background="Goldenrod"
-                  ItemsSource="{Binding ViewTypes}"
-                  SelectedItem="{Binding ViewType}"/>
-        
-        <Border Grid.Row="1" Grid.Column="0"
+        <TextBox Grid.Row="0" Text="{Binding Title}"/>
+
+        <Border Grid.Row="1"
                 BorderThickness="1"
                 BorderBrush="Gray"
                 Padding="2">
             <ScrollViewer>
-                <TextBox Text="{Binding Text}"
-                         BorderThickness="0"
-                         FontFamily="SFMono"
-                         AcceptsReturn="True"
-                         AcceptsTab="True"/>
+                <ItemsControl x:Name="MarkdownLines" ItemsSource="{Binding Lines}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="components:MarkdownLineViewModel">
+                            <views:MarkdownLineView/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </ScrollViewer>
-        </Border>
-        
-        <GridSplitter Grid.Row="1" Grid.Column="1"
-                      Width="3"
-                      ResizeDirection="Columns"/>
-        
-        <Border Grid.Row="1" Grid.Column="2"
-                BorderThickness="1"
-                BorderBrush="Gray"
-                Padding="2">
-            <md:MarkdownScrollViewer Markdown="{Binding Text}">
-                <md:MarkdownScrollViewer.Styles>
-                    <StyleInclude Source="avares://Module.WarhammerTools/Styles/MarkdownStyles.axaml"/>
-                </md:MarkdownScrollViewer.Styles>
-            </md:MarkdownScrollViewer>
         </Border>
     </Grid>
 
