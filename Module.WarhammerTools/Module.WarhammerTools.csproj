@@ -4,12 +4,14 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Autofac" Version="9.3.4" />
       <PackageReference Include="Avalonia" Version="12.1.5" />
       <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.1.2" />
+      <PackageReference Include="Markdown.Avalonia" Version="12.0.2" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     </ItemGroup>
 
@@ -71,31 +73,7 @@
       <None Remove="Assets\Silhouette.png" />
       <AvaloniaResource Include="Assets\Silhouette.png" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Reference Include="ColorDocument.Avalonia">
-        <HintPath>..\Assemblies\Markdown\ColorDocument.Avalonia.dll</HintPath>
-      </Reference>
-      <Reference Include="ColorTextBlock.Avalonia">
-        <HintPath>..\Assemblies\Markdown\ColorTextBlock.Avalonia.dll</HintPath>
-      </Reference>
-      <Reference Include="Markdown.Avalonia">
-        <HintPath>..\Assemblies\Markdown\Markdown.Avalonia.dll</HintPath>
-      </Reference>
-      <Reference Include="Markdown.Avalonia.Full">
-        <HintPath>..\Assemblies\Markdown\Markdown.Avalonia.Full.dll</HintPath>
-      </Reference>
-      <Reference Include="Markdown.Avalonia.Html">
-        <HintPath>..\Assemblies\Markdown\Markdown.Avalonia.Html.dll</HintPath>
-      </Reference>
-      <Reference Include="Markdown.Avalonia.Svg">
-        <HintPath>..\Assemblies\Markdown\Markdown.Avalonia.Svg.dll</HintPath>
-      </Reference>
-      <Reference Include="Markdown.Avalonia.SyntaxHigh">
-        <HintPath>..\Assemblies\Markdown\Markdown.Avalonia.SyntaxHigh.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
+    
     <Target Name="CopyDLLs" AfterTargets="Build">
         <Message Text="Executing CopyDLLs task" Importance="High" />
         <Copy SourceFiles="$(TargetDir)\$(ProjectName).dll;$(TargetDir)\$(ProjectName).pdb"
@@ -104,15 +82,7 @@
               DestinationFolder="..\Dabigne.Tools\bin\Debug\net9.0\Modules\"/>
         <Copy SourceFiles="$(TargetDir)\ColorTextBlock.Avalonia.dll"
               DestinationFolder="..\Dabigne.Tools\bin\Debug\net9.0\Modules\"/>
-        <Copy SourceFiles="$(TargetDir)\Markdown.Avalonia.dll"
-              DestinationFolder="..\Dabigne.Tools\bin\Debug\net9.0\Modules\"/>
-        <Copy SourceFiles="$(TargetDir)\Markdown.Avalonia.Full.dll"
-              DestinationFolder="..\Dabigne.Tools\bin\Debug\net9.0\Modules\"/>
-        <Copy SourceFiles="$(TargetDir)\Markdown.Avalonia.Html.dll"
-              DestinationFolder="..\Dabigne.Tools\bin\Debug\net9.0\Modules\"/>
-        <Copy SourceFiles="$(TargetDir)\Markdown.Avalonia.Svg.dll"
-              DestinationFolder="..\Dabigne.Tools\bin\Debug\net9.0\Modules\"/>
-        <Copy SourceFiles="$(TargetDir)\Markdown.Avalonia.SyntaxHigh.dll"
+        <Copy SourceFiles="$(TargetDir)\Markdown.Avalonia.dll;$(TargetDir)\Markdown.Avalonia.Full.dll;$(TargetDir)\Markdown.Avalonia.Html.dll;$(TargetDir)\Markdown.Avalonia.Svg.dll;$(TargetDir)\Markdown.Avalonia.SyntaxHigh.dll"
               DestinationFolder="..\Dabigne.Tools\bin\Debug\net9.0\Modules\"/>
         <Message Text="Copied build files" Importance="High" />
     </Target>
