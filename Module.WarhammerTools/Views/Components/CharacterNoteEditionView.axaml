@@ -13,10 +13,6 @@
         <StyleInclude Source="avares://Module.WarhammerTools/Styles/CharacterSheetStyle.axaml"/>
     </UserControl.Styles>
 
-    <Design.DataContext>
-        <components:CharacterNoteViewModel/>
-    </Design.DataContext>
-
     <Grid RowDefinitions="Auto,*"
           HorizontalAlignment="Stretch"
           VerticalAlignment="Stretch">
@@ -27,7 +23,7 @@
                 BorderBrush="Gray"
                 Padding="2">
             <ScrollViewer>
-                <ItemsControl x:Name="MarkdownLines" ItemsSource="{Binding Lines}">
+                <ItemsControl ItemsSource="{Binding Lines}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate x:DataType="components:MarkdownLineViewModel">
                             <views:MarkdownLineView/>

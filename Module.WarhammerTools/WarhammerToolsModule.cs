@@ -29,6 +29,7 @@ public sealed class WarhammerToolsModule: Autofac.Module
         builder.RegisterType<ArmorRulesService>().As<IArmorRulesService>().SingleInstance();
         builder.RegisterType<CharacteristicRulesService>().As<ICharacteristicRulesService>();
         builder.RegisterType<ClutterRulesService>().As<IClutterRulesService>();
+        builder.RegisterType<MarkdownLineEditingService>().AsSelf().InstancePerDependency();
     }
 
     private void LoadComponents(ContainerBuilder builder)
@@ -39,6 +40,8 @@ public sealed class WarhammerToolsModule: Autofac.Module
         builder.RegisterType<CharacterExpertiseViewModel>().AsSelf().InstancePerDependency();
         builder.RegisterType<CharacterPossessionViewModel>().AsSelf().InstancePerDependency();
         builder.RegisterType<CharacterSpellViewModel>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CharacterNoteViewModel>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CharacterNoteListViewModel>().AsSelf().InstancePerDependency();
         
         builder.RegisterType<CharacterExpertiseListViewModel>().AsSelf().InstancePerDependency();
         builder.RegisterType<CharacterAdvancedExpertiseListViewModel>().AsSelf().InstancePerDependency();

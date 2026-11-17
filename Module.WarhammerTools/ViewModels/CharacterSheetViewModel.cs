@@ -84,7 +84,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
     private CharacterSpellListViewModel _spells;
 
     [ObservableProperty]
-    private CharacterNoteListViewModel _notes = new();
+    private CharacterNoteListViewModel _notes;
 
     [RelayCommand]
     private async Task Load()
@@ -135,6 +135,7 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
         _characterSheetFileService = characterSheetFileService;
         _fileService = fileService;
         _sessionService = sessionService;
+        Notes = instanceProvider.GetInstance<CharacterNoteListViewModel>();
 
         CharacteristicList = new CharacterCharacteristicListViewModel(_characterSheetService);
         
