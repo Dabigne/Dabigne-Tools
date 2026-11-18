@@ -57,6 +57,7 @@ public static class Die3DRenderer
         {
             DieType.D4 => 0.42f,
             DieType.D6 => 0.65f,
+            DieType.D8 => 0.44f,
             DieType.D10 or DieType.D10Tens => 0.34f,
             DieType.D12 => 0.44f,
             DieType.D20 => 0.32f,

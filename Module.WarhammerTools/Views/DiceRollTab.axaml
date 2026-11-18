@@ -7,15 +7,22 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.DiceRollTab"
              x:DataType="viewModels:DiceRollViewModel">
+    <UserControl.Styles>
+        <Style Selector="Border">
+            <Setter Property="BorderBrush" Value="DarkGoldenrod" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="CornerRadius" Value="8" />
+        </Style>
+    </UserControl.Styles>
     
-    <Grid ColumnDefinitions="*,220" 
-          RowDefinitions="*,Auto" 
+    
+    <Grid ColumnDefinitions="*,250"
+          RowDefinitions="*,Auto,Auto" 
           Margin="16">
         
         <!-- 3D Dice Tray -->
         <Border Grid.Row="0" 
-                Grid.Column="0" 
-                Background="Transparent" 
+                Grid.Column="0"
                 CornerRadius="12" 
                 ClipToBounds="True">
             <dice:RpgDiceTrayControl
@@ -26,34 +33,85 @@
         </Border>
 
         <!-- Roll History Sidebar -->
-        <Border Grid.Row="0" 
+        <Border Grid.Row="0"
                 Grid.Column="1" 
-                BorderBrush="DarkGoldenrod" 
-                BorderThickness="2" 
-                CornerRadius="12" 
+                CornerRadius="12"
                 Margin="12,0,0,0" 
                 Padding="12">
             <DockPanel>
-                <TextBlock DockPanel.Dock="Top"
-                           Text="Historique des lancers" 
-                           FontWeight="Bold" 
+                <TextBlock DockPanel.Dock="Top" 
+                           Text="Historique des jets" 
+                           FontWeight="Bold"
                            Margin="0,0,0,8" />
                 <ListBox ItemsSource="{Binding RollHistory}" Background="Transparent" />
             </DockPanel>
         </Border>
 
-        <!-- Action Bar -->
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+        <!-- Multi-Dice Pool Selector Bar -->
+        <Border Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                CornerRadius="10" 
+                Padding="12"
+                Margin="0,12,0,0">
+            <StackPanel Spacing="10">
+                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ItemsControl ItemsSource="{Binding PoolItems}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" Spacing="10" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="viewModels:DicePoolItemViewModel">
+                                <Border CornerRadius="8" 
+                                        Padding="8,6">
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <TextBlock Text="{Binding Label}" FontWeight="Bold" VerticalAlignment="Center" Width="28" />
+                                        <Button Content="-" Command="{Binding DecrementCommand}" Padding="8,2" />
+                                        <TextBlock Text="{Binding Count}" FontWeight="Bold" VerticalAlignment="Center" Width="20" TextAlignment="Center" />
+                                        <Button Content="+" Command="{Binding IncrementCommand}" Padding="8,2" />
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <!-- Flat Modifier (+/-) -->
+                    <Border CornerRadius="8" 
+                            Padding="8,6" 
+                            Margin="10,0,0,0">
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <TextBlock Text="Mod" FontWeight="Bold" VerticalAlignment="Center" />
+                            <Button Content="-" Command="{Binding DecrementModifierCommand}" Padding="8,2" />
+                            <TextBlock Text="{Binding Modifier}" FontWeight="Bold" VerticalAlignment="Center" Width="24" TextAlignment="Center" />
+                            <Button Content="+" Command="{Binding IncrementModifierCommand}" Padding="8,2" />
+                        </StackPanel>
+                    </Border>
+                </WrapPanel>
+
+                <!-- Formula Preview & Pool Action Buttons -->
+                <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding PoolFormula}" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#A8B8C8" />
+                    <Button Content="Roll Pool" Command="{Binding RollPoolCommand}" FontWeight="Bold" Background="#2E7D32" Foreground="White" Padding="16,6" />
+                    <Button Content="Clear" Command="{Binding ClearPoolCommand}" Padding="12,6" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Quick Single-Die Roll Bar + Live Result -->
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                     Orientation="Horizontal" Spacing="8"
-                    HorizontalAlignment="Center" Margin="0,12,0,0">
-            <Button Content="d4" Command="{Binding RollSingleCommand}" CommandParameter="{x:Static dice:DieType.D4}" />
-            <Button Content="d6" Command="{Binding RollSingleCommand}" CommandParameter="{x:Static dice:DieType.D6}" />
-            <Button Content="d10" Command="{Binding RollSingleCommand}" CommandParameter="{x:Static dice:DieType.D10}" />
-            <Button Content="d12" Command="{Binding RollSingleCommand}" CommandParameter="{x:Static dice:DieType.D12}" />
-            <Button Content="d20" Command="{Binding RollSingleCommand}" CommandParameter="{x:Static dice:DieType.D20}" />
-            <Button Content="d100 (2d10)" Command="{Binding RollD100Command}" />
-            <Button Content="1d20 + 2d6" Command="{Binding RollAttackComboCommand}" />
-            <TextBlock Text="{Binding RollResultText}" VerticalAlignment="Center" FontWeight="Bold" Margin="12,0,0,0" />
+                    HorizontalAlignment="Center" Margin="0,10,0,0">
+            <TextBlock Text="Jets rapides:" VerticalAlignment="Center" Foreground="#8A99A8" />
+            <Button Content="d4" Command="{Binding QuickRollCommand}" CommandParameter="{x:Static dice:DieType.D4}" />
+            <Button Content="d6" Command="{Binding QuickRollCommand}" CommandParameter="{x:Static dice:DieType.D6}" />
+            <Button Content="d8" Command="{Binding QuickRollCommand}" CommandParameter="{x:Static dice:DieType.D8}" />
+            <Button Content="d10" Command="{Binding QuickRollCommand}" CommandParameter="{x:Static dice:DieType.D10}" />
+            <Button Content="d12" Command="{Binding QuickRollCommand}" CommandParameter="{x:Static dice:DieType.D12}" />
+            <Button Content="d20" Command="{Binding QuickRollCommand}" CommandParameter="{x:Static dice:DieType.D20}" />
+            <Button Content="d100" Command="{Binding RollD100Command}" />
+            <TextBlock Text="{Binding RollResultText}" VerticalAlignment="Center" FontWeight="Bold" Margin="14,0,0,0" />
         </StackPanel>
     </Grid>
 </UserControl>

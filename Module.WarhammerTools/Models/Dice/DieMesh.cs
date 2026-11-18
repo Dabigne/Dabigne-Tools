@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace Module.WarhammerTools.Models.Dice;
 
-public enum DieType { D4, D6, D10, D10Tens, D12, D20 }
+public enum DieType { D4, D6, D8, D10, D10Tens, D12, D20 }
 
 public record DieFace(int[] VertexIndices, string Label, Vector3 Normal);
 
@@ -39,6 +39,7 @@ public class DieMesh
     {
         DieType.D4 => CreateD4(),
         DieType.D6 => CreateD6(),
+        DieType.D8 => CreateD8(),
         DieType.D10 => CreateD10(tens: false),
         DieType.D10Tens => CreateD10(tens: true),
         DieType.D12 => CreateD12(),
@@ -79,6 +80,36 @@ public class DieMesh
             (new[] { 7, 6, 2, 3 }, "3"), (new[] { 0, 1, 5, 4 }, "4")
         };
         return new DieMesh(v, f);
+    }
+    
+    private static DieMesh CreateD8()
+    {
+	    var v = new[]
+	    {
+		    new Vector3( 0,  0,  1), // 0: Top apex
+		    new Vector3( 0,  0, -1), // 1: Bottom apex
+		    new Vector3( 1,  0,  0), // 2: +X
+		    new Vector3( 0,  1,  0), // 3: +Y
+		    new Vector3(-1,  0,  0), // 4: -X
+		    new Vector3( 0, -1,  0)  // 5: -Y
+	    };
+
+	    var f = new[]
+	    {
+		    // Top 4 faces (apex 0 is first vertex so numbers point upright toward the apex)
+		    (new[] { 0, 2, 3 }, "1"),
+		    (new[] { 0, 3, 4 }, "2"),
+		    (new[] { 0, 4, 5 }, "3"),
+		    (new[] { 0, 5, 2 }, "4"),
+
+		    // Bottom 4 faces (apex 1 is first vertex)
+		    (new[] { 1, 3, 2 }, "8"),
+		    (new[] { 1, 4, 3 }, "7"),
+		    (new[] { 1, 5, 4 }, "6"),
+		    (new[] { 1, 2, 5 }, "5")
+	    };
+
+	    return new DieMesh(v, f);
     }
 
     // Pentagonal Trapezohedron (10 kite faces)
