@@ -4,9 +4,9 @@ using Module.WarhammerTools.Services;
 
 namespace Module.WarhammerTools.ViewModels.Components;
 
-public readonly record struct MarkdownLineNavigation(MarkdownLineViewModel Line, int CaretIndex);
+public readonly record struct MarkdownLineNavigation(MarkdownBlockViewModel Block, int CaretIndex);
 
-public partial class MarkdownLineViewModel(
+public partial class MarkdownBlockViewModel(
     string text,
     MarkdownLineEditingService editingService) : ObservableObject
 {

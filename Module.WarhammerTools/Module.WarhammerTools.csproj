@@ -58,7 +58,7 @@
         <DependentUpon>CharacterClutterView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
-      <Compile Update="Views\Components\MarkdownLineView.axaml.cs">
+      <Compile Update="Views\Components\MarkdownBlockView.axaml.cs">
         <DependentUpon>MarkdownLineView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>

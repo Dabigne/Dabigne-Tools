@@ -25,8 +25,8 @@
             <ScrollViewer>
                 <ItemsControl ItemsSource="{Binding Lines}">
                     <ItemsControl.ItemTemplate>
-                        <DataTemplate x:DataType="components:MarkdownLineViewModel">
-                            <views:MarkdownLineView/>
+                        <DataTemplate x:DataType="components:MarkdownBlockViewModel">
+                            <views:MarkdownBlockView/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

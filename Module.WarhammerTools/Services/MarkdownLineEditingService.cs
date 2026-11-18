@@ -1,19 +1,18 @@
 using System.Collections.ObjectModel;
+using Module.WarhammerTools.Models;
 using Module.WarhammerTools.ViewModels.Components;
 
 namespace Module.WarhammerTools.Services;
 
 public sealed class MarkdownLineEditingService
 {
-    private MarkdownLineViewModel? _editingLine;
+    private MarkdownBlockViewModel? _editingLine;
 
-    public ObservableCollection<MarkdownLineViewModel> Lines { get; } = [];
-
-    public event Action<string>? TextUpdated;
-
+    public ObservableCollection<MarkdownBlockViewModel> Lines { get; } = [];
+    
     public MarkdownLineEditingService()
     {
-        Lines.Add(new MarkdownLineViewModel(string.Empty, this));
+        Lines.Add(new MarkdownBlockViewModel(string.Empty, this));
     }
 
     public void SetText(string text)
@@ -22,30 +21,39 @@ public sealed class MarkdownLineEditingService
         Lines.Clear();
 
         foreach (var line in text.Replace("\r\n", "\n").Split('\n'))
-            Lines.Add(new MarkdownLineViewModel(line, this));
+            Lines.Add(new MarkdownBlockViewModel(line, this));
     }
+    
+    public void SetLines(IList<NoteBlock> lines)
+	{
+		_editingLine = null;
+		Lines.Clear();
 
-    public void BeginEditing(MarkdownLineViewModel line)
+		foreach (var line in lines)
+			Lines.Add(new MarkdownBlockViewModel(line.Text, this));
+	}
+
+    public void BeginEditing(MarkdownBlockViewModel block)
     {
-        if (!Lines.Contains(line))
+        if (!Lines.Contains(block))
             return;
 
-        if (_editingLine is not null && _editingLine != line)
+        if (_editingLine is not null && _editingLine != block)
             CommitLine(_editingLine);
 
-        _editingLine = line;
-        line.DraftText = line.Text;
-        line.IsEditing = true;
+        _editingLine = block;
+        block.DraftText = block.Text;
+        block.IsEditing = true;
     }
 
-    public MarkdownLineViewModel? NavigateToLine(
-        MarkdownLineViewModel currentLine,
+    public MarkdownBlockViewModel? NavigateToLine(
+        MarkdownBlockViewModel currentBlock,
         int lineOffset,
         int caretColumn,
         out int targetCaretIndex)
     {
         targetCaretIndex = 0;
-        var currentIndex = Lines.IndexOf(currentLine);
+        var currentIndex = Lines.IndexOf(currentBlock);
         var targetIndex = currentIndex + lineOffset;
         if (currentIndex < 0 || targetIndex < 0 || targetIndex >= Lines.Count)
             return null;
@@ -56,64 +64,60 @@ public sealed class MarkdownLineEditingService
         return targetLine;
     }
 
-    public MarkdownLineViewModel? MergeWithPreviousLine(
-        MarkdownLineViewModel line,
+    public MarkdownBlockViewModel? MergeWithPreviousLine(
+        MarkdownBlockViewModel block,
         out int targetCaretIndex)
     {
         targetCaretIndex = 0;
-        var lineIndex = Lines.IndexOf(line);
-        if (lineIndex <= 0 || line != _editingLine)
+        var lineIndex = Lines.IndexOf(block);
+        if (lineIndex <= 0 || block != _editingLine)
             return null;
 
         var previousLine = Lines[lineIndex - 1];
         targetCaretIndex = previousLine.Text.Length;
-        previousLine.Text += line.DraftText;
+        previousLine.Text += block.DraftText;
         previousLine.DraftText = previousLine.Text;
-        line.IsEditing = false;
+        block.IsEditing = false;
         Lines.RemoveAt(lineIndex);
         _editingLine = null;
-        UpdateTextFromLines();
         BeginEditing(previousLine);
         return previousLine;
     }
 
-    public MarkdownLineViewModel? SplitLine(MarkdownLineViewModel line, int caretIndex)
+    public MarkdownBlockViewModel? SplitLine(MarkdownBlockViewModel block, int caretIndex)
     {
-        var lineIndex = Lines.IndexOf(line);
-        if (lineIndex < 0 || line != _editingLine)
+        var lineIndex = Lines.IndexOf(block);
+        if (lineIndex < 0 || block != _editingLine)
             return null;
 
-        caretIndex = Math.Clamp(caretIndex, 0, line.DraftText.Length);
-        var textAfterCaret = line.DraftText[caretIndex..];
-        line.Text = line.DraftText[..caretIndex];
-        line.IsEditing = false;
+        caretIndex = Math.Clamp(caretIndex, 0, block.DraftText.Length);
+        var textAfterCaret = block.DraftText[caretIndex..];
+        block.Text = block.DraftText[..caretIndex];
+        block.IsEditing = false;
         _editingLine = null;
 
-        var nextLine = new MarkdownLineViewModel(textAfterCaret, this);
+        var nextLine = new MarkdownBlockViewModel(textAfterCaret, this);
         Lines.Insert(lineIndex + 1, nextLine);
-        UpdateTextFromLines();
         BeginEditing(nextLine);
         return nextLine;
     }
 
-    public MarkdownLineViewModel? CommitLine(MarkdownLineViewModel line, bool editNextLine = false)
+    public MarkdownBlockViewModel? CommitLine(MarkdownBlockViewModel block, bool editNextLine = false)
     {
-        if (line != _editingLine)
+        if (block != _editingLine)
             return null;
 
-        var lineIndex = Lines.IndexOf(line);
-        line.Text = line.DraftText;
-        line.IsEditing = false;
+        var lineIndex = Lines.IndexOf(block);
+        block.Text = block.DraftText;
+        block.IsEditing = false;
         _editingLine = null;
-        UpdateTextFromLines();
 
         if (!editNextLine)
             return null;
 
         if (lineIndex == Lines.Count - 1)
         {
-            Lines.Add(new MarkdownLineViewModel(string.Empty, this));
-            UpdateTextFromLines();
+            Lines.Add(new MarkdownBlockViewModel(string.Empty, this));
         }
 
         var nextLine = Lines[lineIndex + 1];
@@ -121,18 +125,14 @@ public sealed class MarkdownLineEditingService
         return nextLine;
     }
 
-    public void CancelLine(MarkdownLineViewModel line)
+    public void CancelLine(MarkdownBlockViewModel block)
     {
-        if (line != _editingLine)
+        if (block != _editingLine)
             return;
 
-        line.DraftText = line.Text;
-        line.IsEditing = false;
+        block.DraftText = block.Text;
+        block.IsEditing = false;
         _editingLine = null;
     }
 
-    private void UpdateTextFromLines()
-    {
-        TextUpdated?.Invoke(string.Join("\n", Lines.Select(item => item.Text)));
-    }
 }
