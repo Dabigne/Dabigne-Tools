@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:Module.WarhammerTools.ViewModels"
              xmlns:views="clr-namespace:Module.WarhammerTools.Views"
+             xmlns:dice="clr-namespace:Module.WarhammerTools.Models.Dice"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              Background="Black"
              x:Class="Module.WarhammerTools.Views.CharacterSheetView"
@@ -48,6 +49,11 @@
                 <TabItem Header="Notes">
                     <views:CharacterNotesLayout/>
                 </TabItem>
+                
+                <TabItem Header="Dés">
+                    <views:DiceRollTab DataContext="{Binding DiceRoll}"/>
+                </TabItem>
+                
             </TabControl>
 
             <StackPanel Orientation="Horizontal"

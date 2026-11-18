@@ -85,6 +85,9 @@ public sealed partial class CharacterSheetViewModel : ObservableObject
 
     [ObservableProperty]
     private CharacterNoteListViewModel _notes;
+    
+    [ObservableProperty]
+    private DiceRollViewModel _diceRoll = new();
 
     [RelayCommand]
     private async Task Load()

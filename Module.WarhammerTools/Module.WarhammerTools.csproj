@@ -62,6 +62,7 @@
         <DependentUpon>MarkdownLineView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Remove="Services\DieRollService.cs" />
     </ItemGroup>
 
     <ItemGroup>
