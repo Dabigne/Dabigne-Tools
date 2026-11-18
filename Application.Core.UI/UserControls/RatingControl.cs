@@ -103,12 +103,12 @@ public class RatingControl : TemplatedControl
         if (e.Source is not Path check)
             return;
         
-        if (Value == 1 && check.DataContext as int? == 1)
+        if (Value == 1 && Convert.ToInt32(check.DataContext) == 1)
         {
             Value = 0;
             return;
         }
             
-        Value = check.DataContext as int? ?? 0;
+        Value = Convert.ToInt32(check.DataContext);
     }
 }

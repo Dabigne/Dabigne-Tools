@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:Module.WarhammerTools.ViewModels.Components"
-             xmlns:userControls="clr-namespace:Application.Core.UserControls;assembly=Application.Core.UI"
+             xmlns:controls="clr-namespace:Application.Core.UserControls;assembly=Application.Core.UI"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Module.WarhammerTools.Views.Components.CharacterDestinyView"
              x:DataType="components:CharacterDestinyViewModel">
@@ -21,19 +21,39 @@
                    Text="DESTIN"
                    Classes="title"
                    HorizontalAlignment="Center"/>
+        
         <TextBlock Grid.Row="1" Grid.Column="0"
                    Classes="small"
                    Text="Destin"/>
-        <userControls:RatingControl Grid.Row="1" Grid.Column="1"
+        <controls:RatingControl Grid.Row="1" Grid.Column="1"
                                     CheckSize="20"
                                     Value="{Binding DestinyPoints}"
-                                    MaxValue="{Binding MaxDestinyPoints}"/>
+                                    MaxValue="{Binding MaxDestinyPoints}">
+            <controls:RatingControl.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Plus"
+                              Command="{Binding IncreaseMaxDestinyCommand}"/>
+                    <MenuItem Header="Moins"
+                              Command="{Binding DecreaseMaxDestinyCommand}"/>
+                </ContextMenu>
+            </controls:RatingControl.ContextMenu>
+        </controls:RatingControl>
+        
         <TextBlock Grid.Row="2" Grid.Column="0"
                    Classes="small"
                    Text="Chance"/>
-        <userControls:RatingControl Grid.Row="2" Grid.Column="1"
+        <controls:RatingControl Grid.Row="2" Grid.Column="1"
                                     CheckSize="20"
                                     Value="{Binding ChancePoints}"
-                                    MaxValue="{Binding MaxChancePoints}"/>
+                                    MaxValue="{Binding MaxChancePoints}">
+            <controls:RatingControl.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Plus"
+                              Command="{Binding IncreaseMaxChanceCommand}"/>
+                    <MenuItem Header="Moins"
+                              Command="{Binding DecreaseMaxChanceCommand}"/>
+                </ContextMenu>
+            </controls:RatingControl.ContextMenu>
+        </controls:RatingControl>
     </Grid>
 </UserControl>
